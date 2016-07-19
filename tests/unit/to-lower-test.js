@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { toLower } from 'ember-awesome-macros/macros';
+import { toLower } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 
 const {

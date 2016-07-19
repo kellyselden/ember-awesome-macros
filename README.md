@@ -13,7 +13,7 @@ ember install ember-awesome-macros
 ```js
 import nameOfMacro from 'ember-awesome-macros/name-of-macro';
 // or
-import { nameOfMacro } from 'ember-awesome-macros/macros';
+import { nameOfMacro } from 'ember-awesome-macros';
 ```
 
 #### Macro list

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { defaultTrue } from 'ember-awesome-macros/macros';
+import { defaultTrue } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 
 const {
