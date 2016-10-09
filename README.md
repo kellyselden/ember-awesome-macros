@@ -324,6 +324,16 @@ value: hash({
 }) // { prop1: "my computed value", prop2: "my raw value" }
 ```
 
+##### `split`
+implements `String.prototype.split()`, allows composing
+
+```js
+source: 'val1,val2',
+key: ',',
+value: split('source', 'key') // ["val1", "val2"]
+value: split('source', raw(',')) // ["val1", "val2"]
+```
+
 ##### `toLower`
 calls `toLowerCase` on your string
 

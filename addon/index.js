@@ -23,5 +23,6 @@ export { default as promiseArray } from './promise-array';
 export { default as promiseHash } from './promise-hash';
 export { default as promiseObject } from './promise-object';
 export { default as raw } from './raw';
+export { default as split } from './split';
 export { default as toLower } from './to-lower';
 export { default as toUpper } from './to-upper';
