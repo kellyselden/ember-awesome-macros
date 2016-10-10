@@ -1,17 +1,7 @@
-import Ember from 'ember';
-import { wrapArray, flattenKeys, getValue } from './utils';
-
-const {
-  computed
-} = Ember;
+import { normalizeArray } from './utils';
 
 export default function(key1, key2) {
-  key1 = wrapArray(key1);
-  return computed(...flattenKeys([key1, key2]), function() {
-    let array = getValue(this, key1);
-    if (!array) {
-      return undefined;
-    }
-    return array.objectAt(getValue(this, key2));
-  });
+  return normalizeArray(key1, undefined, function(key1, key2) {
+    return key1.objectAt(key2);
+  }, key2);
 }
