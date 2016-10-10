@@ -23,6 +23,10 @@ module('Unit | Macro | includes', {
       source: 'my value',
       array
     });
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
   }
 });
 

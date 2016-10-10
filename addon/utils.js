@@ -5,7 +5,7 @@ const {
   get
 } = Ember;
 
-function isComputed(key) {
+export function isComputed(key) {
   return typeOf(key) === 'object';
 }
 
