@@ -5,8 +5,16 @@ const {
   get
 } = Ember;
 
+// consider making private
 export function isComputed(key) {
   return typeOf(key) === 'object';
+}
+
+export function wrapArray(key) {
+  if (!isComputed(key)) {
+    key += '.[]';
+  }
+  return key;
 }
 
 function _flattenKeys(keys, flattenedKeys) {
