@@ -3,8 +3,8 @@ import { join } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 
 const {
-  get,
-  A: newArray
+  A: newArray,
+  get, setProperties
 } = Ember;
 
 const Obj = Ember.Object.extend({
@@ -33,6 +33,16 @@ test('handles property changes', function(assert) {
   get(obj, 'array').pushObject('test3');
 
   assert.strictEqual(get(obj, 'test'), 'test1, test2, test3');
+});
+
+test('handles array undefined', function(assert) {
+  assert.expect(1);
+
+  setProperties(obj, {
+    array: undefined
+  });
+
+  assert.strictEqual(get(obj, 'test'), '');
 });
 
 test('handles one element', function(assert) {

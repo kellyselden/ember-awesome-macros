@@ -8,7 +8,9 @@ const {
 export default function(arrayKey, separator) {
   return computed(arrayKey, function() {
     let array = get(this, arrayKey);
-    let string = array.join(separator);
-    return string;
+    if (!array) {
+      return '';
+    }
+    return array.join(separator);
   });
 }
