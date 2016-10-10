@@ -23,6 +23,11 @@ module('Unit | Macro | index of', {
       source: 'my value',
       array
     });
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
+    get(obj, 'testNested');
   }
 });
 

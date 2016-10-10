@@ -22,6 +22,11 @@ module('Unit | Macro | split', {
       source,
       key: ','
     });
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
+    get(obj, 'testNested');
   }
 });
 

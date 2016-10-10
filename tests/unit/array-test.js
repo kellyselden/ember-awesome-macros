@@ -15,6 +15,10 @@ let obj;
 module('Unit | Macro | array', {
   beforeEach() {
     obj = Obj.create();
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
   }
 });
 

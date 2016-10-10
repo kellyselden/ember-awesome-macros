@@ -17,6 +17,10 @@ module('Unit | Macro | default true', {
     obj = Obj.create({
       source: undefined
     });
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
   }
 });
 

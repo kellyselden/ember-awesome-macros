@@ -16,6 +16,11 @@ let obj;
 module('Unit | Macro | not', {
   beforeEach() {
     obj = Obj.create();
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
+    get(obj, 'testNested');
   }
 });
 

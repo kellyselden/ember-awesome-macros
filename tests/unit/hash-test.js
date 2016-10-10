@@ -20,6 +20,10 @@ let obj;
 module('Unit | Macro | hash', {
   beforeEach() {
     obj = Obj.create();
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
   }
 });
 

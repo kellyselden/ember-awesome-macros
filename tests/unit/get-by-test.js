@@ -21,6 +21,10 @@ module('Unit | Macro | get by', {
     obj = Obj.create({
       source: 'testProp1'
     });
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
   }
 });
 

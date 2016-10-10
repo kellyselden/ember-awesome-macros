@@ -15,6 +15,10 @@ let obj;
 module('Unit | Macro | lt key', {
   beforeEach() {
     obj = Obj.create();
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
   }
 });
 

@@ -18,6 +18,10 @@ module('Unit | Macro | peek stack', {
     obj = Obj.create({
       array: newArray(['test1', 'test2'])
     });
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
   }
 });
 

@@ -17,6 +17,10 @@ module('Unit | Macro | to lower', {
     obj = Obj.create({
       source: undefined
     });
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
   }
 });
 

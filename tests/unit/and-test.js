@@ -20,6 +20,11 @@ let obj;
 module('Unit | Macro | and', {
   beforeEach() {
     obj = Obj.create();
+
+    // compute initial value
+    // to test recomputes
+    get(obj, 'test');
+    get(obj, 'testNested');
   }
 });
 

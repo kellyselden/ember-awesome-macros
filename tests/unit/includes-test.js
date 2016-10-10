@@ -27,6 +27,7 @@ module('Unit | Macro | includes', {
     // compute initial value
     // to test recomputes
     get(obj, 'test');
+    get(obj, 'testNested');
   }
 });
 
