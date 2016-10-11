@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { lteKey } from 'ember-awesome-macros';
+import { lte, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 
 const {
@@ -7,18 +7,20 @@ const {
 } = Ember;
 
 const Obj = Ember.Object.extend({
-  test: lteKey('source1', 'source2')
+  test: lte('source1', 'source2'),
+  testNested: lte(raw(1), raw(2))
 });
 
 let obj;
 
-module('Unit | Macro | lte key', {
+module('Unit | Macro | lte', {
   beforeEach() {
     obj = Obj.create();
 
     // compute initial value
     // to test recomputes
     get(obj, 'test');
+    get(obj, 'testNested');
   }
 });
 
@@ -53,4 +55,10 @@ test('greater than returns false', function(assert) {
   });
 
   assert.strictEqual(get(obj, 'test'), false);
+});
+
+test('it handles nesting', function(assert) {
+  assert.expect(1);
+
+  assert.strictEqual(get(obj, 'testNested'), true);
 });

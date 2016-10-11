@@ -52,6 +52,14 @@ export function normalizeArray(arrayKey, defaultValue, func, ...keys) {
   });
 }
 
+export function normalizeEquality(key1, key2, func) {
+  return computed(...flattenKeys([key1, key2]), function() {
+    let val1 = getValue(this, key1);
+    let val2 = getValue(this, key2);
+    return func(val1, val2);
+  });
+}
+
 export function getValue(context, key) {
   if (isComputed(key)) {
     return key._getter.call(context);

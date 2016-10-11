@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { gteKey } from 'ember-awesome-macros';
+import { equal, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 
 const {
@@ -7,22 +7,24 @@ const {
 } = Ember;
 
 const Obj = Ember.Object.extend({
-  test: gteKey('source1', 'source2')
+  test: equal('source1', 'source2'),
+  testNested: equal(raw(2), raw(2))
 });
 
 let obj;
 
-module('Unit | Macro | gte key', {
+module('Unit | Macro | equal', {
   beforeEach() {
     obj = Obj.create();
 
     // compute initial value
     // to test recomputes
     get(obj, 'test');
+    get(obj, 'testNested');
   }
 });
 
-test('less than returns false', function(assert) {
+test('not equal returns false', function(assert) {
   assert.expect(1);
 
   setProperties(obj, {
@@ -33,7 +35,18 @@ test('less than returns false', function(assert) {
   assert.strictEqual(get(obj, 'test'), false);
 });
 
-test('equal returns true', function(assert) {
+test('equal but different type returns false', function(assert) {
+  assert.expect(1);
+
+  setProperties(obj, {
+    source1: '2',
+    source2: 2
+  });
+
+  assert.strictEqual(get(obj, 'test'), false);
+});
+
+test('equal and same type returns true', function(assert) {
   assert.expect(1);
 
   setProperties(obj, {
@@ -44,13 +57,8 @@ test('equal returns true', function(assert) {
   assert.strictEqual(get(obj, 'test'), true);
 });
 
-test('greater than returns true', function(assert) {
+test('it handles nesting', function(assert) {
   assert.expect(1);
 
-  setProperties(obj, {
-    source1: 2,
-    source2: 1
-  });
-
-  assert.strictEqual(get(obj, 'test'), true);
+  assert.strictEqual(get(obj, 'testNested'), true);
 });

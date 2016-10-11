@@ -23,16 +23,16 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`collect`](#collect)
 * [`contains`](#contains)
 * [`defaultTrue`](#defaulttrue)
-* [`equalKey`](#equalkey)
+* [`equal`](#equal)
 * [`getBy`](#getby)
-* [`gtKey`](#gtkey)
-* [`gteKey`](#gtekey)
+* [`gt`](#gt)
+* [`gte`](#gte)
 * [`hash`](#hash)
 * [`includes`](#includes)
 * [`indexOf`](#indexof)
 * [`join`](#join)
-* [`ltKey`](#ltkey)
-* [`lteKey`](#ltekey)
+* [`lt`](#lt)
+* [`lte`](#lte)
 * [`not`](#not)
 * [`objectAt`](#objectat)
 * [`or`](#or)
@@ -86,15 +86,16 @@ value2: defaultTrue('source2') // false
 value3: defaultTrue('source3') // 'my value'
 ```
 
-##### `equalKey`
+##### `equal`
 like `Ember.computed.equal`, but uses dependent properties on both sides
+and allows composing
 
 ```js
 source1: 'my value',
 source2: 'my other value',
 source3: 'my value',
-value1: equalKey('source1', 'source2') // false
-value2: equalKey('source1', 'source3') // true
+value1: equal('source1', 'source2') // false
+value2: equal('source1', 'source3') // true
 ```
 
 ##### `getBy`
@@ -108,28 +109,30 @@ model: {
 value: getBy('model', 'key') // 'my value'
 ```
 
-##### `gtKey`
+##### `gt`
 like `Ember.computed.gt`, but uses dependent properties on both sides
+and allows composing
 
 ```js
 source1: 1,
 source2: 2,
 source3: 1,
-value1: gtKey('source1', 'source2') // false
-value2: gtKey('source1', 'source3') // false
-value3: gtKey('source2', 'source3') // true
+value1: gt('source1', 'source2') // false
+value2: gt('source1', 'source3') // false
+value3: gt('source2', 'source3') // true
 ```
 
-##### `gteKey`
+##### `gte`
 like `Ember.computed.gte`, but uses dependent properties on both sides
+and allows composing
 
 ```js
 source1: 1,
 source2: 2,
 source3: 1,
-value1: gteKey('source1', 'source2') // false
-value2: gteKey('source1', 'source3') // true
-value3: gteKey('source2', 'source3') // true
+value1: gte('source1', 'source2') // false
+value2: gte('source1', 'source3') // true
+value3: gte('source2', 'source3') // true
 ```
 
 ##### `hash`
@@ -180,28 +183,30 @@ value1: join('values', 'separator') // '1, 2'
 value2: join(collect(raw('1'), raw('2')), raw(', ')) // '1, 2'
 ```
 
-##### `ltKey`
+##### `lt`
 like `Ember.computed.lt`, but uses dependent properties on both sides
+and allows composing
 
 ```js
 source1: 1,
 source2: 2,
 source3: 1,
-value1: ltKey('source1', 'source2') // true
-value2: ltKey('source1', 'source3') // false
-value3: ltKey('source2', 'source3') // false
+value1: lt('source1', 'source2') // true
+value2: lt('source1', 'source3') // false
+value3: lt('source2', 'source3') // false
 ```
 
-##### `lteKey`
+##### `lte`
 like `Ember.computed.lte`, but uses dependent properties on both sides
+and allows composing
 
 ```js
 source1: 1,
 source2: 2,
 source3: 1,
-value1: lteKey('source1', 'source2') // true
-value2: lteKey('source1', 'source3') // true
-value3: lteKey('source2', 'source3') // false
+value1: lte('source1', 'source2') // true
+value2: lte('source1', 'source3') // true
+value3: lte('source2', 'source3') // false
 ```
 
 ##### `not`
