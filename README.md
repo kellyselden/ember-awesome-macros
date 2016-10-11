@@ -171,11 +171,13 @@ value3: indexOf(collect(raw('my value 1'), raw('my value 2')), raw('my value 1')
 ```
 
 ##### `join`
-join a computed array
+implements `Array.prototype.join()`, allows composing
 
 ```js
-values: Ember.A(['1', '2']),
-valuesString: join('values', ', ') // '1, 2'
+array: Ember.A(['1', '2']),
+separator: ', ',
+value1: join('values', 'separator') // '1, 2'
+value2: join(collect(raw('1'), raw('2')), raw(', ')) // '1, 2'
 ```
 
 ##### `ltKey`

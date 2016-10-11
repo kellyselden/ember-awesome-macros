@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { includes, collect, raw } from 'ember-awesome-macros';
+import { includes, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 
 const {
@@ -9,11 +9,11 @@ const {
 
 const Obj = Ember.Object.extend({
   test: includes('array', 'source'),
-  testNested: includes(collect(raw('my value')), raw('my value'))
+  testNested: includes(raw(newArray(['my value'])), raw('my value'))
 });
 
-let obj;
 let array;
+let obj;
 
 module('Unit | Macro | includes', {
   beforeEach() {

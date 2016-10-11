@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { join } from 'ember-awesome-macros';
+import { join, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 
 const {
@@ -8,20 +8,26 @@ const {
 } = Ember;
 
 const Obj = Ember.Object.extend({
-  test: join('array', ', ')
+  test: join('array', 'separator'),
+  testNested: join(raw(newArray(['test1', 'test2'])), raw(', '))
 });
 
+let array;
 let obj;
 
 module('Unit | Macro | join', {
   beforeEach() {
+    array = newArray(['test1', 'test2']);
+
     obj = Obj.create({
-      array: newArray(['test1', 'test2'])
+      array,
+      separator: ', '
     });
 
     // compute initial value
     // to test recomputes
     get(obj, 'test');
+    get(obj, 'testNested');
   }
 });
 
@@ -31,15 +37,15 @@ test('default', function(assert) {
   assert.strictEqual(get(obj, 'test'), 'test1, test2');
 });
 
-test('handles property changes', function(assert) {
+test('it handles property changes', function(assert) {
   assert.expect(1);
 
-  get(obj, 'array').pushObject('test3');
+  array.pushObject('test3');
 
   assert.strictEqual(get(obj, 'test'), 'test1, test2, test3');
 });
 
-test('handles array undefined', function(assert) {
+test('it handles array undefined', function(assert) {
   assert.expect(1);
 
   setProperties(obj, {
@@ -49,10 +55,16 @@ test('handles array undefined', function(assert) {
   assert.strictEqual(get(obj, 'test'), '');
 });
 
-test('handles one element', function(assert) {
+test('it handles one element', function(assert) {
   assert.expect(1);
 
-  get(obj, 'array').popObject();
+  array.popObject();
 
   assert.strictEqual(get(obj, 'test'), 'test1');
+});
+
+test('it handles nesting', function(assert) {
+  assert.expect(1);
+
+  assert.strictEqual(get(obj, 'testNested'), 'test1, test2');
 });

@@ -1,18 +1,7 @@
-import Ember from 'ember';
-import { wrapArray } from './utils';
+import { normalizeArray } from './utils';
 
-const {
-  get,
-  computed
-} = Ember;
-
-export default function(arrayKey, separator) {
-  arrayKey = wrapArray(arrayKey);
-  return computed(arrayKey, function() {
-    let array = get(this, arrayKey);
-    if (!array) {
-      return '';
-    }
-    return array.join(separator);
-  });
+export default function(key1, key2) {
+  return normalizeArray(key1, '', (key1, key2) => {
+    return key1.join(key2);
+  }, key2);
 }

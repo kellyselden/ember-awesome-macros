@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { indexOf, collect, raw } from 'ember-awesome-macros';
+import { indexOf, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 
 const {
@@ -9,11 +9,11 @@ const {
 
 const Obj = Ember.Object.extend({
   test: indexOf('array', 'source'),
-  testNested: indexOf(collect(raw('my value')), raw('my value'))
+  testNested: indexOf(raw(newArray(['my value'])), raw('my value'))
 });
 
-let obj;
 let array;
+let obj;
 
 module('Unit | Macro | index of', {
   beforeEach() {
