@@ -18,12 +18,14 @@ import { nameOfMacro } from 'ember-awesome-macros';
 ```
 
 #### Macro list
+* [`add`](#add)
 * [`and`](#and)
 * [`array`](#array)
 * [`collect`](#collect)
 * [`contains`](#contains)
 * [`defaultTrue`](#defaulttrue)
-* [`equal`](#equal)
+* [`difference`](#difference)
+* [`divide`](#divide)
 * [`getBy`](#getby)
 * [`gt`](#gt)
 * [`gte`](#gte)
@@ -33,21 +35,29 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`join`](#join)
 * [`lt`](#lt)
 * [`lte`](#lte)
+* [`multiply`](#multiply)
 * [`not`](#not)
 * [`objectAt`](#objectat)
 * [`or`](#or)
 * [`peekQueue`](#peekqueue)
 * [`peekStack`](#peekstack)
+* [`product`](#product)
 * [`promiseAll`](#promiseall)
 * [`promiseArray`](#promisearray)
 * [`promiseHash`](#promisehash)
 * [`promiseObject`](#promiseobject)
+* [`quotient`](#quotient)
 * [`raw`](#raw)
 * [`split`](#split)
+* [`subtract`](#subtract)
+* [`sum`](#sum)
 * [`toLower`](#tolower)
 * [`toUpper`](#toupper)
 
 #### Details
+
+##### `add`
+alias for [`sum`](#sum)
 
 ##### `and`
 same as `Ember.computed.and`, but allows composing
@@ -86,6 +96,20 @@ value1: defaultTrue('source1') // true
 value2: defaultTrue('source2') // false
 value3: defaultTrue('source3') // 'my value'
 ```
+
+##### `difference`
+subtracts numbers
+
+```js
+source1: 3,
+source2: 2,
+source3: 1,
+value1: difference('source1', 'source2', 'source3') // 0
+value2: difference('source2', difference('source2', 'source3')) // 2
+```
+
+##### `divide`
+alias for [`quotient`](#quotient)
 
 ##### `equal`
 like `Ember.computed.equal`, but uses dependent properties on both sides
@@ -210,6 +234,9 @@ value2: lte('source1', 'source3') // true
 value3: lte('source2', 'source3') // false
 ```
 
+##### `multiply`
+alias for [`product`](#product)
+
 ##### `not`
 same as `Ember.computed.not`, but allows composing
 
@@ -257,6 +284,17 @@ get the last item of an array
 ```js
 values: Ember.A(['1', '2']),
 firstValue: peekStack('values') // '2'
+```
+
+##### `product`
+multiplies numbers
+
+```js
+source1: 1,
+source2: 2,
+source3: 3,
+value1: product('source1', 'source2', 'source3') // 6
+value2: product('source2', product('source2', 'source3')) // 6
 ```
 
 ##### `promiseAll`
@@ -321,6 +359,17 @@ productPromise: computed(function() {
 product: promiseObject('productPromise')
 ```
 
+##### `quotient`
+subtracts numbers
+
+```js
+source1: 3,
+source2: 2,
+source3: 1,
+value1: quotient('source1', 'source2', 'source3') // 1.5
+value2: quotient('source2', quotient('source2', 'source3')) // 1.5
+```
+
 ##### `raw`
 a helper if you want to get fancy with composing
 
@@ -340,6 +389,20 @@ source: 'val1,val2',
 key: ',',
 value: split('source', 'key') // ['val1', 'val2']
 value: split('source', raw(',')) // ['val1', 'val2']
+```
+
+##### `subtract`
+alias for [`difference`](#difference)
+
+##### `sum`
+adds numbers
+
+```js
+source1: 1,
+source2: 2,
+source3: 3,
+value1: sum('source1', 'source2', 'source3') // 6
+value2: sum('source2', sum('source2', 'source3')) // 6
 ```
 
 ##### `toLower`

@@ -60,6 +60,17 @@ export function normalizeEquality(key1, key2, func) {
   });
 }
 
+export function normalizeArithmetic(keys, func) {
+  return computed(...flattenKeys(keys), function() {
+    let values = keys.map(key => getValue(this, key));
+    values = values.filter(value => value !== undefined);
+    if (!values.length) {
+      return 0;
+    }
+    return values.reduce(func);
+  });
+}
+
 export function getValue(context, key) {
   if (isComputed(key)) {
     return key._getter.call(context);
