@@ -19,40 +19,53 @@ import { nameOfMacro } from 'ember-awesome-macros';
 
 #### Macro list
 
-* [`add`](#add)
-* [`and`](#and)
+##### Array
 * [`array`](#array)
 * [`collect`](#collect)
 * [`contains`](#contains)
-* [`defaultTrue`](#defaulttrue)
-* [`difference`](#difference)
-* [`divide`](#divide)
-* [`equal`](#equal)
-* [`getBy`](#getby)
-* [`gt`](#gt)
-* [`gte`](#gte)
-* [`hash`](#hash)
 * [`includes`](#includes)
 * [`indexOf`](#indexof)
 * [`join`](#join)
-* [`lt`](#lt)
-* [`lte`](#lte)
-* [`multiply`](#multiply)
-* [`not`](#not)
 * [`objectAt`](#objectat)
-* [`or`](#or)
 * [`peekQueue`](#peekqueue)
 * [`peekStack`](#peekstack)
+
+##### Boolean
+* [`and`](#and)
+* [`defaultTrue`](#defaulttrue)
+* [`not`](#not)
+* [`or`](#or)
+
+##### Equality
+* [`equal`](#equal)
+* [`gt`](#gt)
+* [`gte`](#gte)
+* [`lt`](#lt)
+* [`lte`](#lte)
+
+##### Number
+* [`add`](#add)
+* [`difference`](#difference)
+* [`divide`](#divide)
+* [`multiply`](#multiply)
 * [`product`](#product)
+* [`quotient`](#quotient)
+* [`subtract`](#subtract)
+* [`sum`](#sum)
+
+##### Object
+* [`getBy`](#getby)
+* [`hash`](#hash)
+* [`raw`](#raw)
+
+##### Promise
 * [`promiseAll`](#promiseall)
 * [`promiseArray`](#promisearray)
 * [`promiseHash`](#promisehash)
 * [`promiseObject`](#promiseobject)
-* [`quotient`](#quotient)
-* [`raw`](#raw)
+
+##### String
 * [`split`](#split)
-* [`subtract`](#subtract)
-* [`sum`](#sum)
 * [`toLower`](#tolower)
 * [`toUpper`](#toupper)
 
