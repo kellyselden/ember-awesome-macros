@@ -23,9 +23,11 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array`](#array)
 * [`collect`](#collect)
 * [`contains`](#contains)
+* [`first`](#first)
 * [`includes`](#includes)
 * [`indexOf`](#indexof)
 * [`join`](#join)
+* [`last`](#last)
 * [`objectAt`](#objectat)
 * [`peekQueue`](#peekqueue)
 * [`peekStack`](#peekstack)
@@ -138,6 +140,9 @@ value1: equal('source1', 'source2') // false
 value2: equal('source1', 'source3') // true
 ```
 
+##### `first`
+alias for [`peekQueue`](#peekqueue)
+
 ##### `getBy`
 get a variable property name from an object
 
@@ -222,6 +227,9 @@ separator: ', ',
 value1: join('values', 'separator') // '1, 2'
 value2: join(collect(raw('1'), raw('2')), raw(', ')) // '1, 2'
 ```
+
+##### `last`
+alias for [`peekStack`](#peekstack)
 
 ##### `lt`
 like `Ember.computed.lt`, but uses dependent properties on both sides
