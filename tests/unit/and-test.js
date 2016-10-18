@@ -1,117 +1,80 @@
-import Ember from 'ember';
 import { and } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
+import compute from '../helpers/arithmetic';
 
-const {
-  get, setProperties
-} = Ember;
-
-const Obj = Ember.Object.extend({
-  test: and('source1', 'source2'),
-  testNested: and(
-    and('source1', 'source2'),
-    and('source1', 'source2'),
-    and('source1', 'source2')
-  )
-});
-
-let obj;
-
-module('Unit | Macro | and', {
-  beforeEach() {
-    obj = Obj.create();
-
-    // compute initial value
-    // to test recomputes
-    get(obj, 'test');
-    get(obj, 'testNested');
-  }
-});
+module('Unit | Macro | and');
 
 test('false and false returns false', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: false,
-    source2: false
+  compute({
+    assert,
+    computed: and('source1', 'source2'),
+    properties: {
+      source1: false,
+      source2: false
+    },
+    expected: false
   });
-
-  assert.strictEqual(get(obj, 'test'), false);
 });
 
 test('true and false returns false', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: true,
-    source2: false
+  compute({
+    assert,
+    computed: and('source1', 'source2'),
+    properties: {
+      source1: true,
+      source2: false
+    },
+    expected: false
   });
-
-  assert.strictEqual(get(obj, 'test'), false);
 });
 
 test('false and true returns false', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: false,
-    source2: true
+  compute({
+    assert,
+    computed: and('source1', 'source2'),
+    properties: {
+      source1: false,
+      source2: true
+    },
+    expected: false
   });
-
-  assert.strictEqual(get(obj, 'test'), false);
 });
 
 test('true and true returns true', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: true,
-    source2: true
+  compute({
+    assert,
+    computed: and('source1', 'source2'),
+    properties: {
+      source1: true,
+      source2: true
+    },
+    expected: true
   });
-
-  assert.strictEqual(get(obj, 'test'), true);
 });
 
-test('nested: false and false returns false', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: false,
-    source2: false
+test('accepts N number of keys', function(assert) {
+  compute({
+    assert,
+    computed: and('source1', 'source2', 'source3'),
+    properties: {
+      source1: true,
+      source2: true,
+      source3: false
+    },
+    expected: false
   });
-
-  assert.strictEqual(get(obj, 'testNested'), false);
 });
 
-test('nested: true and false returns false', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: true,
-    source2: false
+test('allows composing', function(assert) {
+  compute({
+    assert,
+    computed: and(and('source1', 'source2'), and('source3', 'source4')),
+    properties: {
+      source1: true,
+      source2: true,
+      source3: true,
+      source4: false
+    },
+    expected: false
   });
-
-  assert.strictEqual(get(obj, 'testNested'), false);
-});
-
-test('nested: false and true returns false', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: false,
-    source2: true
-  });
-
-  assert.strictEqual(get(obj, 'testNested'), false);
-});
-
-test('nested: true and true returns true', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: true,
-    source2: true
-  });
-
-  assert.strictEqual(get(obj, 'testNested'), true);
 });

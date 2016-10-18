@@ -1,14 +1,7 @@
-import Ember from 'ember';
-import { flattenKeys, getValue } from './utils';
-
-const {
-  computed
-} = Ember;
+import { normalizeArithmetic } from './utils';
 
 export default function(...keys) {
-  return computed(...flattenKeys(keys), function() {
-    return keys.reduce((val, key) => {
-      return val || getValue(this, key);
-    }, false);
+  return normalizeArithmetic(keys, (total, value) => {
+    return total || value;
   });
 }
