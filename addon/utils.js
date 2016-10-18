@@ -40,6 +40,24 @@ export function flattenKeys(keys) {
   return flattenedKeys;
 }
 
+export function resolveKeys(...args) {
+  let keys = args.slice(0, -1);
+  let isAlreadyArray;
+  if (Array.isArray(keys[0])) {
+    keys = keys[0];
+    isAlreadyArray = true;
+  }
+  let func = args[args.length - 1];
+  return computed(...flattenKeys(keys), function() {
+    let values = keys.map(key => getValue(this, key));
+    if (isAlreadyArray) {
+      return func(values);
+    } else {
+      return func(...values);
+    }
+  });
+}
+
 export function normalizeArray(arrayKey, defaultValue, func, ...keys) {
   let wrappedArray = wrapArray(arrayKey);
   return computed(...flattenKeys([wrappedArray, ...keys]), function() {
@@ -52,17 +70,8 @@ export function normalizeArray(arrayKey, defaultValue, func, ...keys) {
   });
 }
 
-export function normalizeEquality(key1, key2, func) {
-  return computed(...flattenKeys([key1, key2]), function() {
-    let val1 = getValue(this, key1);
-    let val2 = getValue(this, key2);
-    return func(val1, val2);
-  });
-}
-
 export function normalizeArithmetic(keys, func) {
-  return computed(...flattenKeys(keys), function() {
-    let values = keys.map(key => getValue(this, key));
+  return resolveKeys(keys, values => {
     values = values.filter(value => value !== undefined);
     if (!values.length) {
       return 0;

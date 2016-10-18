@@ -1,13 +1,7 @@
-import Ember from 'ember';
-
-const {
-  get,
-  computed
-} = Ember;
+import { normalizeArray } from './utils';
 
 export default function(key) {
-  return computed(`${key}.[]`, function() {
-    let val = get(this, key);
+  return normalizeArray(key, undefined, val => {
     return val[0];
   });
 }

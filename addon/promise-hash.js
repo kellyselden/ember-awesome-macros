@@ -1,17 +1,16 @@
 import Ember from 'ember';
 
 const {
+  RSVP: { hash },
   get,
-  computed,
-  RSVP
+  computed
 } = Ember;
 
 export default function(...keys) {
   return computed(...keys, function() {
-    let promiseHash = {};
-    keys.forEach(key => {
+    return hash(keys.reduce((promiseHash, key) => {
       promiseHash[key] = get(this, key);
-    });
-    return RSVP.hash(promiseHash);
+      return promiseHash;
+    }, {}));
   });
 }

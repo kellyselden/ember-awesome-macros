@@ -1,16 +1,10 @@
-import Ember from 'ember';
-import { flattenKeys, getValue } from './utils';
-
-const {
-  computed
-} = Ember;
+import { resolveKeys } from './utils';
 
 export default function(key1, key2) {
-  return computed(...flattenKeys([key1, key2]), function() {
-    let string = getValue(this, key1);
-    if (!string) {
+  return resolveKeys(key1, key2, (str, sep) => {
+    if (!str) {
       return [];
     }
-    return string.split(getValue(this, key2));
+    return str.split(sep);
   });
 }

@@ -1,14 +1,10 @@
 import Ember from 'ember';
+import { resolveKeys } from './utils';
 
 const {
-  get,
-  computed,
-  RSVP
+  RSVP: { all }
 } = Ember;
 
 export default function(...keys) {
-  return computed(...keys, function() {
-    let promiseArray = keys.map(key => get(this, key));
-    return RSVP.all(promiseArray);
-  });
+  return resolveKeys(keys, all);
 }

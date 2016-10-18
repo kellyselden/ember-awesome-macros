@@ -1,13 +1,10 @@
 import Ember from 'ember';
-import { flattenKeys, getValue } from './utils';
+import { resolveKeys } from './utils';
 
 const {
-  A: newArray,
-  computed
+  A: newArray
 } = Ember;
 
 export default function(...keys) {
-  return computed(...flattenKeys(keys), function() {
-    return newArray(keys.map(key => getValue(this, key)));
-  });
+  return resolveKeys(keys, newArray);
 }
