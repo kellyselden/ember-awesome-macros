@@ -1,72 +1,53 @@
-import Ember from 'ember';
 import { indexOf, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
+import sinon from 'sinon';
+import compute from '../helpers/compute';
 
-const {
-  A: newArray,
-  get, setProperties
-} = Ember;
+const value = 1;
+const fromIndex = 2;
+const retVal = 3;
 
-const Obj = Ember.Object.extend({
-  test: indexOf('array', 'source'),
-  testNested: indexOf(raw(newArray(['my value'])), raw('my value'))
-});
-
+let indexOfStub;
 let array;
-let obj;
 
 module('Unit | Macro | index of', {
   beforeEach() {
-    array = newArray(['my value']);
-
-    obj = Obj.create({
-      source: 'my value',
-      array
-    });
-
-    // compute initial value
-    // to test recomputes
-    get(obj, 'test');
-    get(obj, 'testNested');
+    indexOfStub = sinon.stub().returns(retVal);
+    array = { indexOf: indexOfStub };
   }
 });
 
-test('it returns index if found', function(assert) {
-  assert.expect(1);
-
-  assert.strictEqual(get(obj, 'test'), 0);
+test('it returns -1 if array undefined', function(assert) {
+  compute({
+    assert,
+    computed: indexOf('array', 'value', 'fromIndex'),
+    expected: -1
+  });
 });
 
-test('it returns -1 if not found', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source: 'my value 2'
+test('it calls indexOf on array', function(assert) {
+  let val = compute({
+    computed: indexOf('array', 'value', 'fromIndex'),
+    properties: {
+      array,
+      value,
+      fromIndex
+    }
   });
 
-  assert.strictEqual(get(obj, 'test'), -1);
+  assert.deepEqual(indexOfStub.args, [[value, fromIndex]]);
+  assert.strictEqual(val, retVal);
 });
 
-test('it returns -1 if popped', function(assert) {
-  assert.expect(1);
-
-  array.popObject();
-
-  assert.strictEqual(get(obj, 'test'), -1);
-});
-
-test('it returns -1 if not array', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    array: undefined
+test('composable: it calls indexOf on array', function(assert) {
+  let val = compute({
+    computed: indexOf(
+      raw(array),
+      value,
+      fromIndex
+    )
   });
 
-  assert.strictEqual(get(obj, 'test'), -1);
-});
-
-test('it handles nesting', function(assert) {
-  assert.expect(1);
-
-  assert.strictEqual(get(obj, 'testNested'), 0);
+  assert.deepEqual(indexOfStub.args, [[value, fromIndex]]);
+  assert.strictEqual(val, retVal);
 });

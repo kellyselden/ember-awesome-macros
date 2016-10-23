@@ -60,15 +60,19 @@ export function resolveKeys(...args) {
   });
 }
 
-export function normalizeArray(arrayKey, defaultValue, func, ...keys) {
-  let wrappedArray = wrapArray(arrayKey);
+const sentinelValue = {};
+
+export function normalizeArray(array, {
+  defaultValue = sentinelValue
+}, callback, ...keys) {
+  let wrappedArray = wrapArray(array);
   return computed(...flattenKeys([wrappedArray, ...keys]), function() {
-    let array = getValue(this, arrayKey);
-    if (!array) {
-      return defaultValue;
+    let arrayValue = getValue(this, array);
+    if (!arrayValue) {
+      return defaultValue === sentinelValue ? arrayValue : defaultValue;
     }
-    let keyValues = keys.map(key => getValue(this, key));
-    return func(array, ...keyValues);
+    let values = keys.map(key => getValue(this, key));
+    return callback(arrayValue, ...values);
   });
 }
 

@@ -9,10 +9,9 @@ export default function({
   computed,
   properties,
   expected,
+  deepEqual,
   assertion
 }) {
-  assert.expect(1);
-
   let obj = Ember.Object.extend({
     computed
   }).create();
@@ -23,9 +22,15 @@ export default function({
 
   setProperties(obj, properties);
 
+  let val = get(obj, 'computed');
+
   if (assertion) {
-    assert.ok(assertion(get(obj, 'computed')));
-  } else {
-    assert.strictEqual(get(obj, 'computed'), expected);
+    assert.ok(assertion(val));
+  } else if (deepEqual) {
+    assert.deepEqual(val, deepEqual);
+  } else if (assert) {
+    assert.strictEqual(val, expected);
   }
+
+  return val;
 }

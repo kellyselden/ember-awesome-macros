@@ -20,14 +20,23 @@ import { nameOfMacro } from 'ember-awesome-macros';
 #### Macro list
 
 ##### Array
+* [`any`](#any)
 * [`array`](#array)
 * [`collect`](#collect)
 * [`contains`](#contains)
+* [`every`](#every)
+* [`filterBy`](#filterby)
+* [`filter`](#filter)
+* [`findBy`](#findby)
+* [`find`](#find)
 * [`first`](#first)
 * [`includes`](#includes)
 * [`indexOf`](#indexof)
 * [`join`](#join)
+* [`lastIndexOf`](#lastindexof)
 * [`last`](#last)
+* [`mapBy`](#mapby)
+* [`map`](#map)
 * [`objectAt`](#objectat)
 * [`peekQueue`](#peekqueue)
 * [`peekStack`](#peekstack)
@@ -93,6 +102,15 @@ source2: true,
 source3: false,
 value1: and('source1', 'source2', 'source3'), // false
 value2: and(not('source1'), 'source2', not('source3')) // true
+```
+
+##### `any`
+wraps [`Ember.MutableArray.any`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_any), allows composing
+
+```js
+array: Ember.A([1, 2]),
+value1: any('array', val => val === 2) // true
+value2: any('array', val => val === 3) // false
 ```
 
 ##### `array`
@@ -188,6 +206,49 @@ value1: equal('source1', 'source2') // false
 value2: equal('source1', 'source3') // true
 ```
 
+##### `every`
+wraps [`Ember.MutableArray.every`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_every), allows composing
+
+```js
+array: Ember.A([1, 1]),
+value1: any('array', val => val === 1) // true
+value2: any('array', val => val === 2) // false
+```
+
+##### `filterBy`
+wraps [`Ember.MutableArray.filterBy`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_filterBy), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+key: 'test',
+value: filterBy('array', 'key', 2) // [{ test: 2 }]
+```
+
+##### `filter`
+wraps [`Ember.MutableArray.filter`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_filter), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+value: filter('array', item => item.test === 2) // [{ test: 2 }]
+```
+
+##### `findBy`
+wraps [`Ember.MutableArray.findBy`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_findBy), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+key: 'test',
+value: findBy('array', 'key', 2) // { test: 2 }
+```
+
+##### `find`
+wraps [`Ember.MutableArray.find`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_find), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+value: find('array', item => item.test === 2) // { test: 2 }
+```
+
 ##### `first`
 alias for [`peekQueue`](#peekqueue)
 
@@ -263,15 +324,12 @@ value3: includes(collect(raw('my value 1'), raw('my value 2')), raw('my value 1'
 ```
 
 ##### `indexOf`
-implements `Array.prototype.indexOf()`, allows composing
+wraps [`Array.prototype.indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf), allows composing
 
 ```js
-array: Ember.A(['my value 1', 'my value 2']),
-source1: 'my value 2',
-source2: 'my value 3',
-value1: indexOf('array', 'source1') // 0
-value2: indexOf('array', 'source2') // -1
-value3: indexOf(collect(raw('my value 1'), raw('my value 2')), raw('my value 1')) // 0
+array: [2, 5, 9, 2],
+value1: indexOf('array', 2) // 0
+value2: indexOf('array', 2, 2) // 3
 ```
 
 ##### `isHtmlSafe`
@@ -292,6 +350,15 @@ array: Ember.A(['1', '2']),
 separator: ', ',
 value1: join('values', 'separator') // '1, 2'
 value2: join(collect(raw('1'), raw('2')), raw(', ')) // '1, 2'
+```
+
+##### `lastIndexOf`
+wraps [`Array.prototype.lastIndexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf), allows composing
+
+```js
+array: [2, 5, 9, 2],
+value1: lastIndexOf('array', 2) // 3
+value2: lastIndexOf('array', 2, 2) // 0
 ```
 
 ##### `last`
@@ -321,6 +388,23 @@ source3: 1,
 value1: lte('source1', 'source2') // true
 value2: lte('source1', 'source3') // true
 value3: lte('source2', 'source3') // false
+```
+
+##### `mapBy`
+wraps [`Ember.MutableArray.mapBy`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_mapBy), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+key: 'test',
+value: mapBy('array', 'key') // [1, 2]
+```
+
+##### `map`
+wraps [`Ember.MutableArray.map`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_map), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+value: map('array', item => item.test) // [1, 2]
 ```
 
 ##### `multiply`
