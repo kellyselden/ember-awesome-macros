@@ -8,7 +8,8 @@ export default function({
   assert,
   computed,
   properties,
-  expected
+  expected,
+  assertion
 }) {
   assert.expect(1);
 
@@ -22,5 +23,9 @@ export default function({
 
   setProperties(obj, properties);
 
-  assert.strictEqual(get(obj, 'computed'), expected);
+  if (assertion) {
+    assert.ok(assertion(get(obj, 'computed')));
+  } else {
+    assert.strictEqual(get(obj, 'computed'), expected);
+  }
 }

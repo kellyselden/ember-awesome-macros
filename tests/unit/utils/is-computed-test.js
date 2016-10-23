@@ -1,7 +1,7 @@
 import { isComputed } from 'ember-awesome-macros/utils';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | is computed');
+module('Unit | Utility | is compute');
 
 test('it returns true for object', function(assert) {
   let result = isComputed({});

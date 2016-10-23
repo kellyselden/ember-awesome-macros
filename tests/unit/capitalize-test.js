@@ -1,6 +1,6 @@
 import { capitalize, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from '../helpers/arithmetic';
+import compute from '../helpers/compute';
 
 module('Unit | Macro | capitalize');
 

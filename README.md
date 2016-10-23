@@ -72,6 +72,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`classify`](#classify)
 * [`dasherize`](#dasherize)
 * [`decamelize`](#decamelize)
+* [`htmlSafe`](#htmlsafe)
+* [`isHtmlSafe`](#ishtmlsafe)
 * [`split`](#split)
 * [`toLower`](#tolower)
 * [`toUpper`](#toupper)
@@ -240,6 +242,14 @@ value: hash({
 }), // { prop1: 'my value 1', prop2: { prop: 'my value 2' } }
 ```
 
+##### `htmlSafe`
+wraps [`Ember.String.htmlSafe`](http://emberjs.com/api/classes/Ember.String.html#method_htmlSafe), allows composing
+
+```js
+originalValue: '<input>',
+newValue: htmlSafe('originalValue') // will not be escaped
+```
+
 ##### `includes`
 implements `Array.prototype.includes()`, allows composing
 
@@ -262,6 +272,16 @@ source2: 'my value 3',
 value1: indexOf('array', 'source1') // 0
 value2: indexOf('array', 'source2') // -1
 value3: indexOf(collect(raw('my value 1'), raw('my value 2')), raw('my value 1')) // 0
+```
+
+##### `isHtmlSafe`
+wraps [`Ember.String.isHTMLSafe`](http://emberjs.com/api/classes/Ember.String.html#method_isHTMLSafe), allows composing
+
+```js
+source1: '<input>',
+source2: htmlSafe('<input>'),
+value1: isHtmlSafe('source1'), // false
+value2: isHtmlSafe('source2') // true
 ```
 
 ##### `join`

@@ -1,6 +1,6 @@
 import { difference } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from '../helpers/arithmetic';
+import compute from '../helpers/compute';
 
 module('Unit | Macro | difference');
 
