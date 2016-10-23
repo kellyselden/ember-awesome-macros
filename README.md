@@ -67,9 +67,15 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`promiseObject`](#promiseobject)
 
 ##### String
+* [`camelize`](#camelize)
+* [`capitalize`](#capitalize)
+* [`classify`](#classify)
+* [`dasherize`](#dasherize)
+* [`decamelize`](#decamelize)
 * [`split`](#split)
 * [`toLower`](#tolower)
 * [`toUpper`](#toupper)
+* [`underscore`](#underscore)
 
 #### Details
 
@@ -90,6 +96,30 @@ value2: and(not('source1'), 'source2', not('source3')) // true
 ##### `array`
 alias for [`collect`](#collect)
 
+##### `camelize`
+wraps [`Ember.String.camelize`](http://emberjs.com/api/classes/Ember.String.html#method_camelize), allows composing
+
+```js
+originalValue: 'test-string',
+newValue: camelize('originalValue') // 'testString'
+```
+
+##### `capitalize`
+wraps [`Ember.String.capitalize`](http://emberjs.com/api/classes/Ember.String.html#method_capitalize), allows composing
+
+```js
+originalValue: 'test string',
+newValue: capitalize('originalValue') // 'Test string'
+```
+
+##### `classify`
+wraps [`Ember.String.classify`](http://emberjs.com/api/classes/Ember.String.html#method_classify), allows composing
+
+```js
+originalValue: 'test string',
+newValue: classify('originalValue') // 'TestString'
+```
+
 ##### `collect`
 same as `Ember.computed.collect`, but allows composing
 
@@ -101,6 +131,22 @@ value: collect('source1', collect('source2')), // ['my value 1', ['my value 2']]
 
 ##### `contains`
 alias for [`includes`](#includes)
+
+##### `dasherize`
+wraps [`Ember.String.dasherize`](http://emberjs.com/api/classes/Ember.String.html#method_dasherize), allows composing
+
+```js
+originalValue: 'TestString',
+newValue: dasherize('originalValue') // 'test-string'
+```
+
+##### `decamelize`
+wraps [`Ember.String.decamelize`](http://emberjs.com/api/classes/Ember.String.html#method_decamelize), allows composing
+
+```js
+originalValue: 'TestString',
+newValue: decamelize('originalValue') // 'test_string'
+```
 
 ##### `defaultTrue`
 true if source is undefined
@@ -436,17 +482,25 @@ value2: sum('source2', sum('source2', 'source3')) // 6
 ```
 
 ##### `toLower`
-calls `toLowerCase` on your string
+wraps [`String.prototype.toLowerCase`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase), allows composing
 
 ```js
-originalValue: 'abcZXY',
-newValue: toLower('originalValue') // 'abcxyz'
+originalValue: 'TestString',
+newValue: toLower('originalValue') // 'teststring'
 ```
 
 ##### `toUpper`
-calls `toUpperCase` on your string
+wraps [`String.prototype.toUpperCase`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase), allows composing
 
 ```js
-originalValue: 'abcZXY',
-newValue: toUpper('originalValue') // 'ABCXYZ'
+originalValue: 'TestString',
+newValue: toUpper('originalValue') // 'TESTSTRING'
+```
+
+##### `underscore`
+wraps [`Ember.String.underscore`](http://emberjs.com/api/classes/Ember.String.html#method_underscore), allows composing
+
+```js
+originalValue: 'TestString',
+newValue: underscore('originalValue') // 'test_string'
 ```

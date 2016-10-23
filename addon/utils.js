@@ -80,6 +80,16 @@ export function normalizeArithmetic(keys, func) {
   });
 }
 
+export function normalizeString(key, func) {
+  return resolveKeys(key, val => {
+    if (!val) {
+      return val;
+    }
+
+    return func(val);
+  });
+}
+
 export function getValue(context, key) {
   if (isComputed(key)) {
     return key._getter.call(context);

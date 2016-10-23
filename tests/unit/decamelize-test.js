@@ -1,13 +1,13 @@
-import { toLower, raw } from 'ember-awesome-macros';
+import { decamelize, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from '../helpers/arithmetic';
 
-module('Unit | Macro | to lower');
+module('Unit | Macro | decamelize');
 
 test('returns undefined when doesn\'t exist', function(assert) {
   compute({
     assert,
-    computed: toLower('source'),
+    computed: decamelize('source'),
     expected: undefined
   });
 });
@@ -15,7 +15,7 @@ test('returns undefined when doesn\'t exist', function(assert) {
 test('returns undefined when undefined', function(assert) {
   compute({
     assert,
-    computed: toLower('source'),
+    computed: decamelize('source'),
     properties: {
       source: undefined
     },
@@ -23,29 +23,29 @@ test('returns undefined when undefined', function(assert) {
   });
 });
 
-test('underscores string', function(assert) {
+test('decamelizes string', function(assert) {
   compute({
     assert,
-    computed: toLower('source'),
+    computed: decamelize('source'),
     properties: {
       source: 'TestString'
     },
-    expected: 'teststring'
+    expected: 'test_string'
   });
 });
 
 test('returns undefined when composed undefined', function(assert) {
   compute({
     assert,
-    computed: toLower(raw(undefined)),
+    computed: decamelize(raw(undefined)),
     expected: undefined
   });
 });
 
-test('underscores composed string', function(assert) {
+test('decamelizes composed string', function(assert) {
   compute({
     assert,
-    computed: toLower(raw('TestString')),
-    expected: 'teststring'
+    computed: decamelize(raw('TestString')),
+    expected: 'test_string'
   });
 });

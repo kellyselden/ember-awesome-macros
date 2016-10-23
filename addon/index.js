@@ -1,8 +1,13 @@
 export { default as add } from './add';
 export { default as and } from './and';
 export { default as array } from './array';
+export { default as camelize } from './camelize';
+export { default as capitalize } from './capitalize';
+export { default as classify } from './classify';
 export { default as collect } from './collect';
 export { default as contains } from './contains';
+export { default as dasherize } from './dasherize';
+export { default as decamelize } from './decamelize';
 export { default as defaultTrue } from './default-true';
 export { default as difference } from './difference';
 export { default as divide } from './divide';
@@ -36,3 +41,4 @@ export { default as subtract } from './subtract';
 export { default as sum } from './sum';
 export { default as toLower } from './to-lower';
 export { default as toUpper } from './to-upper';
+export { default as underscore } from './underscore';

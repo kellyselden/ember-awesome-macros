@@ -1,11 +1,5 @@
-import { resolveKeys } from './utils';
+import { normalizeString } from './utils';
 
 export default function(key) {
-  return resolveKeys(key, val => {
-    if (!val) {
-      return val;
-    }
-
-    return val.toLowerCase();
-  });
+  return normalizeString(key, val => val.toLowerCase());
 }

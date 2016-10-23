@@ -1,39 +1,51 @@
-import Ember from 'ember';
-import { toUpper } from 'ember-awesome-macros';
+import { toUpper, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
+import compute from '../helpers/arithmetic';
 
-const {
-  get, set
-} = Ember;
+module('Unit | Macro | to upper');
 
-const Obj = Ember.Object.extend({
-  test: toUpper('source')
+test('returns undefined when doesn\'t exist', function(assert) {
+  compute({
+    assert,
+    computed: toUpper('source'),
+    expected: undefined
+  });
 });
 
-let obj;
-
-module('Unit | Macro | to upper', {
-  beforeEach() {
-    obj = Obj.create({
+test('returns undefined when undefined', function(assert) {
+  compute({
+    assert,
+    computed: toUpper('source'),
+    properties: {
       source: undefined
-    });
-
-    // compute initial value
-    // to test recomputes
-    get(obj, 'test');
-  }
+    },
+    expected: undefined
+  });
 });
 
-test('handles undefined', function(assert) {
-  assert.expect(1);
-
-  assert.strictEqual(get(obj, 'test'), undefined);
+test('underscores string', function(assert) {
+  compute({
+    assert,
+    computed: toUpper('source'),
+    properties: {
+      source: 'TestString'
+    },
+    expected: 'TESTSTRING'
+  });
 });
 
-test('to upper', function(assert) {
-  assert.expect(1);
+test('returns undefined when composed undefined', function(assert) {
+  compute({
+    assert,
+    computed: toUpper(raw(undefined)),
+    expected: undefined
+  });
+});
 
-  set(obj, 'source', 'abcZXY');
-
-  assert.strictEqual(get(obj, 'test'), 'ABCZXY');
+test('underscores composed string', function(assert) {
+  compute({
+    assert,
+    computed: toUpper(raw('TestString')),
+    expected: 'TESTSTRING'
+  });
 });

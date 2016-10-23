@@ -1,13 +1,13 @@
-import { toLower, raw } from 'ember-awesome-macros';
+import { classify, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from '../helpers/arithmetic';
 
-module('Unit | Macro | to lower');
+module('Unit | Macro | classify');
 
 test('returns undefined when doesn\'t exist', function(assert) {
   compute({
     assert,
-    computed: toLower('source'),
+    computed: classify('source'),
     expected: undefined
   });
 });
@@ -15,7 +15,7 @@ test('returns undefined when doesn\'t exist', function(assert) {
 test('returns undefined when undefined', function(assert) {
   compute({
     assert,
-    computed: toLower('source'),
+    computed: classify('source'),
     properties: {
       source: undefined
     },
@@ -23,29 +23,29 @@ test('returns undefined when undefined', function(assert) {
   });
 });
 
-test('underscores string', function(assert) {
+test('classifies string', function(assert) {
   compute({
     assert,
-    computed: toLower('source'),
+    computed: classify('source'),
     properties: {
-      source: 'TestString'
+      source: 'test string'
     },
-    expected: 'teststring'
+    expected: 'TestString'
   });
 });
 
 test('returns undefined when composed undefined', function(assert) {
   compute({
     assert,
-    computed: toLower(raw(undefined)),
+    computed: classify(raw(undefined)),
     expected: undefined
   });
 });
 
-test('underscores composed string', function(assert) {
+test('classifies composed string', function(assert) {
   compute({
     assert,
-    computed: toLower(raw('TestString')),
-    expected: 'teststring'
+    computed: classify(raw('test string')),
+    expected: 'TestString'
   });
 });
