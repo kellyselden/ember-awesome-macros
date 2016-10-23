@@ -67,6 +67,14 @@ test('handles some undefined', function(assert) {
   });
 });
 
+test('allows raw numbers', function(assert) {
+  compute({
+    assert,
+    computed: quotient(3, 2, 1),
+    expected: 1.5
+  });
+});
+
 test('allows composing', function(assert) {
   compute({
     assert,

@@ -28,6 +28,8 @@ function _flattenKeys(keys, flattenedKeys) {
         return;
       }
       _flattenKeys(dependentKeys, flattenedKeys);
+    } else if (typeof key === 'number') {
+      return;
     } else {
       flattenedKeys.push(key);
     }
@@ -93,6 +95,8 @@ export function normalizeString(key, func) {
 export function getValue(context, key) {
   if (isComputed(key)) {
     return key._getter.call(context);
+  } else if (typeof key === 'number') {
+    return key;
   } else {
     return get(context, key);
   }

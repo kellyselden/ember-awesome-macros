@@ -1,64 +1,57 @@
-import Ember from 'ember';
 import { lte, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
+import compute from '../helpers/compute';
 
-const {
-  get, setProperties
-} = Ember;
-
-const Obj = Ember.Object.extend({
-  test: lte('source1', 'source2'),
-  testNested: lte(raw(1), raw(2))
-});
-
-let obj;
-
-module('Unit | Macro | lte', {
-  beforeEach() {
-    obj = Obj.create();
-
-    // compute initial value
-    // to test recomputes
-    get(obj, 'test');
-    get(obj, 'testNested');
-  }
-});
+module('Unit | Macro | lte');
 
 test('less than returns true', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: 1,
-    source2: 2
+  compute({
+    assert,
+    computed: lte('source1', 'source2'),
+    properties: {
+      source1: 1,
+      source2: 2
+    },
+    expected: true
   });
-
-  assert.strictEqual(get(obj, 'test'), true);
 });
 
 test('equal returns true', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: 2,
-    source2: 2
+  compute({
+    assert,
+    computed: lte('source1', 'source2'),
+    properties: {
+      source1: 2,
+      source2: 2
+    },
+    expected: true
   });
-
-  assert.strictEqual(get(obj, 'test'), true);
 });
 
 test('greater than returns false', function(assert) {
-  assert.expect(1);
-
-  setProperties(obj, {
-    source1: 2,
-    source2: 1
+  compute({
+    assert,
+    computed: lte('source1', 'source2'),
+    properties: {
+      source1: 2,
+      source2: 1
+    },
+    expected: false
   });
+});
 
-  assert.strictEqual(get(obj, 'test'), false);
+test('it handles numbers', function(assert) {
+  compute({
+    assert,
+    computed: lte(1, 2),
+    expected: true
+  });
 });
 
 test('it handles nesting', function(assert) {
-  assert.expect(1);
-
-  assert.strictEqual(get(obj, 'testNested'), true);
+  compute({
+    assert,
+    computed: lte(raw(1), raw(2)),
+    expected: true
+  });
 });

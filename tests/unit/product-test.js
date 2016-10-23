@@ -67,6 +67,14 @@ test('handles some undefined', function(assert) {
   });
 });
 
+test('allows raw numbers', function(assert) {
+  compute({
+    assert,
+    computed: product(1, 2, 3),
+    expected: 6
+  });
+});
+
 test('allows composing', function(assert) {
   compute({
     assert,
