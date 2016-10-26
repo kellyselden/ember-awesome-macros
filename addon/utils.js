@@ -1,14 +1,22 @@
 import Ember from 'ember';
 
 const {
-  typeOf,
   get,
   computed
 } = Ember;
 
 // consider making private
 export function isComputed(key) {
-  return typeOf(key) === 'object';
+  return typeof key === 'object';
+}
+
+function isValue(key) {
+  switch (typeof key) {
+    case 'number':
+    case 'boolean':
+      return true;
+  }
+  return false;
 }
 
 // consider making private
@@ -27,12 +35,15 @@ function _flattenKeys(keys, flattenedKeys) {
         // when there are no keys (raw)
         return;
       }
-      _flattenKeys(dependentKeys, flattenedKeys);
-    } else if (typeof key === 'number') {
-      return;
-    } else {
-      flattenedKeys.push(key);
+
+      return _flattenKeys(dependentKeys, flattenedKeys);
     }
+
+    if (isValue(key)) {
+      return;
+    }
+
+    flattenedKeys.push(key);
   });
 }
 
@@ -99,9 +110,11 @@ export function normalizeString(key, func) {
 export function getValue(context, key) {
   if (isComputed(key)) {
     return key._getter.call(context);
-  } else if (typeof key === 'number') {
-    return key;
-  } else {
-    return get(context, key);
   }
+
+  if (isValue(key)) {
+    return key;
+  }
+
+  return get(context, key);
 }

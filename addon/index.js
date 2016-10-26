@@ -6,6 +6,7 @@ export { default as camelize } from './camelize';
 export { default as capitalize } from './capitalize';
 export { default as classify } from './classify';
 export { default as collect } from './collect';
+export { default as conditional } from './conditional';
 export { default as contains } from './contains';
 export { default as dasherize } from './dasherize';
 export { default as decamelize } from './decamelize';

@@ -43,6 +43,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 
 ##### Boolean
 * [`and`](#and)
+* [`conditional`](#conditional)
 * [`defaultTrue`](#defaulttrue)
 * [`isHtmlSafe`](#ishtmlsafe)
 * [`not`](#not)
@@ -147,6 +148,19 @@ same as `Ember.computed.collect`, but allows composing
 source1: 'my value 1',
 source2: 'my value 2',
 value: collect('source1', collect('source2')), // ['my value 1', ['my value 2']]
+```
+
+##### `conditional`
+implements the ternary operator, allows composing
+
+```js
+condition1: true,
+condition2: false,
+expr1: 'my value 1',
+expr2: 'my value 2',
+value1: conditional('condition1', 'expr1', 'expr2') // 'my value 1'
+value2: conditional('condition2', 'expr1', 'expr2') // 'my value 2'
+value3: conditional(or('condition1', 'condition2'), raw('my value 1'), raw('my value 2')) // 'my value 1'
 ```
 
 ##### `contains`
