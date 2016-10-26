@@ -65,6 +65,18 @@ test('accepts N number of keys', function(assert) {
   });
 });
 
+test('allows object fallback, doesn\'t cast to bool', function(assert) {
+  compute({
+    assert,
+    computed: or('source1', 'source2'),
+    properties: {
+      source1: false,
+      source2: { test: 1 }
+    },
+    deepEqual: { test: 1 }
+  });
+});
+
 test('allows composing', function(assert) {
   compute({
     assert,
