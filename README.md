@@ -50,6 +50,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`or`](#or)
 
 ##### Equality
+* [`eq`](#eq)
 * [`equal`](#equal)
 * [`gt`](#gt)
 * [`gte`](#gte)
@@ -207,6 +208,9 @@ value2: difference('source2', difference('source2', 'source3')) // 2
 
 ##### `divide`
 alias for [`quotient`](#quotient)
+
+##### `eq`
+alias for [`equal`](#equal)
 
 ##### `equal`
 like `Ember.computed.equal`, but uses dependent properties on both sides

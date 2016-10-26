@@ -13,6 +13,7 @@ export { default as decamelize } from './decamelize';
 export { default as defaultTrue } from './default-true';
 export { default as difference } from './difference';
 export { default as divide } from './divide';
+export { default as eq } from './eq';
 export { default as equal } from './equal';
 export { default as every } from './every';
 export { default as filterBy } from './filter-by';
