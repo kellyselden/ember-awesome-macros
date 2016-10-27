@@ -55,3 +55,5 @@ export { default as sum } from './sum';
 export { default as toLower } from './to-lower';
 export { default as toUpper } from './to-upper';
 export { default as underscore } from './underscore';
+export { default as uniqBy } from './uniq-by';
+export { default as uniq } from './uniq';

@@ -40,6 +40,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`objectAt`](#objectat)
 * [`peekQueue`](#peekqueue)
 * [`peekStack`](#peekstack)
+* [`uniqBy`](#uniqby)
+* [`uniq`](#uniq)
 
 ##### Boolean
 * [`and`](#and)
@@ -625,4 +627,21 @@ wraps [`Ember.String.underscore`](http://emberjs.com/api/classes/Ember.String.ht
 ```js
 originalValue: 'TestString',
 newValue: underscore('originalValue') // 'test_string'
+```
+
+##### `uniqBy`
+wraps [`Ember.MutableArray.uniqBy`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_uniqBy), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }, { test: 2 }]),
+key: 'test',
+value: uniqBy('array', 'key') // [{ test: 1 }, { test: 2 }]
+```
+
+##### `uniq`
+wraps [`Ember.MutableArray.uniq`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_uniq), allows composing
+
+```js
+array: Ember.A([1, 2, 2]),
+value: uniq('array') // [1, 2]
 ```
