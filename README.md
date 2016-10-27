@@ -88,6 +88,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`decamelize`](#decamelize)
 * [`htmlSafe`](#htmlsafe)
 * [`split`](#split)
+* [`tag`](#tag)
 * [`toLower`](#tolower)
 * [`toUpper`](#toupper)
 * [`underscore`](#underscore)
@@ -603,6 +604,15 @@ source2: 2,
 source3: 3,
 value1: sum('source1', 'source2', 'source3') // 6
 value2: sum('source2', sum('source2', 'source3')) // 6
+```
+
+##### `tag`
+use a [tagged template literal](http://odetocode.com/blogs/scott/archive/2014/09/30/features-of-es6-part-8-tagged-templates.aspx) as a computed macro, allows composing
+
+```js
+source: 'two',
+value1: tag`one ${'source'} three` // 'one two three'
+value2: tag`one ${toUpper('source')} three` // 'one TWO three'
 ```
 
 ##### `toLower`

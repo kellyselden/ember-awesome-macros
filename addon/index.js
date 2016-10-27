@@ -52,6 +52,7 @@ export { default as raw } from './raw';
 export { default as split } from './split';
 export { default as subtract } from './subtract';
 export { default as sum } from './sum';
+export { default as tag } from './tag';
 export { default as toLower } from './to-lower';
 export { default as toUpper } from './to-upper';
 export { default as underscore } from './underscore';
