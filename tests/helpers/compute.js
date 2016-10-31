@@ -32,5 +32,8 @@ export default function({
     assert.strictEqual(val, expected);
   }
 
-  return val;
+  return {
+    obj,
+    val
+  };
 }

@@ -26,7 +26,7 @@ test('it returns -1 if array undefined', function(assert) {
 });
 
 test('it calls indexOf on array', function(assert) {
-  let val = compute({
+  let { val } = compute({
     computed: indexOf('array', 'value', 'fromIndex'),
     properties: {
       array,
@@ -40,7 +40,7 @@ test('it calls indexOf on array', function(assert) {
 });
 
 test('composable: it calls indexOf on array', function(assert) {
-  let val = compute({
+  let { val } = compute({
     computed: indexOf(
       raw(array),
       value,

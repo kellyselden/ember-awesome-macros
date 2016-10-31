@@ -24,7 +24,7 @@ test('it returns undefined if array undefined', function(assert) {
 });
 
 test('it calls uniq on array', function(assert) {
-  let val = compute({
+  let { val } = compute({
     computed: uniq('array'),
     properties: {
       array
@@ -36,7 +36,7 @@ test('it calls uniq on array', function(assert) {
 });
 
 test('composable: it calls uniq on array', function(assert) {
-  let val = compute({
+  let { val } = compute({
     computed: uniq(
       raw(array)
     )

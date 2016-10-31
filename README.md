@@ -50,6 +50,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`objectAt`](#objectat)
 * [`peekQueue`](#peekqueue)
 * [`peekStack`](#peekstack)
+* [`reduce`](#reduce)
 * [`uniqBy`](#uniqby)
 * [`uniq`](#uniq)
 
@@ -124,7 +125,7 @@ wraps [`Ember.MutableArray.any`](http://emberjs.com/api/classes/Ember.MutableArr
 
 ```js
 array: Ember.A([1, 2]),
-value1: any('array', val => val === 2) // true
+value1: any('array', val => val === 2), // true
 value2: any('array', val => val === 3) // false
 ```
 
@@ -172,8 +173,8 @@ condition1: true,
 condition2: false,
 expr1: 'my value 1',
 expr2: 'my value 2',
-value1: conditional('condition1', 'expr1', 'expr2') // 'my value 1'
-value2: conditional('condition2', 'expr1', 'expr2') // 'my value 2'
+value1: conditional('condition1', 'expr1', 'expr2'), // 'my value 1'
+value2: conditional('condition2', 'expr1', 'expr2'), // 'my value 2'
 value3: conditional(or('condition1', 'condition2'), raw('my value 1'), raw('my value 2')) // 'my value 1'
 ```
 
@@ -203,8 +204,8 @@ true if source is undefined
 source1: undefined,
 source2: false,
 source3: 'my value',
-value1: defaultTrue('source1') // true
-value2: defaultTrue('source2') // false
+value1: defaultTrue('source1'), // true
+value2: defaultTrue('source2'), // false
 value3: defaultTrue('source3') // 'my value'
 ```
 
@@ -215,7 +216,7 @@ subtracts numbers
 source1: 3,
 source2: 2,
 source3: 1,
-value1: difference('source1', 'source2', 'source3') // 0
+value1: difference('source1', 'source2', 'source3'), // 0
 value2: difference('source2', difference('source2', 'source3')) // 2
 ```
 
@@ -233,7 +234,7 @@ and allows composing
 source1: 'my value',
 source2: 'my other value',
 source3: 'my value',
-value1: equal('source1', 'source2') // false
+value1: equal('source1', 'source2'), // false
 value2: equal('source1', 'source3') // true
 ```
 
@@ -242,7 +243,7 @@ wraps [`Ember.MutableArray.every`](http://emberjs.com/api/classes/Ember.MutableA
 
 ```js
 array: Ember.A([1, 1]),
-value1: any('array', val => val === 1) // true
+value1: any('array', val => val === 1), // true
 value2: any('array', val => val === 2) // false
 ```
 
@@ -302,8 +303,8 @@ and allows composing
 source1: 1,
 source2: 2,
 source3: 1,
-value1: gt('source1', 'source2') // false
-value2: gt('source1', 'source3') // false
+value1: gt('source1', 'source2'), // false
+value2: gt('source1', 'source3'), // false
 value3: gt('source2', 'source3') // true
 ```
 
@@ -315,8 +316,8 @@ and allows composing
 source1: 1,
 source2: 2,
 source3: 1,
-value1: gte('source1', 'source2') // false
-value2: gte('source1', 'source3') // true
+value1: gte('source1', 'source2'), // false
+value2: gte('source1', 'source3'), // true
 value3: gte('source2', 'source3') // true
 ```
 
@@ -331,7 +332,7 @@ value: hash({
   prop2: hash({
     prop: 'source2'
   })
-}), // { prop1: 'my value 1', prop2: { prop: 'my value 2' } }
+}) // { prop1: 'my value 1', prop2: { prop: 'my value 2' } }
 ```
 
 ##### `htmlSafe`
@@ -349,8 +350,8 @@ implements `Array.prototype.includes()`, allows composing
 array: Ember.A(['my value 1', 'my value 2']),
 source1: 'my value 2',
 source2: 'my value 3',
-value1: includes('array', 'source1') // true
-value2: includes('array', 'source2') // false
+value1: includes('array', 'source1'), // true
+value2: includes('array', 'source2'), // false
 value3: includes(collect(raw('my value 1'), raw('my value 2')), raw('my value 1')) // true
 ```
 
@@ -359,7 +360,7 @@ wraps [`Array.prototype.indexOf`](https://developer.mozilla.org/en-US/docs/Web/J
 
 ```js
 array: [2, 5, 9, 2],
-value1: indexOf('array', 2) // 0
+value1: indexOf('array', 2), // 0
 value2: indexOf('array', 2, 2) // 3
 ```
 
@@ -379,7 +380,7 @@ implements `Array.prototype.join()`, allows composing
 ```js
 array: Ember.A(['1', '2']),
 separator: ', ',
-value1: join('values', 'separator') // '1, 2'
+value1: join('values', 'separator'), // '1, 2'
 value2: join(collect(raw('1'), raw('2')), raw(', ')) // '1, 2'
 ```
 
@@ -388,7 +389,7 @@ wraps [`Array.prototype.lastIndexOf`](https://developer.mozilla.org/en-US/docs/W
 
 ```js
 array: [2, 5, 9, 2],
-value1: lastIndexOf('array', 2) // 3
+value1: lastIndexOf('array', 2), // 3
 value2: lastIndexOf('array', 2, 2) // 0
 ```
 
@@ -403,8 +404,8 @@ and allows composing
 source1: 1,
 source2: 2,
 source3: 1,
-value1: lt('source1', 'source2') // true
-value2: lt('source1', 'source3') // false
+value1: lt('source1', 'source2'), // true
+value2: lt('source1', 'source3'), // false
 value3: lt('source2', 'source3') // false
 ```
 
@@ -416,8 +417,8 @@ and allows composing
 source1: 1,
 source2: 2,
 source3: 1,
-value1: lte('source1', 'source2') // true
-value2: lte('source1', 'source3') // true
+value1: lte('source1', 'source2'), // true
+value2: lte('source1', 'source3'), // true
 value3: lte('source2', 'source3') // false
 ```
 
@@ -458,8 +459,8 @@ implements `http://emberjs.com/api/classes/Ember.MutableArray.html#method_object
 array: Ember.A(['my value']),
 source1: 0,
 source2: 1,
-value1: objectAt('array', 'source1') // 'my value'
-value2: objectAt('array', 'source2') // undefined
+value1: objectAt('array', 'source1'), // 'my value'
+value2: objectAt('array', 'source2'), // undefined
 value3: objectAt(collect(raw('my value 1')), raw(0)) // 'my value'
 ```
 
@@ -497,7 +498,7 @@ multiplies numbers
 source1: 1,
 source2: 2,
 source3: 3,
-value1: product('source1', 'source2', 'source3') // 6
+value1: product('source1', 'source2', 'source3'), // 6
 value2: product('source2', product('source2', 'source3')) // 6
 ```
 
@@ -570,7 +571,7 @@ subtracts numbers
 source1: 3,
 source2: 2,
 source3: 1,
-value1: quotient('source1', 'source2', 'source3') // 1.5
+value1: quotient('source1', 'source2', 'source3'), // 1.5
 value2: quotient('source2', quotient('source2', 'source3')) // 1.5
 ```
 
@@ -592,14 +593,31 @@ value: hash({
 }) // { prop1: 'my computed value', prop2: 'my raw value' }
 ```
 
+##### `reduce`
+wraps [`Array.prototype.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce), allows composing
+
+```js
+array: ['one', 'two'],
+value1: reduce('array', (obj, cur, i) => {
+  obj[cur] = i;
+  return obj;
+}, {}), // { one: 0, two: 1 }
+
+string: 'one, two',
+value2: reduce(split('string', raw(', ')), (obj, cur, i) => {
+  obj[cur] = i;
+  return obj;
+}, {}) // { one: 0, two: 1 }
+```
+
 ##### `split`
 implements `String.prototype.split()`, allows composing
 
 ```js
 source: 'val1,val2',
 key: ',',
-value: split('source', 'key') // ['val1', 'val2']
-value: split('source', raw(',')) // ['val1', 'val2']
+value1: split('source', 'key'), // ['val1', 'val2']
+value2: split('source', raw(',')) // ['val1', 'val2']
 ```
 
 ##### `subtract`
@@ -612,7 +630,7 @@ adds numbers
 source1: 1,
 source2: 2,
 source3: 3,
-value1: sum('source1', 'source2', 'source3') // 6
+value1: sum('source1', 'source2', 'source3'), // 6
 value2: sum('source2', sum('source2', 'source3')) // 6
 ```
 
@@ -621,7 +639,7 @@ use a [tagged template literal](http://odetocode.com/blogs/scott/archive/2014/09
 
 ```js
 source: 'two',
-value1: tag`one ${'source'} three` // 'one two three'
+value1: tag`one ${'source'} three`, // 'one two three'
 value2: tag`one ${toUpper('source')} three` // 'one TWO three'
 ```
 

@@ -1,21 +1,12 @@
 import { flattenKeys } from 'ember-awesome-macros/utils';
 import { module, test } from 'qunit';
+import { computed } from 'ember-awesome-macros';
 
 module('Unit | Utility | flatten keys');
 
 test('it works', function(assert) {
   let key1 = 'test1';
-  let key2 = {
-    _dependentKeys: [
-      'test2',
-      {
-        _dependentKeys: [
-          'test3',
-          'test4'
-        ]
-      }
-    ]
-  };
+  let key2 = computed('test2', computed('test3', 'test4'));
 
   let flattenedKeys = flattenKeys([key1, key2]);
 
@@ -28,9 +19,7 @@ test('it works', function(assert) {
 });
 
 test('it handles undefined _dependentKeys (raw)', function(assert) {
-  let key = {
-    _dependentKeys: undefined
-  };
+  let key = computed(() => {});
 
   let flattenedKeys = flattenKeys([key]);
 

@@ -1,56 +1,107 @@
 import Ember from 'ember';
 
 const {
+  ComputedProperty,
   get,
-  computed
+  computed: _computed
 } = Ember;
 
 // consider making private
 export function isComputed(key) {
-  return typeof key === 'object';
-}
-
-function isValue(key) {
-  switch (typeof key) {
-    case 'number':
-    case 'boolean':
-      return true;
-  }
-  return false;
+  return key instanceof ComputedProperty;
 }
 
 // consider making private
 export function wrapArray(key) {
-  if (!isComputed(key)) {
+  if (typeof key === 'string') {
     key += '.[]';
   }
   return key;
 }
 
-function _flattenKeys(keys, flattenedKeys) {
-  keys.forEach(key => {
-    if (isComputed(key)) {
-      let dependentKeys = key._dependentKeys;
-      if (dependentKeys === undefined) {
-        // when there are no keys (raw)
-        return;
-      }
-
-      return _flattenKeys(dependentKeys, flattenedKeys);
-    }
-
-    if (isValue(key)) {
+function flattenKey(key, flattenedKeys) {
+  if (isComputed(key)) {
+    let dependentKeys = key._dependentKeys;
+    if (dependentKeys === undefined) {
+      // when there are no keys (raw)
       return;
     }
 
-    flattenedKeys.push(key);
+    return _flattenKeys(dependentKeys, flattenedKeys);
+  }
+
+  if (typeof key !== 'string') {
+    return key;
+  }
+
+  flattenedKeys.push(key);
+}
+
+function _flattenKeys(keys, flattenedKeys) {
+  keys.forEach(key => {
+    flattenKey(key, flattenedKeys);
   });
 }
 
 export function flattenKeys(keys) {
   let flattenedKeys = [];
-  _flattenKeys(keys, flattenedKeys);
+  _flattenKeys(keys.slice(0, -1), flattenedKeys);
+  let lastKey = keys[keys.length - 1];
+  if (lastKey) {
+    let lastValue = flattenKey(lastKey, flattenedKeys);
+    if (lastValue) {
+      if (lastValue.get) {
+        flattenKey(lastValue.get, flattenedKeys);
+      }
+      if (lastValue.set) {
+        flattenKey(lastValue.set, flattenedKeys);
+      }
+    }
+  }
   return flattenedKeys;
+}
+
+function resolveCallback(callbackComputed) {
+  let callback = getValue(this, callbackComputed);
+  if (callback) {
+    return callback;
+  }
+
+  if (typeof callbackComputed === 'string') {
+    return;
+  }
+
+  throw new Error('You must call computed with a last param of function');
+}
+
+function callCallback(args, callbackComputed, operation) {
+  let callback = resolveCallback.call(this, callbackComputed);
+  if (!callback) {
+    return;
+  }
+
+  let operationCallback = callback[operation];
+  if (operationCallback) {
+    callback = resolveCallback.call(this, operationCallback);
+    if (!callback) {
+      return;
+    }
+  }
+
+  return callback.apply(this, args);
+}
+
+export function computed(...args) {
+  let callback = args[args.length - 1];
+
+  return _computed(...flattenKeys(args), {
+    get() {
+      return callCallback.call(this, arguments, callback, 'get');
+    },
+    set() {
+      return callCallback.call(this, arguments, callback, 'set');
+    }
+  });
 }
 
 export function resolveKeys(...args) {
@@ -61,12 +112,12 @@ export function resolveKeys(...args) {
     isAlreadyArray = true;
   }
   let func = args[args.length - 1];
-  return computed(...flattenKeys(keys), function() {
+  return computed(...keys, function() {
     let values = keys.map(key => getValue(this, key));
     if (isAlreadyArray) {
-      return func(values);
+      return func.call(this, values);
     } else {
-      return func(...values);
+      return func.apply(this, values);
     }
   });
 }
@@ -77,7 +128,7 @@ export function normalizeArray(array, {
   defaultValue = sentinelValue
 }, callback, ...keys) {
   let wrappedArray = wrapArray(array);
-  return computed(...flattenKeys([wrappedArray, ...keys]), function() {
+  return computed(wrappedArray, ...keys, function() {
     let arrayValue = getValue(this, array);
     if (!arrayValue) {
       return defaultValue === sentinelValue ? arrayValue : defaultValue;
@@ -112,7 +163,7 @@ export function getValue(context, key) {
     return key._getter.call(context);
   }
 
-  if (isValue(key)) {
+  if (typeof key !== 'string') {
     return key;
   }
 

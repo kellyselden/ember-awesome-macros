@@ -1,5 +1,10 @@
+import Ember from 'ember';
 import { getValue } from 'ember-awesome-macros/utils';
 import { module, test } from 'qunit';
+
+const {
+  computed
+} = Ember;
 
 module('Unit | Utility | get value');
 
@@ -16,13 +21,11 @@ test('it evaluates regular properties', function(assert) {
 test('it evaluates computed properties', function(assert) {
   let context = {};
 
-  let key = {
-    _getter() {
-      assert.strictEqual(this, context);
+  let key = computed(function() {
+    assert.strictEqual(this, context);
 
-      return 'test value';
-    }
-  };
+    return 'test value';
+  });
 
   let value = getValue(context, key);
 
