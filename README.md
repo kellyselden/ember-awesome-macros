@@ -33,6 +33,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`any`](#any)
 * [`array`](#array)
 * [`collect`](#collect)
+* [`compact`](#compact)
 * [`contains`](#contains)
 * [`every`](#every)
 * [`filterBy`](#filterby)
@@ -163,6 +164,14 @@ same as `Ember.computed.collect`, but allows composing
 source1: 'my value 1',
 source2: 'my value 2',
 value: collect('source1', collect('source2')), // ['my value 1', ['my value 2']]
+```
+
+##### `compact`
+wraps [`Ember.MutableArray.compact`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_compact), allows composing
+
+```js
+array: Ember.A([1, 2, null]),
+value: compact('array') // [1, 2]
 ```
 
 ##### `conditional`
