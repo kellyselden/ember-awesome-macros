@@ -43,6 +43,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`first`](#first)
 * [`includes`](#includes)
 * [`indexOf`](#indexof)
+* [`isAny`](#isany)
+* [`isEvery`](#isevery)
 * [`join`](#join)
 * [`lastIndexOf`](#lastindexof)
 * [`last`](#last)
@@ -371,6 +373,30 @@ wraps [`Array.prototype.indexOf`](https://developer.mozilla.org/en-US/docs/Web/J
 array: [2, 5, 9, 2],
 value1: indexOf('array', 2), // 0
 value2: indexOf('array', 2, 2) // 3
+```
+
+##### `isAny`
+wraps [`Ember.Enumerable.isAny`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_isAny), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+key: 'test',
+value1: 2,
+value2: 3,
+result1: isAny('array', 'key', 'value1'), // true
+result2: isAny('array', 'key', 'value2') // false
+```
+
+##### `isEvery`
+wraps [`Ember.Enumerable.isEvery`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_isEvery), allows composing
+
+```js
+array1: Ember.A([{ test: 1 }, { test: 1 }]),
+key: 'test',
+value1: 1,
+value2: 2,
+result1: isEvery('array', 'key', 'value1'), // true
+result2: isEvery('array', 'key', 'value2') // false
 ```
 
 ##### `isHtmlSafe`

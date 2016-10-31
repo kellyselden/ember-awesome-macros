@@ -30,6 +30,8 @@ export { default as hash } from './hash';
 export { default as htmlSafe } from './html-safe';
 export { default as includes } from './includes';
 export { default as indexOf } from './index-of';
+export { default as isAny } from './is-any';
+export { default as isEvery } from './is-every';
 export { default as isHtmlSafe } from './is-html-safe';
 export { default as join } from './join';
 export { default as lastIndexOf } from './last-index-of';
