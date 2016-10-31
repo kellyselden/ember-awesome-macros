@@ -1,7 +1,7 @@
 import { resolveKeys } from './utils';
 
-export default function(key1, key2) {
-  return resolveKeys(key1, key2, (str, sep) => {
+export default function(...keys) {
+  return resolveKeys(...keys, (str, sep) => {
     if (!str) {
       return [];
     }
