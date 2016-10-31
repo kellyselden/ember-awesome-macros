@@ -124,16 +124,18 @@ export function resolveKeys(...args) {
 
 const sentinelValue = {};
 
-export function normalizeArray(array, {
+export function normalizeArray(keys, {
   defaultValue = sentinelValue
-}, callback, ...keys) {
+}, callback) {
+  let [array] = keys;
   let wrappedArray = wrapArray(array);
-  return computed(wrappedArray, ...keys, function() {
+  let args = keys.slice(1);
+  return computed(wrappedArray, ...args, function() {
     let arrayValue = getValue(this, array);
     if (!arrayValue) {
       return defaultValue === sentinelValue ? arrayValue : defaultValue;
     }
-    let values = keys.map(key => getValue(this, key));
+    let values = args.map(key => getValue(this, key));
     return callback(arrayValue, ...values);
   });
 }

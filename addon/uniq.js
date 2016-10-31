@@ -1,7 +1,7 @@
 import { normalizeArray } from './utils';
 
-export default function(array) {
-  return normalizeArray(array, { defaultValue: undefined }, array => {
+export default function(...keys) {
+  return normalizeArray(keys, {}, array => {
     return array.uniq();
   });
 }

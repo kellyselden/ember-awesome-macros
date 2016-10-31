@@ -1,7 +1,7 @@
 import { normalizeArray } from './utils';
 
-export default function(key) {
-  return normalizeArray(key, {}, val => {
-    return val[0];
+export default function(...keys) {
+  return normalizeArray(keys, {}, array => {
+    return array[0];
   });
 }
