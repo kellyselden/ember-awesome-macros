@@ -56,6 +56,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`reduce`](#reduce)
 * [`uniqBy`](#uniqby)
 * [`uniq`](#uniq)
+* [`without`](#without)
 
 ##### Boolean
 * [`and`](#and)
@@ -717,4 +718,13 @@ wraps [`Ember.MutableArray.uniq`](http://emberjs.com/api/classes/Ember.MutableAr
 ```js
 array: Ember.A([1, 2, 2]),
 value: uniq('array') // [1, 2]
+```
+
+##### `without`
+wraps [`Ember.Enumerable.without`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_without), allows composing
+
+```js
+array: Ember.A([1, 2, 3]),
+value1: without('array', 2), // [1, 3]
+value2: without('array', objectAt(1)) // [1, 3]
 ```

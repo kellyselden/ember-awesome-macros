@@ -63,3 +63,4 @@ export { default as toUpper } from './to-upper';
 export { default as underscore } from './underscore';
 export { default as uniqBy } from './uniq-by';
 export { default as uniq } from './uniq';
+export { default as without } from './without';
