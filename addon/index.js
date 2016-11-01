@@ -54,6 +54,7 @@ export { default as promiseObject } from './promise-object';
 export { default as quotient } from './quotient';
 export { default as raw } from './raw';
 export { default as reduce } from './reduce';
+export { default as slice } from './slice';
 export { default as split } from './split';
 export { default as subtract } from './subtract';
 export { default as sum } from './sum';

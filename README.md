@@ -54,6 +54,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`peekQueue`](#peekqueue)
 * [`peekStack`](#peekstack)
 * [`reduce`](#reduce)
+* [`slice`](#slice)
 * [`uniqBy`](#uniqby)
 * [`uniq`](#uniq)
 * [`without`](#without)
@@ -644,6 +645,15 @@ value2: reduce(split('string', raw(', ')), (obj, cur, i) => {
   obj[cur] = i;
   return obj;
 }, {}) // { one: 0, two: 1 }
+```
+
+##### `slice`
+wraps [`Array.prototype.slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice), allows composing
+
+```js
+array: [1, 2, 3],
+value1: slice('array', 1), // [2, 3]
+value2: slice('array', difference('array.length', 1)) // [3]
 ```
 
 ##### `split`
