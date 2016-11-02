@@ -44,6 +44,8 @@ export { default as multiply } from './multiply';
 export { default as not } from './not';
 export { default as objectAt } from './object-at';
 export { default as or } from './or';
+export { default as parseFloat } from './parse-float';
+export { default as parseInt } from './parse-int';
 export { default as product } from './product';
 export { default as promiseAll } from './promise-all';
 export { default as promiseArray } from './promise-array';

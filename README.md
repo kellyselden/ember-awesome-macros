@@ -78,6 +78,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`difference`](#difference)
 * [`divide`](#divide)
 * [`multiply`](#multiply)
+* [`parseFloat`](#parsefloat)
+* [`parseInt`](#parseint)
 * [`product`](#product)
 * [`quotient`](#quotient)
 * [`subtract`](#subtract)
@@ -522,6 +524,26 @@ source2: false,
 source3: true,
 value1: or('source1', 'source2', 'source3'), // true
 value2: or(not('source1'), 'source2', not('source3')) // false
+```
+
+##### `parseFloat`
+wraps [`parseFloat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat), allows composing
+
+```js
+string1: '12.34',
+string2: '12',
+string3: '34',
+example: parseFloat('string1'), // 12.34
+composingExample: parseFloat(tag`${'string2'}.${'string3'}`) // 12.34
+```
+
+##### `parseInt`
+wraps [`parseInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt), allows composing
+
+```js
+string: '123',
+example: parseInt('string'), // 123
+composingExample: parseInt(substr('string', 1), 8) // 19
 ```
 
 ##### `product`
