@@ -31,7 +31,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 
 ##### Array
 * [`any`](#any)
-* [`array`](#array)
+* [`array`](#array-1)
 * [`collect`](#collect)
 * [`compact`](#compact)
 * [`contains`](#contains)
