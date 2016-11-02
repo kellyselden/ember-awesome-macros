@@ -51,8 +51,6 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`mapBy`](#mapby)
 * [`map`](#map)
 * [`objectAt`](#objectat)
-* [`peekQueue`](#peekqueue)
-* [`peekStack`](#peekstack)
 * [`reduce`](#reduce)
 * [`slice`](#slice)
 * [`uniqBy`](#uniqby)
@@ -295,7 +293,14 @@ value: find('array', item => item.test === 2) // { test: 2 }
 ```
 
 ##### `first`
-alias for [`peekQueue`](#peekqueue)
+get the first item of an array
+
+```js
+array: ['1', '2'],
+string: '1, 2',
+example: first('array'), // '1'
+composingExample: first(split('string', raw(', '))) // '1'
+```
 
 ##### `getBy`
 get a variable property name from an object
@@ -431,7 +436,14 @@ value2: lastIndexOf('array', 2, 2) // 0
 ```
 
 ##### `last`
-alias for [`peekStack`](#peekstack)
+get the last item of an array
+
+```js
+array: ['1', '2'],
+string: '1, 2',
+example: last('array'), // '2'
+composingExample: last(split('string', raw(', '))) // '2'
+```
 
 ##### `lt`
 like `Ember.computed.lt`, but uses dependent properties on both sides
@@ -510,22 +522,6 @@ source2: false,
 source3: true,
 value1: or('source1', 'source2', 'source3'), // true
 value2: or(not('source1'), 'source2', not('source3')) // false
-```
-
-##### `peekQueue`
-get the first item of an array
-
-```js
-values: Ember.A(['1', '2']),
-firstValue: peekQueue('values') // '1'
-```
-
-##### `peekStack`
-get the last item of an array
-
-```js
-values: Ember.A(['1', '2']),
-firstValue: peekStack('values') // '2'
 ```
 
 ##### `product`

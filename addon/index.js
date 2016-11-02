@@ -44,8 +44,6 @@ export { default as multiply } from './multiply';
 export { default as not } from './not';
 export { default as objectAt } from './object-at';
 export { default as or } from './or';
-export { default as peekQueue } from './peek-queue';
-export { default as peekStack } from './peek-stack';
 export { default as product } from './product';
 export { default as promiseAll } from './promise-all';
 export { default as promiseArray } from './promise-array';
