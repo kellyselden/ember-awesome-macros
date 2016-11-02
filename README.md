@@ -104,6 +104,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`decamelize`](#decamelize)
 * [`htmlSafe`](#htmlsafe)
 * [`split`](#split)
+* [`substr`](#substr)
+* [`substring`](#substring)
 * [`tag`](#tag)
 * [`toLower`](#tolower)
 * [`toUpper`](#toupper)
@@ -682,6 +684,28 @@ source: 'val1,val2',
 key: ',',
 value1: split('source', 'key'), // ['val1', 'val2']
 value2: split('source', raw(',')) // ['val1', 'val2']
+```
+
+##### `substr`
+wraps [`String.prototype.substr`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr), allows composing
+
+```js
+string1: 'abcxyz',
+string2: 'abc',
+string3: 'xyz',
+example: substr('string1', 2, 2), // 'cx'
+composingExample: substr(tag`${'string2'}${'string3'}`, 2, 2) // 'cx'
+```
+
+##### `substring`
+wraps [`String.prototype.substring`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring), allows composing
+
+```js
+string1: 'abcxyz',
+string2: 'abc',
+string3: 'xyz',
+example: substring('string1', 2, 4), // 'cx'
+composingExample: substring(tag`${'string2'}${'string3'}`, 2, 4) // 'cx'
 ```
 
 ##### `subtract`
