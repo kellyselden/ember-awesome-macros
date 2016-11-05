@@ -40,6 +40,7 @@ export { default as lt } from './lt';
 export { default as lte } from './lte';
 export { default as mapBy } from './map-by';
 export { default as map } from './map';
+export { default as math } from './math';
 export { default as multiply } from './multiply';
 export { default as not } from './not';
 export { default as objectAt } from './object-at';

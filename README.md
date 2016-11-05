@@ -89,6 +89,9 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`getBy`](#getby)
 * [`hash`](#hash)
 
+##### Math
+* [`math`](#math)
+
 ##### Primitives
 * [`computed`](#computed)
 * [`raw`](#raw)
@@ -520,6 +523,16 @@ wraps [`Ember.MutableArray.map`](http://emberjs.com/api/classes/Ember.MutableArr
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }]),
 value: map('array', item => item.test) // [1, 2]
+```
+
+##### `math`
+exposes all [`Math`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) functions
+
+```js
+source1: 2.2,
+source2: 2.7,
+value1: math.ceil('source1'), // 3
+value2: math.floor(sum('source1', 'source2')) // 4
 ```
 
 ##### `multiply`
