@@ -92,11 +92,13 @@ function callCallback(args, callbackComputed, operation) {
 }
 
 export function computed(...args) {
+  let keys = args.slice(0, -1);
   let callback = args[args.length - 1];
 
   return _computed(...flattenKeys(args), {
     get() {
-      return callCallback.call(this, arguments, callback, 'get');
+      let values = keys.map(key => getValue(this, key));
+      return callCallback.call(this, values, callback, 'get');
     },
     set() {
       return callCallback.call(this, arguments, callback, 'set');
@@ -111,14 +113,13 @@ export function resolveKeys(...args) {
     keys = keys[0];
     isAlreadyArray = true;
   }
-  let func = args[args.length - 1];
-  return computed(...keys, function() {
-    let values = keys.map(key => getValue(this, key));
+  let callback = args[args.length - 1];
+
+  return computed(...keys, function(...values) {
     if (isAlreadyArray) {
-      return func.call(this, values);
-    } else {
-      return func.apply(this, values);
+      return callback.call(this, values);
     }
+    return callback.apply(this, values);
   });
 }
 
@@ -130,7 +131,8 @@ export function normalizeArray(keys, {
   let [array] = keys;
   let wrappedArray = wrapArray(array);
   let args = keys.slice(1);
-  return computed(wrappedArray, ...args, function() {
+
+  return _computed(...flattenKeys([wrappedArray, ...args]), function() {
     let arrayValue = getValue(this, array);
     if (!arrayValue) {
       return defaultValue === sentinelValue ? arrayValue : defaultValue;

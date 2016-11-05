@@ -1,4 +1,4 @@
-import { computed } from 'ember-awesome-macros';
+import { computed, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 import compute from '../helpers/compute';
@@ -47,12 +47,15 @@ test('function syntax: uses the right context when getting', function(assert) {
   assert.strictEqual(getCallback.thisValues[0], obj);
 });
 
-test('function syntax: passes the key when getting', function(assert) {
+test('function syntax: passes the values when getting', function(assert) {
   compute({
-    computed: computed(getCallback)
+    computed: computed('key1', raw('456'), getCallback),
+    properties: {
+      key1: '123'
+    }
   });
 
-  assert.deepEqual(getCallback.args, [['computed']]);
+  assert.deepEqual(getCallback.args[1], ['123', '456']);
 });
 
 test('function syntax: uses the right context when setting', function(assert) {
@@ -100,14 +103,17 @@ test('object syntax: uses the right context when getting', function(assert) {
   assert.strictEqual(getCallback.thisValues[0], obj);
 });
 
-test('object syntax: passes the key when getting', function(assert) {
+test('object syntax: passes the values when getting', function(assert) {
   compute({
-    computed: computed({
+    computed: computed('key1', raw('456'), {
       get: getCallback
-    })
+    }),
+    properties: {
+      key1: '123'
+    }
   });
 
-  assert.deepEqual(getCallback.args, [['computed']]);
+  assert.deepEqual(getCallback.args[1], ['123', '456']);
 });
 
 test('object syntax: uses the right context when setting', function(assert) {

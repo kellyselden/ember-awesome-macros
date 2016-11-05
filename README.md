@@ -88,6 +88,9 @@ import { nameOfMacro } from 'ember-awesome-macros';
 ##### Object
 * [`getBy`](#getby)
 * [`hash`](#hash)
+
+##### Primitives
+* [`computed`](#computed)
 * [`raw`](#raw)
 
 ##### Promise
@@ -178,6 +181,33 @@ wraps [`Ember.MutableArray.compact`](http://emberjs.com/api/classes/Ember.Mutabl
 ```js
 array: Ember.A([1, 2, null]),
 value: compact('array') // [1, 2]
+```
+
+##### `computed`
+functions like [`Ember.computed`](http://emberjs.com/api/classes/Ember.computed.html), but is composing friendly
+
+```js
+source1: '1,2,3',
+
+// your callback is passed the resolved values
+computed1: computed('source1', value => {
+  console.log(value); // '1,2,3'
+  // do something else
+}),
+
+// you can compose your macros
+computed2: computed(split('source1', raw(',')), value => {
+  console.log(value); // [1, 2, 3]
+  // do something else
+}),
+
+callback(value)  {
+  console.log(value); // '1,2,3'
+  // do something else
+},
+
+// you can even do key lookup for your callback
+computed3: computed('source1', 'callback')
 ```
 
 ##### `conditional`
