@@ -70,6 +70,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`equal`](#equal)
 * [`gt`](#gt)
 * [`gte`](#gte)
+* [`instanceOf`](#instanceof)
 * [`lt`](#lt)
 * [`lte`](#lte)
 
@@ -88,6 +89,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 ##### Object
 * [`getBy`](#getby)
 * [`hash`](#hash)
+* [`typeOf`](#typeof)
 
 ##### Math
 * [`math`](#math)
@@ -417,6 +419,17 @@ wraps [`Array.prototype.indexOf`](https://developer.mozilla.org/en-US/docs/Web/J
 array: [2, 5, 9, 2],
 value1: indexOf('array', 2), // 0
 value2: indexOf('array', 2, 2) // 3
+```
+
+##### `instanceOf`
+wraps [`instanceof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) operator
+
+```js
+key1: {},
+key2: false,
+key3: '',
+value1: instanceOf('key1', Object), // true
+value2: instanceOf(or('key2', 'key3'), String) // true
 ```
 
 ##### `isAny`
@@ -788,6 +801,17 @@ wraps [`String.prototype.toUpperCase`](https://developer.mozilla.org/en-US/docs/
 ```js
 originalValue: 'TestString',
 newValue: toUpper('originalValue') // 'TESTSTRING'
+```
+
+##### `typeOf`
+wraps [`typeOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeOf) operator
+
+```js
+key1: {},
+key2: false,
+key3: '',
+value1: typeOf('key1'), // 'object'
+value2: typeOf(or('key2', 'key3')) // 'string'
 ```
 
 ##### `underscore`
