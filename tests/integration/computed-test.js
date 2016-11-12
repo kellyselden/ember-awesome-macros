@@ -4,6 +4,7 @@ import sinon from 'sinon';
 import compute from '../helpers/compute';
 
 const returnValue = 'return value test';
+const newValue = 'new value test';
 
 let getCallback;
 let setCallback;
@@ -58,39 +59,28 @@ test('function syntax: passes the values when getting', function(assert) {
   assert.deepEqual(getCallback.args[1], ['123', '456']);
 });
 
-test('function syntax: uses the right context when setting', function(assert) {
+test('function syntax: doesn\'t call when setting', function(assert) {
   let { obj } = compute({
     computed: computed(getCallback)
   });
 
   getCallback.reset();
 
-  obj.set('computed', 'new value test');
+  obj.set('computed', newValue);
 
-  assert.strictEqual(getCallback.thisValues[0], obj);
+  assert.notOk(getCallback.called);
 });
 
-test('function syntax: passes the key, value, and previous value when setting', function(assert) {
+test('function syntax: preserves set value', function(assert) {
   let { obj } = compute({
     computed: computed(getCallback)
   });
 
   getCallback.reset();
 
-  obj.set('computed', 'new value test');
+  obj.set('computed', newValue);
 
-  assert.deepEqual(getCallback.args, [['computed', 'new value test', returnValue]]);
-});
-
-test('function syntax: allows computed for the function', function(assert) {
-  compute({
-    computed: computed('test'),
-    properties: {
-      test: getCallback
-    }
-  });
-
-  assert.ok(getCallback.called);
+  assert.strictEqual(obj.get('computed'), newValue);
 });
 
 test('object syntax: uses the right context when getting', function(assert) {
@@ -124,7 +114,7 @@ test('object syntax: uses the right context when setting', function(assert) {
     })
   });
 
-  obj.set('computed', 'new value test');
+  obj.set('computed', newValue);
 
   assert.strictEqual(setCallback.thisValues[0], obj);
 });
@@ -137,49 +127,7 @@ test('object syntax: passes the key, value, and previous value when setting', fu
     })
   });
 
-  obj.set('computed', 'new value test');
+  obj.set('computed', newValue);
 
-  assert.deepEqual(setCallback.args, [['computed', 'new value test', returnValue]]);
-});
-
-test('object syntax: allows computed for the object', function(assert) {
-  compute({
-    computed: computed('test'),
-    properties: {
-      test: {
-        get: getCallback
-      }
-    }
-  });
-
-  assert.ok(getCallback.called);
-});
-
-test('object syntax: allows computed for the get function', function(assert) {
-  compute({
-    computed: computed({
-      get: 'test'
-    }),
-    properties: {
-      test: getCallback
-    }
-  });
-
-  assert.ok(getCallback.called);
-});
-
-test('object syntax: allows computed for the get function', function(assert) {
-  let { obj } = compute({
-    computed: computed({
-      get: getCallback,
-      set: 'test'
-    }),
-    properties: {
-      test: setCallback
-    }
-  });
-
-  obj.set('computed', 'new value test');
-
-  assert.ok(setCallback.called);
+  assert.deepEqual(setCallback.args, [['computed', newValue, returnValue]]);
 });

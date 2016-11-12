@@ -1,8 +1,6 @@
-import Ember from 'ember';
-
-const {
-  get, setProperties
-} = Ember;
+import EmberObject from 'ember-object';
+import get from 'ember-metal/get';
+import { setProperties } from 'ember-metal/set';
 
 export default function({
   assert,
@@ -10,9 +8,10 @@ export default function({
   properties,
   expected,
   deepEqual,
-  assertion
+  assertion,
+  assertReadOnly
 }) {
-  let obj = Ember.Object.extend({
+  let obj = EmberObject.extend({
     computed
   }).create();
 
@@ -28,6 +27,9 @@ export default function({
     assert.ok(assertion(val));
   } else if (deepEqual) {
     assert.deepEqual(val, deepEqual);
+  } else if (assertReadOnly) {
+    let func = () => setProperties(obj, { computed: 'assert read only' });
+    assert.throws(func, /Cannot set read-only property/);
   } else if (assert) {
     assert.strictEqual(val, expected);
   }

@@ -1,9 +1,9 @@
 import Ember from 'ember';
+import get from 'ember-metal/get';
+import { default as _computed } from 'ember-computed';
 
 const {
-  ComputedProperty,
-  get,
-  computed: _computed
+  ComputedProperty
 } = Ember;
 
 // consider making private
@@ -61,66 +61,60 @@ export function flattenKeys(keys) {
   return flattenedKeys;
 }
 
-function resolveCallback(callbackComputed) {
-  let callback = getValue(this, callbackComputed);
-  if (callback) {
-    return callback;
-  }
-
-  if (typeof callbackComputed === 'string') {
-    return;
-  }
-
-  throw new Error('You must call computed with a last param of function');
+function splitKeysAndCallback(args) {
+  return {
+    keys: args.slice(0, -1),
+    callback: args[args.length - 1]
+  };
 }
 
-function callCallback(args, callbackComputed, operation) {
-  let callback = resolveCallback.call(this, callbackComputed);
-  if (!callback) {
-    return;
-  }
-
-  let operationCallback = callback[operation];
-  if (operationCallback) {
-    callback = resolveCallback.call(this, operationCallback);
-    if (!callback) {
-      return;
-    }
-  }
-
-  return callback.apply(this, args);
+function flattenedComputed(...args) {
+  let { keys, callback } = splitKeysAndCallback(args);
+  let newArgs = flattenKeys(keys);
+  newArgs.push(callback);
+  return _computed(...newArgs);
 }
 
 export function computed(...args) {
-  let keys = args.slice(0, -1);
-  let callback = args[args.length - 1];
+  let { keys, callback: incomingCallback } = splitKeysAndCallback(args);
 
-  return _computed(...flattenKeys(args), {
-    get() {
+  let newCallback;
+  if (typeof incomingCallback === 'function') {
+    newCallback = function() {
       let values = keys.map(key => getValue(this, key));
-      return callCallback.call(this, values, callback, 'get');
-    },
-    set() {
-      return callCallback.call(this, arguments, callback, 'set');
+      return incomingCallback.apply(this, values);
+    };
+  } else {
+    newCallback = {};
+    if (incomingCallback.get) {
+      newCallback.get = function() {
+        let values = keys.map(key => getValue(this, key));
+        return incomingCallback.get.apply(this, values);
+      };
     }
-  });
+    if (incomingCallback.set) {
+      newCallback.set = incomingCallback.set;
+    }
+  }
+
+  return flattenedComputed(...keys, newCallback);
 }
 
 export function resolveKeys(...args) {
-  let keys = args.slice(0, -1);
+  let { keys, callback } = splitKeysAndCallback(args);
+
   let isAlreadyArray;
   if (Array.isArray(keys[0])) {
     keys = keys[0];
     isAlreadyArray = true;
   }
-  let callback = args[args.length - 1];
 
   return computed(...keys, function(...values) {
     if (isAlreadyArray) {
       return callback.call(this, values);
     }
     return callback.apply(this, values);
-  });
+  }).readOnly();
 }
 
 const sentinelValue = {};
@@ -132,14 +126,14 @@ export function normalizeArray(keys, {
   let wrappedArray = wrapArray(array);
   let args = keys.slice(1);
 
-  return _computed(...flattenKeys([wrappedArray, ...args]), function() {
+  return flattenedComputed(...[wrappedArray, ...args], function() {
     let arrayValue = getValue(this, array);
     if (!arrayValue) {
       return defaultValue === sentinelValue ? arrayValue : defaultValue;
     }
     let values = args.map(key => getValue(this, key));
     return callback(arrayValue, ...values);
-  });
+  }).readOnly();
 }
 
 export function normalizeArithmetic(keys, func) {

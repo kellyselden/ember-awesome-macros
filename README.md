@@ -97,6 +97,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 ##### Primitives
 * [`computed`](#computed)
 * [`raw`](#raw)
+* [`writable`](#writable)
 
 ##### Promise
 * [`promiseAll`](#promiseall)
@@ -204,15 +205,7 @@ computed1: computed('source1', value => {
 computed2: computed(split('source1', raw(',')), value => {
   console.log(value); // [1, 2, 3]
   // do something else
-}),
-
-callback(value)  {
-  console.log(value); // '1,2,3'
-  // do something else
-},
-
-// you can even do key lookup for your callback
-computed3: computed('source1', 'callback')
+})
 ```
 
 ##### `conditional`
@@ -846,4 +839,21 @@ wraps [`Ember.Enumerable.without`](http://emberjs.com/api/classes/Ember.Enumerab
 array: Ember.A([1, 2, 3]),
 value1: without('array', 2), // [1, 3]
 value2: without('array', objectAt(1)) // [1, 3]
+```
+
+##### `writable`
+since all the macros are read-only, use this to bring back setting capability
+
+```js
+value1: writable(and('key1', 'key2')), // setting this replaces the macro with your value
+value2: writable(and('key1', 'key2'), {
+  set() {
+    // do something
+    return 'new value';
+  }
+}), // setting this will not overwrite your macro
+value3: writable(and('key1', 'key2'), function() {
+  // do something
+  return 'new value';
+}), // same as above, but shorthand
 ```

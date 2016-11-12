@@ -70,3 +70,4 @@ export { default as underscore } from './underscore';
 export { default as uniqBy } from './uniq-by';
 export { default as uniq } from './uniq';
 export { default as without } from './without';
+export { default as writable } from './writable';

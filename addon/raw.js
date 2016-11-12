@@ -1,9 +1,5 @@
-import Ember from 'ember';
-
-const {
-  computed
-} = Ember;
+import { resolveKeys } from './utils';
 
 export default function(key) {
-  return computed(() => key);
+  return resolveKeys(() => key);
 }
