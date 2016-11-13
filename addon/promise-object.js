@@ -1,30 +1,33 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
+import { resolveKeys } from './utils';
 
 const {
   ObjectProxy,
-  PromiseProxyMixin,
-  get,
-  computed
+  PromiseProxyMixin
 } = Ember;
+
+const { resolve } = RSVP;
 
 const PromiseObject = ObjectProxy.extend(PromiseProxyMixin);
 
-export default function(...args) {
-  let getPromise = args.pop();
-  let keys = args;
+export default function(key) {
+  let shouldInvoke = typeof key === 'function';
 
-  if (typeof getPromise === 'string') {
-    let key = getPromise;
-    return computed(key, function() {
-      return PromiseObject.create({
-        promise: get(this, key)
-      });
-    });
-  }
+  return resolveKeys(key, function(value) {
+    let promise;
+    if (shouldInvoke) {
+      promise = key.call(this);
+    } else {
+      promise = value;
+    }
 
-  return computed(...keys, function() {
+    if (promise === undefined) {
+      promise = resolve(undefined);
+    }
+
     return PromiseObject.create({
-      promise: getPromise.apply(this, arguments)
+      promise
     });
   });
 }

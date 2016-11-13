@@ -105,6 +105,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`promiseArray`](#promisearray)
 * [`promiseHash`](#promisehash)
 * [`promiseObject`](#promiseobject)
+* [`promiseResolve`](#promiseresolve)
 
 ##### String
 * [`camelize`](#camelize)
@@ -667,6 +668,28 @@ wraps a promise in the equivalent of `DS.PromiseObject` (`ObjectProxy` and `Prom
 product: promiseObject(function() {
   return this.store.findRecord('product', 1);
 })
+```
+
+can also wrap an existing property
+
+```js
+productPromise: computed(function() {
+  return this.store.findRecord('product', 1);
+}),
+product: promiseObject('productPromise')
+```
+
+##### `promiseResolve`
+wraps a value in an `RSVP.resolve`
+
+```js
+key1: 'my value',
+promise1: promiseResolve('key1'), // a resolved promise if you need it
+
+key2: computed(function() {
+  return this.store.findRecord('user');
+}),
+promise2: promiseResolve(conditional('someBool', 'key1', 'key2')) // resolve an object if you don't know if it is a promise or not
 ```
 
 can also wrap an existing property

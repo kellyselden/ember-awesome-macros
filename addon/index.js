@@ -53,6 +53,7 @@ export { default as promiseAll } from './promise-all';
 export { default as promiseArray } from './promise-array';
 export { default as promiseHash } from './promise-hash';
 export { default as promiseObject } from './promise-object';
+export { default as promiseResolve } from './promise-resolve';
 export { default as quotient } from './quotient';
 export { default as raw } from './raw';
 export { default as reduce } from './reduce';

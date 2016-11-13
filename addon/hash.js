@@ -1,7 +1,7 @@
 import EmberObject from 'ember-object';
 import { resolveKeys } from './utils';
 
-export default function(...args) {
+export function deconstructArgs(args) {
   let hashKeys = [];
   let hashValues = [];
 
@@ -16,10 +16,23 @@ export default function(...args) {
     }
   });
 
+  return {
+    hashKeys,
+    hashValues
+  };
+}
+
+export function reduceValues(hashKeys, newValues) {
+  return newValues.reduce((newHash, val, i) => {
+    newHash[hashKeys[i]] = val;
+    return newHash;
+  }, {});
+}
+
+export default function(...args) {
+  let { hashKeys, hashValues } = deconstructArgs(args);
   return resolveKeys(hashValues, newValues => {
-    return EmberObject.create(newValues.reduce((newHash, val, i) => {
-      newHash[hashKeys[i]] = val;
-      return newHash;
-    }, {}));
+    let newHash = reduceValues(hashKeys, newValues);
+    return EmberObject.create(newHash);
   });
 }

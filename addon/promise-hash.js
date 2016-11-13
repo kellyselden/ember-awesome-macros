@@ -1,18 +1,13 @@
-import Ember from 'ember';
-import get from 'ember-metal/get';
 import RSVP from 'rsvp';
-
-const {
-  computed
-} = Ember;
+import { resolveKeys } from './utils';
+import { deconstructArgs, reduceValues } from './hash';
 
 const { hash } = RSVP;
 
-export default function(...keys) {
-  return computed(...keys, function() {
-    return hash(keys.reduce((promiseHash, key) => {
-      promiseHash[key] = get(this, key);
-      return promiseHash;
-    }, {}));
+export default function(...args) {
+  let { hashKeys, hashValues } = deconstructArgs(args);
+  return resolveKeys(hashValues, newValues => {
+    let newHash = reduceValues(hashKeys, newValues);
+    return hash(newHash);
   });
 }
