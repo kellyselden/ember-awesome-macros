@@ -1,9 +1,7 @@
-import Ember from 'ember';
+import RSVP from 'rsvp';
 import { resolveKeys } from './utils';
 
-const {
-  RSVP: { all }
-} = Ember;
+const { all } = RSVP;
 
 export default function(...keys) {
   return resolveKeys(keys, all);

@@ -1,10 +1,12 @@
 import Ember from 'ember';
+import get from 'ember-metal/get';
+import RSVP from 'rsvp';
 
 const {
-  RSVP: { hash },
-  get,
   computed
 } = Ember;
+
+const { hash } = RSVP;
 
 export default function(...keys) {
   return computed(...keys, function() {
