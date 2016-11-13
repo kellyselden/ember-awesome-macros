@@ -378,12 +378,19 @@ build a hash out of computed properties, allows composing
 ```js
 source1: 'my value 1',
 source2: 'my value 2',
-value: hash({
+
+value1: hash({
   prop1: 'source1',
   prop2: hash({
     prop: 'source2'
   })
-}) // { prop1: 'my value 1', prop2: { prop: 'my value 2' } }
+}), // { prop1: 'my value 1', prop2: { prop: 'my value 2' } }
+
+// you can also build the hash using property key names
+value2: hash('source1', 'source2'), // { source1: 'my value 1', source2: 'my value 2' }
+
+// or you can mix and match, the result will be merged
+value3: hash('source1', { prop2: 'source2' }) // { source1: 'my value 1', prop2: 'my value 2' }
 ```
 
 ##### `htmlSafe`

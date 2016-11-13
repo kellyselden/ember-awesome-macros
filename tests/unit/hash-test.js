@@ -18,8 +18,8 @@ module('Unit | Macro | hash', {
     createStub = sandbox.stub(EmberObject, 'create').returns(returnValue);
 
     expected = {
-      key1: value1,
-      key2: value2
+      prop1: value1,
+      prop2: value2
     };
   },
   afterEach() {
@@ -36,8 +36,8 @@ function doAssertions(assert, val, callNumber) {
 test('it calls Ember.Object.create', function(assert) {
   let { val } = compute({
     computed: hash({
-      key1: 'key1',
-      key2: 'key2'
+      prop1: 'key1',
+      prop2: 'key2'
     }),
     properties: {
       key1: value1,
@@ -51,8 +51,8 @@ test('it calls Ember.Object.create', function(assert) {
 test('it responds to key changes', function(assert) {
   let { obj } = compute({
     computed: hash({
-      key1: 'key1',
-      key2: 'key2'
+      prop1: 'key1',
+      prop2: 'key2'
     }),
     properties: {
       key1: value1,
@@ -61,18 +61,42 @@ test('it responds to key changes', function(assert) {
   });
 
   obj.set('key2', value1);
-  expected.key2 = value1;
+  expected.prop2 = value1;
 
   let val = obj.get('computed');
 
   doAssertions(assert, val, 2);
 });
 
+test('it wraps key values', function(assert) {
+  let { val } = compute({
+    computed: hash('prop1', 'prop2'),
+    properties: {
+      prop1: value1,
+      prop2: value2
+    }
+  });
+
+  doAssertions(assert, val, 1);
+});
+
+test('it merges keys and hashes', function(assert) {
+  let { val } = compute({
+    computed: hash('prop1', { prop2: 'key2' }),
+    properties: {
+      prop1: value1,
+      key2: value2
+    }
+  });
+
+  doAssertions(assert, val, 1);
+});
+
 test('value: it calls Ember.Object.create', function(assert) {
   let { val } = compute({
     computed: hash({
-      key1: value1,
-      key2: value2
+      prop1: value1,
+      prop2: value2
     })
   });
 
@@ -82,8 +106,8 @@ test('value: it calls Ember.Object.create', function(assert) {
 test('composing: it calls Ember.Object.create', function(assert) {
   let { val } = compute({
     computed: hash({
-      key1: raw(value1),
-      key2: raw(value2)
+      prop1: raw(value1),
+      prop2: raw(value2)
     })
   });
 
