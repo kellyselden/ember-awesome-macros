@@ -692,15 +692,6 @@ key2: computed(function() {
 promise2: promiseResolve(conditional('someBool', 'key1', 'key2')) // resolve an object if you don't know if it is a promise or not
 ```
 
-can also wrap an existing property
-
-```js
-productPromise: computed(function() {
-  return this.store.findRecord('product', 1);
-}),
-product: promiseObject('productPromise')
-```
-
 ##### `quotient`
 subtracts numbers
 
