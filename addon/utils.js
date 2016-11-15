@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import get from 'ember-metal/get';
 import { default as _computed } from 'ember-computed';
+import expandPropertyList from 'ember-macro-helpers/utils/expand-property-list';
 
 const {
   ComputedProperty
@@ -78,17 +79,26 @@ function flattenedComputed(...args) {
 export function computed(...args) {
   let { keys, callback: incomingCallback } = splitKeysAndCallback(args);
 
+  let collapsedKeys = keys.reduce((newKeys, key) => {
+    if (typeof key === 'string') {
+      newKeys = newKeys.concat(expandPropertyList([key]));
+    } else {
+      newKeys.push(key);
+    }
+    return newKeys;
+  }, []);
+
   let newCallback;
   if (typeof incomingCallback === 'function') {
     newCallback = function() {
-      let values = keys.map(key => getValue(this, key));
+      let values = collapsedKeys.map(key => getValue(this, key));
       return incomingCallback.apply(this, values);
     };
   } else {
     newCallback = {};
     if (incomingCallback.get) {
       newCallback.get = function() {
-        let values = keys.map(key => getValue(this, key));
+        let values = collapsedKeys.map(key => getValue(this, key));
         return incomingCallback.get.apply(this, values);
       };
     }

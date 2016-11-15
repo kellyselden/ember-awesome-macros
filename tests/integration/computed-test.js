@@ -59,6 +59,40 @@ test('function syntax: passes the values when getting', function(assert) {
   assert.deepEqual(getCallback.args[1], ['123', '456']);
 });
 
+test('function syntax: resolves array [] keys', function(assert) {
+  compute({
+    computed: computed('key1.[]', getCallback),
+    properties: {
+      key1: '123'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123']);
+});
+
+test('function syntax: resolves array @each keys', function(assert) {
+  compute({
+    computed: computed('key1.@each.key2', getCallback),
+    properties: {
+      key1: '123'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123']);
+});
+
+test('function syntax: expands properties', function(assert) {
+  compute({
+    computed: computed('{key1,key2}', getCallback),
+    properties: {
+      key1: '123',
+      key2: '456'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123', '456']);
+});
+
 test('function syntax: doesn\'t call when setting', function(assert) {
   let { obj } = compute({
     computed: computed(getCallback)
@@ -130,4 +164,44 @@ test('object syntax: passes the key, value, and previous value when setting', fu
   obj.set('computed', newValue);
 
   assert.deepEqual(setCallback.args, [['computed', newValue, returnValue]]);
+});
+
+test('object syntax: resolves array [] keys', function(assert) {
+  compute({
+    computed: computed('key1.[]', {
+      get: getCallback
+    }),
+    properties: {
+      key1: '123'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123']);
+});
+
+test('object syntax: resolves array @each keys', function(assert) {
+  compute({
+    computed: computed('key1.@each.key2', {
+      get: getCallback
+    }),
+    properties: {
+      key1: '123'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123']);
+});
+
+test('object syntax: expands properties', function(assert) {
+  compute({
+    computed: computed('{key1,key2}', {
+      get: getCallback
+    }),
+    properties: {
+      key1: '123',
+      key2: '456'
+    }
+  });
+
+  assert.deepEqual(getCallback.args[1], ['123', '456']);
 });

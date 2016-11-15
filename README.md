@@ -195,17 +195,35 @@ value: compact('array') // [1, 2]
 functions like [`Ember.computed`](http://emberjs.com/api/classes/Ember.computed.html), but is composing friendly
 
 ```js
-source1: '1,2,3',
+key1: '1,2',
 
 // your callback is passed the resolved values
-computed1: computed('source1', value => {
-  console.log(value); // '1,2,3'
+computed1: computed('key1', value => {
+  console.log(value); // '1,2'
   // do something else
 }),
 
 // you can compose your macros
-computed2: computed(split('source1', raw(',')), value => {
-  console.log(value); // [1, 2, 3]
+computed2: computed(split('key1', raw(',')), value => {
+  console.log(value); // [1, 2]
+  // do something else
+}),
+
+// you can use enumerable helpers and property expansion
+key2: [1, 2],
+computed3: computed('key2.[]', value => {
+  console.log(value); // [1, 2]
+  // do something else
+}),
+key3: [{ key4: 1 }, { key4: 2 }],
+computed4: computed('key3.@each.key4', value => {
+  console.log(value); // [{ key4: 1 }, { key4: 2 }]
+  // do something else
+}),
+key5: [{ key6: 1 }, { key7: 2 }],
+computed5: computed('key5.{key6,key7}', (value1, value2) => {
+  console.log(value1); // 1
+  console.log(value2); // 2
   // do something else
 })
 ```
