@@ -2,7 +2,7 @@ import EmberObject from 'ember-object';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import RSVP from 'rsvp';
-import { promiseObject } from 'ember-awesome-macros';
+import { promiseObject, promiseResolve } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from '../helpers/compute';
 
@@ -16,22 +16,22 @@ module('Integration | Macro | promise object', {
   }
 });
 
-test('wrapper returns an empty object', function(assert) {
+test('it returns an empty object', function(assert) {
   let { val } = compute({
-    computed: promiseObject('wrapperSource'),
+    computed: promiseObject('promise'),
     properties: {
-      wrapperSource: resolve(object)
+      promise: resolve(object)
     }
   });
 
   assert.strictEqual(get(val, 'test'), undefined);
 });
 
-test('wrapper resolves to a populated object', function(assert) {
+test('it resolves to a populated object', function(assert) {
   let { val } = compute({
-    computed: promiseObject('wrapperSource'),
+    computed: promiseObject('promise'),
     properties: {
-      wrapperSource: resolve(object)
+      promise: resolve(object)
     }
   });
 
@@ -40,11 +40,11 @@ test('wrapper resolves to a populated object', function(assert) {
   });
 });
 
-test('wrapper resolved value is an object', function(assert) {
+test('resolved value is an object', function(assert) {
   let { val } = compute({
-    computed: promiseObject('wrapperSource'),
+    computed: promiseObject('promise'),
     properties: {
-      wrapperSource: resolve(object)
+      promise: resolve(object)
     }
   });
 
@@ -53,15 +53,15 @@ test('wrapper resolved value is an object', function(assert) {
   });
 });
 
-test('wrapper responds to reassigns', function(assert) {
+test('it responds to reassigns', function(assert) {
   let { obj } = compute({
-    computed: promiseObject('wrapperSource'),
+    computed: promiseObject('promise'),
     properties: {
-      wrapperSource: resolve(object)
+      promise: resolve(object)
     }
   });
 
-  set(obj, 'wrapperSource', resolve(EmberObject.create({ test: 4 })));
+  set(obj, 'promise', resolve(EmberObject.create({ test: 4 })));
 
   let val = get(obj, 'computed');
 
@@ -70,11 +70,11 @@ test('wrapper responds to reassigns', function(assert) {
   });
 });
 
-test('wrapper responds to changes', function(assert) {
+test('it responds to changes', function(assert) {
   let { obj } = compute({
-    computed: promiseObject('wrapperSource'),
+    computed: promiseObject('promise'),
     properties: {
-      wrapperSource: resolve(object)
+      promise: resolve(object)
     }
   });
 
@@ -87,33 +87,9 @@ test('wrapper responds to changes', function(assert) {
   });
 });
 
-test('func returns an empty object', function(assert) {
+test('value: resolved value is an object', function(assert) {
   let { val } = compute({
-    computed: promiseObject(function() {
-      return resolve(object);
-    })
-  });
-
-  assert.strictEqual(get(val, 'test'), undefined);
-});
-
-test('func resolves to a populated object', function(assert) {
-  let { val } = compute({
-    computed: promiseObject(function() {
-      return resolve(object);
-    })
-  });
-
-  return val.then(() => {
-    assert.strictEqual(get(val, 'test'), 3);
-  });
-});
-
-test('func resolved value is an object', function(assert) {
-  let { val } = compute({
-    computed: promiseObject(function() {
-      return resolve(object);
-    })
+    computed: promiseObject(resolve(object))
   });
 
   return val.then(val => {
@@ -121,18 +97,12 @@ test('func resolved value is an object', function(assert) {
   });
 });
 
-test('func responds to changes', function(assert) {
-  let { obj } = compute({
-    computed: promiseObject(function() {
-      return resolve(object);
-    })
+test('composing: resolved value is an object', function(assert) {
+  let { val } = compute({
+    computed: promiseObject(promiseResolve(object))
   });
 
-  set(object, 'test', 4);
-
-  let val = get(obj, 'computed');
-
   return val.then(val => {
-    assert.strictEqual(get(val, 'test'), 4);
+    assert.strictEqual(get(val, 'test'), 3);
   });
 });

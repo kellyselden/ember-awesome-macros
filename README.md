@@ -652,18 +652,18 @@ promise: promiseAll('promise1', 'promise2') // resolves to ['value1', 'value2']
 wraps a promise in the equivalent of `DS.PromiseArray` (`ArrayProxy` and `PromiseProxyMixin`)
 
 ```js
-products: promiseArray(function() {
-  return this.store.findAll('product');
-})
-```
-
-can also wrap an existing property
-
-```js
 productsPromise: computed(function() {
   return this.store.findAll('product');
 }),
 products: promiseArray('productsPromise')
+```
+
+can also wrap a computed property
+
+```js
+products: promiseArray(computed(function() {
+  return this.store.findAll('product');
+}))
 ```
 
 ##### `promiseHash`
@@ -683,18 +683,18 @@ promise: promiseHash('promise1', 'promise2') // resolves to { promise1: 'value1'
 wraps a promise in the equivalent of `DS.PromiseObject` (`ObjectProxy` and `PromiseProxyMixin`)
 
 ```js
-product: promiseObject(function() {
-  return this.store.findRecord('product', 1);
-})
-```
-
-can also wrap an existing property
-
-```js
 productPromise: computed(function() {
   return this.store.findRecord('product', 1);
 }),
 product: promiseObject('productPromise')
+```
+
+can also wrap a computed property
+
+```js
+product: promiseObject(computed(function() {
+  return this.store.findRecord('product', 1);
+}))
 ```
 
 ##### `promiseResolve`

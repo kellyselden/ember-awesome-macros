@@ -2,7 +2,7 @@ import { A as emberArray } from 'ember-array/utils';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import RSVP from 'rsvp';
-import { promiseArray } from 'ember-awesome-macros';
+import { promiseArray, promiseResolve } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from '../helpers/compute';
 
@@ -16,22 +16,22 @@ module('Integration | Macro | promise array', {
   }
 });
 
-test('wrapper returns an empty array', function(assert) {
+test('it returns an empty array', function(assert) {
   let { val } = compute({
-    computed: promiseArray('wrapperSource'),
+    computed: promiseArray('promise'),
     properties: {
-      wrapperSource: resolve(array)
+      promise: resolve(array)
     }
   });
 
   assert.strictEqual(get(val, 'length'), 0);
 });
 
-test('wrapper resolves to a full array', function(assert) {
+test('it resolves to a full array', function(assert) {
   let { val } = compute({
-    computed: promiseArray('wrapperSource'),
+    computed: promiseArray('promise'),
     properties: {
-      wrapperSource: resolve(array)
+      promise: resolve(array)
     }
   });
 
@@ -40,11 +40,11 @@ test('wrapper resolves to a full array', function(assert) {
   });
 });
 
-test('wrapper resolved value is an array', function(assert) {
+test('resolved value is an array', function(assert) {
   let { val } = compute({
-    computed: promiseArray('wrapperSource'),
+    computed: promiseArray('promise'),
     properties: {
-      wrapperSource: resolve(array)
+      promise: resolve(array)
     }
   });
 
@@ -53,15 +53,15 @@ test('wrapper resolved value is an array', function(assert) {
   });
 });
 
-test('wrapper responds to reassigns', function(assert) {
+test('it responds to reassigns', function(assert) {
   let { obj } = compute({
-    computed: promiseArray('wrapperSource'),
+    computed: promiseArray('promise'),
     properties: {
-      wrapperSource: resolve(array)
+      promise: resolve(array)
     }
   });
 
-  set(obj, 'wrapperSource', resolve(emberArray([null, null])));
+  set(obj, 'promise', resolve(emberArray([null, null])));
 
   let val = get(obj, 'computed');
 
@@ -70,11 +70,11 @@ test('wrapper responds to reassigns', function(assert) {
   });
 });
 
-test('wrapper responds to pushes', function(assert) {
+test('it responds to pushes', function(assert) {
   let { obj } = compute({
-    computed: promiseArray('wrapperSource'),
+    computed: promiseArray('promise'),
     properties: {
-      wrapperSource: resolve(array)
+      promise: resolve(array)
     }
   });
 
@@ -87,33 +87,9 @@ test('wrapper responds to pushes', function(assert) {
   });
 });
 
-test('func returns an empty array', function(assert) {
+test('value: resolved value is an array', function(assert) {
   let { val } = compute({
-    computed: promiseArray(function() {
-      return resolve(array);
-    })
-  });
-
-  assert.strictEqual(get(val, 'length'), 0);
-});
-
-test('func resolves to a full array', function(assert) {
-  let { val } = compute({
-    computed: promiseArray(function() {
-      return resolve(array);
-    })
-  });
-
-  return val.then(() => {
-    assert.strictEqual(get(val, 'length'), 1);
-  });
-});
-
-test('func resolved value is an array', function(assert) {
-  let { val } = compute({
-    computed: promiseArray(function() {
-      return resolve(array);
-    })
+    computed: promiseArray(resolve(array))
   });
 
   return val.then(val => {
@@ -121,18 +97,12 @@ test('func resolved value is an array', function(assert) {
   });
 });
 
-test('func responds to pushes', function(assert) {
-  let { obj } = compute({
-    computed: promiseArray(function() {
-      return resolve(array);
-    })
+test('composing: resolved value is an array', function(assert) {
+  let { val } = compute({
+    computed: promiseArray(promiseResolve(array))
   });
 
-  array.pushObject(null);
-
-  let val = get(obj, 'computed');
-
   return val.then(val => {
-    assert.strictEqual(get(val, 'length'), 2);
+    assert.strictEqual(get(val, 'length'), 1);
   });
 });

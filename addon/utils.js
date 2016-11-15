@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
 import get from 'ember-metal/get';
 import { default as _computed } from 'ember-computed';
 import expandPropertyList from 'ember-macro-helpers/utils/expand-property-list';
@@ -153,6 +154,20 @@ export function normalizeString(key, func) {
     }
 
     return func(val);
+  });
+}
+
+const { resolve } = RSVP;
+
+export function wrapPromiseProxy(key, PromiseProxy) {
+  return resolveKeys(key, promise => {
+    if (promise === undefined) {
+      promise = resolve(undefined);
+    }
+
+    return PromiseProxy.create({
+      promise
+    });
   });
 }
 
