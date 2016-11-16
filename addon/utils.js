@@ -2,7 +2,7 @@ import Ember from 'ember';
 import RSVP from 'rsvp';
 import get from 'ember-metal/get';
 import { default as _computed } from 'ember-computed';
-import expandPropertyList from 'ember-macro-helpers/utils/expand-property-list';
+import { expandProperty } from 'ember-macro-helpers/utils';
 
 const {
   ComputedProperty
@@ -66,7 +66,7 @@ export function flattenKeys(keys) {
 function collapseKeys(keys) {
   return keys.reduce((newKeys, key) => {
     if (typeof key === 'string') {
-      newKeys = newKeys.concat(expandPropertyList([key]));
+      newKeys = newKeys.concat(expandProperty(key));
     } else {
       newKeys.push(key);
     }
