@@ -112,17 +112,7 @@ export function computed(...args) {
 
 export function resolveKeys(...args) {
   let { keys, callback } = splitKeysAndCallback(args);
-
-  let isAlreadyArray;
-  if (Array.isArray(keys[0])) {
-    keys = keys[0];
-    isAlreadyArray = true;
-  }
-
   return computed(...keys, function(...values) {
-    if (isAlreadyArray) {
-      return callback.call(this, values);
-    }
     return callback.apply(this, values);
   }).readOnly();
 }
@@ -147,7 +137,7 @@ export function normalizeArray(keys, {
 }
 
 export function normalizeArithmetic(keys, func) {
-  return resolveKeys(keys, values => {
+  return resolveKeys(...keys, (...values) => {
     values = values.filter(value => value !== undefined);
     if (!values.length) {
       return 0;
