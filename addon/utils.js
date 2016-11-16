@@ -63,22 +63,9 @@ export function flattenKeys(keys) {
   return flattenedKeys;
 }
 
-function splitKeysAndCallback(args) {
-  return {
-    keys: args.slice(0, -1),
-    callback: args[args.length - 1]
-  };
-}
-
-function flattenedComputed(...args) {
-  let { keys, callback } = splitKeysAndCallback(args);
-  let newArgs = flattenKeys(keys);
-  newArgs.push(callback);
-  return _computed(...newArgs);
-}
-
 export function computed(...args) {
-  let { keys, callback: incomingCallback } = splitKeysAndCallback(args);
+  let keys = args.slice(0, -1);
+  let incomingCallback = args[args.length - 1];
 
   let collapsedKeys = keys.reduce((newKeys, key) => {
     if (typeof key === 'string') {
@@ -108,11 +95,10 @@ export function computed(...args) {
     }
   }
 
-  return flattenedComputed(...keys, newCallback);
+  return _computed(...flattenKeys(keys), newCallback);
 }
 
-export function resolveKeys(...args) {
-  let { keys, callback } = splitKeysAndCallback(args);
+export function resolveKeys(keys, callback) {
   return computed(...keys, function(...values) {
     return callback.apply(this, values);
   }).readOnly();
@@ -127,7 +113,7 @@ export function normalizeArray(keys, {
   let wrappedArray = wrapArray(array);
   let args = keys.slice(1);
 
-  return flattenedComputed(...[wrappedArray, ...args], function() {
+  return _computed(...flattenKeys([wrappedArray, ...args]), function() {
     let arrayValue = getValue(this, array);
     if (!arrayValue) {
       return defaultValue === sentinelValue ? arrayValue : defaultValue;
@@ -138,7 +124,7 @@ export function normalizeArray(keys, {
 }
 
 export function normalizeArithmetic(keys, func) {
-  return resolveKeys(...keys, (...values) => {
+  return resolveKeys(keys, (...values) => {
     values = values.filter(value => value !== undefined);
     if (!values.length) {
       return 0;
@@ -148,7 +134,7 @@ export function normalizeArithmetic(keys, func) {
 }
 
 export function normalizeString(key, func) {
-  return resolveKeys(key, val => {
+  return resolveKeys([key], val => {
     if (!val) {
       return val;
     }
@@ -160,7 +146,7 @@ export function normalizeString(key, func) {
 const { resolve } = RSVP;
 
 export function wrapPromiseProxy(key, PromiseProxy) {
-  return resolveKeys(key, promise => {
+  return resolveKeys([key], promise => {
     if (promise === undefined) {
       promise = resolve(undefined);
     }
@@ -172,7 +158,7 @@ export function wrapPromiseProxy(key, PromiseProxy) {
 }
 
 export function normalizeString2(keys, funcStr) {
-  return resolveKeys(...keys, (...values) => {
+  return resolveKeys(keys, (...values) => {
     for (let i = 0; i < values.length; i++) {
       if (values[i] === undefined) {
         return undefined;

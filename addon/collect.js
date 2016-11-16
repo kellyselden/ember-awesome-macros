@@ -6,5 +6,5 @@ const {
 } = Ember;
 
 export default function(...keys) {
-  return resolveKeys(...keys, (...values) => newArray(values));
+  return resolveKeys(keys, (...values) => newArray(values));
 }

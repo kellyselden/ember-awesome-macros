@@ -4,5 +4,5 @@ import { resolveKeys } from './utils';
 const { all } = RSVP;
 
 export default function(...keys) {
-  return resolveKeys(...keys, (...values) => all(values));
+  return resolveKeys(keys, (...values) => all(values));
 }

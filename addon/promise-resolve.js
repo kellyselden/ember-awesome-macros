@@ -3,6 +3,6 @@ import { resolveKeys } from './utils';
 
 const { resolve } = RSVP;
 
-export default function(key) {
-  return resolveKeys(key, resolve);
+export default function(...keys) {
+  return resolveKeys(keys, resolve);
 }
