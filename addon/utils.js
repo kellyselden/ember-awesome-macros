@@ -167,14 +167,20 @@ export function wrapPromiseProxy(key, PromiseProxy) {
   });
 }
 
+export function checkArgs(values, callback) {
+  for (let i = 0; i < values.length; i++) {
+    if (values[i] === undefined) {
+      return undefined;
+    }
+  }
+  return callback();
+}
+
 export function normalizeString2(keys, funcStr) {
   return resolveKeys(keys, (...values) => {
-    for (let i = 0; i < values.length; i++) {
-      if (values[i] === undefined) {
-        return undefined;
-      }
-    }
-    return values[0][funcStr](...values.slice(1));
+    return checkArgs(values, () => {
+      return values[0][funcStr](...values.slice(1));
+    });
   });
 }
 

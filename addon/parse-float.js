@@ -1,10 +1,9 @@
-import { resolveKeys } from './utils';
+import { resolveKeys, checkArgs } from './utils';
 
 export default function(...keys) {
-  return resolveKeys(keys, string => {
-    if (string === undefined) {
-      return undefined;
-    }
-    return parseFloat(string);
+  return resolveKeys(keys, (...values) => {
+    return checkArgs(values, () => {
+      return parseFloat(...values);
+    });
   });
 }
