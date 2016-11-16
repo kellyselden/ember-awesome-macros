@@ -171,6 +171,17 @@ export function wrapPromiseProxy(key, PromiseProxy) {
   });
 }
 
+export function normalizeString2(keys, funcStr) {
+  return resolveKeys(...keys, (...values) => {
+    for (let i = 0; i < values.length; i++) {
+      if (values[i] === undefined) {
+        return undefined;
+      }
+    }
+    return values[0][funcStr](...values.slice(1));
+  });
+}
+
 export function getValue(context, key) {
   if (isComputed(key)) {
     return key._getter.call(context);
