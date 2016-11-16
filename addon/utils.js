@@ -63,11 +63,8 @@ export function flattenKeys(keys) {
   return flattenedKeys;
 }
 
-export function computed(...args) {
-  let keys = args.slice(0, -1);
-  let incomingCallback = args[args.length - 1];
-
-  let collapsedKeys = keys.reduce((newKeys, key) => {
+function collapseKeys(keys) {
+  return keys.reduce((newKeys, key) => {
     if (typeof key === 'string') {
       newKeys = newKeys.concat(expandPropertyList([key]));
     } else {
@@ -75,6 +72,10 @@ export function computed(...args) {
     }
     return newKeys;
   }, []);
+}
+
+function buildCallback(keys, incomingCallback) {
+  let collapsedKeys = collapseKeys(keys);
 
   let newCallback;
   if (typeof incomingCallback === 'function') {
@@ -94,6 +95,15 @@ export function computed(...args) {
       newCallback.set = incomingCallback.set;
     }
   }
+
+  return newCallback;
+}
+
+export function computed(...args) {
+  let keys = args.slice(0, -1);
+  let incomingCallback = args[args.length - 1];
+
+  let newCallback = buildCallback(keys, incomingCallback);
 
   return _computed(...flattenKeys(keys), newCallback);
 }
