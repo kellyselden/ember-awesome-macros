@@ -49,11 +49,8 @@ export { default as or } from './or';
 export { default as parseFloat } from './parse-float';
 export { default as parseInt } from './parse-int';
 export { default as product } from './product';
-export { default as promiseAll } from './promise-all';
-export { default as promiseArray } from './promise-array';
-export { default as promiseHash } from './promise-hash';
-export { default as promiseObject } from './promise-object';
-export { default as promiseResolve } from './promise-resolve';
+import promise from './promise';
+export { promise };
 export { default as quotient } from './quotient';
 export { default as raw } from './raw';
 export { default as reduce } from './reduce';
@@ -72,3 +69,29 @@ export { default as uniqBy } from './uniq-by';
 export { default as uniq } from './uniq';
 export { default as without } from './without';
 export { default as writable } from './writable';
+
+import { deprecateFunc } from 'ember-deprecations';
+
+const projectName = 'ember-awesome-macros';
+const until = 'sometime before 1.0';
+
+function deprecate(newFunc, oldKey, newKey) {
+  return deprecateFunc(`${oldKey} is deprecated, please use ${newKey}`, {
+    id: `${projectName}.${oldKey}`,
+    until
+  }, newFunc);
+}
+
+const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
+const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
+const promiseHash = deprecate(promise.hash, 'promiseHash', 'promise.hash');
+const promiseObject = deprecate(promise.object, 'promiseObject', 'promise.object');
+const promiseResolve = deprecate(promise.resolve, 'promiseResolve', 'promise.resolve');
+
+export {
+  promiseAll,
+  promiseArray,
+  promiseHash,
+  promiseObject,
+  promiseResolve
+};

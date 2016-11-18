@@ -101,11 +101,11 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`writable`](#writable)
 
 ##### Promise
-* [`promiseAll`](#promiseall)
-* [`promiseArray`](#promisearray)
-* [`promiseHash`](#promisehash)
-* [`promiseObject`](#promiseobject)
-* [`promiseResolve`](#promiseresolve)
+* [`promise.all`](#promise.all)
+* [`promise.array`](#promise.array)
+* [`promise.hash`](#promise.hash)
+* [`promise.object`](#promise.object)
+* [`promise.resolve`](#promise.resolve)
 
 ##### String
 * [`camelize`](#camelize)
@@ -635,7 +635,7 @@ value1: product('source1', 'source2', 'source3'), // 6
 value2: product('source2', product('source2', 'source3')) // 6
 ```
 
-##### `promiseAll`
+##### `promise.all`
 combines promises using `RSVP.all`
 
 ```js
@@ -645,28 +645,28 @@ promise1: computed(function() {
 promise2: computed(function() {
   return RSVP.resolve('value2');
 }),
-promise: promiseAll('promise1', 'promise2') // resolves to ['value1', 'value2']
+promise: promise.all('promise1', 'promise2') // resolves to ['value1', 'value2']
 ```
 
-##### `promiseArray`
+##### `promise.array`
 wraps a promise in the equivalent of `DS.PromiseArray` (`ArrayProxy` and `PromiseProxyMixin`)
 
 ```js
 productsPromise: computed(function() {
   return this.store.findAll('product');
 }),
-products: promiseArray('productsPromise')
+products: promise.array('productsPromise')
 ```
 
 can also wrap a computed property
 
 ```js
-products: promiseArray(computed(function() {
+products: promise.array(computed(function() {
   return this.store.findAll('product');
 }))
 ```
 
-##### `promiseHash`
+##### `promise.hash`
 combines promises using `RSVP.hash`
 
 ```js
@@ -676,38 +676,38 @@ promise1: computed(function() {
 promise2: computed(function() {
   return RSVP.resolve('value2');
 }),
-promise: promiseHash('promise1', 'promise2') // resolves to { promise1: 'value1', promise2: 'value2' }
+promise: promise.hash('promise1', 'promise2') // resolves to { promise1: 'value1', promise2: 'value2' }
 ```
 
-##### `promiseObject`
+##### `promise.object`
 wraps a promise in the equivalent of `DS.PromiseObject` (`ObjectProxy` and `PromiseProxyMixin`)
 
 ```js
 productPromise: computed(function() {
   return this.store.findRecord('product', 1);
 }),
-product: promiseObject('productPromise')
+product: promise.object('productPromise')
 ```
 
 can also wrap a computed property
 
 ```js
-product: promiseObject(computed(function() {
+product: promise.object(computed(function() {
   return this.store.findRecord('product', 1);
 }))
 ```
 
-##### `promiseResolve`
+##### `promise.resolve`
 wraps a value in an `RSVP.resolve`
 
 ```js
 key1: 'my value',
-promise1: promiseResolve('key1'), // a resolved promise if you need it
+promise1: promise.resolve('key1'), // a resolved promise if you need it
 
 key2: computed(function() {
   return this.store.findRecord('user');
 }),
-promise2: promiseResolve(conditional('someBool', 'key1', 'key2')) // resolve an object if you don't know if it is a promise or not
+promise2: promise.resolve(conditional('someBool', 'key1', 'key2')) // resolve an object if you don't know if it is a promise or not
 ```
 
 ##### `quotient`

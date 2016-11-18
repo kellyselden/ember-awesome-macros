@@ -1,6 +1,6 @@
 import RSVP from 'rsvp';
-import { resolveKeys } from './utils';
-import { deconstructArgs, reduceValues } from './hash';
+import { resolveKeys } from '../utils';
+import { deconstructArgs, reduceValues } from '../hash';
 
 const { hash } = RSVP;
 
