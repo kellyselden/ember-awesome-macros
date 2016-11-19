@@ -116,14 +116,24 @@ export function resolveKeys(keys, callback) {
 
 const sentinelValue = {};
 
+function normalizeArrayArgs(keys) {
+  let [array] = keys;
+  let wrappedArray = wrapArray(array);
+  keys[0] = wrappedArray;
+  return {
+    array,
+    wrappedArray
+  };
+}
+
 export function normalizeArray(keys, {
   defaultValue = sentinelValue
 }, callback) {
-  let [array] = keys;
-  let wrappedArray = wrapArray(array);
+  let { array } = normalizeArrayArgs(keys);
+
   let args = keys.slice(1);
 
-  return _computed(...flattenKeys([wrappedArray, ...args]), function() {
+  return _computed(...flattenKeys(keys), function() {
     let arrayValue = getValue(this, array);
     if (!arrayValue) {
       return defaultValue === sentinelValue ? arrayValue : defaultValue;
@@ -176,12 +186,19 @@ export function checkArgs(values, callback) {
   return callback();
 }
 
-export function normalizeString2(keys, funcStr) {
+function safelyCreateComputed(keys, funcStr) {
   return resolveKeys(keys, (...values) => {
     return checkArgs(values, () => {
       return values[0][funcStr](...values.slice(1));
     });
   });
+}
+
+export { safelyCreateComputed as normalizeString2 };
+
+export function normalizeArray2(keys, funcStr) {
+  normalizeArrayArgs(keys);
+  return safelyCreateComputed(keys, funcStr);
 }
 
 export function getValue(context, key) {

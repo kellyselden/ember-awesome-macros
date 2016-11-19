@@ -34,6 +34,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`any`](#any)
 * [`collect`](#collect)
 * [`compact`](#compact)
+* [`array.concat`](#array.concat)
 * [`contains`](#contains)
 * [`every`](#every)
 * [`filterBy`](#filterby)
@@ -146,6 +147,17 @@ wraps [`Ember.MutableArray.any`](http://emberjs.com/api/classes/Ember.MutableArr
 array: Ember.A([1, 2]),
 value1: any('array', val => val === 2), // true
 value2: any('array', val => val === 3) // false
+```
+
+##### `array.concat`
+wraps [`Array.prototype.concat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), allows composing
+
+```js
+array1: Ember.A([1, 2]),
+array2: Ember.A([3, 4]),
+string: '3,4',
+example: array.concat('array1', 'array2'), // [1, 2, 3, 4]
+composingExample: array.concat('array1', split('string', raw(','))) // [1, 2, 3, 4]
 ```
 
 ##### `array.length`
