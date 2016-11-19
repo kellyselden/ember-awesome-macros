@@ -9,7 +9,7 @@ const value2 = 'value 2 test';
 
 let array;
 
-module('Integration | Macro | array.concat', {
+module('Integration | Macro | array | concat', {
   beforeEach() {
     array = emberArray([0]);
   }

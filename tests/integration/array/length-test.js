@@ -6,7 +6,7 @@ import compute from '../../helpers/compute';
 
 let array;
 
-module('Integration | Macro | array.length', {
+module('Integration | Macro | array | length', {
   beforeEach() {
     array = emberArray([0, 0, 0]);
   }

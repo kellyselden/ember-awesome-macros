@@ -11,7 +11,7 @@ const returnValue = 'return value test';
 let concatStub;
 let array;
 
-module('Unit | Macro | array.concat', {
+module('Unit | Macro | array | concat', {
   beforeEach() {
     concatStub = sinon.stub().returns(returnValue);
     array = { concat: concatStub };

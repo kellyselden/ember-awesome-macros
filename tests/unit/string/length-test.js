@@ -7,7 +7,7 @@ const returnValue = 'return value test';
 
 let string;
 
-module('Unit | Macro | string.length', {
+module('Unit | Macro | string | length', {
   beforeEach() {
     string = { length: returnValue };
   }
