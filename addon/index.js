@@ -1,7 +1,8 @@
 export { default as add } from './add';
 export { default as and } from './and';
 export { default as any } from './any';
-export { default as array } from './array';
+import array from './array';
+export { array };
 export { default as camelize } from './camelize';
 export { default as capitalize } from './capitalize';
 export { default as classify } from './classify';
@@ -29,13 +30,11 @@ export { default as gte } from './gte';
 export { default as hash } from './hash';
 export { default as htmlSafe } from './html-safe';
 export { default as includes } from './includes';
-export { default as indexOf } from './index-of';
 export { default as instanceOf } from './instance-of';
 export { default as isAny } from './is-any';
 export { default as isEvery } from './is-every';
 export { default as isHtmlSafe } from './is-html-safe';
 export { default as join } from './join';
-export { default as lastIndexOf } from './last-index-of';
 export { default as last } from './last';
 export { default as lt } from './lt';
 export { default as lte } from './lte';
@@ -83,6 +82,8 @@ function deprecate(newFunc, oldKey, newKey) {
   }, newFunc);
 }
 
+const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
+const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
 const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
 const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
 const promiseHash = deprecate(promise.hash, 'promiseHash', 'promise.hash');
@@ -90,6 +91,8 @@ const promiseObject = deprecate(promise.object, 'promiseObject', 'promise.object
 const promiseResolve = deprecate(promise.resolve, 'promiseResolve', 'promise.resolve');
 
 export {
+  indexOf,
+  lastIndexOf,
   promiseAll,
   promiseArray,
   promiseHash,

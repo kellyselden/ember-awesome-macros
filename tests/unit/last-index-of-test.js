@@ -3,16 +3,16 @@ import { module, test } from 'qunit';
 import sinon from 'sinon';
 import compute from '../helpers/compute';
 
-const value = 1;
-const fromIndex = 2;
-const retVal = 3;
+const value = 'value test';
+const fromIndex = 'from index test';
+const returnValue = 'return value test';
 
 let lastIndexOfStub;
 let array;
 
 module('Unit | Macro | last index of', {
   beforeEach() {
-    lastIndexOfStub = sinon.stub().returns(retVal);
+    lastIndexOfStub = sinon.stub().returns(returnValue);
     array = { lastIndexOf: lastIndexOfStub };
   }
 });
@@ -36,18 +36,18 @@ test('it calls lastIndexOf on array', function(assert) {
   });
 
   assert.deepEqual(lastIndexOfStub.args, [[value, fromIndex]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(val, returnValue);
 });
 
 test('composable: it calls lastIndexOf on array', function(assert) {
   let { val } = compute({
     computed: lastIndexOf(
       raw(array),
-      value,
-      fromIndex
+      raw(value),
+      raw(fromIndex)
     )
   });
 
   assert.deepEqual(lastIndexOfStub.args, [[value, fromIndex]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(val, returnValue);
 });

@@ -3,16 +3,16 @@ import { module, test } from 'qunit';
 import sinon from 'sinon';
 import compute from '../helpers/compute';
 
-const value = 1;
-const fromIndex = 2;
-const retVal = 3;
+const value = 'value test';
+const fromIndex = 'from index test';
+const returnValue = 'return value test';
 
 let indexOfStub;
 let array;
 
 module('Unit | Macro | index of', {
   beforeEach() {
-    indexOfStub = sinon.stub().returns(retVal);
+    indexOfStub = sinon.stub().returns(returnValue);
     array = { indexOf: indexOfStub };
   }
 });
@@ -36,18 +36,18 @@ test('it calls indexOf on array', function(assert) {
   });
 
   assert.deepEqual(indexOfStub.args, [[value, fromIndex]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(val, returnValue);
 });
 
 test('composable: it calls indexOf on array', function(assert) {
   let { val } = compute({
     computed: indexOf(
       raw(array),
-      value,
-      fromIndex
+      raw(value),
+      raw(fromIndex)
     )
   });
 
   assert.deepEqual(indexOfStub.args, [[value, fromIndex]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(val, returnValue);
 });

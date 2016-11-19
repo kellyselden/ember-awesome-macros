@@ -43,11 +43,11 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`find`](#find)
 * [`first`](#first)
 * [`includes`](#includes)
-* [`indexOf`](#indexof)
+* [`array.indexOf`](#array.indexof)
 * [`isAny`](#isany)
 * [`isEvery`](#isevery)
 * [`join`](#join)
-* [`lastIndexOf`](#lastindexof)
+* [`array.lastIndexOf`](#array.lastindexof)
 * [`last`](#last)
 * [`array.length`](#array.length)
 * [`mapBy`](#mapby)
@@ -160,6 +160,24 @@ array2: Ember.A([3, 4]),
 string: '3,4',
 example: array.concat('array1', 'array2'), // [1, 2, 3, 4]
 composingExample: array.concat('array1', split('string', raw(','))) // [1, 2, 3, 4]
+```
+
+##### `array.indexOf`
+wraps [`Array.prototype.indexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf), allows composing
+
+```js
+array: [2, 5, 9, 2],
+value1: array.indexOf('array', 2), // 0
+value2: array.indexOf('array', 2, 2) // 3
+```
+
+##### `array.lastIndexOf`
+wraps [`Array.prototype.lastIndexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf), allows composing
+
+```js
+array: [2, 5, 9, 2],
+value1: array.lastIndexOf('array', 2), // 3
+value2: array.lastIndexOf('array', 2, 2) // 0
 ```
 
 ##### `array.length`
@@ -454,15 +472,6 @@ value2: includes('array', 'source2'), // false
 value3: includes(collect(raw('my value 1'), raw('my value 2')), raw('my value 1')) // true
 ```
 
-##### `indexOf`
-wraps [`Array.prototype.indexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf), allows composing
-
-```js
-array: [2, 5, 9, 2],
-value1: indexOf('array', 2), // 0
-value2: indexOf('array', 2, 2) // 3
-```
-
 ##### `instanceOf`
 wraps [`instanceof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) operator
 
@@ -516,15 +525,6 @@ array: Ember.A(['1', '2']),
 separator: ', ',
 value1: join('values', 'separator'), // '1, 2'
 value2: join(collect(raw('1'), raw('2')), raw(', ')) // '1, 2'
-```
-
-##### `lastIndexOf`
-wraps [`Array.prototype.lastIndexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf), allows composing
-
-```js
-array: [2, 5, 9, 2],
-value1: lastIndexOf('array', 2), // 3
-value2: lastIndexOf('array', 2, 2) // 0
 ```
 
 ##### `last`
