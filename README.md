@@ -114,6 +114,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`dasherize`](#dasherize)
 * [`decamelize`](#decamelize)
 * [`htmlSafe`](#htmlsafe)
+* [`string.length`](#string.length)
 * [`split`](#split)
 * [`substr`](#substr)
 * [`substring`](#substring)
@@ -773,6 +774,16 @@ source: 'val1,val2',
 key: ',',
 value1: split('source', 'key'), // ['val1', 'val2']
 value2: split('source', raw(',')) // ['val1', 'val2']
+```
+
+##### `string.length`
+wraps [`String.prototype.length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length), allows composing
+
+```js
+string1: 'abc',
+string2: 'xyz',
+example: length('string1'), // 3
+composingExample: length(tag`${'string1'}${'string2'}`) // 6
 ```
 
 ##### `substr`

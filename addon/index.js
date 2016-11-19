@@ -56,6 +56,7 @@ export { default as raw } from './raw';
 export { default as reduce } from './reduce';
 export { default as slice } from './slice';
 export { default as split } from './split';
+export { default as string } from './string';
 export { default as substr } from './substr';
 export { default as substring } from './substring';
 export { default as subtract } from './subtract';
