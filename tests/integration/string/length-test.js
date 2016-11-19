@@ -5,7 +5,7 @@ import compute from '../../helpers/compute';
 
 const string = 'return value test';
 
-module('Integration | Macro | length');
+module('Integration | Macro | string.length');
 
 test('it returns undefined if string undefined', function(assert) {
   compute({

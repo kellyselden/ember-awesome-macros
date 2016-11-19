@@ -32,7 +32,6 @@ import { nameOfMacro } from 'ember-awesome-macros';
 
 ##### Array
 * [`any`](#any)
-* [`array`](#array-1)
 * [`collect`](#collect)
 * [`compact`](#compact)
 * [`contains`](#contains)
@@ -49,6 +48,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`join`](#join)
 * [`lastIndexOf`](#lastindexof)
 * [`last`](#last)
+* [`array.length`](#array.length)
 * [`mapBy`](#mapby)
 * [`map`](#map)
 * [`objectAt`](#objectat)
@@ -148,8 +148,15 @@ value1: any('array', val => val === 2), // true
 value2: any('array', val => val === 3) // false
 ```
 
-##### `array`
-alias for [`collect`](#collect)
+##### `array.length`
+wraps [`Array.prototype.length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length), allows composing
+
+```js
+array: Ember.A([1, 2]),
+string: '1,2',
+example: array.length('array'), // 2
+composingExample: array.length(split('string', raw(','))) // 2
+```
 
 ##### `camelize`
 wraps [`Ember.String.camelize`](http://emberjs.com/api/classes/Ember.String.html#method_camelize), allows composing
@@ -782,8 +789,8 @@ wraps [`String.prototype.length`](https://developer.mozilla.org/en-US/docs/Web/J
 ```js
 string1: 'abc',
 string2: 'xyz',
-example: length('string1'), // 3
-composingExample: length(tag`${'string1'}${'string2'}`) // 6
+example: string.length('string1'), // 3
+composingExample: string.length(tag`${'string1'}${'string2'}`) // 6
 ```
 
 ##### `substr`
