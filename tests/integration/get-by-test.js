@@ -23,7 +23,7 @@ test('default', function(assert) {
       model,
       source: 'testProp1'
     },
-    expected: 'test val 1'
+    strictEqual: 'test val 1'
   });
 });
 

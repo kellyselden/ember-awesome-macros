@@ -20,7 +20,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: uniqBy('array', 'key'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -31,7 +31,7 @@ test('it returns original array if key undefined', function(assert) {
     properties: {
       array: retVal
     },
-    expected: retVal
+    strictEqual: retVal
   });
 });
 

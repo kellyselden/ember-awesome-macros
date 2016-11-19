@@ -13,7 +13,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: findBy('array', 'key', 'value'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -24,7 +24,7 @@ test('it returns undefined if key undefined', function(assert) {
     properties: {
       array: newArray([{ test: 'val1' }, { test: 'val2' }])
     },
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -37,7 +37,7 @@ test('it returns undefined if not found', function(assert) {
       key: 'test',
       value: 'val3'
     },
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -51,7 +51,7 @@ test('it returns item if found', function(assert) {
       key: 'test',
       value: 'val2'
     },
-    expected
+    strictEqual: expected
   });
 });
 
@@ -64,7 +64,7 @@ test('it handles raw numbers', function(assert) {
       array: newArray([{ test: 2 }, expected]),
       key: 'test'
     },
-    expected
+    strictEqual: expected
   });
 });
 
@@ -77,6 +77,6 @@ test('composable: it returns item if found', function(assert) {
       raw('test'),
       raw('val2')
     ),
-    expected
+    strictEqual: expected
   });
 });

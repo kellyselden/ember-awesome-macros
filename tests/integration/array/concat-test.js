@@ -19,7 +19,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: concat('array'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 

@@ -8,7 +8,7 @@ test('returns zero if no keys', function(assert) {
   compute({
     assert,
     computed: subtract(),
-    expected: 0
+    strictEqual: 0
   });
 });
 
@@ -19,7 +19,7 @@ test('returns identity if one number', function(assert) {
     properties: {
       source1: 3
     },
-    expected: 3
+    strictEqual: 3
   });
 });
 
@@ -31,7 +31,7 @@ test('subtracts two numbers', function(assert) {
       source1: 3,
       source2: 2
     },
-    expected: 1
+    strictEqual: 1
   });
 });
 
@@ -44,7 +44,7 @@ test('subtracts three numbers', function(assert) {
       source2: 2,
       source3: 1
     },
-    expected: 0
+    strictEqual: 0
   });
 });
 
@@ -52,7 +52,7 @@ test('handles all undefined', function(assert) {
   compute({
     assert,
     computed: subtract('source1', 'source2'),
-    expected: 0
+    strictEqual: 0
   });
 });
 
@@ -63,7 +63,7 @@ test('handles some undefined', function(assert) {
     properties: {
       source1: 3
     },
-    expected: 3
+    strictEqual: 3
   });
 });
 
@@ -71,7 +71,7 @@ test('allows raw numbers', function(assert) {
   compute({
     assert,
     computed: subtract(3, 2, 1),
-    expected: 0
+    strictEqual: 0
   });
 });
 
@@ -84,6 +84,6 @@ test('allows composing', function(assert) {
       source2: 2,
       source3: 1
     },
-    expected: 0
+    strictEqual: 0
   });
 });

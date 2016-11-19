@@ -8,7 +8,7 @@ test('defaults true', function(assert) {
   compute({
     assert,
     computed: defaultTrue('source'),
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -19,7 +19,7 @@ test('false passes through', function(assert) {
     properties: {
       source: false
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -30,6 +30,6 @@ test('true passes through', function(assert) {
     properties: {
       source: 1
     },
-    expected: 1
+    strictEqual: 1
   });
 });

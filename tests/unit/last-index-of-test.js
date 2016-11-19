@@ -21,7 +21,7 @@ test('it returns -1 if array undefined', function(assert) {
   compute({
     assert,
     computed: lastIndexOf('array', 'value', 'fromIndex'),
-    expected: -1
+    strictEqual: -1
   });
 });
 

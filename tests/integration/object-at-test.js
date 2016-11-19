@@ -20,7 +20,7 @@ test('it returns object if found', function(assert) {
       array,
       source: 0
     },
-    expected: 'my value'
+    strictEqual: 'my value'
   });
 });
 
@@ -32,7 +32,7 @@ test('it returns undefined if not found', function(assert) {
       array,
       source: 'my value 2'
     },
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -54,7 +54,7 @@ test('it returns undefined if not array', function(assert) {
   compute({
     assert,
     computed: objectAt('array', 'source'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -66,6 +66,6 @@ test('it handles nesting', function(assert) {
       array,
       source: 0
     },
-    expected: 'my value'
+    strictEqual: 'my value'
   });
 });

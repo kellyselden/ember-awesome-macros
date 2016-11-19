@@ -8,7 +8,7 @@ test('returns undefined when doesn\'t exist', function(assert) {
   compute({
     assert,
     computed: toUpper('source'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -19,7 +19,7 @@ test('returns undefined when undefined', function(assert) {
     properties: {
       source: undefined
     },
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -30,7 +30,7 @@ test('underscores string', function(assert) {
     properties: {
       source: 'TestString'
     },
-    expected: 'TESTSTRING'
+    strictEqual: 'TESTSTRING'
   });
 });
 
@@ -38,7 +38,7 @@ test('returns undefined when composed undefined', function(assert) {
   compute({
     assert,
     computed: toUpper(raw(undefined)),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -46,6 +46,6 @@ test('underscores composed string', function(assert) {
   compute({
     assert,
     computed: toUpper(raw('TestString')),
-    expected: 'TESTSTRING'
+    strictEqual: 'TESTSTRING'
   });
 });

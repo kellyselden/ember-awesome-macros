@@ -20,7 +20,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: without('array', 'item'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 

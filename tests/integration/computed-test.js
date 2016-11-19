@@ -20,7 +20,7 @@ test('works with no key', function(assert) {
   compute({
     assert,
     computed: computed(getCallback),
-    expected: returnValue
+    strictEqual: returnValue
   });
 });
 
@@ -28,7 +28,7 @@ test('works with undefined key', function(assert) {
   compute({
     assert,
     computed: computed('key1', getCallback),
-    expected: returnValue
+    strictEqual: returnValue
   });
 });
 

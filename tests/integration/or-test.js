@@ -12,7 +12,7 @@ test('false or false returns false', function(assert) {
       source1: false,
       source2: false
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -24,7 +24,7 @@ test('true or false returns true', function(assert) {
       source1: true,
       source2: false
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -36,7 +36,7 @@ test('false or true returns true', function(assert) {
       source1: false,
       source2: true
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -48,7 +48,7 @@ test('true or true returns true', function(assert) {
       source1: true,
       source2: true
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -61,7 +61,7 @@ test('accepts N number of keys', function(assert) {
       source2: false,
       source3: true
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -87,6 +87,6 @@ test('allows composing', function(assert) {
       source3: false,
       source4: true
     },
-    expected: true
+    strictEqual: true
   });
 });

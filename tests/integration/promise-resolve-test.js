@@ -13,7 +13,7 @@ test('wraps a value in resolved promise', function(assert) {
     properties: {
       key: value
     },
-    expected: value
+    strictEqual: value
   }).promise;
 });
 
@@ -21,6 +21,6 @@ test('composing: wraps a value in resolved promise', function(assert) {
   return compute({
     assert,
     computed: promiseResolve(raw(value)),
-    expected: value
+    strictEqual: value
   }).promise;
 });

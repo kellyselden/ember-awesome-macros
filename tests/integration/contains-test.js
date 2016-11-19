@@ -20,7 +20,7 @@ test('it returns true if found', function(assert) {
       array,
       source: 'my value'
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -32,7 +32,7 @@ test('it returns false if not found', function(assert) {
       array,
       source: 'my value 2'
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -54,7 +54,7 @@ test('it returns false if not array', function(assert) {
   compute({
     assert,
     computed: contains('array', 'source'),
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -62,6 +62,6 @@ test('it handles nesting', function(assert) {
   compute({
     assert,
     computed: contains(array, raw('my value')),
-    expected: true
+    strictEqual: true
   });
 });

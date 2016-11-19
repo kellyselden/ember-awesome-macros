@@ -19,7 +19,7 @@ test('without setter: passes through the getter', function(assert) {
   compute({
     assert,
     computed: writable(raw(getReturnValue)),
-    expected: getReturnValue
+    strictEqual: getReturnValue
   });
 });
 
@@ -51,7 +51,7 @@ test('with function setter: passes through the getter', function(assert) {
   compute({
     assert,
     computed: writable(raw(getReturnValue), setCallback),
-    expected: getReturnValue
+    strictEqual: getReturnValue
   });
 });
 
@@ -95,7 +95,7 @@ test('with object setter: passes through the getter', function(assert) {
     computed: writable(raw(getReturnValue), {
       set: setCallback
     }),
-    expected: getReturnValue
+    strictEqual: getReturnValue
   });
 });
 

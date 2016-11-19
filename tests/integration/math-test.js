@@ -19,7 +19,7 @@ test('lookup: calls math function', function(assert) {
     properties: {
       key1: 2.3
     },
-    expected: 2
+    strictEqual: 2
   });
 });
 
@@ -27,7 +27,7 @@ test('value: calls math function', function(assert) {
   compute({
     assert,
     computed: math.floor(2.9),
-    expected: 2
+    strictEqual: 2
   });
 });
 
@@ -35,6 +35,6 @@ test('composing: calls math function', function(assert) {
   compute({
     assert,
     computed: math.ceil(raw(1.1)),
-    expected: 2
+    strictEqual: 2
   });
 });

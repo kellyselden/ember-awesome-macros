@@ -13,7 +13,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: find('array'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -24,7 +24,7 @@ test('it returns undefined if not found', function(assert) {
     properties: {
       array: newArray([1, 2])
     },
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -35,7 +35,7 @@ test('it returns item if found', function(assert) {
     properties: {
       array: newArray([1, 2])
     },
-    expected: 2
+    strictEqual: 2
   });
 });
 
@@ -46,6 +46,6 @@ test('composable: it returns item if found', function(assert) {
       raw(newArray([1, 2])),
       val => val === 2
     ),
-    expected: 2
+    strictEqual: 2
   });
 });

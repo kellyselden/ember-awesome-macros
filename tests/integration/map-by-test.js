@@ -13,7 +13,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: mapBy('array', 'key', 'value'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 

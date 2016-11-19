@@ -11,7 +11,7 @@ test('lookup: object is type of object', function(assert) {
     properties: {
       key1: {}
     },
-    expected: 'object'
+    strictEqual: 'object'
   });
 });
 
@@ -19,7 +19,7 @@ test('value: object is type of object', function(assert) {
   compute({
     assert,
     computed: typeOf({}),
-    expected: 'object'
+    strictEqual: 'object'
   });
 });
 
@@ -27,6 +27,6 @@ test('composing: object is type of object', function(assert) {
   compute({
     assert,
     computed: typeOf(raw({})),
-    expected: 'object'
+    strictEqual: 'object'
   });
 });

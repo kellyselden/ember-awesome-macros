@@ -18,7 +18,7 @@ test('returns undefined when doesn\'t exist', function(assert) {
   compute({
     assert,
     computed: htmlSafe('source'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -29,7 +29,7 @@ test('returns undefined when undefined', function(assert) {
     properties: {
       source: undefined
     },
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -61,7 +61,7 @@ test('returns undefined when composed undefined', function(assert) {
   compute({
     assert,
     computed: htmlSafe(raw(undefined)),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 

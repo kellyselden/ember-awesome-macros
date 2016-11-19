@@ -11,7 +11,7 @@ test('false returns true', function(assert) {
     properties: {
       source: false
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -22,7 +22,7 @@ test('true returns false', function(assert) {
     properties: {
       source: true
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -33,7 +33,7 @@ test('nested: false returns false', function(assert) {
     properties: {
       source: false
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -44,6 +44,6 @@ test('nested: true returns true', function(assert) {
     properties: {
       source: true
     },
-    expected: true
+    strictEqual: true
   });
 });

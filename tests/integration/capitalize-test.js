@@ -8,7 +8,7 @@ test('returns undefined when doesn\'t exist', function(assert) {
   compute({
     assert,
     computed: capitalize('source'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -19,7 +19,7 @@ test('returns undefined when undefined', function(assert) {
     properties: {
       source: undefined
     },
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -30,7 +30,7 @@ test('capitalizes string', function(assert) {
     properties: {
       source: 'test string'
     },
-    expected: 'Test string'
+    strictEqual: 'Test string'
   });
 });
 
@@ -38,7 +38,7 @@ test('returns undefined when composed undefined', function(assert) {
   compute({
     assert,
     computed: capitalize(raw(undefined)),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -46,6 +46,6 @@ test('capitalizes composed string', function(assert) {
   compute({
     assert,
     computed: capitalize(raw('test string')),
-    expected: 'Test string'
+    strictEqual: 'Test string'
   });
 });

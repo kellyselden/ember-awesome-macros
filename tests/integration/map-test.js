@@ -8,7 +8,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: map('array'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 

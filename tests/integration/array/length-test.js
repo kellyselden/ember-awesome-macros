@@ -16,7 +16,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: length('array'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -27,7 +27,7 @@ test('it gets length on array', function(assert) {
     properties: {
       array
     },
-    expected: 3
+    strictEqual: 3
   });
 });
 
@@ -48,6 +48,6 @@ test('composable: it gets length on array', function(assert) {
   compute({
     assert,
     computed: length(raw(array)),
-    expected: 3
+    strictEqual: 3
   });
 });

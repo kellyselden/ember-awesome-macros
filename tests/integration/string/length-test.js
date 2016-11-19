@@ -11,7 +11,7 @@ test('it returns undefined if string undefined', function(assert) {
   compute({
     assert,
     computed: length('string'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -22,7 +22,7 @@ test('it gets length on string', function(assert) {
     properties: {
       string
     },
-    expected: 17
+    strictEqual: 17
   });
 });
 
@@ -30,6 +30,6 @@ test('composable: it gets length on string', function(assert) {
   compute({
     assert,
     computed: length(raw(string)),
-    expected: 17
+    strictEqual: 17
   });
 });

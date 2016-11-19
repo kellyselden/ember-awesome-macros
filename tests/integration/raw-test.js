@@ -8,7 +8,7 @@ test('it returns value verbatim', function(assert) {
   compute({
     assert,
     computed: raw('source'),
-    expected: 'source'
+    strictEqual: 'source'
   });
 });
 
@@ -19,7 +19,7 @@ test('it doesn\'t treat it as a key, but a raw value', function(assert) {
     properties: {
       source: 'new source'
     },
-    expected: 'source'
+    strictEqual: 'source'
   });
 });
 

@@ -21,7 +21,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: isEvery('array', 'key', 'value'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 

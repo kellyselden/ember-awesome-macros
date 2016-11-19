@@ -19,7 +19,7 @@ test('default', function(assert) {
     properties: {
       array
     },
-    expected: 'test1'
+    strictEqual: 'test1'
   });
 });
 

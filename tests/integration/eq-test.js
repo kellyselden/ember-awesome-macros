@@ -12,7 +12,7 @@ test('not equal returns false', function(assert) {
       source1: 1,
       source2: 2
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -24,7 +24,7 @@ test('equal but different type returns false', function(assert) {
       source1: '2',
       source2: 2
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -36,7 +36,7 @@ test('equal and same type returns true', function(assert) {
       source1: 2,
       source2: 2
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -44,7 +44,7 @@ test('it handles numbers', function(assert) {
   compute({
     assert,
     computed: eq(2, 2),
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -52,6 +52,6 @@ test('it handles nesting', function(assert) {
   compute({
     assert,
     computed: eq(raw(2), raw(2)),
-    expected: true
+    strictEqual: true
   });
 });

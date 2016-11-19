@@ -21,7 +21,7 @@ test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
     computed: slice('array', 'begin', 'end'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 

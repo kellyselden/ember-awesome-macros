@@ -6,7 +6,7 @@ export default function({
   assert,
   computed,
   properties,
-  expected,
+  strictEqual,
   deepEqual,
   assertion,
   assertReadOnly
@@ -32,7 +32,7 @@ export default function({
       let func = () => set(obj, 'computed', 'assert read only');
       assert.throws(func, /Cannot set read-only property/);
     } else if (assert) {
-      assert.strictEqual(val, expected);
+      assert.strictEqual(val, strictEqual);
     }
   }
 

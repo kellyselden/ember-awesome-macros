@@ -12,7 +12,7 @@ test('lookup: object is instance of Object', function(assert) {
       key1: {},
       key2: Object
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -24,7 +24,7 @@ test('lookup: object is not instance of String', function(assert) {
       key1: {},
       key2: String
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -32,7 +32,7 @@ test('value: object is instance of Object', function(assert) {
   compute({
     assert,
     computed: instanceOf({}, Object),
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -40,6 +40,6 @@ test('composing: object is instance of Object', function(assert) {
   compute({
     assert,
     computed: instanceOf(raw({}), raw(Object)),
-    expected: true
+    strictEqual: true
   });
 });

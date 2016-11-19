@@ -13,7 +13,7 @@ test('it returns false if array undefined', function(assert) {
   compute({
     assert,
     computed: any('array'),
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -24,7 +24,7 @@ test('it returns false if not any true', function(assert) {
     properties: {
       array: newArray([1, 2])
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -35,7 +35,7 @@ test('it returns true if any true', function(assert) {
     properties: {
       array: newArray([1, 2])
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -46,6 +46,6 @@ test('composable: it returns true if any true', function(assert) {
       raw(newArray([1, 2])),
       val => val === 2
     ),
-    expected: true
+    strictEqual: true
   });
 });

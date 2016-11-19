@@ -8,7 +8,7 @@ test('returns undefined when doesn\'t exist', function(assert) {
   compute({
     assert,
     computed: camelize('source'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -19,7 +19,7 @@ test('returns undefined when undefined', function(assert) {
     properties: {
       source: undefined
     },
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -30,7 +30,7 @@ test('camelizes string', function(assert) {
     properties: {
       source: 'test-string'
     },
-    expected: 'testString'
+    strictEqual: 'testString'
   });
 });
 
@@ -38,7 +38,7 @@ test('returns undefined when composed undefined', function(assert) {
   compute({
     assert,
     computed: camelize(raw(undefined)),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -46,6 +46,6 @@ test('camelizes composed string', function(assert) {
   compute({
     assert,
     computed: camelize(raw('test-string')),
-    expected: 'testString'
+    strictEqual: 'testString'
   });
 });

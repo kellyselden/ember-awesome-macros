@@ -13,7 +13,7 @@ test('returns undefined when doesn\'t exist', function(assert) {
   compute({
     assert,
     computed: isHtmlSafe('source'),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -24,7 +24,7 @@ test('returns undefined when undefined', function(assert) {
     properties: {
       source: undefined
     },
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -35,7 +35,7 @@ test('returns false for not html safe', function(assert) {
     properties: {
       source: '<input>'
     },
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -46,7 +46,7 @@ test('returns true for html safe', function(assert) {
     properties: {
       source: htmlSafe('<input>')
     },
-    expected: true
+    strictEqual: true
   });
 });
 
@@ -54,7 +54,7 @@ test('returns undefined when composed undefined', function(assert) {
   compute({
     assert,
     computed: isHtmlSafe(raw(undefined)),
-    expected: undefined
+    strictEqual: undefined
   });
 });
 
@@ -62,7 +62,7 @@ test('returns false for composed not html safe', function(assert) {
   compute({
     assert,
     computed: isHtmlSafe(raw('<input>')),
-    expected: false
+    strictEqual: false
   });
 });
 
@@ -70,6 +70,6 @@ test('returns true for composed html safe', function(assert) {
   compute({
     assert,
     computed: isHtmlSafe(raw(htmlSafe('<input>'))),
-    expected: true
+    strictEqual: true
   });
 });

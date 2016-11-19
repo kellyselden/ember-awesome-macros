@@ -22,7 +22,7 @@ test('default', function(assert) {
       array,
       separator
     },
-    expected: 'test1, test2'
+    strictEqual: 'test1, test2'
   });
 });
 
@@ -44,7 +44,7 @@ test('it handles array undefined', function(assert) {
   compute({
     assert,
     computed: join('array', 'separator'),
-    expected: ''
+    strictEqual: ''
   });
 });
 
@@ -55,7 +55,7 @@ test('it handles one element', function(assert) {
     properties: {
       array: emberArray(['test1'])
     },
-    expected: 'test1'
+    strictEqual: 'test1'
   });
 });
 
@@ -63,6 +63,6 @@ test('it handles nesting', function(assert) {
   compute({
     assert,
     computed: join(array, raw(separator)),
-    expected: 'test1, test2'
+    strictEqual: 'test1, test2'
   });
 });
