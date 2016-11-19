@@ -116,6 +116,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`decamelize`](#decamelize)
 * [`htmlSafe`](#htmlsafe)
 * [`string.indexOf`](#string.indexof)
+* [`string.lastIndexOf`](#string.lastindexof)
 * [`string.length`](#string.length)
 * [`split`](#split)
 * [`substr`](#substr)
@@ -804,6 +805,16 @@ string: '121',
 value: '1',
 example: string.indexOf('string', 'value'), // 0
 composingExample: string.indexOf(substr('string', 1), raw('1')) // 1
+```
+
+##### `string.lastIndexOf`
+wraps [`String.prototype.lastIndexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/lastIndexOf), allows composing
+
+```js
+string: '121',
+value: '1',
+example: string.lastIndexOf('string', 'value'), // 2
+composingExample: string.lastIndexOf(substr('string', 0, 2), raw('1')) // 0
 ```
 
 ##### `string.length`
