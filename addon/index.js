@@ -55,9 +55,8 @@ export { default as raw } from './raw';
 export { default as reduce } from './reduce';
 export { default as slice } from './slice';
 export { default as split } from './split';
-export { default as string } from './string';
-export { default as substr } from './substr';
-export { default as substring } from './substring';
+import string from './string';
+export { string };
 export { default as subtract } from './subtract';
 export { default as sum } from './sum';
 export { default as tag } from './tag';
@@ -89,6 +88,8 @@ const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
 const promiseHash = deprecate(promise.hash, 'promiseHash', 'promise.hash');
 const promiseObject = deprecate(promise.object, 'promiseObject', 'promise.object');
 const promiseResolve = deprecate(promise.resolve, 'promiseResolve', 'promise.resolve');
+const substr = deprecate(string.substr, 'substr', 'array.substr');
+const substring = deprecate(string.substring, 'substring', 'array.substring');
 
 export {
   indexOf,
@@ -97,5 +98,7 @@ export {
   promiseArray,
   promiseHash,
   promiseObject,
-  promiseResolve
+  promiseResolve,
+  substr,
+  substring
 };

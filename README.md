@@ -119,8 +119,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`string.lastIndexOf`](#stringlastindexof)
 * [`string.length`](#stringlength)
 * [`split`](#split)
-* [`substr`](#substr)
-* [`substring`](#substring)
+* [`string.substr`](#stringsubstr)
+* [`string.substring`](#stringsubstring)
 * [`tag`](#tag)
 * [`toLower`](#tolower)
 * [`toUpper`](#toupper)
@@ -827,26 +827,26 @@ example: string.length('string1'), // 3
 composingExample: string.length(tag`${'string1'}${'string2'}`) // 6
 ```
 
-##### `substr`
+##### `string.substr`
 wraps [`String.prototype.substr()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr), allows composing
 
 ```js
 string1: 'abcxyz',
 string2: 'abc',
 string3: 'xyz',
-example: substr('string1', 2, 2), // 'cx'
-composingExample: substr(tag`${'string2'}${'string3'}`, 2, 2) // 'cx'
+example: string.substr('string1', 2, 2), // 'cx'
+composingExample: string.substr(tag`${'string2'}${'string3'}`, 2, 2) // 'cx'
 ```
 
-##### `substring`
+##### `string.substring`
 wraps [`String.prototype.substring()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring), allows composing
 
 ```js
 string1: 'abcxyz',
 string2: 'abc',
 string3: 'xyz',
-example: substring('string1', 2, 4), // 'cx'
-composingExample: substring(tag`${'string2'}${'string3'}`, 2, 4) // 'cx'
+example: string.substring('string1', 2, 4), // 'cx'
+composingExample: string.substring(tag`${'string2'}${'string3'}`, 2, 4) // 'cx'
 ```
 
 ##### `subtract`
