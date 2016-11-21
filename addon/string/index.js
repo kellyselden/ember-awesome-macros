@@ -1,3 +1,8 @@
+export { default as camelize } from './camelize';
+export { default as capitalize } from './capitalize';
+export { default as classify } from './classify';
+export { default as dasherize } from './dasherize';
+export { default as decamelize } from './decamelize';
 export { default as indexOf } from './index-of';
 export { default as lastIndexOf } from './last-index-of';
 export { default as length } from './length';

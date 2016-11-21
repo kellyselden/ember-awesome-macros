@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { normalizeString } from './utils';
+import { normalizeString } from '../utils';
 
 const {
   String: { decamelize }

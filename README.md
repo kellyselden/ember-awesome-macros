@@ -108,11 +108,11 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`promise.resolve`](#promiseresolve)
 
 ##### String
-* [`camelize`](#camelize)
-* [`capitalize`](#capitalize)
-* [`classify`](#classify)
-* [`dasherize`](#dasherize)
-* [`decamelize`](#decamelize)
+* [`string.camelize`](#stringcamelize)
+* [`string.capitalize`](#stringcapitalize)
+* [`string.classify`](#stringclassify)
+* [`string.dasherize`](#stringdasherize)
+* [`string.decamelize`](#stringdecamelize)
 * [`htmlSafe`](#htmlsafe)
 * [`string.indexOf`](#stringindexof)
 * [`string.lastIndexOf`](#stringlastindexof)
@@ -201,30 +201,6 @@ example: array.length('array'), // 2
 composingExample: array.length(split('string', raw(','))) // 2
 ```
 
-##### `camelize`
-wraps [`Ember.String.camelize`](http://emberjs.com/api/classes/Ember.String.html#method_camelize), allows composing
-
-```js
-originalValue: 'test-string',
-newValue: camelize('originalValue') // 'testString'
-```
-
-##### `capitalize`
-wraps [`Ember.String.capitalize`](http://emberjs.com/api/classes/Ember.String.html#method_capitalize), allows composing
-
-```js
-originalValue: 'test string',
-newValue: capitalize('originalValue') // 'Test string'
-```
-
-##### `classify`
-wraps [`Ember.String.classify`](http://emberjs.com/api/classes/Ember.String.html#method_classify), allows composing
-
-```js
-originalValue: 'test string',
-newValue: classify('originalValue') // 'TestString'
-```
-
 ##### `collect`
 same as `Ember.computed.collect`, but allows composing
 
@@ -290,22 +266,6 @@ expr2: 'my value 2',
 value1: conditional('condition1', 'expr1', 'expr2'), // 'my value 1'
 value2: conditional('condition2', 'expr1', 'expr2'), // 'my value 2'
 value3: conditional(or('condition1', 'condition2'), raw('my value 1'), raw('my value 2')) // 'my value 1'
-```
-
-##### `dasherize`
-wraps [`Ember.String.dasherize`](http://emberjs.com/api/classes/Ember.String.html#method_dasherize), allows composing
-
-```js
-originalValue: 'TestString',
-newValue: dasherize('originalValue') // 'test-string'
-```
-
-##### `decamelize`
-wraps [`Ember.String.decamelize`](http://emberjs.com/api/classes/Ember.String.html#method_decamelize), allows composing
-
-```js
-originalValue: 'TestString',
-newValue: decamelize('originalValue') // 'test_string'
 ```
 
 ##### `defaultTrue`
@@ -791,6 +751,46 @@ source: 'val1,val2',
 key: ',',
 value1: split('source', 'key'), // ['val1', 'val2']
 value2: split('source', raw(',')) // ['val1', 'val2']
+```
+
+##### `string.camelize`
+wraps [`Ember.String.camelize`](http://emberjs.com/api/classes/Ember.String.html#method_camelize), allows composing
+
+```js
+originalValue: 'test-string',
+newValue: string.camelize('originalValue') // 'testString'
+```
+
+##### `string.capitalize`
+wraps [`Ember.String.capitalize`](http://emberjs.com/api/classes/Ember.String.html#method_capitalize), allows composing
+
+```js
+originalValue: 'test string',
+newValue: string.capitalize('originalValue') // 'Test string'
+```
+
+##### `string.classify`
+wraps [`Ember.String.classify`](http://emberjs.com/api/classes/Ember.String.html#method_classify), allows composing
+
+```js
+originalValue: 'test string',
+newValue: string.classify('originalValue') // 'TestString'
+```
+
+##### `string.dasherize`
+wraps [`Ember.String.dasherize`](http://emberjs.com/api/classes/Ember.String.html#method_dasherize), allows composing
+
+```js
+originalValue: 'TestString',
+newValue: string.dasherize('originalValue') // 'test-string'
+```
+
+##### `string.decamelize`
+wraps [`Ember.String.decamelize`](http://emberjs.com/api/classes/Ember.String.html#method_decamelize), allows composing
+
+```js
+originalValue: 'TestString',
+newValue: string.decamelize('originalValue') // 'test_string'
 ```
 
 ##### `string.indexOf`

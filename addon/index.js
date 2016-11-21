@@ -2,15 +2,10 @@ export { default as add } from './add';
 export { default as and } from './and';
 import array from './array';
 export { array };
-export { default as camelize } from './camelize';
-export { default as capitalize } from './capitalize';
-export { default as classify } from './classify';
 export { default as collect } from './collect';
 export { default as compact } from './compact';
 export { default as computed } from './computed';
 export { default as conditional } from './conditional';
-export { default as dasherize } from './dasherize';
-export { default as decamelize } from './decamelize';
 export { default as defaultTrue } from './default-true';
 export { default as difference } from './difference';
 export { default as divide } from './divide';
@@ -88,6 +83,11 @@ const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
 const promiseHash = deprecate(promise.hash, 'promiseHash', 'promise.hash');
 const promiseObject = deprecate(promise.object, 'promiseObject', 'promise.object');
 const promiseResolve = deprecate(promise.resolve, 'promiseResolve', 'promise.resolve');
+const camelize = deprecate(string.camelize, 'camelize', 'string.camelize');
+const capitalize = deprecate(string.capitalize, 'capitalize', 'string.capitalize');
+const classify = deprecate(string.classify, 'classify', 'string.classify');
+const dasherize = deprecate(string.dasherize, 'dasherize', 'string.dasherize');
+const decamelize = deprecate(string.decamelize, 'decamelize', 'string.decamelize');
 const substr = deprecate(string.substr, 'substr', 'string.substr');
 const substring = deprecate(string.substring, 'substring', 'string.substring');
 
@@ -102,6 +102,11 @@ export {
   promiseHash,
   promiseObject,
   promiseResolve,
+  camelize,
+  capitalize,
+  classify,
+  dasherize,
+  decamelize,
   substr,
   substring
 };
