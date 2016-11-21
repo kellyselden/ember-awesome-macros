@@ -142,7 +142,7 @@ value2: and(not('source1'), 'source2', not('source3')) // true
 ```
 
 ##### `array.any`
-wraps [`Ember.MutableArray.any`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_any), allows composing
+wraps [`Ember.Array.any`](http://emberjs.com/api/classes/Ember.Array.html#method_any), allows composing
 
 ```js
 array: Ember.A([1, 2]),
@@ -151,7 +151,7 @@ value2: array.any('array', val => val === 3) // false
 ```
 
 ##### `array.compact`
-wraps [`Ember.MutableArray.compact`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_compact), allows composing
+wraps [`Ember.Array.compact`](http://emberjs.com/api/classes/Ember.Array.html#method_compact), allows composing
 
 ```js
 array: Ember.A([1, 2, null]),
@@ -170,7 +170,7 @@ composingExample: array.concat('array1', split('string', raw(','))) // [1, 2, 3,
 ```
 
 ##### `array.every`
-wraps [`Ember.MutableArray.every`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_every), allows composing
+wraps [`Ember.Array.every`](http://emberjs.com/api/classes/Ember.Array.html#method_every), allows composing
 
 ```js
 array: Ember.A([1, 1]),
@@ -319,7 +319,7 @@ value2: equal('source1', 'source3') // true
 ```
 
 ##### `filterBy`
-wraps [`Ember.MutableArray.filterBy`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_filterBy), allows composing
+wraps [`Ember.Array.filterBy`](http://emberjs.com/api/classes/Ember.Array.html#method_filterBy), allows composing
 
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }]),
@@ -328,7 +328,7 @@ value: filterBy('array', 'key', 2) // [{ test: 2 }]
 ```
 
 ##### `filter`
-wraps [`Ember.MutableArray.filter`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_filter), allows composing
+wraps [`Ember.Array.filter`](http://emberjs.com/api/classes/Ember.Array.html#method_filter), allows composing
 
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }]),
@@ -336,7 +336,7 @@ value: filter('array', item => item.test === 2) // [{ test: 2 }]
 ```
 
 ##### `findBy`
-wraps [`Ember.MutableArray.findBy`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_findBy), allows composing
+wraps [`Ember.Array.findBy`](http://emberjs.com/api/classes/Ember.Array.html#method_findBy), allows composing
 
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }]),
@@ -345,7 +345,7 @@ value: findBy('array', 'key', 2) // { test: 2 }
 ```
 
 ##### `find`
-wraps [`Ember.MutableArray.find`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_find), allows composing
+wraps [`Ember.Array.find`](http://emberjs.com/api/classes/Ember.Array.html#method_find), allows composing
 
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }]),
@@ -520,7 +520,7 @@ value3: lte('source2', 'source3') // false
 ```
 
 ##### `mapBy`
-wraps [`Ember.MutableArray.mapBy`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_mapBy), allows composing
+wraps [`Ember.Array.mapBy`](http://emberjs.com/api/classes/Ember.Array.html#method_mapBy), allows composing
 
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }]),
@@ -529,7 +529,7 @@ value: mapBy('array', 'key') // [1, 2]
 ```
 
 ##### `map`
-wraps [`Ember.MutableArray.map`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_map), allows composing
+wraps [`Ember.Array.map`](http://emberjs.com/api/classes/Ember.Array.html#method_map), allows composing
 
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }]),
@@ -560,7 +560,7 @@ value2: not(and('source1', 'source2')) // true
 ```
 
 ##### `objectAt`
-implements `http://emberjs.com/api/classes/Ember.MutableArray.html#method_objectAt`, allows composing
+implements `http://emberjs.com/api/classes/Ember.Array.html#method_objectAt`, allows composing
 
 ```js
 array: Ember.A(['my value']),
@@ -904,7 +904,7 @@ newValue: underscore('originalValue') // 'test_string'
 ```
 
 ##### `uniqBy`
-wraps [`Ember.MutableArray.uniqBy`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_uniqBy), allows composing
+wraps [`Ember.Array.uniqBy`](http://emberjs.com/api/classes/Ember.Array.html#method_uniqBy), allows composing
 
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }, { test: 2 }]),
@@ -913,7 +913,7 @@ value: uniqBy('array', 'key') // [{ test: 1 }, { test: 2 }]
 ```
 
 ##### `uniq`
-wraps [`Ember.MutableArray.uniq`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_uniq), allows composing
+wraps [`Ember.Array.uniq`](http://emberjs.com/api/classes/Ember.Array.html#method_uniq), allows composing
 
 ```js
 array: Ember.A([1, 2, 2]),
