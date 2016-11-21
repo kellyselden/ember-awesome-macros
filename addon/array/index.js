@@ -15,3 +15,5 @@ export { default as join } from './join';
 export { default as lastIndexOf } from './last-index-of';
 export { default as last } from './last';
 export { default as length } from './length';
+export { default as mapBy } from './map-by';
+export { default as map } from './map';

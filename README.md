@@ -49,8 +49,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.lastIndexOf`](#arraylastindexof)
 * [`array.last`](#arraylast)
 * [`array.length`](#arraylength)
-* [`mapBy`](#mapby)
-* [`map`](#map)
+* [`array.mapBy`](#arraymapby)
+* [`array.map`](#arraymap)
 * [`objectAt`](#objectat)
 * [`reduce`](#reduce)
 * [`slice`](#slice)
@@ -306,6 +306,23 @@ example: array.length('array'), // 2
 composingExample: array.length(split('string', raw(','))) // 2
 ```
 
+##### `array.mapBy`
+wraps [`Ember.Array.mapBy`](http://emberjs.com/api/classes/Ember.Array.html#method_mapBy), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+key: 'test',
+value: array.mapBy('array', 'key') // [1, 2]
+```
+
+##### `array.map`
+wraps [`Ember.Array.map`](http://emberjs.com/api/classes/Ember.Array.html#method_map), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+value: array.map('array', item => item.test) // [1, 2]
+```
+
 ##### `collect`
 same as `Ember.computed.collect`, but allows composing
 
@@ -517,23 +534,6 @@ source3: 1,
 value1: lte('source1', 'source2'), // true
 value2: lte('source1', 'source3'), // true
 value3: lte('source2', 'source3') // false
-```
-
-##### `mapBy`
-wraps [`Ember.Array.mapBy`](http://emberjs.com/api/classes/Ember.Array.html#method_mapBy), allows composing
-
-```js
-array: Ember.A([{ test: 1 }, { test: 2 }]),
-key: 'test',
-value: mapBy('array', 'key') // [1, 2]
-```
-
-##### `map`
-wraps [`Ember.Array.map`](http://emberjs.com/api/classes/Ember.Array.html#method_map), allows composing
-
-```js
-array: Ember.A([{ test: 1 }, { test: 2 }]),
-value: map('array', item => item.test) // [1, 2]
 ```
 
 ##### `math`

@@ -19,8 +19,6 @@ export { default as instanceOf } from './instance-of';
 export { default as isHtmlSafe } from './is-html-safe';
 export { default as lt } from './lt';
 export { default as lte } from './lte';
-export { default as mapBy } from './map-by';
-export { default as map } from './map';
 export { default as math } from './math';
 export { default as multiply } from './multiply';
 export { default as not } from './not';
@@ -78,6 +76,8 @@ const isEvery = deprecate(array.isEvery, 'isEvery', 'array.isEvery');
 const join = deprecate(array.join, 'join', 'array.join');
 const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
 const last = deprecate(array.last, 'last', 'array.last');
+const mapBy = deprecate(array.mapBy, 'mapBy', 'array.mapBy');
+const map = deprecate(array.map, 'map', 'array.map');
 
 const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
 const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
@@ -110,6 +110,8 @@ export {
   join,
   lastIndexOf,
   last,
+  mapBy,
+  map,
 
   promiseAll,
   promiseArray,
