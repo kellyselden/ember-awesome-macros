@@ -33,7 +33,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 ##### Array
 * [`array.any`](#arrayany)
 * [`collect`](#collect)
-* [`compact`](#compact)
+* [`array.compact`](#arraycompact)
 * [`array.concat`](#arrayconcat)
 * [`every`](#every)
 * [`filterBy`](#filterby)
@@ -150,6 +150,14 @@ value1: array.any('array', val => val === 2), // true
 value2: array.any('array', val => val === 3) // false
 ```
 
+##### `array.compact`
+wraps [`Ember.MutableArray.compact`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_compact), allows composing
+
+```js
+array: Ember.A([1, 2, null]),
+value: array.compact('array') // [1, 2]
+```
+
 ##### `array.concat`
 wraps [`Array.prototype.concat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), allows composing
 
@@ -208,14 +216,6 @@ same as `Ember.computed.collect`, but allows composing
 source1: 'my value 1',
 source2: 'my value 2',
 value: collect('source1', collect('source2')) // ['my value 1', ['my value 2']]
-```
-
-##### `compact`
-wraps [`Ember.MutableArray.compact`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_compact), allows composing
-
-```js
-array: Ember.A([1, 2, null]),
-value: compact('array') // [1, 2]
 ```
 
 ##### `computed`

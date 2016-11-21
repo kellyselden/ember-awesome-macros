@@ -3,7 +3,6 @@ export { default as and } from './and';
 import array from './array';
 export { array };
 export { default as collect } from './collect';
-export { default as compact } from './compact';
 export { default as computed } from './computed';
 export { default as conditional } from './conditional';
 export { default as defaultTrue } from './default-true';
@@ -74,6 +73,7 @@ function deprecate(newFunc, oldKey, newKey) {
 }
 
 const any = deprecate(array.any, 'any', 'array.any');
+const compact = deprecate(array.compact, 'compact', 'array.compact');
 const contains = deprecate(array.includes, 'contains', 'array.includes');
 const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
@@ -93,6 +93,7 @@ const substring = deprecate(string.substring, 'substring', 'string.substring');
 
 export {
   any,
+  compact,
   contains,
   includes,
   indexOf,
