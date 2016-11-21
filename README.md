@@ -35,7 +35,6 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`collect`](#collect)
 * [`compact`](#compact)
 * [`array.concat`](#arrayconcat)
-* [`array.contains`](#arraycontains)
 * [`every`](#every)
 * [`filterBy`](#filterby)
 * [`filter`](#filter)
@@ -161,9 +160,6 @@ string: '3,4',
 example: array.concat('array1', 'array2'), // [1, 2, 3, 4]
 composingExample: array.concat('array1', split('string', raw(','))) // [1, 2, 3, 4]
 ```
-
-##### `array.contains`
-alias for [`array.includes`](#arrayincludes)
 
 ##### `array.includes`
 implements `Array.prototype.includes()`, allows composing

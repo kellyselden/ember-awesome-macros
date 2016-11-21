@@ -79,7 +79,7 @@ function deprecate(newFunc, oldKey, newKey) {
   }, newFunc);
 }
 
-const contains = deprecate(array.contains, 'contains', 'array.contains');
+const contains = deprecate(array.includes, 'contains', 'array.includes');
 const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
 const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
