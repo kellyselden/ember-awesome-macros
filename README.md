@@ -31,7 +31,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 #### Macro list
 
 ##### Array
-* [`any`](#any)
+* [`array.any`](#arrayany)
 * [`collect`](#collect)
 * [`compact`](#compact)
 * [`array.concat`](#arrayconcat)
@@ -141,13 +141,13 @@ value1: and('source1', 'source2', 'source3'), // false
 value2: and(not('source1'), 'source2', not('source3')) // true
 ```
 
-##### `any`
+##### `array.any`
 wraps [`Ember.MutableArray.any`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_any), allows composing
 
 ```js
 array: Ember.A([1, 2]),
-value1: any('array', val => val === 2), // true
-value2: any('array', val => val === 3) // false
+value1: array.any('array', val => val === 2), // true
+value2: array.any('array', val => val === 3) // false
 ```
 
 ##### `array.concat`

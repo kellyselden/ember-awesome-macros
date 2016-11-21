@@ -1,6 +1,5 @@
 export { default as add } from './add';
 export { default as and } from './and';
-export { default as any } from './any';
 import array from './array';
 export { array };
 export { default as camelize } from './camelize';
@@ -79,6 +78,7 @@ function deprecate(newFunc, oldKey, newKey) {
   }, newFunc);
 }
 
+const any = deprecate(array.any, 'any', 'array.any');
 const contains = deprecate(array.includes, 'contains', 'array.includes');
 const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
@@ -92,6 +92,7 @@ const substr = deprecate(string.substr, 'substr', 'string.substr');
 const substring = deprecate(string.substring, 'substring', 'string.substring');
 
 export {
+  any,
   contains,
   includes,
   indexOf,

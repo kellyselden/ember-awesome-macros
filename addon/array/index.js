@@ -1,3 +1,4 @@
+export { default as any } from './any';
 export { default as concat } from './concat';
 export { default as includes } from './includes';
 export { default as indexOf } from './index-of';
