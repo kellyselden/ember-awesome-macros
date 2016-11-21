@@ -22,7 +22,6 @@ export { default as lte } from './lte';
 export { default as math } from './math';
 export { default as multiply } from './multiply';
 export { default as not } from './not';
-export { default as objectAt } from './object-at';
 export { default as or } from './or';
 export { default as parseFloat } from './parse-float';
 export { default as parseInt } from './parse-int';
@@ -78,6 +77,7 @@ const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndex
 const last = deprecate(array.last, 'last', 'array.last');
 const mapBy = deprecate(array.mapBy, 'mapBy', 'array.mapBy');
 const map = deprecate(array.map, 'map', 'array.map');
+const objectAt = deprecate(array.objectAt, 'objectAt', 'array.objectAt');
 
 const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
 const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
@@ -112,6 +112,7 @@ export {
   last,
   mapBy,
   map,
+  objectAt,
 
   promiseAll,
   promiseArray,

@@ -51,7 +51,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.length`](#arraylength)
 * [`array.mapBy`](#arraymapby)
 * [`array.map`](#arraymap)
-* [`objectAt`](#objectat)
+* [`array.objectAt`](#arrayobjectat)
 * [`reduce`](#reduce)
 * [`slice`](#slice)
 * [`uniqBy`](#uniqby)
@@ -323,6 +323,18 @@ array: Ember.A([{ test: 1 }, { test: 2 }]),
 value: array.map('array', item => item.test) // [1, 2]
 ```
 
+##### `array.objectAt`
+wraps [`Ember.Array.objectAt`](http://emberjs.com/api/classes/Ember.Array.html#method_objectAt), allows composing
+
+```js
+array: Ember.A(['my value']),
+source1: 0,
+source2: 1,
+value1: array.objectAt('array', 'source1'), // 'my value'
+value2: array.objectAt('array', 'source2'), // undefined
+value3: array.objectAt(collect(raw('my value 1')), raw(0)) // 'my value'
+```
+
 ##### `collect`
 same as `Ember.computed.collect`, but allows composing
 
@@ -557,18 +569,6 @@ source1: true,
 source2: false,
 value1: not('source1'), // false
 value2: not(and('source1', 'source2')) // true
-```
-
-##### `objectAt`
-implements `http://emberjs.com/api/classes/Ember.Array.html#method_objectAt`, allows composing
-
-```js
-array: Ember.A(['my value']),
-source1: 0,
-source2: 1,
-value1: objectAt('array', 'source1'), // 'my value'
-value2: objectAt('array', 'source2'), // undefined
-value3: objectAt(collect(raw('my value 1')), raw(0)) // 'my value'
 ```
 
 ##### `or`
