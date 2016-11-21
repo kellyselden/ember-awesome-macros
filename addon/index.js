@@ -16,8 +16,6 @@ export { default as gte } from './gte';
 export { default as hash } from './hash';
 export { default as htmlSafe } from './html-safe';
 export { default as instanceOf } from './instance-of';
-export { default as isAny } from './is-any';
-export { default as isEvery } from './is-every';
 export { default as isHtmlSafe } from './is-html-safe';
 export { default as join } from './join';
 export { default as lt } from './lt';
@@ -76,6 +74,8 @@ const find = deprecate(array.find, 'find', 'array.find');
 const first = deprecate(array.first, 'first', 'array.first');
 const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
+const isAny = deprecate(array.isAny, 'isAny', 'array.isAny');
+const isEvery = deprecate(array.isEvery, 'isEvery', 'array.isEvery');
 const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
 const last = deprecate(array.last, 'last', 'array.last');
 const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
@@ -103,6 +103,8 @@ export {
   first,
   includes,
   indexOf,
+  isAny,
+  isEvery,
   lastIndexOf,
   last,
   promiseAll,

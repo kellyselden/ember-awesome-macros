@@ -43,8 +43,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.first`](#arrayfirst)
 * [`array.includes`](#arrayincludes)
 * [`array.indexOf`](#arrayindexof)
-* [`isAny`](#isany)
-* [`isEvery`](#isevery)
+* [`array.isAny`](#arrayisany)
+* [`array.isEvery`](#arrayisevery)
 * [`join`](#join)
 * [`array.lastIndexOf`](#arraylastindexof)
 * [`array.last`](#arraylast)
@@ -241,6 +241,30 @@ wraps [`Array.prototype.indexOf()`](https://developer.mozilla.org/en-US/docs/Web
 array: [2, 5, 9, 2],
 value1: array.indexOf('array', 2), // 0
 value2: array.indexOf('array', 2, 2) // 3
+```
+
+##### `array.isAny`
+wraps [`Ember.Enumerable.isAny`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_isAny), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+key: 'test',
+value1: 2,
+value2: 3,
+result1: array.isAny('array', 'key', 'value1'), // true
+result2: array.isAny('array', 'key', 'value2') // false
+```
+
+##### `array.isEvery`
+wraps [`Ember.Enumerable.isEvery`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_isEvery), allows composing
+
+```js
+array1: Ember.A([{ test: 1 }, { test: 1 }]),
+key: 'test',
+value1: 1,
+value2: 2,
+result1: array.isEvery('array', 'key', 'value1'), // true
+result2: array.isEvery('array', 'key', 'value2') // false
 ```
 
 ##### `array.lastIndexOf`
@@ -447,30 +471,6 @@ key2: false,
 key3: '',
 value1: instanceOf('key1', Object), // true
 value2: instanceOf(or('key2', 'key3'), String) // true
-```
-
-##### `isAny`
-wraps [`Ember.Enumerable.isAny`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_isAny), allows composing
-
-```js
-array: Ember.A([{ test: 1 }, { test: 2 }]),
-key: 'test',
-value1: 2,
-value2: 3,
-result1: isAny('array', 'key', 'value1'), // true
-result2: isAny('array', 'key', 'value2') // false
-```
-
-##### `isEvery`
-wraps [`Ember.Enumerable.isEvery`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_isEvery), allows composing
-
-```js
-array1: Ember.A([{ test: 1 }, { test: 1 }]),
-key: 'test',
-value1: 1,
-value2: 2,
-result1: isEvery('array', 'key', 'value1'), // true
-result2: isEvery('array', 'key', 'value2') // false
 ```
 
 ##### `isHtmlSafe`
