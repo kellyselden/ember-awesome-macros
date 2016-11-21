@@ -36,10 +36,10 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.compact`](#arraycompact)
 * [`array.concat`](#arrayconcat)
 * [`array.every`](#arrayevery)
-* [`filterBy`](#filterby)
-* [`filter`](#filter)
-* [`findBy`](#findby)
-* [`find`](#find)
+* [`array.filterBy`](#arrayfilterby)
+* [`array.filter`](#arrayfilter)
+* [`array.findBy`](#arrayfindby)
+* [`array.find`](#arrayfind)
 * [`first`](#first)
 * [`array.includes`](#arrayincludes)
 * [`array.indexOf`](#arrayindexof)
@@ -176,6 +176,40 @@ wraps [`Ember.Array.every`](http://emberjs.com/api/classes/Ember.Array.html#meth
 array: Ember.A([1, 1]),
 value1: array.every('array', val => val === 1), // true
 value2: array.every('array', val => val === 2) // false
+```
+
+##### `array.filterBy`
+wraps [`Ember.Array.filterBy`](http://emberjs.com/api/classes/Ember.Array.html#method_filterBy), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+key: 'test',
+value: array.filterBy('array', 'key', 2) // [{ test: 2 }]
+```
+
+##### `array.filter`
+wraps [`Ember.Array.filter`](http://emberjs.com/api/classes/Ember.Array.html#method_filter), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+value: array.filter('array', item => item.test === 2) // [{ test: 2 }]
+```
+
+##### `array.findBy`
+wraps [`Ember.Array.findBy`](http://emberjs.com/api/classes/Ember.Array.html#method_findBy), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+key: 'test',
+value: array.findBy('array', 'key', 2) // { test: 2 }
+```
+
+##### `array.find`
+wraps [`Ember.Array.find`](http://emberjs.com/api/classes/Ember.Array.html#method_find), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+value: array.find('array', item => item.test === 2) // { test: 2 }
 ```
 
 ##### `array.includes`
@@ -316,40 +350,6 @@ source2: 'my other value',
 source3: 'my value',
 value1: equal('source1', 'source2'), // false
 value2: equal('source1', 'source3') // true
-```
-
-##### `filterBy`
-wraps [`Ember.Array.filterBy`](http://emberjs.com/api/classes/Ember.Array.html#method_filterBy), allows composing
-
-```js
-array: Ember.A([{ test: 1 }, { test: 2 }]),
-key: 'test',
-value: filterBy('array', 'key', 2) // [{ test: 2 }]
-```
-
-##### `filter`
-wraps [`Ember.Array.filter`](http://emberjs.com/api/classes/Ember.Array.html#method_filter), allows composing
-
-```js
-array: Ember.A([{ test: 1 }, { test: 2 }]),
-value: filter('array', item => item.test === 2) // [{ test: 2 }]
-```
-
-##### `findBy`
-wraps [`Ember.Array.findBy`](http://emberjs.com/api/classes/Ember.Array.html#method_findBy), allows composing
-
-```js
-array: Ember.A([{ test: 1 }, { test: 2 }]),
-key: 'test',
-value: findBy('array', 'key', 2) // { test: 2 }
-```
-
-##### `find`
-wraps [`Ember.Array.find`](http://emberjs.com/api/classes/Ember.Array.html#method_find), allows composing
-
-```js
-array: Ember.A([{ test: 1 }, { test: 2 }]),
-value: find('array', item => item.test === 2) // { test: 2 }
 ```
 
 ##### `first`

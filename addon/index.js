@@ -10,10 +10,6 @@ export { default as difference } from './difference';
 export { default as divide } from './divide';
 export { default as eq } from './eq';
 export { default as equal } from './equal';
-export { default as filterBy } from './filter-by';
-export { default as filter } from './filter';
-export { default as findBy } from './find-by';
-export { default as find } from './find';
 export { default as first } from './first';
 export { default as getBy } from './get-by';
 export { default as gt } from './gt';
@@ -75,6 +71,10 @@ const any = deprecate(array.any, 'any', 'array.any');
 const compact = deprecate(array.compact, 'compact', 'array.compact');
 const contains = deprecate(array.includes, 'contains', 'array.includes');
 const every = deprecate(array.every, 'every', 'array.every');
+const filterBy = deprecate(array.filterBy, 'filterBy', 'array.filterBy');
+const filter = deprecate(array.filter, 'filter', 'array.filter');
+const findBy = deprecate(array.findBy, 'findBy', 'array.findBy');
+const find = deprecate(array.find, 'find', 'array.find');
 const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
 const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
@@ -96,6 +96,10 @@ export {
   compact,
   contains,
   every,
+  filterBy,
+  filter,
+  findBy,
+  find,
   includes,
   indexOf,
   lastIndexOf,
