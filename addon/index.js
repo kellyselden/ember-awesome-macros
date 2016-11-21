@@ -10,7 +10,6 @@ export { default as difference } from './difference';
 export { default as divide } from './divide';
 export { default as eq } from './eq';
 export { default as equal } from './equal';
-export { default as every } from './every';
 export { default as filterBy } from './filter-by';
 export { default as filter } from './filter';
 export { default as findBy } from './find-by';
@@ -75,6 +74,7 @@ function deprecate(newFunc, oldKey, newKey) {
 const any = deprecate(array.any, 'any', 'array.any');
 const compact = deprecate(array.compact, 'compact', 'array.compact');
 const contains = deprecate(array.includes, 'contains', 'array.includes');
+const every = deprecate(array.every, 'every', 'array.every');
 const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
 const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
@@ -95,6 +95,7 @@ export {
   any,
   compact,
   contains,
+  every,
   includes,
   indexOf,
   lastIndexOf,

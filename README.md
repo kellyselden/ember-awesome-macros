@@ -35,7 +35,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`collect`](#collect)
 * [`array.compact`](#arraycompact)
 * [`array.concat`](#arrayconcat)
-* [`every`](#every)
+* [`array.every`](#arrayevery)
 * [`filterBy`](#filterby)
 * [`filter`](#filter)
 * [`findBy`](#findby)
@@ -167,6 +167,15 @@ array2: Ember.A([3, 4]),
 string: '3,4',
 example: array.concat('array1', 'array2'), // [1, 2, 3, 4]
 composingExample: array.concat('array1', split('string', raw(','))) // [1, 2, 3, 4]
+```
+
+##### `array.every`
+wraps [`Ember.MutableArray.every`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_every), allows composing
+
+```js
+array: Ember.A([1, 1]),
+value1: array.every('array', val => val === 1), // true
+value2: array.every('array', val => val === 2) // false
 ```
 
 ##### `array.includes`
@@ -307,15 +316,6 @@ source2: 'my other value',
 source3: 'my value',
 value1: equal('source1', 'source2'), // false
 value2: equal('source1', 'source3') // true
-```
-
-##### `every`
-wraps [`Ember.MutableArray.every`](http://emberjs.com/api/classes/Ember.MutableArray.html#method_every), allows composing
-
-```js
-array: Ember.A([1, 1]),
-value1: any('array', val => val === 1), // true
-value2: any('array', val => val === 2) // false
 ```
 
 ##### `filterBy`
