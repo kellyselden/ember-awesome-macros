@@ -35,14 +35,14 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`collect`](#collect)
 * [`compact`](#compact)
 * [`array.concat`](#arrayconcat)
-* [`contains`](#contains)
+* [`array.contains`](#arraycontains)
 * [`every`](#every)
 * [`filterBy`](#filterby)
 * [`filter`](#filter)
 * [`findBy`](#findby)
 * [`find`](#find)
 * [`first`](#first)
-* [`includes`](#includes)
+* [`array.includes`](#arrayincludes)
 * [`array.indexOf`](#arrayindexof)
 * [`isAny`](#isany)
 * [`isEvery`](#isevery)
@@ -160,6 +160,21 @@ array2: Ember.A([3, 4]),
 string: '3,4',
 example: array.concat('array1', 'array2'), // [1, 2, 3, 4]
 composingExample: array.concat('array1', split('string', raw(','))) // [1, 2, 3, 4]
+```
+
+##### `array.contains`
+alias for [`array.includes`](#arrayincludes)
+
+##### `array.includes`
+implements `Array.prototype.includes()`, allows composing
+
+```js
+array: Ember.A(['my value 1', 'my value 2']),
+source1: 'my value 2',
+source2: 'my value 3',
+value1: array.includes('array', 'source1'), // true
+value2: array.includes('array', 'source2'), // false
+value3: array.includes(collect(raw('my value 1'), raw('my value 2')), raw('my value 1')) // true
 ```
 
 ##### `array.indexOf`
@@ -280,9 +295,6 @@ value1: conditional('condition1', 'expr1', 'expr2'), // 'my value 1'
 value2: conditional('condition2', 'expr1', 'expr2'), // 'my value 2'
 value3: conditional(or('condition1', 'condition2'), raw('my value 1'), raw('my value 2')) // 'my value 1'
 ```
-
-##### `contains`
-alias for [`includes`](#includes)
 
 ##### `dasherize`
 wraps [`Ember.String.dasherize`](http://emberjs.com/api/classes/Ember.String.html#method_dasherize), allows composing
@@ -458,18 +470,6 @@ wraps [`Ember.String.htmlSafe`](http://emberjs.com/api/classes/Ember.String.html
 ```js
 originalValue: '<input>',
 newValue: htmlSafe('originalValue') // will not be escaped
-```
-
-##### `includes`
-implements `Array.prototype.includes()`, allows composing
-
-```js
-array: Ember.A(['my value 1', 'my value 2']),
-source1: 'my value 2',
-source2: 'my value 3',
-value1: includes('array', 'source1'), // true
-value2: includes('array', 'source2'), // false
-value3: includes(collect(raw('my value 1'), raw('my value 2')), raw('my value 1')) // true
 ```
 
 ##### `instanceOf`

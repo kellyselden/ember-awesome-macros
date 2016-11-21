@@ -10,7 +10,6 @@ export { default as collect } from './collect';
 export { default as compact } from './compact';
 export { default as computed } from './computed';
 export { default as conditional } from './conditional';
-export { default as contains } from './contains';
 export { default as dasherize } from './dasherize';
 export { default as decamelize } from './decamelize';
 export { default as defaultTrue } from './default-true';
@@ -29,7 +28,6 @@ export { default as gt } from './gt';
 export { default as gte } from './gte';
 export { default as hash } from './hash';
 export { default as htmlSafe } from './html-safe';
-export { default as includes } from './includes';
 export { default as instanceOf } from './instance-of';
 export { default as isAny } from './is-any';
 export { default as isEvery } from './is-every';
@@ -81,6 +79,8 @@ function deprecate(newFunc, oldKey, newKey) {
   }, newFunc);
 }
 
+const contains = deprecate(array.contains, 'contains', 'array.contains');
+const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
 const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
 const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
@@ -92,6 +92,8 @@ const substr = deprecate(string.substr, 'substr', 'array.substr');
 const substring = deprecate(string.substring, 'substring', 'array.substring');
 
 export {
+  contains,
+  includes,
   indexOf,
   lastIndexOf,
   promiseAll,
