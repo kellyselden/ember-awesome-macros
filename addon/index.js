@@ -17,7 +17,6 @@ export { default as hash } from './hash';
 export { default as htmlSafe } from './html-safe';
 export { default as instanceOf } from './instance-of';
 export { default as isHtmlSafe } from './is-html-safe';
-export { default as join } from './join';
 export { default as lt } from './lt';
 export { default as lte } from './lte';
 export { default as mapBy } from './map-by';
@@ -76,13 +75,16 @@ const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
 const isAny = deprecate(array.isAny, 'isAny', 'array.isAny');
 const isEvery = deprecate(array.isEvery, 'isEvery', 'array.isEvery');
+const join = deprecate(array.join, 'join', 'array.join');
 const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
 const last = deprecate(array.last, 'last', 'array.last');
+
 const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
 const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
 const promiseHash = deprecate(promise.hash, 'promiseHash', 'promise.hash');
 const promiseObject = deprecate(promise.object, 'promiseObject', 'promise.object');
 const promiseResolve = deprecate(promise.resolve, 'promiseResolve', 'promise.resolve');
+
 const camelize = deprecate(string.camelize, 'camelize', 'string.camelize');
 const capitalize = deprecate(string.capitalize, 'capitalize', 'string.capitalize');
 const classify = deprecate(string.classify, 'classify', 'string.classify');
@@ -105,13 +107,16 @@ export {
   indexOf,
   isAny,
   isEvery,
+  join,
   lastIndexOf,
   last,
+
   promiseAll,
   promiseArray,
   promiseHash,
   promiseObject,
   promiseResolve,
+
   camelize,
   capitalize,
   classify,

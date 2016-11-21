@@ -45,7 +45,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.indexOf`](#arrayindexof)
 * [`array.isAny`](#arrayisany)
 * [`array.isEvery`](#arrayisevery)
-* [`join`](#join)
+* [`array.join`](#arrayjoin)
 * [`array.lastIndexOf`](#arraylastindexof)
 * [`array.last`](#arraylast)
 * [`array.length`](#arraylength)
@@ -267,6 +267,16 @@ result1: array.isEvery('array', 'key', 'value1'), // true
 result2: array.isEvery('array', 'key', 'value2') // false
 ```
 
+##### `array.join`
+wraps [`Array.prototype.join()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join), allows composing
+
+```js
+array: Ember.A(['1', '2']),
+separator: ', ',
+value1: array.join('values', 'separator'), // '1, 2'
+value2: array.join(collect(raw('1'), raw('2')), raw(', ')) // '1, 2'
+```
+
 ##### `array.lastIndexOf`
 wraps [`Array.prototype.lastIndexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf), allows composing
 
@@ -481,16 +491,6 @@ source1: '<input>',
 source2: htmlSafe('<input>'),
 value1: isHtmlSafe('source1'), // false
 value2: isHtmlSafe('source2') // true
-```
-
-##### `join`
-implements `Array.prototype.join()`, allows composing
-
-```js
-array: Ember.A(['1', '2']),
-separator: ', ',
-value1: join('values', 'separator'), // '1, 2'
-value2: join(collect(raw('1'), raw('2')), raw(', ')) // '1, 2'
 ```
 
 ##### `lt`
