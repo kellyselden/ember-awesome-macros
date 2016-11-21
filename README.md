@@ -40,14 +40,14 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.filter`](#arrayfilter)
 * [`array.findBy`](#arrayfindby)
 * [`array.find`](#arrayfind)
-* [`first`](#first)
+* [`array.first`](#arrayfirst)
 * [`array.includes`](#arrayincludes)
 * [`array.indexOf`](#arrayindexof)
 * [`isAny`](#isany)
 * [`isEvery`](#isevery)
 * [`join`](#join)
 * [`array.lastIndexOf`](#arraylastindexof)
-* [`last`](#last)
+* [`array.last`](#arraylast)
 * [`array.length`](#arraylength)
 * [`mapBy`](#mapby)
 * [`map`](#map)
@@ -212,6 +212,16 @@ array: Ember.A([{ test: 1 }, { test: 2 }]),
 value: array.find('array', item => item.test === 2) // { test: 2 }
 ```
 
+##### `array.first`
+get the first item of an array
+
+```js
+array: ['1', '2'],
+string: '1, 2',
+example: array.first('array'), // '1'
+composingExample: array.first(split('string', raw(', '))) // '1'
+```
+
 ##### `array.includes`
 implements `Array.prototype.includes()`, allows composing
 
@@ -240,6 +250,16 @@ wraps [`Array.prototype.lastIndexOf()`](https://developer.mozilla.org/en-US/docs
 array: [2, 5, 9, 2],
 value1: array.lastIndexOf('array', 2), // 3
 value2: array.lastIndexOf('array', 2, 2) // 0
+```
+
+##### `array.last`
+get the last item of an array
+
+```js
+array: ['1', '2'],
+string: '1, 2',
+example: array.last('array'), // '2'
+composingExample: array.last(split('string', raw(', '))) // '2'
 ```
 
 ##### `array.length`
@@ -350,16 +370,6 @@ source2: 'my other value',
 source3: 'my value',
 value1: equal('source1', 'source2'), // false
 value2: equal('source1', 'source3') // true
-```
-
-##### `first`
-get the first item of an array
-
-```js
-array: ['1', '2'],
-string: '1, 2',
-example: first('array'), // '1'
-composingExample: first(split('string', raw(', '))) // '1'
 ```
 
 ##### `getBy`
@@ -481,16 +491,6 @@ array: Ember.A(['1', '2']),
 separator: ', ',
 value1: join('values', 'separator'), // '1, 2'
 value2: join(collect(raw('1'), raw('2')), raw(', ')) // '1, 2'
-```
-
-##### `last`
-get the last item of an array
-
-```js
-array: ['1', '2'],
-string: '1, 2',
-example: last('array'), // '2'
-composingExample: last(split('string', raw(', '))) // '2'
 ```
 
 ##### `lt`

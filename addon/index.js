@@ -10,7 +10,6 @@ export { default as difference } from './difference';
 export { default as divide } from './divide';
 export { default as eq } from './eq';
 export { default as equal } from './equal';
-export { default as first } from './first';
 export { default as getBy } from './get-by';
 export { default as gt } from './gt';
 export { default as gte } from './gte';
@@ -21,7 +20,6 @@ export { default as isAny } from './is-any';
 export { default as isEvery } from './is-every';
 export { default as isHtmlSafe } from './is-html-safe';
 export { default as join } from './join';
-export { default as last } from './last';
 export { default as lt } from './lt';
 export { default as lte } from './lte';
 export { default as mapBy } from './map-by';
@@ -75,9 +73,11 @@ const filterBy = deprecate(array.filterBy, 'filterBy', 'array.filterBy');
 const filter = deprecate(array.filter, 'filter', 'array.filter');
 const findBy = deprecate(array.findBy, 'findBy', 'array.findBy');
 const find = deprecate(array.find, 'find', 'array.find');
+const first = deprecate(array.first, 'first', 'array.first');
 const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
 const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
+const last = deprecate(array.last, 'last', 'array.last');
 const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
 const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
 const promiseHash = deprecate(promise.hash, 'promiseHash', 'promise.hash');
@@ -100,9 +100,11 @@ export {
   filter,
   findBy,
   find,
+  first,
   includes,
   indexOf,
   lastIndexOf,
+  last,
   promiseAll,
   promiseArray,
   promiseHash,
