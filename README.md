@@ -54,9 +54,9 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.objectAt`](#arrayobjectat)
 * [`array.reduce`](#arrayreduce)
 * [`array.slice`](#arrayslice)
-* [`uniqBy`](#uniqby)
-* [`uniq`](#uniq)
-* [`without`](#without)
+* [`array.uniqBy`](#arrayuniqby)
+* [`array.uniq`](#arrayuniq)
+* [`array.without`](#arraywithout)
 
 ##### Boolean
 * [`and`](#and)
@@ -359,6 +359,32 @@ wraps [`Array.prototype.slice()`](https://developer.mozilla.org/en-US/docs/Web/J
 array: [1, 2, 3],
 value1: array.slice('array', 1), // [2, 3]
 value2: array.slice('array', difference('array.length', 1)) // [3]
+```
+
+##### `array.uniqBy`
+wraps [`Ember.Array.uniqBy`](http://emberjs.com/api/classes/Ember.Array.html#method_uniqBy), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }, { test: 2 }]),
+key: 'test',
+value: array.uniqBy('array', 'key') // [{ test: 1 }, { test: 2 }]
+```
+
+##### `array.uniq`
+wraps [`Ember.Array.uniq`](http://emberjs.com/api/classes/Ember.Array.html#method_uniq), allows composing
+
+```js
+array: Ember.A([1, 2, 2]),
+value: array.uniq('array') // [1, 2]
+```
+
+##### `array.without`
+wraps [`Ember.Enumerable.without`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_without), allows composing
+
+```js
+array: Ember.A([1, 2, 3]),
+value1: array.without('array', 2), // [1, 3]
+value2: array.without('array', array.objectAt(1)) // [1, 3]
 ```
 
 ##### `collect`
@@ -901,32 +927,6 @@ wraps [`Ember.String.underscore`](http://emberjs.com/api/classes/Ember.String.ht
 ```js
 originalValue: 'TestString',
 newValue: underscore('originalValue') // 'test_string'
-```
-
-##### `uniqBy`
-wraps [`Ember.Array.uniqBy`](http://emberjs.com/api/classes/Ember.Array.html#method_uniqBy), allows composing
-
-```js
-array: Ember.A([{ test: 1 }, { test: 2 }, { test: 2 }]),
-key: 'test',
-value: uniqBy('array', 'key') // [{ test: 1 }, { test: 2 }]
-```
-
-##### `uniq`
-wraps [`Ember.Array.uniq`](http://emberjs.com/api/classes/Ember.Array.html#method_uniq), allows composing
-
-```js
-array: Ember.A([1, 2, 2]),
-value: uniq('array') // [1, 2]
-```
-
-##### `without`
-wraps [`Ember.Enumerable.without`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_without), allows composing
-
-```js
-array: Ember.A([1, 2, 3]),
-value1: without('array', 2), // [1, 3]
-value2: without('array', objectAt(1)) // [1, 3]
 ```
 
 ##### `writable`

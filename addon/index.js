@@ -40,9 +40,6 @@ export { default as toLower } from './to-lower';
 export { default as toUpper } from './to-upper';
 export { default as typeOf } from './type-of';
 export { default as underscore } from './underscore';
-export { default as uniqBy } from './uniq-by';
-export { default as uniq } from './uniq';
-export { default as without } from './without';
 export { default as writable } from './writable';
 
 import { deprecateFunc } from 'ember-deprecations';
@@ -78,6 +75,9 @@ const map = deprecate(array.map, 'map', 'array.map');
 const objectAt = deprecate(array.objectAt, 'objectAt', 'array.objectAt');
 const reduce = deprecate(array.reduce, 'reduce', 'array.reduce');
 const slice = deprecate(array.slice, 'slice', 'array.slice');
+const uniqBy = deprecate(array.uniqBy, 'uniqBy', 'array.uniqBy');
+const uniq = deprecate(array.uniq, 'uniq', 'array.uniq');
+const without = deprecate(array.without, 'without', 'array.without');
 
 const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
 const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
@@ -115,6 +115,9 @@ export {
   objectAt,
   reduce,
   slice,
+  uniqBy,
+  uniq,
+  without,
 
   promiseAll,
   promiseArray,
