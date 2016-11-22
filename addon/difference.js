@@ -1,7 +1,7 @@
-import { normalizeArithmetic } from './utils';
+import { reduceKeys } from './utils';
 
 export default function(...keys) {
-  return normalizeArithmetic(keys, (total, value) => {
+  return reduceKeys(keys, (total, value) => {
     return total - value;
   });
 }

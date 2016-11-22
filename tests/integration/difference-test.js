@@ -4,25 +4,6 @@ import compute from '../helpers/compute';
 
 module('Integration | Macro | difference');
 
-test('returns zero if no keys', function(assert) {
-  compute({
-    assert,
-    computed: difference(),
-    strictEqual: 0
-  });
-});
-
-test('returns identity if one number', function(assert) {
-  compute({
-    assert,
-    computed: difference('source1'),
-    properties: {
-      source1: 3
-    },
-    strictEqual: 3
-  });
-});
-
 test('subtracts two numbers', function(assert) {
   compute({
     assert,
@@ -52,7 +33,9 @@ test('handles all undefined', function(assert) {
   compute({
     assert,
     computed: difference('source1', 'source2'),
-    strictEqual: 0
+    assertion(val) {
+      return isNaN(val);
+    }
   });
 });
 
@@ -63,7 +46,9 @@ test('handles some undefined', function(assert) {
     properties: {
       source1: 3
     },
-    strictEqual: 3
+    assertion(val) {
+      return isNaN(val);
+    }
   });
 });
 

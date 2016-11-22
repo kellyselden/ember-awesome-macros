@@ -4,6 +4,17 @@ import compute from '../helpers/compute';
 
 module('Integration | Macro | and');
 
+test('true and undefined returns false', function(assert) {
+  compute({
+    assert,
+    computed: and('source1', 'source2'),
+    properties: {
+      source1: true
+    },
+    strictEqual: undefined
+  });
+});
+
 test('false and false returns false', function(assert) {
   compute({
     assert,

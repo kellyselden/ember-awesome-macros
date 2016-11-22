@@ -4,25 +4,6 @@ import compute from '../helpers/compute';
 
 module('Integration | Macro | product');
 
-test('returns zero if no keys', function(assert) {
-  compute({
-    assert,
-    computed: product(),
-    strictEqual: 0
-  });
-});
-
-test('returns identity if one number', function(assert) {
-  compute({
-    assert,
-    computed: product('source1'),
-    properties: {
-      source1: 1
-    },
-    strictEqual: 1
-  });
-});
-
 test('multiplies two numbers', function(assert) {
   compute({
     assert,
@@ -52,7 +33,9 @@ test('handles all undefined', function(assert) {
   compute({
     assert,
     computed: product('source1', 'source2'),
-    strictEqual: 0
+    assertion(val) {
+      return isNaN(val);
+    }
   });
 });
 
@@ -63,7 +46,9 @@ test('handles some undefined', function(assert) {
     properties: {
       source1: 1
     },
-    strictEqual: 1
+    assertion(val) {
+      return isNaN(val);
+    }
   });
 });
 

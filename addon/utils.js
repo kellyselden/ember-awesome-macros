@@ -143,12 +143,8 @@ export function normalizeArray(keys, {
   }).readOnly();
 }
 
-export function normalizeArithmetic(keys, func) {
+export function reduceKeys(keys, func) {
   return resolveKeys(keys, (...values) => {
-    values = values.filter(value => value !== undefined);
-    if (!values.length) {
-      return 0;
-    }
     return values.reduce(func);
   });
 }
