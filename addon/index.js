@@ -30,8 +30,6 @@ import promise from './promise';
 export { promise };
 export { default as quotient } from './quotient';
 export { default as raw } from './raw';
-export { default as reduce } from './reduce';
-export { default as slice } from './slice';
 export { default as split } from './split';
 import string from './string';
 export { string };
@@ -78,6 +76,8 @@ const last = deprecate(array.last, 'last', 'array.last');
 const mapBy = deprecate(array.mapBy, 'mapBy', 'array.mapBy');
 const map = deprecate(array.map, 'map', 'array.map');
 const objectAt = deprecate(array.objectAt, 'objectAt', 'array.objectAt');
+const reduce = deprecate(array.reduce, 'reduce', 'array.reduce');
+const slice = deprecate(array.slice, 'slice', 'array.slice');
 
 const promiseAll = deprecate(promise.all, 'promiseAll', 'promise.all');
 const promiseArray = deprecate(promise.array, 'promiseArray', 'promise.array');
@@ -113,6 +113,8 @@ export {
   mapBy,
   map,
   objectAt,
+  reduce,
+  slice,
 
   promiseAll,
   promiseArray,

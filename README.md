@@ -52,8 +52,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.mapBy`](#arraymapby)
 * [`array.map`](#arraymap)
 * [`array.objectAt`](#arrayobjectat)
-* [`reduce`](#reduce)
-* [`slice`](#slice)
+* [`array.reduce`](#arrayreduce)
+* [`array.slice`](#arrayslice)
 * [`uniqBy`](#uniqby)
 * [`uniq`](#uniq)
 * [`without`](#without)
@@ -333,6 +333,32 @@ source2: 1,
 value1: array.objectAt('array', 'source1'), // 'my value'
 value2: array.objectAt('array', 'source2'), // undefined
 value3: array.objectAt(collect(raw('my value 1')), raw(0)) // 'my value'
+```
+
+##### `array.reduce`
+wraps [`Array.prototype.reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce), allows composing
+
+```js
+array: ['one', 'two'],
+value1: array.reduce('array', (obj, cur, i) => {
+  obj[cur] = i;
+  return obj;
+}, {}), // { one: 0, two: 1 }
+
+string: 'one, two',
+value2: array.reduce(split('string', raw(', ')), (obj, cur, i) => {
+  obj[cur] = i;
+  return obj;
+}, {}) // { one: 0, two: 1 }
+```
+
+##### `array.slice`
+wraps [`Array.prototype.slice()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice), allows composing
+
+```js
+array: [1, 2, 3],
+value1: array.slice('array', 1), // [2, 3]
+value2: array.slice('array', difference('array.length', 1)) // [3]
 ```
 
 ##### `collect`
@@ -715,32 +741,6 @@ value: hash({
   prop1: 'source',
   prop2: raw('my raw value')
 }) // { prop1: 'my computed value', prop2: 'my raw value' }
-```
-
-##### `reduce`
-wraps [`Array.prototype.reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce), allows composing
-
-```js
-array: ['one', 'two'],
-value1: reduce('array', (obj, cur, i) => {
-  obj[cur] = i;
-  return obj;
-}, {}), // { one: 0, two: 1 }
-
-string: 'one, two',
-value2: reduce(split('string', raw(', ')), (obj, cur, i) => {
-  obj[cur] = i;
-  return obj;
-}, {}) // { one: 0, two: 1 }
-```
-
-##### `slice`
-wraps [`Array.prototype.slice()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice), allows composing
-
-```js
-array: [1, 2, 3],
-value1: slice('array', 1), // [2, 3]
-value2: slice('array', difference('array.length', 1)) // [3]
 ```
 
 ##### `split`

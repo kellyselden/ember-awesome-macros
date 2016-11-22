@@ -18,3 +18,5 @@ export { default as length } from './length';
 export { default as mapBy } from './map-by';
 export { default as map } from './map';
 export { default as objectAt } from './object-at';
+export { default as reduce } from './reduce';
+export { default as slice } from './slice';
