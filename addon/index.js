@@ -30,16 +30,12 @@ import promise from './promise';
 export { promise };
 export { default as quotient } from './quotient';
 export { default as raw } from './raw';
-export { default as split } from './split';
 import string from './string';
 export { string };
 export { default as subtract } from './subtract';
 export { default as sum } from './sum';
 export { default as tag } from './tag';
-export { default as toLower } from './to-lower';
-export { default as toUpper } from './to-upper';
 export { default as typeOf } from './type-of';
-export { default as underscore } from './underscore';
 export { default as writable } from './writable';
 
 import { deprecateFunc } from 'ember-deprecations';
@@ -90,8 +86,12 @@ const capitalize = deprecate(string.capitalize, 'capitalize', 'string.capitalize
 const classify = deprecate(string.classify, 'classify', 'string.classify');
 const dasherize = deprecate(string.dasherize, 'dasherize', 'string.dasherize');
 const decamelize = deprecate(string.decamelize, 'decamelize', 'string.decamelize');
+const split = deprecate(string.split, 'split', 'string.split');
 const substr = deprecate(string.substr, 'substr', 'string.substr');
 const substring = deprecate(string.substring, 'substring', 'string.substring');
+const toLower = deprecate(string.toLower, 'toLower', 'string.toLower');
+const toUpper = deprecate(string.toUpper, 'toUpper', 'string.toUpper');
+const underscore = deprecate(string.underscore, 'underscore', 'string.underscore');
 
 export {
   any,
@@ -130,6 +130,10 @@ export {
   classify,
   dasherize,
   decamelize,
+  split,
   substr,
-  substring
+  substring,
+  toLower,
+  toUpper,
+  underscore
 };

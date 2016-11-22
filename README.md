@@ -117,13 +117,13 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`string.indexOf`](#stringindexof)
 * [`string.lastIndexOf`](#stringlastindexof)
 * [`string.length`](#stringlength)
-* [`split`](#split)
+* [`string.split`](#stringsplit)
 * [`string.substr`](#stringsubstr)
 * [`string.substring`](#stringsubstring)
 * [`tag`](#tag)
-* [`toLower`](#tolower)
-* [`toUpper`](#toupper)
-* [`underscore`](#underscore)
+* [`string.toLower`](#stringtolower)
+* [`string.toUpper`](#stringtoupper)
+* [`string.underscore`](#stringunderscore)
 
 #### Details
 
@@ -769,16 +769,6 @@ value: hash({
 }) // { prop1: 'my computed value', prop2: 'my raw value' }
 ```
 
-##### `split`
-implements `String.prototype.split()`, allows composing
-
-```js
-source: 'val1,val2',
-key: ',',
-value1: split('source', 'key'), // ['val1', 'val2']
-value2: split('source', raw(',')) // ['val1', 'val2']
-```
-
 ##### `string.camelize`
 wraps [`Ember.String.camelize`](http://emberjs.com/api/classes/Ember.String.html#method_camelize), allows composing
 
@@ -849,6 +839,16 @@ example: string.length('string1'), // 3
 composingExample: string.length(tag`${'string1'}${'string2'}`) // 6
 ```
 
+##### `string.split`
+wraps [`String.prototype.split`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split), allows composing
+
+```js
+source: 'val1,val2',
+key: ',',
+value1: string.split('source', 'key'), // ['val1', 'val2']
+value2: string.split('source', raw(',')) // ['val1', 'val2']
+```
+
 ##### `string.substr`
 wraps [`String.prototype.substr()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr), allows composing
 
@@ -869,6 +869,30 @@ string2: 'abc',
 string3: 'xyz',
 example: string.substring('string1', 2, 4), // 'cx'
 composingExample: string.substring(tag`${'string2'}${'string3'}`, 2, 4) // 'cx'
+```
+
+##### `string.toLower`
+wraps [`String.prototype.toLowerCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase), allows composing
+
+```js
+originalValue: 'TestString',
+newValue: string.toLower('originalValue') // 'teststring'
+```
+
+##### `string.toUpper`
+wraps [`String.prototype.toUpperCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase), allows composing
+
+```js
+originalValue: 'TestString',
+newValue: string.toUpper('originalValue') // 'TESTSTRING'
+```
+
+##### `string.underscore`
+wraps [`Ember.String.underscore`](http://emberjs.com/api/classes/Ember.String.html#method_underscore), allows composing
+
+```js
+originalValue: 'TestString',
+newValue: string.underscore('originalValue') // 'test_string'
 ```
 
 ##### `subtract`
@@ -894,22 +918,6 @@ value1: tag`one ${'source'} three`, // 'one two three'
 value2: tag`one ${toUpper('source')} three` // 'one TWO three'
 ```
 
-##### `toLower`
-wraps [`String.prototype.toLowerCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase), allows composing
-
-```js
-originalValue: 'TestString',
-newValue: toLower('originalValue') // 'teststring'
-```
-
-##### `toUpper`
-wraps [`String.prototype.toUpperCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase), allows composing
-
-```js
-originalValue: 'TestString',
-newValue: toUpper('originalValue') // 'TESTSTRING'
-```
-
 ##### `typeOf`
 wraps [`typeOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeOf) operator
 
@@ -919,14 +927,6 @@ key2: false,
 key3: '',
 value1: typeOf('key1'), // 'object'
 value2: typeOf(or('key2', 'key3')) // 'string'
-```
-
-##### `underscore`
-wraps [`Ember.String.underscore`](http://emberjs.com/api/classes/Ember.String.html#method_underscore), allows composing
-
-```js
-originalValue: 'TestString',
-newValue: underscore('originalValue') // 'test_string'
 ```
 
 ##### `writable`
