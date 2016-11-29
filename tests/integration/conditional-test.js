@@ -38,6 +38,30 @@ test('returns second value when false', function(assert) {
   });
 });
 
+test('doesn\'t break when missing third param', function(assert) {
+  compute({
+    assert,
+    computed: conditional('condition', 'expr1'),
+    properties: {
+      condition: true,
+      expr1: 'val 1'
+    },
+    strictEqual: 'val 1'
+  });
+});
+
+test('allows third param implicit false', function(assert) {
+  compute({
+    assert,
+    computed: conditional('condition', 'expr1'),
+    properties: {
+      condition: false,
+      expr1: 'val 1'
+    },
+    strictEqual: undefined
+  });
+});
+
 test('composable: returns first value when true', function(assert) {
   compute({
     assert,
