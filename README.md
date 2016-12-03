@@ -53,6 +53,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.map`](#arraymap)
 * [`array.objectAt`](#arrayobjectat)
 * [`array.reduce`](#arrayreduce)
+* [`array.reverse`](#arrayreverse)
 * [`array.slice`](#arrayslice)
 * [`array.uniqBy`](#arrayuniqby)
 * [`array.uniq`](#arrayuniq)
@@ -351,6 +352,15 @@ value2: array.reduce(split('string', raw(', ')), (obj, cur, i) => {
   obj[cur] = i;
   return obj;
 }, {}) // { one: 0, two: 1 }
+```
+
+##### `array.reverse`
+wraps [`Array.prototype.reverse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) (calls slice() first as to not mutate), allows composing
+
+```js
+array: [1, 2, 3],
+value1: array.reverse('array'), // [3, 2, 1]
+value2: array.reverse(array.reverse('array')) // [1, 2, 3]
 ```
 
 ##### `array.slice`
