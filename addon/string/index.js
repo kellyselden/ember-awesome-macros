@@ -6,6 +6,7 @@ export { default as decamelize } from './decamelize';
 export { default as indexOf } from './index-of';
 export { default as lastIndexOf } from './last-index-of';
 export { default as length } from './length';
+export { default as replace } from './replace';
 export { default as split } from './split';
 export { default as substr } from './substr';
 export { default as substring } from './substring';

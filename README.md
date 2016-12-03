@@ -117,6 +117,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`string.indexOf`](#stringindexof)
 * [`string.lastIndexOf`](#stringlastindexof)
 * [`string.length`](#stringlength)
+* [`string.replace`](#stringreplace)
 * [`string.split`](#stringsplit)
 * [`string.substr`](#stringsubstr)
 * [`string.substring`](#stringsubstring)
@@ -837,6 +838,17 @@ string1: 'abc',
 string2: 'xyz',
 example: string.length('string1'), // 3
 composingExample: string.length(tag`${'string1'}${'string2'}`) // 6
+```
+
+##### `string.replace`
+wraps [`String.prototype.replace`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace), allows composing
+
+```js
+string: 'abc',
+substr: 'bc',
+newSubstr: 'cb',
+value1: string.replace('string', 'substr', 'newSubstr'), // 'acb'
+value2: string.replace('source', 'substr', string.toUpper('newSubstr')) // 'aCB'
 ```
 
 ##### `string.split`
