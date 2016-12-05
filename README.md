@@ -506,7 +506,8 @@ key: 'modelProperty',
 model: {
   modelProperty: 'my value'
 },
-value: getBy('model', 'key') // 'my value'
+value1: getBy('model', 'key'), // 'my value'
+value2: getBy('model', raw('modelProperty')) // 'my value'
 ```
 
 ##### `gt`

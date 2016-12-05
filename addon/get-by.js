@@ -1,14 +1,10 @@
-import Ember from 'ember';
+import get from 'ember-metal/get';
+import { resolveKeys } from './utils';
 
-const {
-  get,
-  computed
-} = Ember;
-
-export default function(obj, key) {
-  return computed(obj, key, function() {
-    let newKey = get(this, key);
-    let newObj = get(this, `${obj}.${newKey}`);
-    return newObj;
+export default function(...keys) {
+  return resolveKeys(keys, (obj, key) => {
+    if (obj && key) {
+      return get(obj, key);
+    }
   });
 }

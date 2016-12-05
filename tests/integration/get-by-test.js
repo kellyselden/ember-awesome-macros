@@ -1,6 +1,6 @@
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
-import { getBy } from 'ember-awesome-macros';
+import { getBy, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from '../helpers/compute';
 
@@ -39,4 +39,15 @@ test('handles property changes', function(assert) {
   set(obj, 'source', 'testProp2');
 
   assert.strictEqual(get(obj, 'computed'), 'test val 2');
+});
+
+test('composable', function(assert) {
+  compute({
+    assert,
+    computed: getBy(
+      raw(model),
+      raw('testProp1')
+    ),
+    strictEqual: 'test val 1'
+  });
 });
