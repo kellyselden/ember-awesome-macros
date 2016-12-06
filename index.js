@@ -12,7 +12,8 @@ module.exports = {
       return __dirname;
     };
 
-    var babel = app.options.babel;
+    var options = app.options = app.options || {};
+    var babel = options.babel = options.babel || {};
     babel.plugins = babel.plugins || [];
     babel.plugins.push(plugin);
     babel.extra = babel.extra || {};
