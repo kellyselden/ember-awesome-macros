@@ -1,1 +1,1 @@
-export { computed as default } from './utils';
+export { default } from 'ember-macro-helpers/computed';

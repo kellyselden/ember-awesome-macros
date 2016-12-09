@@ -1,17 +1,8 @@
-import Ember from 'ember';
 import RSVP from 'rsvp';
-import get from 'ember-metal/get';
 import { default as _computed } from 'ember-computed';
-import expandProperty from 'ember-macro-helpers/expand-property';
-
-const {
-  ComputedProperty
-} = Ember;
-
-// consider making private
-export function isComputed(key) {
-  return key instanceof ComputedProperty;
-}
+import flattenKeys from 'ember-macro-helpers/flatten-keys';
+import getValue from 'ember-macro-helpers/get-value';
+import computed from 'ember-macro-helpers/computed';
 
 // consider making private
 export function wrapArray(key) {
@@ -19,93 +10,6 @@ export function wrapArray(key) {
     key += '.[]';
   }
   return key;
-}
-
-function flattenKey(key, flattenedKeys) {
-  if (isComputed(key)) {
-    let dependentKeys = key._dependentKeys;
-    if (dependentKeys === undefined) {
-      // when there are no keys (raw)
-      return;
-    }
-
-    return _flattenKeys(dependentKeys, flattenedKeys);
-  }
-
-  if (typeof key !== 'string') {
-    return key;
-  }
-
-  flattenedKeys.push(key);
-}
-
-function _flattenKeys(keys, flattenedKeys) {
-  keys.forEach(key => {
-    flattenKey(key, flattenedKeys);
-  });
-}
-
-export function flattenKeys(keys) {
-  let flattenedKeys = [];
-  _flattenKeys(keys.slice(0, -1), flattenedKeys);
-  let lastKey = keys[keys.length - 1];
-  if (lastKey) {
-    let lastValue = flattenKey(lastKey, flattenedKeys);
-    if (lastValue) {
-      if (lastValue.get) {
-        flattenKey(lastValue.get, flattenedKeys);
-      }
-      if (lastValue.set) {
-        flattenKey(lastValue.set, flattenedKeys);
-      }
-    }
-  }
-  return flattenedKeys;
-}
-
-function collapseKeys(keys) {
-  return keys.reduce((newKeys, key) => {
-    if (typeof key === 'string') {
-      newKeys = newKeys.concat(expandProperty(key));
-    } else {
-      newKeys.push(key);
-    }
-    return newKeys;
-  }, []);
-}
-
-function buildCallback(keys, incomingCallback) {
-  let collapsedKeys = collapseKeys(keys);
-
-  let newCallback;
-  if (typeof incomingCallback === 'function') {
-    newCallback = function() {
-      let values = collapsedKeys.map(key => getValue(this, key));
-      return incomingCallback.apply(this, values);
-    };
-  } else {
-    newCallback = {};
-    if (incomingCallback.get) {
-      newCallback.get = function() {
-        let values = collapsedKeys.map(key => getValue(this, key));
-        return incomingCallback.get.apply(this, values);
-      };
-    }
-    if (incomingCallback.set) {
-      newCallback.set = incomingCallback.set;
-    }
-  }
-
-  return newCallback;
-}
-
-export function computed(...args) {
-  let keys = args.slice(0, -1);
-  let incomingCallback = args[args.length - 1];
-
-  let newCallback = buildCallback(keys, incomingCallback);
-
-  return _computed(...flattenKeys(keys), newCallback);
 }
 
 export function resolveKeys(keys, callback) {
@@ -195,16 +99,4 @@ export { safelyCreateComputed as normalizeString2 };
 export function normalizeArray2(keys, funcStr) {
   normalizeArrayArgs(keys);
   return safelyCreateComputed(keys, funcStr);
-}
-
-export function getValue(context, key) {
-  if (isComputed(key)) {
-    return key._getter.call(context);
-  }
-
-  if (typeof key !== 'string') {
-    return key;
-  }
-
-  return get(context, key);
 }
