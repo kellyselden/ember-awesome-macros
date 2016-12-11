@@ -4,7 +4,7 @@ import set from 'ember-metal/set';
 import RSVP from 'rsvp';
 import { promiseObject, promiseResolve } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from '../helpers/compute';
+import compute from 'ember-macro-test-helpers/compute';
 
 const { resolve } = RSVP;
 

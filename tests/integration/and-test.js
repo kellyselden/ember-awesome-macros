@@ -1,6 +1,6 @@
 import { and } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from '../helpers/compute';
+import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | and');
 

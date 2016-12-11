@@ -2,7 +2,7 @@ import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import { getBy, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from '../helpers/compute';
+import compute from 'ember-macro-test-helpers/compute';
 
 let model;
 

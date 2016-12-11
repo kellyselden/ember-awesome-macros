@@ -1,7 +1,7 @@
 import { uniqBy, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
-import compute from '../helpers/compute';
+import compute from 'ember-macro-test-helpers/compute';
 
 const key = 'test key';
 const retVal = 'return value';

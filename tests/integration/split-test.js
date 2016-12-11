@@ -2,7 +2,7 @@ import get from 'ember-metal/get';
 import { setProperties } from 'ember-metal/set';
 import { split, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from '../helpers/compute';
+import compute from 'ember-macro-test-helpers/compute';
 
 const source = 'val1,val2';
 const key = ',';

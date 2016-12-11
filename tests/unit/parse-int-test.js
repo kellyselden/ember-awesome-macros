@@ -1,7 +1,7 @@
 import { parseInt, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
-import compute from '../helpers/compute';
+import compute from 'ember-macro-test-helpers/compute';
 
 const string = 'string test';
 const radix = 'radix test';

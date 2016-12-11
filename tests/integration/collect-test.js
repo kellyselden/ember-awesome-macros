@@ -1,6 +1,6 @@
 import { collect, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from '../helpers/compute';
+import compute from 'ember-macro-test-helpers/compute';
 
 const value1 = 12;
 const value2 = 23;
