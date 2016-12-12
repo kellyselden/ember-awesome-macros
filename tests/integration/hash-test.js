@@ -33,7 +33,7 @@ test('it returns an object', function(assert) {
 });
 
 test('it responds to key changes', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: hash({
       prop1: 'key1',
       prop2: 'key2'
@@ -44,12 +44,12 @@ test('it responds to key changes', function(assert) {
     }
   });
 
-  obj.set('key2', value1);
+  subject.set('key2', value1);
   expected.set('prop2', value1);
 
-  let val = obj.get('computed');
+  let result = subject.get('computed');
 
-  assert.deepEqual(val, expected);
+  assert.deepEqual(result, expected);
 });
 
 test('it wraps key values', function(assert) {

@@ -26,7 +26,7 @@ test('it returns undefined if array undefined', function(assert) {
 });
 
 test('it calls isAny on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: isAny('array', 'key', 'value'),
     properties: {
       array,
@@ -36,11 +36,11 @@ test('it calls isAny on array', function(assert) {
   });
 
   assert.deepEqual(isAnyStub.args, [[key, value]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(result, retVal);
 });
 
 test('composable: it calls isAny on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: isAny(
       array,
       raw(key),
@@ -49,5 +49,5 @@ test('composable: it calls isAny on array', function(assert) {
   });
 
   assert.deepEqual(isAnyStub.args, [[key, value]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(result, retVal);
 });

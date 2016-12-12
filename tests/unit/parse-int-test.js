@@ -21,16 +21,16 @@ module('Unit | Macro | parse int', {
 });
 
 test('it returns undefined if string undefined', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: parseInt('string')
   });
 
   assert.notOk(parseIntStub.called);
-  assert.strictEqual(val, undefined);
+  assert.strictEqual(result, undefined);
 });
 
 test('it calls parseInt on string without radix', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: parseInt('string'),
     properties: {
       string
@@ -38,11 +38,11 @@ test('it calls parseInt on string without radix', function(assert) {
   });
 
   assert.deepEqual(parseIntStub.args, [[string]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('it returns undefined if string supplied but radix undefined', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: parseInt('string', 'radix'),
     properties: {
       string
@@ -50,11 +50,11 @@ test('it returns undefined if string supplied but radix undefined', function(ass
   });
 
   assert.notOk(parseIntStub.called);
-  assert.strictEqual(val, undefined);
+  assert.strictEqual(result, undefined);
 });
 
 test('it calls parseInt on string with radix', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: parseInt('string', 'radix'),
     properties: {
       string,
@@ -63,11 +63,11 @@ test('it calls parseInt on string with radix', function(assert) {
   });
 
   assert.deepEqual(parseIntStub.args, [[string, radix]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('composable: it calls parseInt on string', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: parseInt(
       raw(string),
       raw(radix)
@@ -75,5 +75,5 @@ test('composable: it calls parseInt on string', function(assert) {
   });
 
   assert.deepEqual(parseIntStub.args, [[string, radix]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });

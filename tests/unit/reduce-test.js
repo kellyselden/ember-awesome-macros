@@ -26,7 +26,7 @@ test('it returns undefined if array undefined', function(assert) {
 });
 
 test('it calls reduce on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: reduce('array', callback, initialValue),
     properties: {
       array
@@ -34,14 +34,14 @@ test('it calls reduce on array', function(assert) {
   });
 
   assert.deepEqual(reduceStub.args, [[callback, initialValue]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('composable: it calls reduce on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: reduce(raw(array), callback, initialValue)
   });
 
   assert.deepEqual(reduceStub.args, [[callback, initialValue]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });

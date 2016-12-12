@@ -20,16 +20,16 @@ module('Unit | Macro | parse float', {
 });
 
 test('it returns undefined if string undefined', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: parseFloat('string')
   });
 
   assert.notOk(parseFloatStub.called);
-  assert.strictEqual(val, undefined);
+  assert.strictEqual(result, undefined);
 });
 
 test('it calls parseFloat on string', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: parseFloat('string'),
     properties: {
       string
@@ -37,16 +37,16 @@ test('it calls parseFloat on string', function(assert) {
   });
 
   assert.deepEqual(parseFloatStub.args, [[string]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('composable: it calls parseFloat on string', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: parseFloat(
       raw(string)
     )
   });
 
   assert.deepEqual(parseFloatStub.args, [[string]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });

@@ -27,8 +27,8 @@ test('it returns an ember array', function(assert) {
       key1: value1,
       key2: value2
     },
-    assertion(val) {
-      return val.pushObject;
+    assertion(result) {
+      return result.pushObject;
     }
   });
 });

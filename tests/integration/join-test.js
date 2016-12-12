@@ -27,7 +27,7 @@ test('default', function(assert) {
 });
 
 test('it handles property changes', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: join('array', 'separator'),
     properties: {
       array,
@@ -37,7 +37,7 @@ test('it handles property changes', function(assert) {
 
   array.pushObject('test3');
 
-  assert.strictEqual(get(obj, 'computed'), 'test1, test2, test3');
+  assert.strictEqual(get(subject, 'computed'), 'test1, test2, test3');
 });
 
 test('it handles array undefined', function(assert) {

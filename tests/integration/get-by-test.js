@@ -28,7 +28,7 @@ test('default', function(assert) {
 });
 
 test('handles property changes', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: getBy('model', 'source'),
     properties: {
       model,
@@ -36,9 +36,9 @@ test('handles property changes', function(assert) {
     }
   });
 
-  set(obj, 'source', 'testProp2');
+  set(subject, 'source', 'testProp2');
 
-  assert.strictEqual(get(obj, 'computed'), 'test val 2');
+  assert.strictEqual(get(subject, 'computed'), 'test val 2');
 });
 
 test('composable', function(assert) {

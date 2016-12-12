@@ -27,14 +27,14 @@ module('Unit | Macro | hash', {
   }
 });
 
-function doAssertions(assert, val, callNumber) {
+function doAssertions(assert, result, callNumber) {
   assert.deepEqual(createStub.thisValues[callNumber], EmberObject);
   assert.deepEqual(createStub.args[callNumber], [expected]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 }
 
 test('it calls Ember.Object.create', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: hash({
       prop1: 'key1',
       prop2: 'key2'
@@ -45,11 +45,11 @@ test('it calls Ember.Object.create', function(assert) {
     }
   });
 
-  doAssertions(assert, val, 1);
+  doAssertions(assert, result, 1);
 });
 
 test('it responds to key changes', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: hash({
       prop1: 'key1',
       prop2: 'key2'
@@ -60,16 +60,16 @@ test('it responds to key changes', function(assert) {
     }
   });
 
-  obj.set('key2', value1);
+  subject.set('key2', value1);
   expected.prop2 = value1;
 
-  let val = obj.get('computed');
+  let result = subject.get('computed');
 
-  doAssertions(assert, val, 2);
+  doAssertions(assert, result, 2);
 });
 
 test('it wraps key values', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: hash('prop1', 'prop2'),
     properties: {
       prop1: value1,
@@ -77,11 +77,11 @@ test('it wraps key values', function(assert) {
     }
   });
 
-  doAssertions(assert, val, 1);
+  doAssertions(assert, result, 1);
 });
 
 test('it merges keys and hashes', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: hash('prop1', { prop2: 'key2' }),
     properties: {
       prop1: value1,
@@ -89,27 +89,27 @@ test('it merges keys and hashes', function(assert) {
     }
   });
 
-  doAssertions(assert, val, 1);
+  doAssertions(assert, result, 1);
 });
 
 test('value: it calls Ember.Object.create', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: hash({
       prop1: value1,
       prop2: value2
     })
   });
 
-  doAssertions(assert, val, 0);
+  doAssertions(assert, result, 0);
 });
 
 test('composing: it calls Ember.Object.create', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: hash({
       prop1: raw(value1),
       prop2: raw(value2)
     })
   });
 
-  doAssertions(assert, val, 0);
+  doAssertions(assert, result, 0);
 });

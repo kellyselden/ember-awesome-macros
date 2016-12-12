@@ -37,7 +37,7 @@ test('it calls concat on array', function(assert) {
 });
 
 test('it responds to length changes', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: concat('array', 'value1', 'value2'),
     properties: {
       array,
@@ -48,7 +48,7 @@ test('it responds to length changes', function(assert) {
 
   array.pushObject(0);
 
-  assert.deepEqual(obj.get('computed'), [0, 0, value1, value2]);
+  assert.deepEqual(subject.get('computed'), [0, 0, value1, value2]);
 });
 
 test('composable: it calls concat on array', function(assert) {

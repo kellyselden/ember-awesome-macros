@@ -24,7 +24,7 @@ test('it returns undefined if array undefined', function(assert) {
 });
 
 test('it calls compact on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: compact('array'),
     properties: {
       array
@@ -32,16 +32,16 @@ test('it calls compact on array', function(assert) {
   });
 
   assert.deepEqual(compactStub.args, [[]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(result, retVal);
 });
 
 test('composable: it calls compact on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: compact(
       raw(array)
     )
   });
 
   assert.deepEqual(compactStub.args, [[]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(result, retVal);
 });

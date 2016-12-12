@@ -26,7 +26,7 @@ test('it returns -1 if array undefined', function(assert) {
 });
 
 test('it calls lastIndexOf on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: lastIndexOf('array', 'value', 'fromIndex'),
     properties: {
       array,
@@ -36,11 +36,11 @@ test('it calls lastIndexOf on array', function(assert) {
   });
 
   assert.deepEqual(lastIndexOfStub.args, [[value, fromIndex]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('composable: it calls lastIndexOf on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: lastIndexOf(
       raw(array),
       raw(value),
@@ -49,5 +49,5 @@ test('composable: it calls lastIndexOf on array', function(assert) {
   });
 
   assert.deepEqual(lastIndexOfStub.args, [[value, fromIndex]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });

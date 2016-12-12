@@ -9,7 +9,7 @@ let {
 
 // remove once 2.4 is dropped
 if (!isHTMLSafe) {
-  isHTMLSafe = val => val instanceof Ember.Handlebars.SafeString;
+  isHTMLSafe = result => result instanceof Ember.Handlebars.SafeString;
 }
 
 module('Integration | Macro | html safe');

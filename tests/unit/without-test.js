@@ -25,7 +25,7 @@ test('it returns undefined if array undefined', function(assert) {
 });
 
 test('it calls without on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: without('array', 'item'),
     properties: {
       array,
@@ -34,11 +34,11 @@ test('it calls without on array', function(assert) {
   });
 
   assert.deepEqual(withoutStub.args, [[item]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(result, retVal);
 });
 
 test('composable: it calls without on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: without(
       array,
       raw(item)
@@ -46,5 +46,5 @@ test('composable: it calls without on array', function(assert) {
   });
 
   assert.deepEqual(withoutStub.args, [[item]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(result, retVal);
 });

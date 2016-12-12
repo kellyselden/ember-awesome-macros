@@ -37,7 +37,7 @@ test('it returns undefined if not found', function(assert) {
 });
 
 test('it returns undefined if popped', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: objectAt('array', 'source'),
     properties: {
       array,
@@ -47,7 +47,7 @@ test('it returns undefined if popped', function(assert) {
 
   array.popObject();
 
-  assert.strictEqual(get(obj, 'computed'), undefined);
+  assert.strictEqual(get(subject, 'computed'), undefined);
 });
 
 test('it returns undefined if not array', function(assert) {

@@ -32,7 +32,7 @@ test('it calls reverse on array', function(assert) {
 });
 
 test('it responds to length changes', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: reverse('array'),
     properties: {
       array
@@ -41,7 +41,7 @@ test('it responds to length changes', function(assert) {
 
   array.pushObject(3);
 
-  assert.deepEqual(obj.get('computed'), [3, 2, 1]);
+  assert.deepEqual(subject.get('computed'), [3, 2, 1]);
 });
 
 test('composable: it calls reverse on array', function(assert) {

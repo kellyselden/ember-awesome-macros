@@ -23,16 +23,16 @@ function computed(...keys) {
 }
 
 test('it returns undefined if string undefined', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: computed('string')
   });
 
   assert.notOk(funcStub.called);
-  assert.strictEqual(val, undefined);
+  assert.strictEqual(result, undefined);
 });
 
 test('it calls func on string without args', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: computed('string'),
     properties: {
       string
@@ -40,11 +40,11 @@ test('it calls func on string without args', function(assert) {
   });
 
   assert.deepEqual(funcStub.args, [[]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('it returns undefined if string supplied but first param undefined', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: computed('string', 'firstParam'),
     properties: {
       string
@@ -52,11 +52,11 @@ test('it returns undefined if string supplied but first param undefined', functi
   });
 
   assert.notOk(funcStub.called);
-  assert.strictEqual(val, undefined);
+  assert.strictEqual(result, undefined);
 });
 
 test('it calls func on string without second param', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: computed('string', 'firstParam'),
     properties: {
       string,
@@ -65,11 +65,11 @@ test('it calls func on string without second param', function(assert) {
   });
 
   assert.deepEqual(funcStub.args, [[firstParam]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('it returns undefined if first param supplied but second param undefined', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: computed('string', 'firstParam', 'secondParam'),
     properties: {
       string,
@@ -78,11 +78,11 @@ test('it returns undefined if first param supplied but second param undefined', 
   });
 
   assert.notOk(funcStub.called);
-  assert.strictEqual(val, undefined);
+  assert.strictEqual(result, undefined);
 });
 
 test('it calls func on string with second param', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: computed('string', 'firstParam', 'secondParam'),
     properties: {
       string,
@@ -92,11 +92,11 @@ test('it calls func on string with second param', function(assert) {
   });
 
   assert.deepEqual(funcStub.args, [[firstParam, secondParam]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('composable: it calls func on string', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: computed(
       raw(string),
       raw(firstParam),
@@ -105,5 +105,5 @@ test('composable: it calls func on string', function(assert) {
   });
 
   assert.deepEqual(funcStub.args, [[firstParam, secondParam]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });

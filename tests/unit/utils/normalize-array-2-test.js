@@ -31,7 +31,7 @@ test('it returns undefined if array undefined', function(assert) {
 });
 
 test('it calls func on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: computed('array', 'firstParam', 'secondParam'),
     properties: {
       array,
@@ -41,11 +41,11 @@ test('it calls func on array', function(assert) {
   });
 
   assert.deepEqual(funcStub.args, [[firstParam, secondParam]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('composable: it calls func on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: computed(
       raw(array),
       raw(firstParam),
@@ -54,5 +54,5 @@ test('composable: it calls func on array', function(assert) {
   });
 
   assert.deepEqual(funcStub.args, [[firstParam, secondParam]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });

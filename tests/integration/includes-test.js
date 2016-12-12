@@ -37,7 +37,7 @@ test('it returns false if not found', function(assert) {
 });
 
 test('it returns false if popped', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: includes('array', 'source'),
     properties: {
       array,
@@ -47,7 +47,7 @@ test('it returns false if popped', function(assert) {
 
   array.popObject();
 
-  assert.strictEqual(get(obj, 'computed'), false);
+  assert.strictEqual(get(subject, 'computed'), false);
 });
 
 test('it returns false if not array', function(assert) {

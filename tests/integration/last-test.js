@@ -24,7 +24,7 @@ test('default', function(assert) {
 });
 
 test('handles array changes', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: last('array'),
     properties: {
       array
@@ -33,5 +33,5 @@ test('handles array changes', function(assert) {
 
   array.removeAt(1);
 
-  assert.strictEqual(get(obj, 'computed'), 'test1');
+  assert.strictEqual(get(subject, 'computed'), 'test1');
 });

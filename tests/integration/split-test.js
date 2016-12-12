@@ -25,7 +25,7 @@ test('it splits', function(assert) {
 });
 
 test('it handles source modifying', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: split('source', 'key'),
     properties: {
       source,
@@ -33,11 +33,11 @@ test('it handles source modifying', function(assert) {
     }
   });
 
-  setProperties(obj, {
+  setProperties(subject, {
     source: 'val1,val2,val3'
   });
 
-  assert.deepEqual(get(obj, 'computed'), [
+  assert.deepEqual(get(subject, 'computed'), [
     'val1',
     'val2',
     'val3'
@@ -45,7 +45,7 @@ test('it handles source modifying', function(assert) {
 });
 
 test('it handles key modifying', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: split('source', 'key'),
     properties: {
       source,
@@ -53,11 +53,11 @@ test('it handles key modifying', function(assert) {
     }
   });
 
-  setProperties(obj, {
+  setProperties(subject, {
     key: 'val'
   });
 
-  assert.deepEqual(get(obj, 'computed'), [
+  assert.deepEqual(get(subject, 'computed'), [
     '',
     '1,',
     '2'

@@ -20,7 +20,7 @@ module('Unit | Macro | math', {
 });
 
 test('lookup: calls math function', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: math.round('key'),
     properties: {
       key
@@ -28,23 +28,23 @@ test('lookup: calls math function', function(assert) {
   });
 
   assert.deepEqual(mathStub.args[1], [key]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('value: calls math function', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: math.round(key)
   });
 
   assert.deepEqual(mathStub.args[0], [key]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('composing: calls math function', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: math.round(raw(key))
   });
 
   assert.deepEqual(mathStub.args[0], [key]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });

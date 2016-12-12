@@ -20,7 +20,7 @@ test('it returns empty array if array undefined', function(assert) {
 test('it returns empty array if not found', function(assert) {
   compute({
     assert,
-    computed: filter('array', val => val === 3),
+    computed: filter('array', result => result === 3),
     properties: {
       array: newArray([1, 2])
     },
@@ -31,7 +31,7 @@ test('it returns empty array if not found', function(assert) {
 test('it filters array if found', function(assert) {
   compute({
     assert,
-    computed: filter('array', val => val === 2),
+    computed: filter('array', result => result === 2),
     properties: {
       array: newArray([1, 2])
     },
@@ -44,7 +44,7 @@ test('composable: it filters array if found', function(assert) {
     assert,
     computed: filter(
       raw(newArray([1, 2])),
-      val => val === 2
+      result => result === 2
     ),
     deepEqual: [2]
   });

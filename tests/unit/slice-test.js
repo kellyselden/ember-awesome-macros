@@ -26,7 +26,7 @@ test('it returns undefined if array undefined', function(assert) {
 });
 
 test('it calls slice on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: slice('array', 'begin', 'end'),
     properties: {
       array,
@@ -36,11 +36,11 @@ test('it calls slice on array', function(assert) {
   });
 
   assert.deepEqual(sliceStub.args, [[begin, end]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });
 
 test('composable: it calls slice on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: slice(
       array,
       raw(begin),
@@ -49,5 +49,5 @@ test('composable: it calls slice on array', function(assert) {
   });
 
   assert.deepEqual(sliceStub.args, [[begin, end]]);
-  assert.strictEqual(val, returnValue);
+  assert.strictEqual(result, returnValue);
 });

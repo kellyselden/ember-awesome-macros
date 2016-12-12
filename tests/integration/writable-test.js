@@ -24,27 +24,27 @@ test('without setter: passes through the getter', function(assert) {
 });
 
 test('without setter: allows setting', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: writable(raw(getReturnValue))
   });
 
-  obj.set('computed', newValue);
+  subject.set('computed', newValue);
 
-  assert.strictEqual(obj.get('computed'), newValue);
+  assert.strictEqual(subject.get('computed'), newValue);
 });
 
 test('without setter: is no longer a computed', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: writable(and('key')),
     properties: {
       key: false
     }
   });
 
-  obj.set('computed', false);
-  obj.set('key', true);
+  subject.set('computed', false);
+  subject.set('key', true);
 
-  assert.strictEqual(obj.get('computed'), false);
+  assert.strictEqual(subject.get('computed'), false);
 });
 
 test('with function setter: passes through the getter', function(assert) {
@@ -56,37 +56,37 @@ test('with function setter: passes through the getter', function(assert) {
 });
 
 test('with function setter: setter return value is new value', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: writable(raw(getReturnValue), setCallback)
   });
 
-  obj.set('computed', newValue);
+  subject.set('computed', newValue);
 
-  assert.strictEqual(obj.get('computed'), setReturnValue);
+  assert.strictEqual(subject.get('computed'), setReturnValue);
 });
 
 test('with function setter: `this` is object context', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: writable(raw(getReturnValue), setCallback)
   });
 
-  obj.set('computed', newValue);
+  subject.set('computed', newValue);
 
-  assert.strictEqual(setCallback.thisValues[0], obj);
+  assert.strictEqual(setCallback.thisValues[0], subject);
 });
 
 test('with function setter: is still a computed', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: writable(and('key'), setCallback),
     properties: {
       key: false
     }
   });
 
-  obj.set('computed', false);
-  obj.set('key', true);
+  subject.set('computed', false);
+  subject.set('key', true);
 
-  assert.strictEqual(obj.get('computed'), true);
+  assert.strictEqual(subject.get('computed'), true);
 });
 
 test('with object setter: passes through the getter', function(assert) {
@@ -100,31 +100,31 @@ test('with object setter: passes through the getter', function(assert) {
 });
 
 test('with object setter: setter return value is new value', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: writable(raw(getReturnValue), {
       set: setCallback
     })
   });
 
-  obj.set('computed', newValue);
+  subject.set('computed', newValue);
 
-  assert.strictEqual(obj.get('computed'), setReturnValue);
+  assert.strictEqual(subject.get('computed'), setReturnValue);
 });
 
 test('with object setter: `this` is object context', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: writable(raw(getReturnValue), {
       set: setCallback
     })
   });
 
-  obj.set('computed', newValue);
+  subject.set('computed', newValue);
 
-  assert.strictEqual(setCallback.thisValues[0], obj);
+  assert.strictEqual(setCallback.thisValues[0], subject);
 });
 
 test('with object setter: is still a computed', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: writable(and('key'), {
       set: setCallback
     }),
@@ -133,8 +133,8 @@ test('with object setter: is still a computed', function(assert) {
     }
   });
 
-  obj.set('computed', false);
-  obj.set('key', true);
+  subject.set('computed', false);
+  subject.set('key', true);
 
-  assert.strictEqual(obj.get('computed'), true);
+  assert.strictEqual(subject.get('computed'), true);
 });

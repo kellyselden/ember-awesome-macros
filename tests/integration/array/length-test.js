@@ -32,7 +32,7 @@ test('it gets length on array', function(assert) {
 });
 
 test('it responds to length changes', function(assert) {
-  let { obj } = compute({
+  let { subject } = compute({
     computed: length('array'),
     properties: {
       array
@@ -41,7 +41,7 @@ test('it responds to length changes', function(assert) {
 
   array.pushObject(0);
 
-  assert.strictEqual(obj.get('computed'), 4);
+  assert.strictEqual(subject.get('computed'), 4);
 });
 
 test('composable: it gets length on array', function(assert) {

@@ -36,7 +36,7 @@ test('it returns original array if key undefined', function(assert) {
 });
 
 test('it calls uniqBy on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: uniqBy('array', 'key'),
     properties: {
       array,
@@ -45,11 +45,11 @@ test('it calls uniqBy on array', function(assert) {
   });
 
   assert.deepEqual(uniqByStub.args, [[key]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(result, retVal);
 });
 
 test('composable: it calls uniqBy on array', function(assert) {
-  let { val } = compute({
+  let { result } = compute({
     computed: uniqBy(
       raw(array),
       raw(key)
@@ -57,5 +57,5 @@ test('composable: it calls uniqBy on array', function(assert) {
   });
 
   assert.deepEqual(uniqByStub.args, [[key]]);
-  assert.strictEqual(val, retVal);
+  assert.strictEqual(result, retVal);
 });

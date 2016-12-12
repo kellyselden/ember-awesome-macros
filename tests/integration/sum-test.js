@@ -33,8 +33,8 @@ test('handles all undefined', function(assert) {
   compute({
     assert,
     computed: sum('source1', 'source2'),
-    assertion(val) {
-      return isNaN(val);
+    assertion(result) {
+      return isNaN(result);
     }
   });
 });
@@ -46,8 +46,8 @@ test('handles some undefined', function(assert) {
     properties: {
       source1: 1
     },
-    assertion(val) {
-      return isNaN(val);
+    assertion(result) {
+      return isNaN(result);
     }
   });
 });

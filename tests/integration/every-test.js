@@ -20,7 +20,7 @@ test('it returns false if array undefined', function(assert) {
 test('it returns false if not all true', function(assert) {
   compute({
     assert,
-    computed: every('array', val => val === 1),
+    computed: every('array', result => result === 1),
     properties: {
       array: newArray([1, 2])
     },
@@ -31,7 +31,7 @@ test('it returns false if not all true', function(assert) {
 test('it returns true if all true', function(assert) {
   compute({
     assert,
-    computed: every('array', val => val === 1),
+    computed: every('array', result => result === 1),
     properties: {
       array: newArray([1, 1])
     },
@@ -44,7 +44,7 @@ test('composable: it returns true if all true', function(assert) {
     assert,
     computed: every(
       raw(newArray([1, 1])),
-      val => val === 1
+      result => result === 1
     ),
     strictEqual: true
   });
