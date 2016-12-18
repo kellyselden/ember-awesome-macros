@@ -12,7 +12,7 @@ test('it returns value verbatim', function(assert) {
   });
 });
 
-test('it doesn\'t treat it as a key, but a raw value', function(assert) {
+test('it doesn\'t treat it as a key, but as a raw value', function(assert) {
   compute({
     assert,
     computed: raw('source'),
