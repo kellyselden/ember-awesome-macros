@@ -2,7 +2,7 @@ import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 
-module('Intergration | Macro | raw');
+module('Integration | Macro | raw');
 
 test('it returns value verbatim', function(assert) {
   compute({

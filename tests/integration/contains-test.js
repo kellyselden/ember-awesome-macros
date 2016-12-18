@@ -6,7 +6,7 @@ import compute from 'ember-macro-test-helpers/compute';
 
 let array;
 
-module('Intergration | Macro | contains', {
+module('Integration | Macro | contains', {
   beforeEach() {
     array = emberArray(['my value']);
   }
