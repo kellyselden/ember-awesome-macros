@@ -21,6 +21,7 @@ export { default as objectAt } from './object-at';
 export { default as reduce } from './reduce';
 export { default as reverse } from './reverse';
 export { default as slice } from './slice';
+export { default as sort } from './sort';
 export { default as uniqBy } from './uniq-by';
 export { default as uniq } from './uniq';
 export { default as without } from './without';

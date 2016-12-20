@@ -61,6 +61,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.reduce`](#arrayreduce)
 * [`array.reverse`](#arrayreverse)
 * [`array.slice`](#arrayslice)
+* [`array.sort`](#arraysort)
 * [`array.uniqBy`](#arrayuniqby)
 * [`array.uniq`](#arrayuniq)
 * [`array.without`](#arraywithout)
@@ -372,6 +373,17 @@ wraps [`Array.prototype.slice()`](https://developer.mozilla.org/en-US/docs/Web/J
 array: [1, 2, 3],
 value1: array.slice('array', 1), // [2, 3]
 value2: array.slice('array', difference('array.length', 1)) // [3]
+```
+
+##### `array.sort`
+combines the functionality of both [`Array.prototype.sort()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) and [`Ember.computed.sort`](http://emberjs.com/api/classes/Ember.computed.html#method_sort)
+
+```js
+array1: Ember.A(['xyz', 'abc']),
+array2: Ember.A([{ key: 'abc' }, { key: 'xyz' }]),
+value1: array.sort('array1'), // ['abc', 'xyz']
+value2: array.sort('array2', ['key:desc']), // [{ key: 'xyz' }, { key: 'abc' }]
+value3: array.sort('array2', (a, b) => a.key < b.key), // [{ key: 'xyz' }, { key: 'abc' }]
 ```
 
 ##### `array.uniqBy`

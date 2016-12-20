@@ -43,7 +43,7 @@ export function normalizeArray(keys, {
       return defaultValue === sentinelValue ? arrayValue : defaultValue;
     }
     let values = args.map(key => getValue(this, key));
-    return callback(arrayValue, ...values);
+    return callback.call(this, arrayValue, ...values);
   }).readOnly();
 }
 
