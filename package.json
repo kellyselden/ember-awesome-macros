@@ -23,7 +23,7 @@
   "dependencies": {
     "babel-plugin-fake-import-specifiers": "^1.0.0",
     "ember-cli-babel": "^5.1.7",
-    "ember-macro-helpers": "0.4.0"
+    "ember-macro-helpers": "0.5.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
