@@ -60,6 +60,20 @@ test('allows raw numbers', function(assert) {
   });
 });
 
+test('allows property expansion', function(assert) {
+  compute({
+    assert,
+    computed: add('obj.{source1,source2}'),
+    properties: {
+      obj: {
+        source1: 1,
+        source2: 2
+      }
+    },
+    strictEqual: 3
+  });
+});
+
 test('allows composing', function(assert) {
   compute({
     assert,

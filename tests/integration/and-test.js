@@ -76,6 +76,24 @@ test('accepts N number of keys', function(assert) {
   });
 });
 
+test('allows property expansion', function(assert) {
+  let { subject } = compute({
+    assert,
+    computed: and('obj.{source1,source2}'),
+    properties: {
+      obj: {
+        source1: true,
+        source2: true
+      }
+    },
+    strictEqual: true
+  });
+
+  subject.toggleProperty('obj.source2');
+
+  assert.strictEqual(subject.get('computed'), false);
+});
+
 test('allows composing', function(assert) {
   compute({
     assert,
