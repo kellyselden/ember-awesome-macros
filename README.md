@@ -85,6 +85,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`add`](#add)
 * [`difference`](#difference)
 * [`divide`](#divide)
+* [`mod`](#mod)
 * [`multiply`](#multiply)
 * [`parseFloat`](#parsefloat)
 * [`parseInt`](#parseint)
@@ -583,6 +584,16 @@ source1: 2.2,
 source2: 2.7,
 value1: math.ceil('source1'), // 3
 value2: math.floor(sum('source1', 'source2')) // 4
+```
+
+##### `mod`
+the modulus operator
+
+```js
+number1: 123,
+number2: 45,
+example: mod('number1', 'number2'), // 33
+composingExample: mod(sum('number1', 'number2'), 39) // 12
 ```
 
 ##### `multiply`
