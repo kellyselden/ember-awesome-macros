@@ -5,6 +5,7 @@
 [![dependencies Status](https://david-dm.org/kellyselden/ember-awesome-macros/status.svg)](https://david-dm.org/kellyselden/ember-awesome-macros)
 [![devDependencies Status](https://david-dm.org/kellyselden/ember-awesome-macros/dev-status.svg)](https://david-dm.org/kellyselden/ember-awesome-macros?type=dev)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-awesome-macros.svg)](https://emberobserver.com/addons/ember-awesome-macros)
+![Ember Version](https://embadge.io/v1/badge.svg?start=1.13.0)
 
 A random collection of Ember computed macros. All the macros are composable, meaning you can nest them to your heart's content, like so:
 
