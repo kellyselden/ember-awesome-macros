@@ -100,3 +100,15 @@ export function normalizeArray2(keys, funcStr) {
   normalizeArrayArgs(keys);
   return safelyCreateComputed(keys, funcStr);
 }
+
+import { deprecateFunc } from 'ember-deprecations';
+
+const projectName = 'ember-awesome-macros';
+const until = 'sometime before 1.0';
+
+export function deprecate(newFunc, oldKey, newKey) {
+  return deprecateFunc(`${oldKey} is deprecated, please use ${newKey}`, {
+    id: `${projectName}.${oldKey}`,
+    until
+  }, newFunc);
+}

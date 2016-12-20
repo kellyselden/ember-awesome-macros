@@ -1,19 +1,5 @@
-import computed from './computed';
+import { deprecate } from './utils';
 
-export default function(getter, setterCallback) {
-  let newCallback = {
-    get(val) { return val; }
-  };
+import writable from 'ember-macro-helpers/writable';
 
-  if (setterCallback) {
-    if (setterCallback.set) {
-      newCallback.set = setterCallback.set;
-    } else {
-      newCallback.set = function() {
-        return setterCallback.apply(this, arguments);
-      };
-    }
-  }
-
-  return computed(getter, newCallback);
-}
+export default deprecate(writable, 'writable', 'ember-macro-helpers/writable');

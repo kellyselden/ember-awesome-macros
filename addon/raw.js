@@ -1,5 +1,5 @@
-import { resolveKeys } from './utils';
+import { deprecate } from './utils';
 
-export default function(key) {
-  return resolveKeys([], () => key);
-}
+import raw from 'ember-macro-helpers/raw';
+
+export default deprecate(raw, 'raw', 'ember-macro-helpers/raw');

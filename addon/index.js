@@ -38,17 +38,7 @@ export { default as tag } from './tag';
 export { default as typeOf } from './type-of';
 export { default as writable } from './writable';
 
-import { deprecateFunc } from 'ember-deprecations';
-
-const projectName = 'ember-awesome-macros';
-const until = 'sometime before 1.0';
-
-function deprecate(newFunc, oldKey, newKey) {
-  return deprecateFunc(`${oldKey} is deprecated, please use ${newKey}`, {
-    id: `${projectName}.${oldKey}`,
-    until
-  }, newFunc);
-}
+import { deprecate } from './utils';
 
 const any = deprecate(array.any, 'any', 'array.any');
 const compact = deprecate(array.compact, 'compact', 'array.compact');

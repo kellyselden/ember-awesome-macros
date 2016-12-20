@@ -12,6 +12,11 @@ A random collection of Ember computed macros. All the macros are composable, mea
 result: conditional(and(not('value1'), 'value2'), sum('value3', 1), collect('value4', toUpper('value5'))) // lisp much?
 ```
 
+Two essential primitive macros come from a different addon: [ember-macro-helpers](https://github.com/kellyselden/ember-macro-helpers)
+
+* [raw](https://github.com/kellyselden/ember-macro-helpers#raw) makes composing macros easier
+* [writable](https://github.com/kellyselden/ember-macro-helpers#writable) makes setting macros possible
+
 The API is not final until 1.0. I will be adding aliases as I think of better names for things, and possibly breaking or removing existing macros.
 
 If you have any opinions or want a new macro added, just ask! Or feel free to submit a pull request.
@@ -95,11 +100,6 @@ import { nameOfMacro } from 'ember-awesome-macros';
 
 ##### Math
 * [`math`](#math-1)
-
-##### Primitives
-* [`computed`](#computed)
-* [`raw`](#raw)
-* [`writable`](#writable)
 
 ##### Promise
 * [`promise.all`](#promiseall)
@@ -405,43 +405,6 @@ same as `Ember.computed.collect`, but allows composing
 source1: 'my value 1',
 source2: 'my value 2',
 value: collect('source1', collect('source2')) // ['my value 1', ['my value 2']]
-```
-
-##### `computed`
-functions like [`Ember.computed`](http://emberjs.com/api/classes/Ember.computed.html), but is composing friendly
-
-```js
-key1: '1,2',
-
-// your callback is passed the resolved values
-computed1: computed('key1', value => {
-  console.log(value); // '1,2'
-  // do something else
-}),
-
-// you can compose your macros
-computed2: computed(split('key1', raw(',')), value => {
-  console.log(value); // [1, 2]
-  // do something else
-}),
-
-// you can use enumerable helpers and property expansion
-key2: [1, 2],
-computed3: computed('key2.[]', value => {
-  console.log(value); // [1, 2]
-  // do something else
-}),
-key3: [{ key4: 1 }, { key4: 2 }],
-computed4: computed('key3.@each.key4', value => {
-  console.log(value); // [{ key4: 1 }, { key4: 2 }]
-  // do something else
-}),
-key5: [{ key6: 1 }, { key7: 2 }],
-computed5: computed('key5.{key6,key7}', (value1, value2) => {
-  console.log(value1); // 1
-  console.log(value2); // 2
-  // do something else
-})
 ```
 
 ##### `conditional`
@@ -763,24 +726,6 @@ value1: quotient('source1', 'source2', 'source3'), // 1.5
 value2: quotient('source2', quotient('source2', 'source3')) // 1.5
 ```
 
-##### `raw`
-a helper if you want to use "literals" in your macros
-
-```js
-value1: equal('key1', raw('my value 1')),
-value2: indexOf('key2', raw('my value 2'))
-```
-
-or you want to get fancy with composing
-
-```js
-source: 'my computed value',
-value: hash({
-  prop1: 'source',
-  prop2: raw('my raw value')
-}) // { prop1: 'my computed value', prop2: 'my raw value' }
-```
-
 ##### `string.camelize`
 wraps [`Ember.String.camelize`](http://emberjs.com/api/classes/Ember.String.html#method_camelize), allows composing
 
@@ -950,21 +895,4 @@ key2: false,
 key3: '',
 value1: typeOf('key1'), // 'object'
 value2: typeOf(or('key2', 'key3')) // 'string'
-```
-
-##### `writable`
-since all the macros are read-only, use this to bring back setting capability
-
-```js
-value1: writable(and('key1', 'key2')), // setting this replaces the macro with your value
-value2: writable(and('key1', 'key2'), {
-  set() {
-    // do something
-    return 'new value';
-  }
-}), // setting this will not overwrite your macro
-value3: writable(and('key1', 'key2'), function() {
-  // do something
-  return 'new value';
-}) // same as above, but shorthand
 ```
