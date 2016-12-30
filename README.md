@@ -740,7 +740,7 @@ promise2: promise.resolve(conditional('someBool', 'key1', 'key2')) // resolve an
 ```
 
 ##### `quotient`
-subtracts numbers
+divides numbers
 
 ```js
 source1: 3,
