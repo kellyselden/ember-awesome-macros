@@ -7,7 +7,7 @@
 [![Ember Observer Score](https://emberobserver.com/badges/ember-awesome-macros.svg)](https://emberobserver.com/addons/ember-awesome-macros)
 ![Ember Version](https://embadge.io/v1/badge.svg?start=1.13.0)
 
-A random collection of Ember computed macros. All the macros are composable, meaning you can nest them to your heart's content, like so:
+A collection of Ember computed macros. All the macros are composable, meaning you can nest them to your heart's content, like so:
 
 ```js
 result: conditional(and(not('value1'), 'value2'), sum('value3', 1), collect('value4', toUpper('value5'))) // lisp much?
