@@ -1,11 +1,13 @@
 import computed from 'ember-macro-helpers/computed';
 
-export function resolveKeys(keys, callback) {
-  return computed(...keys, callback).readOnly();
+export function resolveKeys(callback) {
+  return function() {
+    return computed(...arguments, callback).readOnly();
+  };
 }
 
-export function reduceKeys(keys, func) {
-  return resolveKeys(keys, (...values) => {
+export function reduceKeys(func) {
+  return resolveKeys((...values) => {
     return values.reduce(func);
   });
 }
@@ -20,11 +22,11 @@ export function checkArgs(values, callback) {
 }
 
 export function safelyCreateComputed(keys, funcStr) {
-  return resolveKeys(keys, (...values) => {
+  return resolveKeys((...values) => {
     return checkArgs(values, () => {
       return values[0][funcStr](...values.slice(1));
     });
-  });
+  })(...keys);
 }
 
 import { deprecateFunc } from 'ember-deprecations';

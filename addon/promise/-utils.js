@@ -4,7 +4,7 @@ import { resolveKeys } from '../-utils';
 const { resolve } = RSVP;
 
 export function wrapPromiseProxy(key, PromiseProxy) {
-  return resolveKeys([key], promise => {
+  return resolveKeys(promise => {
     if (promise === undefined) {
       promise = resolve(undefined);
     }
@@ -12,5 +12,5 @@ export function wrapPromiseProxy(key, PromiseProxy) {
     return PromiseProxy.create({
       promise
     });
-  });
+  })(key);
 }

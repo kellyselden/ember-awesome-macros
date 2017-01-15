@@ -1,7 +1,5 @@
 import { reduceKeys } from './-utils';
 
-export default function(...keys) {
-  return reduceKeys(keys, (total, value) => {
-    return total + value;
-  });
-}
+export default reduceKeys((total, value) => {
+  return total + value;
+});

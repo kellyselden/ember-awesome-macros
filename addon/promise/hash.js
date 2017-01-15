@@ -6,8 +6,8 @@ const { hash } = RSVP;
 
 export default function(...args) {
   let { hashKeys, hashValues } = deconstructArgs(args);
-  return resolveKeys(hashValues, (...newValues) => {
+  return resolveKeys((...newValues) => {
     let newHash = reduceValues(hashKeys, newValues);
     return hash(newHash);
-  });
+  })(...hashValues);
 }

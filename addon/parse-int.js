@@ -1,9 +1,7 @@
 import { resolveKeys, checkArgs } from './-utils';
 
-export default function(...keys) {
-  return resolveKeys(keys, (...values) => {
-    return checkArgs(values, () => {
-      return parseInt(...values);
-    });
+export default resolveKeys((...values) => {
+  return checkArgs(values, () => {
+    return parseInt(...values);
   });
-}
+});

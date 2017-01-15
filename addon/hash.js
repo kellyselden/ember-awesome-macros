@@ -31,8 +31,8 @@ export function reduceValues(hashKeys, newValues) {
 
 export default function(...args) {
   let { hashKeys, hashValues } = deconstructArgs(args);
-  return resolveKeys(hashValues, (...newValues) => {
+  return resolveKeys((...newValues) => {
     let newHash = reduceValues(hashKeys, newValues);
     return EmberObject.create(newHash);
-  });
+  })(...hashValues);
 }
