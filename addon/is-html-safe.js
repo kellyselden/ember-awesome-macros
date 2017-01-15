@@ -1,15 +1,5 @@
-import Ember from 'ember';
-import { normalizeString } from './utils';
+import { deprecate } from './utils';
 
-let {
-  String: { isHTMLSafe }
-} = Ember;
+import isHtmlSafe from './string/is-html-safe';
 
-// remove once 2.4 is dropped
-if (!isHTMLSafe) {
-  isHTMLSafe = val => val instanceof Ember.Handlebars.SafeString;
-}
-
-export default function(key) {
-  return normalizeString(key, isHTMLSafe);
-}
+export default deprecate(isHtmlSafe, 'isHtmlSafe', 'string.isHtmlSafe');

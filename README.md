@@ -70,7 +70,6 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`and`](#and)
 * [`conditional`](#conditional)
 * [`defaultTrue`](#defaulttrue)
-* [`isHtmlSafe`](#ishtmlsafe)
 * [`not`](#not)
 * [`or`](#or)
 
@@ -117,8 +116,9 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`string.classify`](#stringclassify)
 * [`string.dasherize`](#stringdasherize)
 * [`string.decamelize`](#stringdecamelize)
-* [`htmlSafe`](#htmlsafe)
+* [`string.htmlSafe`](#stringhtmlsafe)
 * [`string.indexOf`](#stringindexof)
+* [`string.isHtmlSafe`](#stringishtmlsafe)
 * [`string.lastIndexOf`](#stringlastindexof)
 * [`string.length`](#stringlength)
 * [`string.replace`](#stringreplace)
@@ -534,14 +534,6 @@ value2: hash('source1', 'source2'), // { source1: 'my value 1', source2: 'my val
 value3: hash('source1', { prop2: 'source2' }) // { source1: 'my value 1', prop2: 'my value 2' }
 ```
 
-##### `htmlSafe`
-wraps [`Ember.String.htmlSafe`](http://emberjs.com/api/classes/Ember.String.html#method_htmlSafe), allows composing
-
-```js
-originalValue: '<input>',
-newValue: htmlSafe('originalValue') // will not be escaped
-```
-
 ##### `instanceOf`
 wraps [`instanceof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) operator
 
@@ -551,16 +543,6 @@ key2: false,
 key3: '',
 value1: instanceOf('key1', Object), // true
 value2: instanceOf(or('key2', 'key3'), String) // true
-```
-
-##### `isHtmlSafe`
-wraps [`Ember.String.isHTMLSafe`](http://emberjs.com/api/classes/Ember.String.html#method_isHTMLSafe), allows composing
-
-```js
-source1: '<input>',
-source2: htmlSafe('<input>'),
-value1: isHtmlSafe('source1'), // false
-value2: isHtmlSafe('source2') // true
 ```
 
 ##### `lt`
@@ -790,6 +772,14 @@ originalValue: 'TestString',
 newValue: string.decamelize('originalValue') // 'test_string'
 ```
 
+##### `string.htmlSafe`
+wraps [`Ember.String.htmlSafe`](http://emberjs.com/api/classes/Ember.String.html#method_htmlSafe), allows composing
+
+```js
+originalValue: '<input>',
+newValue: string.htmlSafe('originalValue') // will not be escaped
+```
+
 ##### `string.indexOf`
 wraps [`String.prototype.indexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf), allows composing
 
@@ -798,6 +788,16 @@ string: '121',
 value: '1',
 example: string.indexOf('string', 'value'), // 0
 composingExample: string.indexOf(substr('string', 1), raw('1')) // 1
+```
+
+##### `string.isHtmlSafe`
+wraps [`Ember.String.isHTMLSafe`](http://emberjs.com/api/classes/Ember.String.html#method_isHTMLSafe), allows composing
+
+```js
+source1: '<input>',
+source2: string.htmlSafe('<input>'),
+value1: string.isHtmlSafe('source1'), // false
+value2: string.isHtmlSafe('source2') // true
 ```
 
 ##### `string.lastIndexOf`

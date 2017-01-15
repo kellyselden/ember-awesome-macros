@@ -1,10 +1,5 @@
-import Ember from 'ember';
-import { normalizeString } from './utils';
+import { deprecate } from './utils';
 
-const {
-  String: { htmlSafe }
-} = Ember;
+import htmlSafe from './string/html-safe';
 
-export default function(key) {
-  return normalizeString(key, htmlSafe);
-}
+export default deprecate(htmlSafe, 'htmlSafe', 'string.htmlSafe');
