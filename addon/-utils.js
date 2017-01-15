@@ -1,9 +1,7 @@
 import computed from 'ember-macro-helpers/computed';
 
 export function resolveKeys(keys, callback) {
-  return computed(...keys, function(...values) {
-    return callback.apply(this, values);
-  }).readOnly();
+  return computed(...keys, callback).readOnly();
 }
 
 export function reduceKeys(keys, func) {
