@@ -1,4 +1,4 @@
-import { normalizeString2 } from '../utils';
+import { normalizeString2 } from './-utils';
 
 export default function(...keys) {
   return normalizeString2(keys, 'lastIndexOf');

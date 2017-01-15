@@ -1,4 +1,4 @@
-import { deprecate } from './utils';
+import { deprecate } from './-utils';
 
 import raw from 'ember-macro-helpers/raw';
 

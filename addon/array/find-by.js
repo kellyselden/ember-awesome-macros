@@ -1,4 +1,4 @@
-import { normalizeArray } from '../utils';
+import { normalizeArray } from './-utils';
 
 /* jshint -W080 */
 const defaultValue = undefined;

@@ -1,5 +1,5 @@
 import EmberObject from 'ember-object';
-import { resolveKeys } from './utils';
+import { resolveKeys } from './-utils';
 
 export function deconstructArgs(args) {
   let hashKeys = [];

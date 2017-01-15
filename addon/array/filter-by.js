@@ -1,4 +1,4 @@
-import { normalizeArray } from '../utils';
+import { normalizeArray } from './-utils';
 
 const defaultValue = [];
 

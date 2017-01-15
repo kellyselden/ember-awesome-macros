@@ -1,4 +1,4 @@
-import { deprecate } from './utils';
+import { deprecate } from './-utils';
 
 import computed from 'ember-macro-helpers/computed';
 

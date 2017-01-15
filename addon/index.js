@@ -39,7 +39,7 @@ export { default as tag } from './tag';
 export { default as typeOf } from './type-of';
 export { default as writable } from './writable';
 
-import { deprecate } from './utils';
+import { deprecate } from './-utils';
 
 const any = deprecate(array.any, 'any', 'array.any');
 const compact = deprecate(array.compact, 'compact', 'array.compact');

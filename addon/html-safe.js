@@ -1,4 +1,4 @@
-import { deprecate } from './utils';
+import { deprecate } from './-utils';
 
 import htmlSafe from './string/html-safe';
 

@@ -1,5 +1,5 @@
 import RSVP from 'rsvp';
-import { resolveKeys } from '../utils';
+import { resolveKeys } from '../-utils';
 
 const { resolve } = RSVP;
 

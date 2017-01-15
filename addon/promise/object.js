@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { wrapPromiseProxy } from '../utils';
+import { wrapPromiseProxy } from './-utils';
 
 const {
   ObjectProxy,

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { resolveKeys } from './utils';
+import { resolveKeys } from './-utils';
 
 const {
   A: newArray

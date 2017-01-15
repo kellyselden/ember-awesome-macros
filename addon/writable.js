@@ -1,4 +1,4 @@
-import { deprecate } from './utils';
+import { deprecate } from './-utils';
 
 import writable from 'ember-macro-helpers/writable';
 

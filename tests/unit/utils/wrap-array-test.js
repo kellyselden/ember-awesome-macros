@@ -1,4 +1,4 @@
-import { wrapArray } from 'ember-awesome-macros/utils';
+import { wrapArray } from 'ember-awesome-macros/array/-utils';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | wrap array');

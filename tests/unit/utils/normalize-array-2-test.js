@@ -1,4 +1,4 @@
-import { normalizeArray2 } from 'ember-awesome-macros/utils';
+import { normalizeArray2 } from 'ember-awesome-macros/array/-utils';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';

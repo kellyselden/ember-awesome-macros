@@ -1,4 +1,4 @@
-import { normalizeString2 } from 'ember-awesome-macros/utils';
+import { normalizeString2 } from 'ember-awesome-macros/string/-utils';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
