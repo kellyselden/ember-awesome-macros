@@ -1,4 +1,4 @@
-import { default as _computed } from 'ember-computed';
+import computed from 'ember-computed';
 import flattenKeys from 'ember-macro-helpers/flatten-keys';
 import getValue from 'ember-macro-helpers/get-value';
 import { safelyCreateComputed } from '../-utils';
@@ -27,7 +27,7 @@ export function normalizeArray({
 
     let args = keys.slice(1);
 
-    return _computed(...flattenKeys(keys), function() {
+    return computed(...flattenKeys(keys), function() {
       let arrayValue = getValue(this, array);
       if (!arrayValue) {
         return defaultValue === sentinelValue ? arrayValue : defaultValue;
