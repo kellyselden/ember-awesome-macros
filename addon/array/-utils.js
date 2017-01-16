@@ -26,7 +26,7 @@ function normalizeArrayArgs(keys) {
 export function normalizeArray({
   defaultValue = sentinelValue
 }, callback) {
-  return function(...keys) {
+  return (...keys) => {
     let { array } = normalizeArrayArgs(keys);
 
     let args = keys.slice(1);
@@ -43,7 +43,7 @@ export function normalizeArray({
 }
 
 export function normalizeArray2(funcStr) {
-  return function(...keys) {
+  return (...keys) => {
     normalizeArrayArgs(keys);
     return safelyCreateComputed(funcStr)(...keys);
   };
