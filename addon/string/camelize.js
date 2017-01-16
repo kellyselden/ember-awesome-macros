@@ -5,6 +5,4 @@ const {
   String: { camelize }
 } = Ember;
 
-export default function(key) {
-  return normalizeString(key, camelize);
-}
+export default normalizeString(camelize);

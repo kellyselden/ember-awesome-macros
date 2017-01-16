@@ -10,6 +10,4 @@ if (!isHTMLSafe) {
   isHTMLSafe = val => val instanceof Ember.Handlebars.SafeString;
 }
 
-export default function(key) {
-  return normalizeString(key, isHTMLSafe);
-}
+export default normalizeString(isHTMLSafe);

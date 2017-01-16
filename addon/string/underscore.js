@@ -5,6 +5,4 @@ const {
   String: { underscore }
 } = Ember;
 
-export default function(key) {
-  return normalizeString(key, underscore);
-}
+export default normalizeString(underscore);

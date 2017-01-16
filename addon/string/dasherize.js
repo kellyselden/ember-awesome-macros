@@ -5,6 +5,4 @@ const {
   String: { dasherize }
 } = Ember;
 
-export default function(key) {
-  return normalizeString(key, dasherize);
-}
+export default normalizeString(dasherize);

@@ -5,6 +5,4 @@ const {
   String: { capitalize }
 } = Ember;
 
-export default function(key) {
-  return normalizeString(key, capitalize);
-}
+export default normalizeString(capitalize);

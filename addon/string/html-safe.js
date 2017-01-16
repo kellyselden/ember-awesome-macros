@@ -5,6 +5,4 @@ const {
   String: { htmlSafe }
 } = Ember;
 
-export default function(key) {
-  return normalizeString(key, htmlSafe);
-}
+export default normalizeString(htmlSafe);
