@@ -1,6 +1,6 @@
 import { reverse } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
-import { A as emberArray } from 'ember-array/utils';
+import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 
@@ -8,7 +8,7 @@ let array;
 
 module('Integration | Macro | array | reverse', {
   beforeEach() {
-    array = emberArray([1, 2]);
+    array = emberA([1, 2]);
   }
 });
 

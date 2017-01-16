@@ -1,11 +1,7 @@
-import Ember from 'ember';
+import { htmlSafe } from 'ember-string';
 import { isHtmlSafe, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
-
-const {
-  String: { htmlSafe }
-} = Ember;
 
 module('Integration | Macro | is html safe');
 

@@ -1,5 +1,5 @@
 import { sort } from 'ember-awesome-macros/array';
-import { A as emberArray } from 'ember-array/utils';
+import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
@@ -19,7 +19,7 @@ test('it calls sort on array without a parameter', function(assert) {
     assert,
     computed: sort('array'),
     properties: {
-      array: emberArray(['xyz', 'abc'])
+      array: emberA(['xyz', 'abc'])
     },
     deepEqual: ['abc', 'xyz']
   });
@@ -30,7 +30,7 @@ test('it calls sort on array with an array parameter', function(assert) {
     assert,
     computed: sort('array', 'sortDefinition'),
     properties: {
-      array: emberArray([
+      array: emberA([
         {
           key1: 'abc',
           key2: 'abc'
@@ -65,7 +65,7 @@ test('it calls sort on array with function parameter', function(assert) {
     assert,
     computed: sort('array', 'sortDefinition'),
     properties: {
-      array: emberArray([
+      array: emberA([
         {
           key1: 'abc',
           key2: 'abc'
@@ -96,7 +96,7 @@ test('the callback has object context', function(assert) {
   let { subject } = compute({
     computed: sort('array', 'sortDefinition'),
     properties: {
-      array: emberArray([
+      array: emberA([
         {
           key1: 'abc',
           key2: 'abc'
@@ -119,7 +119,7 @@ test('the callback is passed the correct args', function(assert) {
   compute({
     computed: sort('array', 'sortDefinition'),
     properties: {
-      array: emberArray([
+      array: emberA([
         {
           key1: 'abc',
           key2: 'abc'

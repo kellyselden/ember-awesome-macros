@@ -1,5 +1,5 @@
 import get from 'ember-metal/get';
-import { A as emberArray } from 'ember-array/utils';
+import { A as emberA } from 'ember-array/utils';
 import { last } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
@@ -8,7 +8,7 @@ let array;
 
 module('Integration | Macro | last', {
   beforeEach() {
-    array = emberArray(['test1', 'test2']);
+    array = emberA(['test1', 'test2']);
   }
 });
 

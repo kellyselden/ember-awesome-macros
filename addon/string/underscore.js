@@ -1,8 +1,4 @@
-import Ember from 'ember';
+import { underscore } from 'ember-string';
 import { normalizeString } from './-utils';
-
-const {
-  String: { underscore }
-} = Ember;
 
 export default normalizeString(underscore);

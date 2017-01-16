@@ -1,11 +1,7 @@
-import Ember from 'ember';
 import { find, raw } from 'ember-awesome-macros';
+import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
-
-const {
-  A: newArray
-} = Ember;
 
 module('Integration | Macro | find');
 
@@ -22,7 +18,7 @@ test('it returns undefined if not found', function(assert) {
     assert,
     computed: find('array', result => result === 3),
     properties: {
-      array: newArray([1, 2])
+      array: emberA([1, 2])
     },
     strictEqual: undefined
   });
@@ -33,7 +29,7 @@ test('it returns item if found', function(assert) {
     assert,
     computed: find('array', result => result === 2),
     properties: {
-      array: newArray([1, 2])
+      array: emberA([1, 2])
     },
     strictEqual: 2
   });
@@ -43,7 +39,7 @@ test('composable: it returns item if found', function(assert) {
   compute({
     assert,
     computed: find(
-      raw(newArray([1, 2])),
+      raw(emberA([1, 2])),
       result => result === 2
     ),
     strictEqual: 2

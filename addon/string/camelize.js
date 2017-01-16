@@ -1,8 +1,4 @@
-import Ember from 'ember';
+import { camelize } from 'ember-string';
 import { normalizeString } from './-utils';
-
-const {
-  String: { camelize }
-} = Ember;
 
 export default normalizeString(camelize);

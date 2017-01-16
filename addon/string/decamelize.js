@@ -1,8 +1,4 @@
-import Ember from 'ember';
+import { decamelize } from 'ember-string';
 import { normalizeString } from './-utils';
-
-const {
-  String: { decamelize }
-} = Ember;
 
 export default normalizeString(decamelize);

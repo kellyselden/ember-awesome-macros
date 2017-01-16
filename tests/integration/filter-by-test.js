@@ -1,11 +1,7 @@
-import Ember from 'ember';
 import { filterBy, raw } from 'ember-awesome-macros';
+import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
-
-const {
-  A: newArray
-} = Ember;
 
 module('Integration | Macro | filter by');
 
@@ -22,7 +18,7 @@ test('it returns empty array if key undefined', function(assert) {
     assert,
     computed: filterBy('array', 'key', 'value'),
     properties: {
-      array: newArray([{ test: 'val1' }, { test: 'val2' }])
+      array: emberA([{ test: 'val1' }, { test: 'val2' }])
     },
     deepEqual: []
   });
@@ -33,7 +29,7 @@ test('it returns empty array if not found', function(assert) {
     assert,
     computed: filterBy('array', 'key', 'value'),
     properties: {
-      array: newArray([{ test: 'val1' }, { test: 'val2' }]),
+      array: emberA([{ test: 'val1' }, { test: 'val2' }]),
       key: 'test',
       value: 'val3'
     },
@@ -46,7 +42,7 @@ test('it filters array if found', function(assert) {
     assert,
     computed: filterBy('array', 'key', 'value'),
     properties: {
-      array: newArray([{ test: 'val1' }, { test: 'val2' }]),
+      array: emberA([{ test: 'val1' }, { test: 'val2' }]),
       key: 'test',
       value: 'val2'
     },
@@ -59,7 +55,7 @@ test('it handles raw numbers', function(assert) {
     assert,
     computed: filterBy('array', 'key', 3),
     properties: {
-      array: newArray([{ test: 2 }, { test: 3 }]),
+      array: emberA([{ test: 2 }, { test: 3 }]),
       key: 'test'
     },
     deepEqual: [{ test: 3 }]
@@ -70,7 +66,7 @@ test('composable: it filters array if found', function(assert) {
   compute({
     assert,
     computed: filterBy(
-      raw(newArray([{ test: 'val1' }, { test: 'val2' }])),
+      raw(emberA([{ test: 'val1' }, { test: 'val2' }])),
       raw('test'),
       raw('val2')
     ),

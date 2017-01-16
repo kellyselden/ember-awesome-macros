@@ -1,8 +1,4 @@
-import Ember from 'ember';
+import { A as emberA } from 'ember-array/utils';
 import { resolveKeys } from './-utils';
 
-const {
-  A: newArray
-} = Ember;
-
-export default resolveKeys((...values) => newArray(values));
+export default resolveKeys((...values) => emberA(values));

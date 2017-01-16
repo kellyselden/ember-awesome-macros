@@ -1,8 +1,4 @@
-import Ember from 'ember';
+import { htmlSafe } from 'ember-string';
 import { normalizeString } from './-utils';
-
-const {
-  String: { htmlSafe }
-} = Ember;
 
 export default normalizeString(htmlSafe);

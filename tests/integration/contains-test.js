@@ -1,5 +1,5 @@
 import get from 'ember-metal/get';
-import { A as emberArray } from 'ember-array/utils';
+import { A as emberA } from 'ember-array/utils';
 import { contains, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
@@ -8,7 +8,7 @@ let array;
 
 module('Integration | Macro | contains', {
   beforeEach() {
-    array = emberArray(['my value']);
+    array = emberA(['my value']);
   }
 });
 

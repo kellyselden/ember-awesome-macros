@@ -1,4 +1,4 @@
-import { A as emberArray } from 'ember-array/utils';
+import { A as emberA } from 'ember-array/utils';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import RSVP from 'rsvp';
@@ -12,7 +12,7 @@ let array;
 
 module('Integration | Macro | promise array', {
   beforeEach() {
-    array = emberArray([null]);
+    array = emberA([null]);
   }
 });
 
@@ -61,7 +61,7 @@ test('it responds to reassigns', function(assert) {
     }
   });
 
-  set(subject, 'promise', resolve(emberArray([null, null])));
+  set(subject, 'promise', resolve(emberA([null, null])));
 
   let result = get(subject, 'computed');
 

@@ -1,8 +1,4 @@
-import Ember from 'ember';
+import { dasherize } from 'ember-string';
 import { normalizeString } from './-utils';
-
-const {
-  String: { dasherize }
-} = Ember;
 
 export default normalizeString(dasherize);

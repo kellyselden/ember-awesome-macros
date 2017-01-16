@@ -1,8 +1,4 @@
-import Ember from 'ember';
+import { capitalize } from 'ember-string';
 import { normalizeString } from './-utils';
-
-const {
-  String: { capitalize }
-} = Ember;
 
 export default normalizeString(capitalize);
