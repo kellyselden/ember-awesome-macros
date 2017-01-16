@@ -15,19 +15,15 @@ const sentinelValue = {};
 
 function normalizeArrayArgs(keys) {
   let [array] = keys;
-  let wrappedArray = wrapArray(array);
-  keys[0] = wrappedArray;
-  return {
-    array,
-    wrappedArray
-  };
+  keys[0] = wrapArray(array);
+  return array;
 }
 
 export function normalizeArray({
   defaultValue = sentinelValue
 }, callback) {
   return (...keys) => {
-    let { array } = normalizeArrayArgs(keys);
+    let array = normalizeArrayArgs(keys);
 
     let args = keys.slice(1);
 
