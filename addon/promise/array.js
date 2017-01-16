@@ -8,6 +8,4 @@ const {
 
 const PromiseArray = ArrayProxy.extend(PromiseProxyMixin);
 
-export default function(key) {
-  return wrapPromiseProxy(key, PromiseArray);
-}
+export default wrapPromiseProxy(PromiseArray);
