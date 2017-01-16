@@ -42,5 +42,5 @@ export default function(array, sortDefinition) {
     };
   }
 
-  return normalizeArray([array, sortDefinition], {}, computedCallback);
+  return normalizeArray({}, computedCallback)(array, sortDefinition);
 }

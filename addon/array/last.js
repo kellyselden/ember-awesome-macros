@@ -1,7 +1,5 @@
 import { normalizeArray } from './-utils';
 
-export default function(...keys) {
-  return normalizeArray(keys, {}, array => {
-    return array[array.length - 1];
-  });
-}
+export default normalizeArray({}, array => {
+  return array[array.length - 1];
+});

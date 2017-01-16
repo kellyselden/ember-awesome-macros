@@ -23,21 +23,23 @@ function normalizeArrayArgs(keys) {
   };
 }
 
-export function normalizeArray(keys, {
+export function normalizeArray({
   defaultValue = sentinelValue
 }, callback) {
-  let { array } = normalizeArrayArgs(keys);
+  return function(...keys) {
+    let { array } = normalizeArrayArgs(keys);
 
-  let args = keys.slice(1);
+    let args = keys.slice(1);
 
-  return _computed(...flattenKeys(keys), function() {
-    let arrayValue = getValue(this, array);
-    if (!arrayValue) {
-      return defaultValue === sentinelValue ? arrayValue : defaultValue;
-    }
-    let values = args.map(key => getValue(this, key));
-    return callback.call(this, arrayValue, ...values);
-  }).readOnly();
+    return _computed(...flattenKeys(keys), function() {
+      let arrayValue = getValue(this, array);
+      if (!arrayValue) {
+        return defaultValue === sentinelValue ? arrayValue : defaultValue;
+      }
+      let values = args.map(key => getValue(this, key));
+      return callback.call(this, arrayValue, ...values);
+    }).readOnly();
+  };
 }
 
 export function normalizeArray2(funcStr) {

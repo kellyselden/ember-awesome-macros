@@ -1,7 +1,5 @@
 import { normalizeArray } from './-utils';
 
-export default function(...keys) {
-  return normalizeArray(keys, { defaultValue: '' }, (array, separator) => {
-    return array.join(separator);
-  });
-}
+export default normalizeArray({ defaultValue: '' }, (array, separator) => {
+  return array.join(separator);
+});

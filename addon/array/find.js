@@ -1,7 +1,5 @@
 import { normalizeArray } from './-utils';
 
-export default function(...keys) {
-  return normalizeArray(keys, {}, (array, callback) => {
-    return array.find(callback);
-  });
-}
+export default normalizeArray({}, (array, callback) => {
+  return array.find(callback);
+});
