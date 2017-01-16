@@ -21,12 +21,12 @@ export function checkArgs(values, callback) {
   return callback();
 }
 
-export function safelyCreateComputed(keys, funcStr) {
+export function safelyCreateComputed(funcStr) {
   return resolveKeys((...values) => {
     return checkArgs(values, () => {
       return values[0][funcStr](...values.slice(1));
     });
-  })(...keys);
+  });
 }
 
 import { deprecateFunc } from 'ember-deprecations';

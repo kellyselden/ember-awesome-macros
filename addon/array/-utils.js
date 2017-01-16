@@ -42,5 +42,5 @@ export function normalizeArray(keys, {
 
 export function normalizeArray2(keys, funcStr) {
   normalizeArrayArgs(keys);
-  return safelyCreateComputed(keys, funcStr);
+  return safelyCreateComputed(funcStr)(...keys);
 }

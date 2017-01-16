@@ -1,5 +1,3 @@
 import { normalizeString2 } from './-utils';
 
-export default function(...keys) {
-  return normalizeString2(keys, 'replace');
-}
+export default normalizeString2('replace');

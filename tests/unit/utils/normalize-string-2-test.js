@@ -18,9 +18,7 @@ module('Unit | Macro | utils | normalize string 2', {
   }
 });
 
-function computed(...keys) {
-  return normalizeString2(keys, 'func');
-}
+const computed = normalizeString2('func');
 
 test('it returns undefined if string undefined', function(assert) {
   let { result } = compute({
