@@ -1,7 +1,5 @@
-import computed from './computed';
+import { resolveKeys } from './-utils';
 
-export default function(...keys) {
-  return computed(...keys, object => {
-    return typeof object;
-  });
-}
+export default resolveKeys(object => {
+  return typeof object;
+});

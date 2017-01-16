@@ -1,10 +1,8 @@
-import computed from './computed';
+import { resolveKeys } from './-utils';
 
-export default function(...keys) {
-  return computed(...keys, (object, constructor) => {
-    if (constructor === undefined) {
-      return undefined;
-    }
-    return object instanceof constructor;
-  });
-}
+export default resolveKeys((object, constructor) => {
+  if (constructor === undefined) {
+    return undefined;
+  }
+  return object instanceof constructor;
+});
