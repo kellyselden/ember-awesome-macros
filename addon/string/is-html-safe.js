@@ -1,13 +1,4 @@
-import Ember from 'ember';
+import isHTMLSafe from 'ember-string-ishtmlsafe-polyfill';
 import { normalizeString } from './-utils';
-
-let {
-  String: { isHTMLSafe }
-} = Ember;
-
-// remove once 2.4 is dropped
-if (!isHTMLSafe) {
-  isHTMLSafe = val => val instanceof Ember.Handlebars.SafeString;
-}
 
 export default normalizeString(isHTMLSafe);

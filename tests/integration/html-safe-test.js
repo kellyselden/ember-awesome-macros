@@ -1,16 +1,7 @@
-import Ember from 'ember';
+import isHTMLSafe from 'ember-string-ishtmlsafe-polyfill';
 import { htmlSafe, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
-
-let {
-  String: { isHTMLSafe }
-} = Ember;
-
-// remove once 2.4 is dropped
-if (!isHTMLSafe) {
-  isHTMLSafe = result => result instanceof Ember.Handlebars.SafeString;
-}
 
 module('Integration | Macro | html safe');
 
