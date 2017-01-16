@@ -19,13 +19,13 @@ export function checkArgs(callback) {
         return undefined;
       }
     }
-    return callback(values);
+    return callback(...values);
   };
 }
 
 export function safelyCreateComputed(funcStr) {
-  return resolveKeys(checkArgs(values => {
-    return values[0][funcStr](...values.slice(1));
+  return resolveKeys(checkArgs((source, ...args) => {
+    return source[funcStr](...args);
   }));
 }
 
