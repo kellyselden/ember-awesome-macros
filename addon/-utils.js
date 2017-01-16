@@ -12,21 +12,21 @@ export function reduceKeys(func) {
   });
 }
 
-export function checkArgs(values, callback) {
-  for (let i = 0; i < values.length; i++) {
-    if (values[i] === undefined) {
-      return undefined;
+export function checkArgs(callback) {
+  return (...values) => {
+    for (let i = 0; i < values.length; i++) {
+      if (values[i] === undefined) {
+        return undefined;
+      }
     }
-  }
-  return callback();
+    return callback(values);
+  };
 }
 
 export function safelyCreateComputed(funcStr) {
-  return resolveKeys((...values) => {
-    return checkArgs(values, () => {
-      return values[0][funcStr](...values.slice(1));
-    });
-  });
+  return resolveKeys(checkArgs(values => {
+    return values[0][funcStr](...values.slice(1));
+  }));
 }
 
 import { deprecateFunc } from 'ember-deprecations';
