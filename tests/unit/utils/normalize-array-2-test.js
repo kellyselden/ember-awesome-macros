@@ -18,9 +18,7 @@ module('Unit | Macro | utils | normalize array 2', {
   }
 });
 
-function computed(...keys) {
-  return normalizeArray2(keys, 'func');
-}
+const computed = normalizeArray2('func');
 
 test('it returns undefined if array undefined', function(assert) {
   compute({

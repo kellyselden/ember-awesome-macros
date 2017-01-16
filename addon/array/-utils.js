@@ -40,7 +40,9 @@ export function normalizeArray(keys, {
   }).readOnly();
 }
 
-export function normalizeArray2(keys, funcStr) {
-  normalizeArrayArgs(keys);
-  return safelyCreateComputed(funcStr)(...keys);
+export function normalizeArray2(funcStr) {
+  return function(...keys) {
+    normalizeArrayArgs(keys);
+    return safelyCreateComputed(funcStr)(...keys);
+  };
 }
