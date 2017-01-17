@@ -1,5 +1,7 @@
 import { resolveKeys } from './-utils';
 
-export default resolveKeys((val1, val2) => {
-  return val1 === val2;
+export default resolveKeys((firstVal, ...values) => {
+  return values.filter(value => {
+    return value !== firstVal;
+  }).length === 0;
 });

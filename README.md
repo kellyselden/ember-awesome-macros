@@ -464,15 +464,15 @@ alias for [`quotient`](#quotient)
 alias for [`equal`](#equal)
 
 ##### `equal`
-like `Ember.computed.equal`, but uses dependent properties on both sides
-and allows composing
+like `Ember.computed.equal`, but uses dependent properties on both sides. allows N number of arguments.
 
 ```js
 source1: 'my value',
 source2: 'my other value',
 source3: 'my value',
 value1: equal('source1', 'source2'), // false
-value2: equal('source1', 'source3') // true
+value2: equal('source1', 'source3'), // true
+value3: equal('source1', 'source2', 'source3') // false
 ```
 
 ##### `getBy`
