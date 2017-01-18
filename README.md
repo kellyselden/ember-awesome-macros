@@ -72,6 +72,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`defaultTrue`](#defaulttrue)
 * [`not`](#not)
 * [`or`](#or)
+* [`unless`](#unless)
 
 ##### Comparison
 * [`eq`](#eq)
@@ -919,4 +920,17 @@ key2: false,
 key3: '',
 value1: typeOf('key1'), // 'object'
 value2: typeOf(or('key2', 'key3')) // 'string'
+```
+
+##### `unless`
+macro version of `{{unless}}` and the inverse of [`conditional`](#conditional), allows composing
+
+```js
+condition1: false,
+condition2: true,
+expr1: 'my value 1',
+expr2: 'my value 2',
+value1: unless('condition1', 'expr1', 'expr2'), // 'my value 1'
+value2: unless('condition2', 'expr1', 'expr2'), // 'my value 2'
+value3: unless(and('condition1', 'condition2'), raw('my value 1'), raw('my value 2')) // 'my value 1'
 ```
