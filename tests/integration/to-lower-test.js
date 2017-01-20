@@ -23,7 +23,7 @@ test('returns undefined when undefined', function(assert) {
   });
 });
 
-test('underscores string', function(assert) {
+test('lower cases string', function(assert) {
   compute({
     assert,
     computed: toLower('source'),
@@ -42,7 +42,7 @@ test('returns undefined when composed undefined', function(assert) {
   });
 });
 
-test('underscores composed string', function(assert) {
+test('lower cases composed string', function(assert) {
   compute({
     assert,
     computed: toLower(raw('TestString')),
