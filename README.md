@@ -99,6 +99,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 ##### Object
 * [`getBy`](#getby)
 * [`hash`](#hash)
+* [`toStr`](#tostr)
+* [`toString`](#tostring)
 * [`typeOf`](#typeof)
 
 ##### Math
@@ -910,6 +912,28 @@ source: 'two',
 value1: tag`one ${'source'} three`, // 'one two three'
 value2: tag`one ${toUpper('source')} three` // 'one TWO three'
 ```
+
+##### `toStr`
+calls `toString` with args on whatever you provide
+
+```js
+key1: {},
+key2: 253,
+key3: 254,
+value1: toStr('key1'), // '[object Object]'
+value2: toStr(math.max('key2', 'key3'), 16) // 'fe'
+```
+
+##### `toString`
+alias for [`toStr`](#tostr)
+
+The `toString` name conflicts with `window.toString` and breaks Babel, which means you need to do something like this:
+
+```js
+import { toString as toStr } from 'ember-awesome-macros';
+```
+
+That's why we provide the [`toStr`](#tostr) alias.
 
 ##### `typeOf`
 wraps [`typeOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeOf) operator
