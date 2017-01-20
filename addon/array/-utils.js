@@ -1,21 +1,14 @@
 import computed from 'ember-computed';
 import flattenKeys from 'ember-macro-helpers/flatten-keys';
 import getValue from 'ember-macro-helpers/get-value';
+import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 import { safelyCreateComputed } from '../-utils';
-
-// consider making private
-export function wrapArray(key) {
-  if (typeof key === 'string') {
-    key += '.[]';
-  }
-  return key;
-}
 
 const sentinelValue = {};
 
 function normalizeArrayArgs(keys) {
   let [array] = keys;
-  keys[0] = wrapArray(array);
+  keys[0] = normalizeArrayKey(array);
   return array;
 }
 
