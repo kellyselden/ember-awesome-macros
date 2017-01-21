@@ -40,6 +40,23 @@ test('equal and same type returns true', function(assert) {
   });
 });
 
+test('checks equality for N items', function(assert) {
+  let { subject } = compute({
+    assert,
+    computed: eq('source1', 'source2', 'source3'),
+    properties: {
+      source1: 2,
+      source2: 2,
+      source3: 1
+    },
+    strictEqual: false
+  });
+
+  subject.set('source3', 2);
+
+  assert.strictEqual(subject.get('computed'), true);
+});
+
 test('it handles numbers', function(assert) {
   compute({
     assert,
