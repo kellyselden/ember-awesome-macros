@@ -82,6 +82,8 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`instanceOf`](#instanceof)
 * [`lt`](#lt)
 * [`lte`](#lte)
+* [`neq`](#neq)
+* [`notEqual`](#notequal)
 
 ##### Number
 * [`add`](#add)
@@ -597,6 +599,9 @@ composingExample: mod(sum('number1', 'number2'), 39) // 12
 ##### `multiply`
 alias for [`product`](#product)
 
+##### `neq`
+alias for [`notEqual`](#notequal)
+
 ##### `not`
 same as `Ember.computed.not`, but allows composing
 
@@ -605,6 +610,18 @@ source1: true,
 source2: false,
 value1: not('source1'), // false
 value2: not(and('source1', 'source2')) // true
+```
+
+##### `notEqual`
+the inverse of [`equal`](#equal), allows composing
+
+```js
+source1: 'my value',
+source2: 'my other value',
+source3: 'my value',
+value1: notEqual('source1', 'source2'), // true
+value2: notEqual('source1', 'source3'), // false
+value3: notEqual('source1', 'source2', 'source3') // true
 ```
 
 ##### `or`
