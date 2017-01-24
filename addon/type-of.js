@@ -1,5 +1,5 @@
-import { resolveKeys } from './-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
-export default resolveKeys(object => {
+export default curriedComputed(object => {
   return typeof object;
 });

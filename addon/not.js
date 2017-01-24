@@ -1,3 +1,3 @@
-import { resolveKeys } from './-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
-export default resolveKeys(value => !value);
+export default curriedComputed(value => !value);

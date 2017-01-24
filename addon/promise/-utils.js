@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import RSVP from 'rsvp';
-import { resolveKeys } from '../-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
 const { PromiseProxyMixin } = Ember;
 const { resolve } = RSVP;
@@ -8,7 +8,7 @@ const { resolve } = RSVP;
 export function wrapPromiseProxy(Proxy) {
   let PromiseProxy = Proxy.extend(PromiseProxyMixin);
 
-  return resolveKeys(promise => {
+  return curriedComputed(promise => {
     if (promise === undefined) {
       promise = resolve(undefined);
     }

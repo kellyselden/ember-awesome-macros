@@ -1,7 +1,7 @@
-import { resolveKeys } from './-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
 export default function(strings, ...values) {
-  return resolveKeys((...values) => {
+  return curriedComputed((...values) => {
     return strings.reduce((total, cur, i) => {
       return total + values[i - 1] + cur;
     });

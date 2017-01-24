@@ -1,7 +1,8 @@
-import { resolveKeys, safelyCreateComputed } from '../-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
+import { safelyCreateComputed } from '../-utils';
 
 export function normalizeString(func) {
-  return resolveKeys(val => {
+  return curriedComputed(val => {
     if (!val) {
       return val;
     }

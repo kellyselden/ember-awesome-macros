@@ -1,6 +1,6 @@
 import RSVP from 'rsvp';
-import { resolveKeys } from '../-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
 const { resolve } = RSVP;
 
-export default resolveKeys(resolve);
+export default curriedComputed(resolve);

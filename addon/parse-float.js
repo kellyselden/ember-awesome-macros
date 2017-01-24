@@ -1,3 +1,4 @@
-import { resolveKeys, checkArgs } from './-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
+import { checkArgs } from './-utils';
 
-export default resolveKeys(checkArgs(parseFloat));
+export default curriedComputed(checkArgs(parseFloat));

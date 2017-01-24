@@ -1,4 +1,4 @@
 import { A as emberA } from 'ember-array/utils';
-import { resolveKeys } from './-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
-export default resolveKeys((...values) => emberA(values));
+export default curriedComputed((...values) => emberA(values));

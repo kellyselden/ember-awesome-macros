@@ -1,5 +1,5 @@
-import { resolveKeys } from './-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
-export default resolveKeys((condition, expr1, expr2) => {
+export default curriedComputed((condition, expr1, expr2) => {
   return condition ? expr2 : expr1;
 });

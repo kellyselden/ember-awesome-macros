@@ -1,5 +1,5 @@
 import EmberObject from 'ember-object';
-import { resolveKeys } from './-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
 export function deconstructArgs(args) {
   let hashKeys = [];
@@ -31,7 +31,7 @@ export function reduceValues(hashKeys, newValues) {
 
 export default function(...args) {
   let { hashKeys, hashValues } = deconstructArgs(args);
-  return resolveKeys((...newValues) => {
+  return curriedComputed((...newValues) => {
     let newHash = reduceValues(hashKeys, newValues);
     return EmberObject.create(newHash);
   })(...hashValues);

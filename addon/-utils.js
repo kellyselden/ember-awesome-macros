@@ -1,13 +1,7 @@
-import computed from 'ember-macro-helpers/computed';
-
-export function resolveKeys(callback) {
-  return function() {
-    return computed(...arguments, callback).readOnly();
-  };
-}
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
 export function reduceKeys(func) {
-  return resolveKeys((...values) => {
+  return curriedComputed((...values) => {
     return values.reduce(func);
   });
 }
@@ -24,7 +18,7 @@ export function checkArgs(callback) {
 }
 
 export function safelyCreateComputed(funcStr) {
-  return resolveKeys(checkArgs((source, ...args) => {
+  return curriedComputed(checkArgs((source, ...args) => {
     return source[funcStr](...args);
   }));
 }

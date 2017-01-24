@@ -1,6 +1,6 @@
-import { resolveKeys } from './-utils';
+import curriedComputed from 'ember-macro-helpers/curried-computed';
 
-export default resolveKeys((firstVal, ...values) => {
+export default curriedComputed((firstVal, ...values) => {
   return values.filter(value => {
     return value !== firstVal;
   }).length > 0;
