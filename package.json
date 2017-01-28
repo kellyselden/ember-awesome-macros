@@ -39,7 +39,6 @@
     "ember-cli-release": "^0.2.9",
     "ember-cli-shims": "^1.0.2",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-uglify": "^1.2.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-load-initializers": "^0.6.0",
     "ember-macro-test-helpers": "^2.1.0",
