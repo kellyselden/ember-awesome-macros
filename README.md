@@ -49,6 +49,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.first`](#arrayfirst)
 * [`array.includes`](#arrayincludes)
 * [`array.indexOf`](#arrayindexof)
+* [`array.invoke`](#arrayinvoke)
 * [`array.isAny`](#arrayisany)
 * [`array.isEvery`](#arrayisevery)
 * [`array.join`](#arrayjoin)
@@ -251,6 +252,21 @@ wraps [`Array.prototype.indexOf()`](https://developer.mozilla.org/en-US/docs/Web
 array: [2, 5, 9, 2],
 value1: array.indexOf('array', 2), // 0
 value2: array.indexOf('array', 2, 2) // 3
+```
+
+##### `array.invoke`
+wraps [`Ember.Array.invoke()`](http://emberjs.com/api/classes/Ember.Array.html#method_invoke), allows composing
+
+```js
+array: [{
+  foo(arg) {
+    return 'bar-' + arg;
+  }
+}],
+value1: array.invoke('array', 'foo', raw('baz')), // bar-baz
+value2: array.invoke('array', 'foo', 'arg'), // bar-hello
+value3: array.invoke('array', 'foo'), // bar-
+arg: 'hello'
 ```
 
 ##### `array.isAny`
