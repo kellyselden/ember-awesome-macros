@@ -4,7 +4,7 @@ import compute from 'ember-macro-test-helpers/compute';
 
 let array;
 
-module('Unit | Macro | array | length', {
+module('Integration | Macro | array | invoke', {
   beforeEach() {
     array = [{
       foo: function(arg='bar') {
