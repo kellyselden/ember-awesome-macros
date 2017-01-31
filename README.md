@@ -263,9 +263,9 @@ array: [{
     return 'bar-' + arg;
   }
 }],
-value1: array.invoke('array', 'foo', raw('baz')), // 'bar-baz'
-value2: array.invoke('array', 'foo', 'arg'), // 'bar-hello'
-value3: array.invoke('array', 'foo'), // 'bar-'
+value1: array.invoke('array', 'foo', raw('baz')), // ['bar-baz']
+value2: array.invoke('array', 'foo', 'arg'), // ['bar-hello']
+value3: array.invoke('array', 'foo'), // ['bar-']
 arg: 'hello'
 ```
 
