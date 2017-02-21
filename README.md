@@ -22,6 +22,10 @@ The API is not final until 1.0. I will be adding aliases as I think of better na
 
 If you have any opinions or want a new macro added, just ask! Or feel free to submit a pull request.
 
+### Introduction Video
+
+[![Ember Awesome Macros](http://img.youtube.com/vi/kIDIa1NBZZI/maxresdefault.jpg)](https://www.youtube.com/watch?v=kIDIa1NBZZI)
+
 #### Usage
 
 ```sh
