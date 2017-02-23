@@ -8,7 +8,7 @@ export default function(array, sortDefinition) {
   let computedCallback;
 
   if (sortDefinition === undefined) {
-    computedCallback = array => array.sort();
+    computedCallback = array => array.slice().sort();
   } else {
     computedCallback = function(array, sortDefinition) {
       let sortCallback;
@@ -38,7 +38,7 @@ export default function(array, sortDefinition) {
         };
       }
 
-      return array.sort(sortCallback);
+      return array.slice().sort(sortCallback);
     };
   }
 
