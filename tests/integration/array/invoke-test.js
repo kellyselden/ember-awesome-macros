@@ -48,11 +48,8 @@ test('it responds to array property value changes', function(assert) {
       let prop = get(this, 'prop');
       return `${foo}-${arg}-${prop}`;
     },
-    foo1(arg) {
+    foo(arg) {
       return this._foo('foo1', arg);
-    },
-    foo2(arg) {
-      return this._foo('foo2', arg);
     }
   });
   let array = emberA([
@@ -64,7 +61,7 @@ test('it responds to array property value changes', function(assert) {
     computed: invoke('array.@each.prop', 'methodName', 'args'),
     properties: {
       array,
-      methodName: 'foo1',
+      methodName: 'foo',
       args: ['baz']
     }
   });
@@ -89,11 +86,13 @@ test('it responds to array property value changes', function(assert) {
     'foo1-baz-val2'
   ]);
 
-  subject.set('methodName', 'foo2');
+  array.set('1.foo', function(arg) {
+    return this._foo('foo2', arg);
+  });
 
   assert.deepEqual(subject.get('computed'), [
+    'foo1-baz-val1',
     'foo2-baz-val1',
-    'foo2-baz-val1',
-    'foo2-baz-val2'
+    'foo1-baz-val2'
   ]);
 });

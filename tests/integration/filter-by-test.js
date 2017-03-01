@@ -1,4 +1,5 @@
 import { filterBy, raw } from 'ember-awesome-macros';
+import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
@@ -48,6 +49,40 @@ test('it filters array if found', function(assert) {
     },
     deepEqual: [{ test: 'val2' }]
   });
+});
+
+test('it responds to array property value changes', function(assert) {
+  let array = emberA([
+    EmberObject.create({ test1: 'val1', test2: 'val1' }),
+    EmberObject.create({ test1: 'val1', test2: 'val1' })
+  ]);
+
+  let { subject } = compute({
+    computed: filterBy('array', 'key', 'value'),
+    properties: {
+      array,
+      key: 'test1',
+      value: 'val2'
+    }
+  });
+
+  assert.equal(subject.get('computed.length'), 0);
+
+  array.set('1.test1', 'val2');
+
+  assert.equal(subject.get('computed.length'), 1);
+
+  array.pushObject(EmberObject.create({ test1: 'val2', test2: 'val2' }));
+
+  assert.equal(subject.get('computed.length'), 2);
+
+  subject.set('key', 'test2');
+
+  assert.equal(subject.get('computed.length'), 1);
+
+  subject.set('value', 'val1');
+
+  assert.equal(subject.get('computed.length'), 2);
 });
 
 test('it handles raw numbers', function(assert) {

@@ -1,4 +1,5 @@
 import { findBy, raw } from 'ember-awesome-macros';
+import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
@@ -49,6 +50,43 @@ test('it returns item if found', function(assert) {
     },
     strictEqual: expected
   });
+});
+
+test('it responds to array property value changes', function(assert) {
+  let array = emberA([
+    EmberObject.create({ test1: 'val1', test2: 'val1' }),
+    EmberObject.create({ test1: 'val2', test2: 'val2' })
+  ]);
+
+  let { subject } = compute({
+    computed: findBy('array', 'key', 'value'),
+    properties: {
+      array,
+      key: 'test1',
+      value: 'val2'
+    }
+  });
+
+  assert.strictEqual(subject.get('computed'), array[1]);
+
+  array.set('0.test1', 'val2');
+  array.set('1.test1', 'val1');
+
+  assert.strictEqual(subject.get('computed'), array[0]);
+
+  array.set('0.test1', 'val1');
+  array.pushObject(EmberObject.create({ test1: 'val2', test2: 'val1' }));
+
+  assert.strictEqual(subject.get('computed'), array[2]);
+
+  subject.set('key', 'test2');
+
+  assert.strictEqual(subject.get('computed'), array[1]);
+
+  array.set('0.test2', 'val2');
+  subject.set('value', 'val1');
+
+  assert.strictEqual(subject.get('computed'), array[2]);
 });
 
 test('it handles raw numbers', function(assert) {

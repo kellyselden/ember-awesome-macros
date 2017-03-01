@@ -1,4 +1,5 @@
 import { isEvery, raw } from 'ember-awesome-macros';
+import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
@@ -89,6 +90,41 @@ test('it responds to value changes', function(assert) {
   subject.set('value', 'val2');
 
   assert.strictEqual(subject.get('computed'), false);
+});
+
+test('it responds to array property value changes', function(assert) {
+  let array = emberA([
+    EmberObject.create({ test1: 'val1', test2: 'val2' }),
+    EmberObject.create({ test1: 'val1', test2: 'val2' })
+  ]);
+
+  let { subject } = compute({
+    computed: isEvery('array', 'key', 'value'),
+    properties: {
+      array,
+      key: 'test1',
+      value: 'val1'
+    }
+  });
+
+  assert.strictEqual(subject.get('computed'), true);
+
+  array.set('1.test1', 'val2');
+
+  assert.strictEqual(subject.get('computed'), false);
+
+  array.set('1.test1', 'val1');
+  array.pushObject(EmberObject.create({ test1: 'val1', test2: 'val2' }));
+
+  assert.strictEqual(subject.get('computed'), true);
+
+  subject.set('key', 'test2');
+
+  assert.strictEqual(subject.get('computed'), false);
+
+  subject.set('value', 'val2');
+
+  assert.strictEqual(subject.get('computed'), true);
 });
 
 test('composable: it calls isEvery on array', function(assert) {
