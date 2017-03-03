@@ -1,7 +1,9 @@
-import isHTMLSafe from 'ember-string-ishtmlsafe-polyfill';
+import Ember from 'ember';
 import { htmlSafe, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+
+const { isHTMLSafe } = Ember.String;
 
 module('Integration | Macro | html safe');
 
