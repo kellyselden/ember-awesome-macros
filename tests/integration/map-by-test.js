@@ -8,7 +8,7 @@ module('Integration | Macro | map by');
 test('it returns undefined if array undefined', function(assert) {
   compute({
     assert,
-    computed: mapBy('array', 'key', 'value'),
+    computed: mapBy('array', 'key'),
     strictEqual: undefined
   });
 });
@@ -16,7 +16,7 @@ test('it returns undefined if array undefined', function(assert) {
 test('it returns original array if key undefined', function(assert) {
   compute({
     assert,
-    computed: mapBy('array', 'key', 'value'),
+    computed: mapBy('array', 'key'),
     properties: {
       array: emberA([{ test: 1 }, { test: 2 }])
     },
@@ -27,7 +27,7 @@ test('it returns original array if key undefined', function(assert) {
 test('it maps array by key', function(assert) {
   compute({
     assert,
-    computed: mapBy('array', 'key', 'value'),
+    computed: mapBy('array', 'key'),
     properties: {
       array: emberA([{ test: 1 }, { test: 2 }]),
       key: 'test'
