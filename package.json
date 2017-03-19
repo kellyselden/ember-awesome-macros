@@ -24,7 +24,7 @@
   "dependencies": {
     "babel-plugin-fake-import-specifiers": "^1.0.0",
     "ember-cli-babel": "^5.1.7",
-    "ember-macro-helpers": "^0.9.0",
+    "ember-macro-helpers": "^0.10.0",
     "ember-string-ishtmlsafe-polyfill": "^1.1.0"
   },
   "devDependencies": {
