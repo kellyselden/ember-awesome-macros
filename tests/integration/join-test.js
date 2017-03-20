@@ -1,3 +1,4 @@
+import EmberObject from 'ember-object';
 import get from 'ember-metal/get';
 import { A as emberA } from 'ember-array/utils';
 import { join, raw } from 'ember-awesome-macros';
@@ -65,4 +66,34 @@ test('it handles nesting', function(assert) {
     computed: join(array, raw(separator)),
     strictEqual: 'test1, test2'
   });
+});
+
+test('it responds to array property value changes', function(assert) {
+  let ObjClass = EmberObject.extend({
+    toString() {
+      return get(this, 'prop');
+    }
+  });
+  let array = emberA([
+    ObjClass.create({ prop: 'val1' }),
+    ObjClass.create({ prop: 'val2' })
+  ]);
+
+  let { subject } = compute({
+    computed: join('array.@each.prop', 'separator'),
+    properties: {
+      array,
+      separator: ','
+    }
+  });
+
+  assert.deepEqual(subject.get('computed'), 'val1,val2');
+
+  array.set('1.prop', 'val1');
+
+  assert.deepEqual(subject.get('computed'), 'val1,val1');
+
+  array.pushObject(ObjClass.create({ prop: 'val2' }));
+
+  assert.deepEqual(subject.get('computed'), 'val1,val1,val2');
 });

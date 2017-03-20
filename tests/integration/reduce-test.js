@@ -1,4 +1,5 @@
 import { reduce } from 'ember-awesome-macros';
+import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
@@ -96,6 +97,34 @@ test('it watches pushes to array', function(assert) {
   });
 
   array.pushObject(1);
+
+  assert.strictEqual(subject.get('computed'), 7);
+});
+
+test('it responds to array property value changes', function(assert) {
+  let array = emberA([
+    EmberObject.create({ prop: 1 }),
+    EmberObject.create({ prop: 2 })
+  ]);
+
+  let { subject } = compute({
+    computed: reduce('array.@each.prop', 'callback', 'initialValue'),
+    properties: {
+      array,
+      callback(accumulator, currentValue) {
+        return accumulator + currentValue.get('prop');
+      },
+      initialValue: 3
+    }
+  });
+
+  assert.strictEqual(subject.get('computed'), 6);
+
+  array.set('1.prop', 1);
+
+  assert.strictEqual(subject.get('computed'), 5);
+
+  array.pushObject(EmberObject.create({ prop: 2 }));
 
   assert.strictEqual(subject.get('computed'), 7);
 });

@@ -1,5 +1,6 @@
 import { sort } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
+import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
@@ -181,6 +182,30 @@ test('it does not sort the source array for property sorts', function(assert) {
     deepEqual: [{prop: 3}, {prop: 2}, {prop: 1}]
   });
   assert.deepEqual(array, [{prop: 1}, {prop: 3}, {prop: 2}]);
+});
+
+test('it responds to array property value changes', function(assert) {
+  let array = emberA([
+    EmberObject.create({ prop: 2 }),
+    EmberObject.create({ prop: 1 })
+  ]);
+
+  let { subject } = compute({
+    computed: sort('array.@each.prop', ['prop']),
+    properties: {
+      array
+    }
+  });
+
+  assert.deepEqual(emberA(subject.get('computed')).mapBy('prop'), [1, 2]);
+
+  array.set('1.prop', 3);
+
+  assert.deepEqual(emberA(subject.get('computed')).mapBy('prop'), [2, 3]);
+
+  array.pushObject(EmberObject.create({ prop: 1 }));
+
+  assert.deepEqual(emberA(subject.get('computed')).mapBy('prop'), [1, 2, 3]);
 });
 
 test('composable: it returns a sorted array', function(assert) {

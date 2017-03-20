@@ -1,4 +1,7 @@
 import { invoke } from 'ember-awesome-macros/array';
+import EmberObject from 'ember-object';
+import { A as emberA } from 'ember-array/utils';
+import get from 'ember-metal/get';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 
@@ -7,13 +10,12 @@ let array;
 module('Integration | Macro | array | invoke', {
   beforeEach() {
     array = [{
-      foo: function(arg='bar') {
+      foo(arg='bar') {
         return arg + '-eval';
       }
     }];
   }
 });
-
 
 test('it invokes the given method name on each item in array without args', function(assert) {
   compute({
@@ -38,4 +40,46 @@ test('it invokes the given method name on each item in array with args', functio
     },
     deepEqual: ['baz-eval']
   });
+});
+
+test('it responds to array property value changes', function(assert) {
+  let ObjClass = EmberObject.extend({
+    foo(arg) {
+      let prop = get(this, 'prop');
+      return `${arg}-${prop}`;
+    }
+  });
+  let array = emberA([
+    ObjClass.create({ prop: 'val1' }),
+    ObjClass.create({ prop: 'val2' })
+  ]);
+
+  let { subject } = compute({
+    computed: invoke('array.@each.prop', 'methodName', 'args'),
+    properties: {
+      array,
+      methodName: 'foo',
+      args: ['baz']
+    }
+  });
+
+  assert.deepEqual(subject.get('computed'), [
+    'baz-val1',
+    'baz-val2'
+  ]);
+
+  array.set('1.prop', 'val1');
+
+  assert.deepEqual(subject.get('computed'), [
+    'baz-val1',
+    'baz-val1'
+  ]);
+
+  array.pushObject(ObjClass.create({ prop: 'val2' }));
+
+  assert.deepEqual(subject.get('computed'), [
+    'baz-val1',
+    'baz-val1',
+    'baz-val2'
+  ]);
 });

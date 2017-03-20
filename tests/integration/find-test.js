@@ -1,5 +1,7 @@
 import { find, raw } from 'ember-awesome-macros';
+import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
+import get from 'ember-metal/get';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 
@@ -33,6 +35,34 @@ test('it returns item if found', function(assert) {
     },
     strictEqual: 2
   });
+});
+
+test('it responds to array property value changes', function(assert) {
+  let array = emberA([
+    EmberObject.create({ prop: false }),
+    EmberObject.create({ prop: true })
+  ]);
+
+  let { subject } = compute({
+    computed: find('array.@each.prop', item => {
+      return get(item, 'prop');
+    }),
+    properties: {
+      array
+    }
+  });
+
+  assert.strictEqual(subject.get('computed'), array[1]);
+
+  array.set('0.prop', true);
+  array.set('1.prop', false);
+
+  assert.strictEqual(subject.get('computed'), array[0]);
+
+  array.set('0.prop', false);
+  array.pushObject(EmberObject.create({ prop: true }));
+
+  assert.strictEqual(subject.get('computed'), array[2]);
 });
 
 test('composable: it returns item if found', function(assert) {
