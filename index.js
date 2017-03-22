@@ -1,19 +1,19 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
 module.exports = {
   name: 'ember-awesome-macros',
 
-  included: function(app) {
+  included(app) {
     this._super.included.apply(this, arguments);
 
-    var plugin = require('babel-plugin-fake-import-specifiers');
+    let plugin = require('babel-plugin-fake-import-specifiers');
     plugin.baseDir = function() {
       return __dirname;
     };
 
-    var options = app.options = app.options || {};
-    var babel = options.babel = options.babel || {};
+    let options = app.options = app.options || {};
+    let babel = options.babel = options.babel || {};
     babel.plugins = babel.plugins || [];
     babel.plugins.push(plugin);
     babel.extra = babel.extra || {};
