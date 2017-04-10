@@ -11,7 +11,7 @@ const returnValue = 'return value test';
 let funcStub;
 let string;
 
-module('Unit | Macro | utils | normalize string 2', {
+module('Unit | Macro | string | utils | normalize string 2', {
   beforeEach() {
     funcStub = sinon.stub().returns(returnValue);
     string = { func: funcStub };
