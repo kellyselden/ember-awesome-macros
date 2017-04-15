@@ -44,9 +44,15 @@ test('it invokes the given method name on each item in array with args', functio
 
 test('it responds to array property value changes', function(assert) {
   let ObjClass = EmberObject.extend({
-    foo(arg) {
+    _foo(foo, arg) {
       let prop = get(this, 'prop');
-      return `${arg}-${prop}`;
+      return `${foo}-${arg}-${prop}`;
+    },
+    foo1(arg) {
+      return this._foo('foo1', arg);
+    },
+    foo2(arg) {
+      return this._foo('foo2', arg);
     }
   });
   let array = emberA([
@@ -58,28 +64,36 @@ test('it responds to array property value changes', function(assert) {
     computed: invoke('array.@each.prop', 'methodName', 'args'),
     properties: {
       array,
-      methodName: 'foo',
+      methodName: 'foo1',
       args: ['baz']
     }
   });
 
   assert.deepEqual(subject.get('computed'), [
-    'baz-val1',
-    'baz-val2'
+    'foo1-baz-val1',
+    'foo1-baz-val2'
   ]);
 
   array.set('1.prop', 'val1');
 
   assert.deepEqual(subject.get('computed'), [
-    'baz-val1',
-    'baz-val1'
+    'foo1-baz-val1',
+    'foo1-baz-val1'
   ]);
 
   array.pushObject(ObjClass.create({ prop: 'val2' }));
 
   assert.deepEqual(subject.get('computed'), [
-    'baz-val1',
-    'baz-val1',
-    'baz-val2'
+    'foo1-baz-val1',
+    'foo1-baz-val1',
+    'foo1-baz-val2'
+  ]);
+
+  subject.set('methodName', 'foo2');
+
+  assert.deepEqual(subject.get('computed'), [
+    'foo2-baz-val1',
+    'foo2-baz-val1',
+    'foo2-baz-val2'
   ]);
 });
