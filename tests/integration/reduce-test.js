@@ -127,6 +127,12 @@ test('it responds to array property value changes', function(assert) {
   array.pushObject(EmberObject.create({ prop: 2 }));
 
   assert.strictEqual(subject.get('computed'), 7);
+
+  subject.set('callback', (accumulator, currentValue) => {
+    return accumulator - currentValue.get('prop');
+  });
+
+  assert.strictEqual(subject.get('computed'), -1);
 });
 
 test('composable: it calls reduce on array', function(assert) {
