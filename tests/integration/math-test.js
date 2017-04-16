@@ -1,4 +1,9 @@
-import { math, raw } from 'ember-awesome-macros';
+import math, {
+  ceil,
+  floor,
+  round
+} from 'ember-awesome-macros/math';
+import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 
@@ -15,7 +20,7 @@ test('does not expose math functions with no arguments', function(assert) {
 test('lookup: calls math function', function(assert) {
   compute({
     assert,
-    computed: math.round('key1'),
+    computed: round('key1'),
     properties: {
       key1: 2.3
     },
@@ -26,7 +31,7 @@ test('lookup: calls math function', function(assert) {
 test('value: calls math function', function(assert) {
   compute({
     assert,
-    computed: math.floor(2.9),
+    computed: floor(2.9),
     strictEqual: 2
   });
 });
@@ -34,7 +39,7 @@ test('value: calls math function', function(assert) {
 test('composing: calls math function', function(assert) {
   compute({
     assert,
-    computed: math.ceil(raw(1.1)),
+    computed: ceil(raw(1.1)),
     strictEqual: 2
   });
 });
