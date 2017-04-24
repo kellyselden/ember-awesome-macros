@@ -15,6 +15,7 @@ import string, {
   split,
   substr,
   substring,
+  titleize,
   toLower,
   toUpper,
   underscore
@@ -40,6 +41,7 @@ test('all string global imports', function(assert) {
   assert.ok(string.split);
   assert.ok(string.substr);
   assert.ok(string.substring);
+  assert.ok(string.titleize);
   assert.ok(string.toLower);
   assert.ok(string.toUpper);
   assert.ok(string.underscore);
@@ -60,6 +62,7 @@ test('all string imports', function(assert) {
   assert.ok(split);
   assert.ok(substr);
   assert.ok(substring);
+  assert.ok(titleize);
   assert.ok(toLower);
   assert.ok(toUpper);
   assert.ok(underscore);

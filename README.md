@@ -139,6 +139,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`string.substr`](#stringsubstr)
 * [`string.substring`](#stringsubstring)
 * [`tag`](#tag)
+* [`string.titleize`](#stringtitleize)
 * [`string.toLower`](#stringtolower)
 * [`string.toUpper`](#stringtoupper)
 * [`string.underscore`](#stringunderscore)
@@ -924,6 +925,14 @@ string2: 'abc',
 string3: 'xyz',
 example: string.substring('string1', 2, 4), // 'cx'
 composingExample: string.substring(tag`${'string2'}${'string3'}`, 2, 4) // 'cx'
+```
+
+##### `string.titleize`
+capitalizes words, allows composing
+
+```js
+originalValue: 'james mcAvoy',
+newValue: string.titleize('originalValue') // 'James Mcavoy'
 ```
 
 ##### `string.toLower`

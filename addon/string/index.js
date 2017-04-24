@@ -13,6 +13,7 @@ export { default as replace } from './replace';
 export { default as split } from './split';
 export { default as substr } from './substr';
 export { default as substring } from './substring';
+export { default as titleize } from './titleize';
 export { default as toLower } from './to-lower';
 export { default as toUpper } from './to-upper';
 export { default as underscore } from './underscore';
