@@ -6,6 +6,7 @@ import string, {
   classify,
   dasherize,
   decamelize,
+  escapeExpression,
   htmlSafe,
   indexOf,
   isHtmlSafe,
@@ -51,6 +52,7 @@ test('all string imports', function(assert) {
   assert.ok(classify);
   assert.ok(dasherize);
   assert.ok(decamelize);
+  assert.ok(escapeExpression);
   assert.ok(htmlSafe);
   assert.ok(indexOf);
   assert.ok(isHtmlSafe);
