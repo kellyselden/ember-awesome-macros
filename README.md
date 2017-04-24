@@ -128,6 +128,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`string.classify`](#stringclassify)
 * [`string.dasherize`](#stringdasherize)
 * [`string.decamelize`](#stringdecamelize)
+* [`string.escapeExpression`](#stringescapeexpression)
 * [`string.htmlSafe`](#stringhtmlsafe)
 * [`string.indexOf`](#stringindexof)
 * [`string.isHtmlSafe`](#stringishtmlsafe)
@@ -824,6 +825,14 @@ wraps [`Ember.String.decamelize`](http://emberjs.com/api/classes/Ember.String.ht
 ```js
 originalValue: 'TestString',
 newValue: string.decamelize('originalValue') // 'test_string'
+```
+
+##### `string.escapeExpression`
+wraps `Ember.Handlebars.Utils.escapeExpression`, allows composing
+
+```js
+originalValue: '<input>',
+newValue: string.escapeExpression('originalValue') // '&lt;input&gt;'
 ```
 
 ##### `string.htmlSafe`

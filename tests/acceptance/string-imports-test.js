@@ -30,6 +30,7 @@ test('all string global imports', function(assert) {
   assert.ok(string.classify);
   assert.ok(string.dasherize);
   assert.ok(string.decamelize);
+  assert.ok(string.escapeExpression);
   assert.ok(string.htmlSafe);
   assert.ok(string.indexOf);
   assert.ok(string.isHtmlSafe);

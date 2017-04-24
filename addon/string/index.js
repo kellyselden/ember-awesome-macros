@@ -3,6 +3,7 @@ export { default as capitalize } from './capitalize';
 export { default as classify } from './classify';
 export { default as dasherize } from './dasherize';
 export { default as decamelize } from './decamelize';
+export { default as escapeExpression } from './escape-expression';
 export { default as htmlSafe } from './html-safe';
 export { default as indexOf } from './index-of';
 export { default as isHtmlSafe } from './is-html-safe';
