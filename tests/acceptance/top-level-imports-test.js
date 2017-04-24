@@ -42,7 +42,52 @@ import macros, {
   toString,
   typeOf,
   unless,
-  writable
+  writable,
+
+  // deprecations
+
+  any,
+  compact,
+  contains,
+  every,
+  filterBy,
+  filter,
+  findBy,
+  find,
+  first,
+  includes,
+  indexOf,
+  isAny,
+  isEvery,
+  join,
+  lastIndexOf,
+  last,
+  mapBy,
+  map,
+  objectAt,
+  reduce,
+  slice,
+  uniqBy,
+  uniq,
+  without,
+
+  promiseAll,
+  promiseArray,
+  promiseHash,
+  promiseObject,
+  promiseResolve,
+
+  camelize,
+  capitalize,
+  classify,
+  dasherize,
+  decamelize,
+  split,
+  substr,
+  substring,
+  toLower,
+  toUpper,
+  underscore,
 } from 'ember-awesome-macros';
 
 module('Acceptance | top level imports');
@@ -142,6 +187,7 @@ test('all top level global imports', function(assert) {
 test('all top level imports', function(assert) {
   assert.ok(add);
   assert.ok(and);
+  assert.ok(array);
   assert.ok(collect);
   assert.ok(computed);
   assert.ok(conditional);
@@ -169,8 +215,10 @@ test('all top level imports', function(assert) {
   assert.ok(parseFloat);
   assert.ok(parseInt);
   assert.ok(product);
+  assert.ok(promise);
   assert.ok(quotient);
   assert.ok(raw);
+  assert.ok(string);
   assert.ok(subtract);
   assert.ok(sum);
   assert.ok(tag);
@@ -179,74 +227,49 @@ test('all top level imports', function(assert) {
   assert.ok(typeOf);
   assert.ok(unless);
   assert.ok(writable);
-});
 
-test('all top level array imports', function(assert) {
-  expect(assert, array);
+  // deprecations
 
-  assert.ok(array.any);
-  assert.ok(array.compact);
-  assert.ok(array.concat);
-  assert.ok(array.every);
-  assert.ok(array.filterBy);
-  assert.ok(array.filter);
-  assert.ok(array.findBy);
-  assert.ok(array.find);
-  assert.ok(array.first);
-  assert.ok(array.includes);
-  assert.ok(array.indexOf);
-  assert.ok(array.invoke);
-  assert.ok(array.isAny);
-  assert.ok(array.isEvery);
-  assert.ok(array.join);
-  assert.ok(array.lastIndexOf);
-  assert.ok(array.last);
-  assert.ok(array.length);
-  assert.ok(array.mapBy);
-  assert.ok(array.map);
-  assert.ok(array.objectAt);
-  assert.ok(array.reduce);
-  assert.ok(array.reverse);
-  assert.ok(array.slice);
-  assert.ok(array.sort);
-  assert.ok(array.uniqBy);
-  assert.ok(array.uniq);
-  assert.ok(array.without);
-});
+  assert.ok(any);
+  assert.ok(compact);
+  assert.ok(contains);
+  assert.ok(every);
+  assert.ok(filterBy);
+  assert.ok(filter);
+  assert.ok(findBy);
+  assert.ok(find);
+  assert.ok(first);
+  assert.ok(includes);
+  assert.ok(indexOf);
+  assert.ok(isAny);
+  assert.ok(isEvery);
+  assert.ok(join);
+  assert.ok(lastIndexOf);
+  assert.ok(last);
+  assert.ok(mapBy);
+  assert.ok(map);
+  assert.ok(objectAt);
+  assert.ok(reduce);
+  assert.ok(slice);
+  assert.ok(uniqBy);
+  assert.ok(uniq);
+  assert.ok(without);
 
-test('all top level math imports', function(assert) {
-  assert.ok(math.abs);
-});
+  assert.ok(promiseAll);
+  assert.ok(promiseArray);
+  assert.ok(promiseHash);
+  assert.ok(promiseObject);
+  assert.ok(promiseResolve);
 
-test('all top level promise imports', function(assert) {
-  expect(assert, promise);
-
-  assert.ok(promise.all);
-  assert.ok(promise.array);
-  assert.ok(promise.hash);
-  assert.ok(promise.object);
-  assert.ok(promise.resolve);
-  assert.ok(promise.then);
-});
-
-test('all top level string imports', function(assert) {
-  expect(assert, string);
-
-  assert.ok(string.camelize);
-  assert.ok(string.capitalize);
-  assert.ok(string.classify);
-  assert.ok(string.dasherize);
-  assert.ok(string.decamelize);
-  assert.ok(string.htmlSafe);
-  assert.ok(string.indexOf);
-  assert.ok(string.isHtmlSafe);
-  assert.ok(string.lastIndexOf);
-  assert.ok(string.length);
-  assert.ok(string.replace);
-  assert.ok(string.split);
-  assert.ok(string.substr);
-  assert.ok(string.substring);
-  assert.ok(string.toLower);
-  assert.ok(string.toUpper);
-  assert.ok(string.underscore);
+  assert.ok(camelize);
+  assert.ok(capitalize);
+  assert.ok(classify);
+  assert.ok(dasherize);
+  assert.ok(decamelize);
+  assert.ok(split);
+  assert.ok(substr);
+  assert.ok(substring);
+  assert.ok(toLower);
+  assert.ok(toUpper);
+  assert.ok(underscore);
 });
