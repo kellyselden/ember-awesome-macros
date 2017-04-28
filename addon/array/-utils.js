@@ -20,11 +20,11 @@ export function normalizeArray({
     normalizeArrayArgs(keys);
 
     return computed(...flattenKeys(keys), function() {
-      let arrayValue = getValue(this, array);
+      let arrayValue = getValue({ context: this, key: array });
       if (!arrayValue) {
         return defaultValue === sentinelValue ? arrayValue : defaultValue;
       }
-      let values = args.map(key => getValue(this, key));
+      let values = args.map(key => getValue({ context: this, key }));
       return callback.call(this, arrayValue, ...values);
     }).readOnly();
   };
