@@ -1,4 +1,5 @@
 import curriedComputed from 'ember-macro-helpers/curried-computed';
+import lazyCurriedComputed from 'ember-macro-helpers/lazy-curried-computed';
 
 export function reduceKeys(func) {
   return curriedComputed((...values) => {
@@ -6,11 +7,24 @@ export function reduceKeys(func) {
   });
 }
 
+export function reduceKeys2(callback) {
+  return lazyCurriedComputed((get, ...keys) => {
+    let last;
+    for (let i in keys) {
+      last = get(keys[i]);
+      if (callback(last)) {
+        return last;
+      }
+    }
+    return last;
+  });
+}
+
 export function checkArgs(callback) {
   return (...values) => {
     for (let i = 0; i < values.length; i++) {
       if (values[i] === undefined) {
-        return undefined;
+        return;
       }
     }
     return callback(...values);

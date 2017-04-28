@@ -2,8 +2,10 @@ import get from 'ember-metal/get';
 import { setProperties } from 'ember-metal/set';
 import { split } from 'ember-awesome-macros/string';
 import { raw } from 'ember-awesome-macros';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 const source = 'val1,val2';
 const key = ',';
@@ -71,6 +73,19 @@ test('it handles undefined source', function(assert) {
     computed: split('source', 'key'),
     deepEqual: []
   });
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: split(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('it handles nesting', function(assert) {

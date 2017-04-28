@@ -1,7 +1,11 @@
-import curriedComputed from 'ember-macro-helpers/curried-computed';
+import lazyCurriedComputed from 'ember-macro-helpers/lazy-curried-computed';
 
-export default curriedComputed((firstVal, ...values) => {
-  return values.filter(value => {
-    return value !== firstVal;
-  }).length === 0;
+export default lazyCurriedComputed((get, firstKey, ...keys) => {
+  let firstVal = get(firstKey);
+  for (let i in keys) {
+    if (firstVal !== get(keys[i])) {
+      return false;
+    }
+  }
+  return true;
 });

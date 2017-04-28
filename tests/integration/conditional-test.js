@@ -1,6 +1,8 @@
 import { conditional, raw } from 'ember-awesome-macros';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 module('Integration | Macro | conditional');
 
@@ -36,6 +38,23 @@ test('returns second value when false', function(assert) {
     },
     strictEqual: 'val 2'
   });
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: conditional(
+      'condition',
+      computed(callback),
+      'expr2'
+    ),
+    properties: {
+      condition: false
+    }
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('doesn\'t break when missing third param', function(assert) {

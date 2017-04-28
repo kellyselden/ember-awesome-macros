@@ -1,5 +1,3 @@
-import { reduceKeys } from './-utils';
+import { reduceKeys2 } from './-utils';
 
-export default reduceKeys((total, value) => {
-  return total && value;
-});
+export default reduceKeys2(value => !value);

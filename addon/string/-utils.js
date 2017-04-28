@@ -1,5 +1,5 @@
 import curriedComputed from 'ember-macro-helpers/curried-computed';
-import { safelyCreateComputed } from '../-utils';
+import lazyCurriedComputed from 'ember-macro-helpers/lazy-curried-computed';
 
 export function normalizeString(func) {
   return curriedComputed(val => {
@@ -11,4 +11,13 @@ export function normalizeString(func) {
   });
 }
 
-export { safelyCreateComputed as normalizeString2 };
+export function normalizeString2(func, defaultValue) {
+  return lazyCurriedComputed((get, stringKey, ...keys) => {
+    let stringVal = get(stringKey);
+    if (stringVal === undefined) {
+      return defaultValue;
+    }
+
+    return stringVal[func](...keys.map(get));
+  });
+}

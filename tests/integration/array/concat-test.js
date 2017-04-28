@@ -1,8 +1,10 @@
 import { concat } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
 import { A as emberA } from 'ember-array/utils';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 const value1 = 'value 1 test';
 const value2 = 'value 2 test';
@@ -49,6 +51,19 @@ test('it responds to length changes', function(assert) {
   array.pushObject(0);
 
   assert.deepEqual(subject.get('computed'), [0, 0, value1, value2]);
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: concat(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('composable: it calls concat on array', function(assert) {

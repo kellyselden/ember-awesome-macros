@@ -1,6 +1,8 @@
 import { or } from 'ember-awesome-macros';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 module('Integration | Macro | or');
 
@@ -103,6 +105,19 @@ test('allows property expansion', function(assert) {
   subject.toggleProperty('obj.source2');
 
   assert.strictEqual(subject.get('computed'), false);
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: or(
+      true,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('allows composing', function(assert) {

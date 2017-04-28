@@ -1,8 +1,3 @@
-import curriedComputed from 'ember-macro-helpers/curried-computed';
+import { normalizeString2 } from './-utils';
 
-export default curriedComputed((str, sep) => {
-  if (!str) {
-    return [];
-  }
-  return str.split(sep);
-});
+export default normalizeString2('split', []);

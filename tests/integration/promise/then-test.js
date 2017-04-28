@@ -1,7 +1,9 @@
 import RSVP from 'rsvp';
 import { then } from 'ember-awesome-macros/promise';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 const { resolve } = RSVP;
 
@@ -36,4 +38,17 @@ test('returns promise.then result', function(assert) {
     },
     strictEqual: 'test value'
   }).promise;
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: then(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
