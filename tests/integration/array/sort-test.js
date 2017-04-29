@@ -208,6 +208,19 @@ test('it responds to array property value changes', function(assert) {
   assert.deepEqual(emberA(subject.get('computed')).mapBy('prop'), [1, 2, 3]);
 });
 
+test('it doesn\'t mutate original array', function(assert) {
+  let array = emberA(['xyz', 'abc']);
+
+  compute({
+    computed: sort('array'),
+    properties: {
+      array
+    }
+  });
+
+  assert.deepEqual(array, ['xyz', 'abc']);
+});
+
 test('composable: it returns a sorted array', function(assert) {
   compute({
     assert,
