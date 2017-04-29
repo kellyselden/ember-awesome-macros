@@ -4,7 +4,7 @@ import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | and');
 
-test('true and undefined returns false', function(assert) {
+test('true and undefined returns undefined', function(assert) {
   compute({
     assert,
     computed: and('source1', 'source2'),
@@ -73,6 +73,18 @@ test('accepts N number of keys', function(assert) {
       source3: false
     },
     strictEqual: false
+  });
+});
+
+test('allows object fallback, doesn\'t cast to bool', function(assert) {
+  compute({
+    assert,
+    computed: and('source1', 'source2'),
+    properties: {
+      source1: true,
+      source2: { test: 1 }
+    },
+    deepEqual: { test: 1 }
   });
 });
 

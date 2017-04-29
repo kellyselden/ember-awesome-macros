@@ -4,6 +4,17 @@ import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | or');
 
+test('undefined or true returns true', function(assert) {
+  compute({
+    assert,
+    computed: or('source1', 'source2'),
+    properties: {
+      source2: true
+    },
+    strictEqual: true
+  });
+});
+
 test('false or false returns false', function(assert) {
   compute({
     assert,
@@ -70,7 +81,6 @@ test('allows object fallback, doesn\'t cast to bool', function(assert) {
     assert,
     computed: or('source1', 'source2'),
     properties: {
-      source1: false,
       source2: { test: 1 }
     },
     deepEqual: { test: 1 }
