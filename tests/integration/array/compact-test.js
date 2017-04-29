@@ -1,18 +1,14 @@
 import { compact } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
+import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
-import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
 
-const retVal = 'return value';
-
-let compactStub;
 let array;
 
-module('Unit | Macro | array | compact', {
+module('Integration | Macro | array | compact', {
   beforeEach() {
-    compactStub = sinon.stub().returns(retVal);
-    array = { compact: compactStub };
+    array = emberA([undefined, 2]);
   }
 });
 
@@ -25,24 +21,35 @@ test('it returns undefined if array undefined', function(assert) {
 });
 
 test('it calls compact on array', function(assert) {
-  let { result } = compute({
+  compute({
+    assert,
+    computed: compact('array'),
+    properties: {
+      array
+    },
+    deepEqual: [2]
+  });
+});
+
+test('it responds to length changes', function(assert) {
+  let { subject } = compute({
     computed: compact('array'),
     properties: {
       array
     }
   });
 
-  assert.deepEqual(compactStub.args, [[]]);
-  assert.strictEqual(result, retVal);
+  array.pushObject(3);
+
+  assert.deepEqual(subject.get('computed'), [2, 3]);
 });
 
 test('composable: it calls compact on array', function(assert) {
-  let { result } = compute({
+  compute({
+    assert,
     computed: compact(
       raw(array)
-    )
+    ),
+    deepEqual: [2]
   });
-
-  assert.deepEqual(compactStub.args, [[]]);
-  assert.strictEqual(result, retVal);
 });
