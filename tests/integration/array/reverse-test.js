@@ -31,6 +31,17 @@ test('it calls reverse on array', function(assert) {
   });
 });
 
+test('it doesn\'t mutate original array', function(assert) {
+  compute({
+    computed: reverse('array'),
+    properties: {
+      array
+    }
+  });
+
+  assert.deepEqual(array, [1, 2]);
+});
+
 test('it responds to length changes', function(assert) {
   let { subject } = compute({
     computed: reverse('array'),
