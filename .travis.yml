@@ -8,7 +8,6 @@ sudo: false
 cache:
   directories:
     - $HOME/.npm
-    - $HOME/.cache # includes bowers cache
 
 env:
   # we recommend testing LTS's and latest stable release (bonus points to beta/canary)
@@ -29,12 +28,10 @@ before_install:
   - export DISPLAY=:99
   - sh -e /etc/init.d/xvfb start
   - npm config set spin false
-  - npm install -g bower
-  - bower --version
 
 install:
   - npm install
-  - bower install
+
 
 script:
   # Usually, it's ok to finish the test scenario without reverting
