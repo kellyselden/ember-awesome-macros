@@ -1,7 +1,5 @@
-import curriedComputed from 'ember-macro-helpers/curried-computed';
+import { not, eq } from '.';
 
-export default curriedComputed((firstVal, ...values) => {
-  return values.filter(value => {
-    return value !== firstVal;
-  }).length > 0;
-});
+export default function() {
+  return not(eq(...arguments));
+}
