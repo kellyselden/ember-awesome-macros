@@ -1,21 +1,10 @@
 import { without } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
+import { A as emberA } from 'ember-array/utils';
 import { module, test } from 'qunit';
-import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
 
-const item = 'test item';
-const retVal = 'return value';
-
-let withoutStub;
-let array;
-
-module('Unit | Macro | array | without', {
-  beforeEach() {
-    withoutStub = sinon.stub().returns(retVal);
-    array = { without: withoutStub };
-  }
-});
+module('Integration | Macro | array | without');
 
 test('it returns undefined if array undefined', function(assert) {
   compute({
@@ -26,26 +15,35 @@ test('it returns undefined if array undefined', function(assert) {
 });
 
 test('it calls without on array', function(assert) {
-  let { result } = compute({
+  compute({
+    assert,
     computed: without('array', 'item'),
     properties: {
-      array,
-      item
-    }
+      array: emberA([1, 2, 1, 2]),
+      item: 1
+    },
+    deepEqual: [2, 2]
   });
+});
 
-  assert.deepEqual(withoutStub.args, [[item]]);
-  assert.strictEqual(result, retVal);
+test('values: it calls without on array', function(assert) {
+  compute({
+    assert,
+    computed: without(
+      emberA([1, 2, 1, 2]),
+      1
+    ),
+    deepEqual: [2, 2]
+  });
 });
 
 test('composable: it calls without on array', function(assert) {
-  let { result } = compute({
+  compute({
+    assert,
     computed: without(
-      array,
-      raw(item)
-    )
+      raw(emberA([1, 2, 1, 2])),
+      raw(1)
+    ),
+    deepEqual: [2, 2]
   });
-
-  assert.deepEqual(withoutStub.args, [[item]]);
-  assert.strictEqual(result, retVal);
 });
