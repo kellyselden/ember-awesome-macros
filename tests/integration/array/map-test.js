@@ -3,8 +3,10 @@ import { raw } from 'ember-awesome-macros';
 import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
 import get from 'ember-metal/get';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 module('Integration | Macro | array | map');
 
@@ -51,6 +53,19 @@ test('it responds to array property value changes', function(assert) {
   array.pushObject(EmberObject.create({ prop: true }));
 
   assert.deepEqual(subject.get('computed'), [false, false, true]);
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: map(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('composable: it maps array', function(assert) {

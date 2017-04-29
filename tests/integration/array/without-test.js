@@ -1,8 +1,10 @@
 import { without } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
 import { A as emberA } from 'ember-array/utils';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 module('Integration | Macro | array | without');
 
@@ -24,6 +26,19 @@ test('it calls without on array', function(assert) {
     },
     deepEqual: [2, 2]
   });
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: without(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('values: it calls without on array', function(assert) {

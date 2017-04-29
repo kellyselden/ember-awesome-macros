@@ -1,7 +1,9 @@
 import { slice } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 module('Integration | Macro | array | slice');
 
@@ -24,6 +26,19 @@ test('it calls slice on array', function(assert) {
     },
     deepEqual: [2, 1]
   });
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: slice(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('values: it calls slice on array', function(assert) {

@@ -1,8 +1,10 @@
 import { objectAt } from 'ember-awesome-macros/array';
 import get from 'ember-metal/get';
 import { A as emberA } from 'ember-array/utils';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 let array;
 
@@ -68,4 +70,17 @@ test('it handles nesting', function(assert) {
     },
     strictEqual: 'my value'
   });
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: find(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });

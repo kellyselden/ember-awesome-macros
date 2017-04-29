@@ -1,7 +1,9 @@
 import { lastIndexOf } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 module('Integration | Macro | array | last index of');
 
@@ -24,6 +26,19 @@ test('it calls lastIndexOf on array', function(assert) {
     },
     strictEqual: 0
   });
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: lastIndexOf(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('values: it calls lastIndexOf on array', function(assert) {

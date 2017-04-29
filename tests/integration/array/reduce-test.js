@@ -1,8 +1,10 @@
 import { reduce } from 'ember-awesome-macros/array';
 import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 module('Integration | Macro | array | reduce');
 
@@ -133,6 +135,19 @@ test('it responds to array property value changes', function(assert) {
   });
 
   assert.strictEqual(subject.get('computed'), -1);
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: find(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('composable: it calls reduce on array', function(assert) {

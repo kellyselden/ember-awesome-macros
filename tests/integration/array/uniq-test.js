@@ -1,7 +1,9 @@
 import { uniq } from 'ember-awesome-macros/array';
 import { A as emberA } from 'ember-array/utils';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 module('Integration | Macro | array | uniq');
 
@@ -50,6 +52,19 @@ test('it responds to array pushes', function(assert) {
   array.pushObject(2);
 
   assert.deepEqual(subject.get('computed'), [1, 2]);
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: uniq(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('composable: it calls uniq on array', function(assert) {

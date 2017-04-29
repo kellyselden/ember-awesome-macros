@@ -2,9 +2,10 @@ import { sort } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
 import EmberObject from 'ember-object';
 import { A as emberA } from 'ember-array/utils';
+import computed from 'ember-computed';
 import { module, test } from 'qunit';
-import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
+import sinon from 'sinon';
 
 module('Integration | Macro | array | sort');
 
@@ -219,6 +220,19 @@ test('it doesn\'t mutate original array', function(assert) {
   });
 
   assert.deepEqual(array, ['xyz', 'abc']);
+});
+
+test('doesn\'t calculate when unnecessary', function(assert) {
+  let callback = sinon.spy();
+
+  compute({
+    computed: find(
+      undefined,
+      computed(callback)
+    )
+  });
+
+  assert.notOk(callback.called);
 });
 
 test('composable: it returns a sorted array', function(assert) {
