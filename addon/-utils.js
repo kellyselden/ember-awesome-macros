@@ -10,7 +10,7 @@ export function reduceKeys(func) {
 export function reduceKeys2(callback) {
   return lazyCurriedComputed((get, ...keys) => {
     let last;
-    for (let i in keys) {
+    for (let i = 0; i < keys.length; i++) {
       last = get(keys[i]);
       if (callback(last)) {
         return last;
