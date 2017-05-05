@@ -372,18 +372,27 @@ value3: array.objectAt(collect(raw('my value 1')), raw(0)) // 'my value'
 ##### `array.reduce`
 wraps [`Array.prototype.reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce), allows composing
 
+Your initial value must be a factory function if you plan to mutate it in the reduce, otherwise it would continually mutate the same object every recalculation. You can still pass an object, just be careful not to mutate it.
+
 ```js
 array: ['one', 'two'],
-value1: array.reduce('array', (obj, cur, i) => {
-  obj[cur] = i;
-  return obj;
-}, {}), // { one: 0, two: 1 }
+value1: array.reduce(
+  'array',
+  (obj, cur, i) => {
+    obj[cur] = i;
+    return obj;
+  },
+  // initial value is a factory function because we mutate the object
+  () => {}
+), // { one: 0, two: 1 }
 
-string: 'one, two',
-value2: array.reduce(split('string', raw(', ')), (obj, cur, i) => {
-  obj[cur] = i;
-  return obj;
-}, {}) // { one: 0, two: 1 }
+string: 'one', 'two',
+value2: array.reduce(
+  split('string', raw(', ')),
+  (arr, cur, i) => arr.concat(cur, i),
+  //initial value is an array because it is not mutated
+  []
+) // ['one', 0, 'two', 1]
 ```
 
 ##### `array.reverse`

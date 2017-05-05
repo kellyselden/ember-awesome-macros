@@ -137,6 +137,24 @@ test('it responds to array property value changes', function(assert) {
   assert.strictEqual(subject.get('computed'), -1);
 });
 
+test('it uses new initial values when factory', function(assert) {
+  let { subject } = compute({
+    computed: reduce('array', 'callback', 'initialValue'),
+    properties: {
+      array: emberA([1, 2]),
+      callback(accumulator, currentValue) {
+        accumulator.push(currentValue);
+        return accumulator;
+      },
+      initialValue: () => []
+    }
+  });
+
+  subject.set('array', emberA([1, 1]));
+
+  assert.deepEqual(subject.get('computed'), [1, 1]);
+});
+
 test('doesn\'t calculate when unnecessary', function(assert) {
   let callback = sinon.spy();
 
