@@ -19,8 +19,27 @@ import string, {
   titleize,
   toLower,
   toUpper,
-  underscore
+  underscore,
 } from 'ember-awesome-macros/string';
+import _camelize from 'ember-awesome-macros/string/camelize';
+import _capitalize from 'ember-awesome-macros/string/capitalize';
+import _classify from 'ember-awesome-macros/string/classify';
+import _dasherize from 'ember-awesome-macros/string/dasherize';
+import _decamelize from 'ember-awesome-macros/string/decamelize';
+import _escapeExpression from 'ember-awesome-macros/string/escape-expression';
+import _htmlSafe from 'ember-awesome-macros/string/html-safe';
+import _indexOf from 'ember-awesome-macros/string/index-of';
+import _isHtmlSafe from 'ember-awesome-macros/string/is-html-safe';
+import _lastIndexOf from 'ember-awesome-macros/string/last-index-of';
+import _length from 'ember-awesome-macros/string/length';
+import _replace from 'ember-awesome-macros/string/replace';
+import _split from 'ember-awesome-macros/string/split';
+import _substr from 'ember-awesome-macros/string/substr';
+import _substring from 'ember-awesome-macros/string/substring';
+import _titleize from 'ember-awesome-macros/string/titleize';
+import _toLower from 'ember-awesome-macros/string/to-lower';
+import _toUpper from 'ember-awesome-macros/string/to-upper';
+import _underscore from 'ember-awesome-macros/string/underscore';
 
 module('Acceptance | string imports');
 
@@ -49,6 +68,8 @@ test('all string global imports', function(assert) {
 });
 
 test('all string imports', function(assert) {
+  expect(assert, string);
+
   assert.ok(camelize);
   assert.ok(capitalize);
   assert.ok(classify);
@@ -68,4 +89,28 @@ test('all string imports', function(assert) {
   assert.ok(toLower);
   assert.ok(toUpper);
   assert.ok(underscore);
+});
+
+test('all string default imports', function(assert) {
+  expect(assert, string);
+
+  assert.ok(_camelize);
+  assert.ok(_capitalize);
+  assert.ok(_classify);
+  assert.ok(_dasherize);
+  assert.ok(_decamelize);
+  assert.ok(_escapeExpression);
+  assert.ok(_htmlSafe);
+  assert.ok(_indexOf);
+  assert.ok(_isHtmlSafe);
+  assert.ok(_lastIndexOf);
+  assert.ok(_length);
+  assert.ok(_replace);
+  assert.ok(_split);
+  assert.ok(_substr);
+  assert.ok(_substring);
+  assert.ok(_titleize);
+  assert.ok(_toLower);
+  assert.ok(_toUpper);
+  assert.ok(_underscore);
 });

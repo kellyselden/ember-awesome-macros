@@ -28,8 +28,36 @@ import array, {
   sort,
   uniqBy,
   uniq,
-  without
+  without,
 } from 'ember-awesome-macros/array';
+import _any from 'ember-awesome-macros/array/any';
+import _compact from 'ember-awesome-macros/array/compact';
+import _concat from 'ember-awesome-macros/array/concat';
+import _every from 'ember-awesome-macros/array/every';
+import _filterBy from 'ember-awesome-macros/array/filter-by';
+import _filter from 'ember-awesome-macros/array/filter';
+import _findBy from 'ember-awesome-macros/array/find-by';
+import _find from 'ember-awesome-macros/array/find';
+import _first from 'ember-awesome-macros/array/first';
+import _includes from 'ember-awesome-macros/array/includes';
+import _indexOf from 'ember-awesome-macros/array/index-of';
+import _invoke from 'ember-awesome-macros/array/invoke';
+import _isAny from 'ember-awesome-macros/array/is-any';
+import _isEvery from 'ember-awesome-macros/array/is-every';
+import _join from 'ember-awesome-macros/array/join';
+import _lastIndexOf from 'ember-awesome-macros/array/last-index-of';
+import _last from 'ember-awesome-macros/array/last';
+import _length from 'ember-awesome-macros/array/length';
+import _mapBy from 'ember-awesome-macros/array/map-by';
+import _map from 'ember-awesome-macros/array/map';
+import _objectAt from 'ember-awesome-macros/array/object-at';
+import _reduce from 'ember-awesome-macros/array/reduce';
+import _reverse from 'ember-awesome-macros/array/reverse';
+import _slice from 'ember-awesome-macros/array/slice';
+import _sort from 'ember-awesome-macros/array/sort';
+import _uniqBy from 'ember-awesome-macros/array/uniq-by';
+import _uniq from 'ember-awesome-macros/array/uniq';
+import _without from 'ember-awesome-macros/array/without';
 
 module('Acceptance | array imports');
 
@@ -67,6 +95,8 @@ test('all array global imports', function(assert) {
 });
 
 test('all array imports', function(assert) {
+  expect(assert, array);
+
   assert.ok(any);
   assert.ok(compact);
   assert.ok(concat);
@@ -95,4 +125,37 @@ test('all array imports', function(assert) {
   assert.ok(uniqBy);
   assert.ok(uniq);
   assert.ok(without);
+});
+
+test('all array default imports', function(assert) {
+  expect(assert, array);
+
+  assert.ok(_any);
+  assert.ok(_compact);
+  assert.ok(_concat);
+  assert.ok(_every);
+  assert.ok(_filterBy);
+  assert.ok(_filter);
+  assert.ok(_findBy);
+  assert.ok(_find);
+  assert.ok(_first);
+  assert.ok(_includes);
+  assert.ok(_indexOf);
+  assert.ok(_invoke);
+  assert.ok(_isAny);
+  assert.ok(_isEvery);
+  assert.ok(_join);
+  assert.ok(_lastIndexOf);
+  assert.ok(_last);
+  assert.ok(_length);
+  assert.ok(_mapBy);
+  assert.ok(_map);
+  assert.ok(_objectAt);
+  assert.ok(_reduce);
+  assert.ok(_reverse);
+  assert.ok(_slice);
+  assert.ok(_sort);
+  assert.ok(_uniqBy);
+  assert.ok(_uniq);
+  assert.ok(_without);
 });

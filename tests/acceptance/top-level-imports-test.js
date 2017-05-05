@@ -89,6 +89,44 @@ import macros, {
   toUpper,
   underscore,
 } from 'ember-awesome-macros';
+import _add from 'ember-awesome-macros/add';
+import _and from 'ember-awesome-macros/and';
+import _collect from 'ember-awesome-macros/collect';
+import _computed from 'ember-awesome-macros/computed';
+import _conditional from 'ember-awesome-macros/conditional';
+import _defaultTrue from 'ember-awesome-macros/default-true';
+import _difference from 'ember-awesome-macros/difference';
+import _divide from 'ember-awesome-macros/divide';
+import _eq from 'ember-awesome-macros/eq';
+import _equal from 'ember-awesome-macros/equal';
+import _getBy from 'ember-awesome-macros/get-by';
+import _gt from 'ember-awesome-macros/gt';
+import _gte from 'ember-awesome-macros/gte';
+import _hash from 'ember-awesome-macros/hash';
+import _htmlSafe from 'ember-awesome-macros/html-safe';
+import _instanceOf from 'ember-awesome-macros/instance-of';
+import _isHtmlSafe from 'ember-awesome-macros/is-html-safe';
+import _lt from 'ember-awesome-macros/lt';
+import _lte from 'ember-awesome-macros/lte';
+import _mod from 'ember-awesome-macros/mod';
+import _multiply from 'ember-awesome-macros/multiply';
+import _neq from 'ember-awesome-macros/neq';
+import _not from 'ember-awesome-macros/not';
+import _notEqual from 'ember-awesome-macros/not-equal';
+import _or from 'ember-awesome-macros/or';
+import _parseFloat from 'ember-awesome-macros/parse-float';
+import _parseInt from 'ember-awesome-macros/parse-int';
+import _product from 'ember-awesome-macros/product';
+import _quotient from 'ember-awesome-macros/quotient';
+import _raw from 'ember-awesome-macros/raw';
+import _subtract from 'ember-awesome-macros/subtract';
+import _sum from 'ember-awesome-macros/sum';
+import _tag from 'ember-awesome-macros/tag';
+import _toStr from 'ember-awesome-macros/to-str';
+import _toString from 'ember-awesome-macros/to-string';
+import _typeOf from 'ember-awesome-macros/type-of';
+import _unless from 'ember-awesome-macros/unless';
+import _writable from 'ember-awesome-macros/writable';
 
 module('Acceptance | top level imports');
 
@@ -185,6 +223,8 @@ test('all top level global imports', function(assert) {
 });
 
 test('all top level imports', function(assert) {
+  expect(assert, macros);
+
   assert.ok(add);
   assert.ok(and);
   assert.ok(array);
@@ -272,4 +312,47 @@ test('all top level imports', function(assert) {
   assert.ok(toLower);
   assert.ok(toUpper);
   assert.ok(underscore);
+});
+
+test('all top level default imports', function(assert) {
+  // expect(assert, macros);
+
+  assert.ok(_add);
+  assert.ok(_and);
+  assert.ok(_collect);
+  assert.ok(_computed);
+  assert.ok(_conditional);
+  assert.ok(_defaultTrue);
+  assert.ok(_difference);
+  assert.ok(_divide);
+  assert.ok(_eq);
+  assert.ok(_equal);
+  assert.ok(_getBy);
+  assert.ok(_gt);
+  assert.ok(_gte);
+  assert.ok(_hash);
+  assert.ok(_htmlSafe);
+  assert.ok(_instanceOf);
+  assert.ok(_isHtmlSafe);
+  assert.ok(_lt);
+  assert.ok(_lte);
+  assert.ok(_mod);
+  assert.ok(_multiply);
+  assert.ok(_neq);
+  assert.ok(_not);
+  assert.ok(_notEqual);
+  assert.ok(_or);
+  assert.ok(_parseFloat);
+  assert.ok(_parseInt);
+  assert.ok(_product);
+  assert.ok(_quotient);
+  assert.ok(_raw);
+  assert.ok(_subtract);
+  assert.ok(_sum);
+  assert.ok(_tag);
+  assert.ok(_toStr);
+  assert.ok(_toString);
+  assert.ok(_typeOf);
+  assert.ok(_unless);
+  assert.ok(_writable);
 });
