@@ -66,6 +66,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.objectAt`](#arrayobjectat)
 * [`array.reduce`](#arrayreduce)
 * [`array.reverse`](#arrayreverse)
+* [`array.rejectBy`](#arrayrejectby)
 * [`array.slice`](#arrayslice)
 * [`array.sort`](#arraysort)
 * [`array.uniqBy`](#arrayuniqby)
@@ -393,6 +394,15 @@ value2: array.reduce(
   //initial value is an array because it is not mutated
   []
 ) // ['one', 0, 'two', 1]
+```
+
+##### `array.rejectBy`
+wraps [`Ember.Array.rejectBy`](http://emberjs.com/api/classes/Ember.Array.html#method_rejectBy), allows composing
+
+```js
+array: Ember.A([{ test: 1 }, { test: 2 }]),
+key: 'test',
+value: array.rejectBy('array', 'key', 2) // [{ test: 1 }]
 ```
 
 ##### `array.reverse`

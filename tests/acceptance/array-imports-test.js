@@ -23,6 +23,7 @@ import array, {
   map,
   objectAt,
   reduce,
+  rejectBy,
   reverse,
   slice,
   sort,
@@ -52,6 +53,7 @@ import _mapBy from 'ember-awesome-macros/array/map-by';
 import _map from 'ember-awesome-macros/array/map';
 import _objectAt from 'ember-awesome-macros/array/object-at';
 import _reduce from 'ember-awesome-macros/array/reduce';
+import _rejectBy from 'ember-awesome-macros/array/reject-by';
 import _reverse from 'ember-awesome-macros/array/reverse';
 import _slice from 'ember-awesome-macros/array/slice';
 import _sort from 'ember-awesome-macros/array/sort';
@@ -86,6 +88,7 @@ test('all array global imports', function(assert) {
   assert.ok(array.map);
   assert.ok(array.objectAt);
   assert.ok(array.reduce);
+  assert.ok(array.rejectBy);
   assert.ok(array.reverse);
   assert.ok(array.slice);
   assert.ok(array.sort);
@@ -119,6 +122,7 @@ test('all array imports', function(assert) {
   assert.ok(map);
   assert.ok(objectAt);
   assert.ok(reduce);
+  assert.ok(rejectBy);
   assert.ok(reverse);
   assert.ok(slice);
   assert.ok(sort);
@@ -152,6 +156,7 @@ test('all array default imports', function(assert) {
   assert.ok(_map);
   assert.ok(_objectAt);
   assert.ok(_reduce);
+  assert.ok(_rejectBy);
   assert.ok(_reverse);
   assert.ok(_slice);
   assert.ok(_sort);

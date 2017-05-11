@@ -20,6 +20,7 @@ export { default as mapBy } from './map-by';
 export { default as map } from './map';
 export { default as objectAt } from './object-at';
 export { default as reduce } from './reduce';
+export { default as rejectBy } from './reject-by';
 export { default as reverse } from './reverse';
 export { default as slice } from './slice';
 export { default as sort } from './sort';
