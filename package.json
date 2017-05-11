@@ -39,7 +39,7 @@
     "ember-cli-shims": "^1.1.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-load-initializers": "^1.0.0",
-    "ember-macro-test-helpers": "^2.1.0",
+    "ember-macro-test-helpers": "^3.0.0",
     "ember-resolver": "^4.0.0",
     "ember-sinon": "0.7.0",
     "ember-source": "~2.13.0",
