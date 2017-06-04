@@ -42,25 +42,3 @@ export default createClassComputed(
     });
   }
 );
-
-// export default normalizeArray({}, (array, comparator) => {
-//   // let groupValues = emberA(array).mapBy(key).uniq();
-//   // let groups = emberA();
-//   // groupValues.forEach(groupValue => {
-//   //   groups.push({
-//   //     key,
-//   //     value: groupValue,
-//   //     items: emberA(array).filterBy(key, groupValue)
-//   //   });
-//   // });
-//   //
-//   // return groups;
-//   let groups = emberA();
-//   groups.push(createGroup());
-//
-//   for (let i = 1; i < array.length; i++) {
-//     if (comparator(array[i-1]))
-//   }
-//
-//   return groups;
-// });
