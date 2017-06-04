@@ -52,6 +52,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.findBy`](#arrayfindby)
 * [`array.find`](#arrayfind)
 * [`array.first`](#arrayfirst)
+* [`array.groupBy`](#arraygroupby)
 * [`array.includes`](#arrayincludes)
 * [`array.indexOf`](#arrayindexof)
 * [`array.invoke`](#arrayinvoke)
@@ -240,6 +241,85 @@ array: ['1', '2'],
 string: '1, 2',
 example: array.first('array'), // '1'
 composingExample: array.first(split('string', raw(', '))) // '1'
+```
+
+##### `array.groupBy`
+allows to group an array of objects by key with an optional comparator
+
+```js
+array: Ember.A([{ test: 1, name: 'foo'}, { test: 2, name: 'foo' }, { test: 1, name: 'bar' }]),
+key: 'test',
+value: array.groupBy('array', 'key')
+/*
+  [
+    {
+      key: 'test',
+      value: 1,
+      items: [{ test: 1 , name: 'foo' }, { test: 1 , name: 'bar' }]
+    },
+    {
+      key: 'test',
+      value: 2,
+      items: [{ test: 2 , name: 'foo' }]
+    }
+  ]
+*/
+```
+
+The comparator is required if grouping by a key representing a complex object like `Date`
+
+```js
+// Given two different objects that represent the same info
+// today1 = new Date();
+// today2 = new Date();
+// randomDate = new Date(2017, 1, 1);
+array: Ember.A([
+  { test: 1 , date: today1 },
+  { test: 2 , date: today2 },
+  { test: 1 , date: randomDate }
+]),
+key: 'date'
+
+// without comparator
+value1: array.includes('array', 'key'),
+/*
+  [
+    {
+      key: 'date',
+      value: today1,
+      items: [{ test: 1 , date: today1 }]
+    },
+    {
+      key: 'date',
+      value: today2,
+      items: [{ test: 2 , date: today2 }]
+    },
+    {
+      key: 'date',
+      value: randomDate,
+      items: [{ test: 1 , date: randomDate }]
+    }
+  ]
+*/
+
+// with comparator
+value2: array.includes('array', 'key', (groupValue, currentValue) => {
+  return groupValue.getTime() === currentValue.getTime();
+})
+/*
+  [
+    {
+      key: 'date',
+      value: today1,
+      items: [{ test: 1 , date: today1 }, { test: 2 , date: today2 }]
+    },
+    {
+      key: 'date',
+      value: randomDate,
+      items: [{ test: 1 , date: randomDate }]
+    }
+  ]
+*/
 ```
 
 ##### `array.includes`

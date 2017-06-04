@@ -10,6 +10,7 @@ import array, {
   findBy,
   find,
   first,
+  groupBy,
   includes,
   indexOf,
   invoke,
@@ -40,6 +41,7 @@ import _filter from 'ember-awesome-macros/array/filter';
 import _findBy from 'ember-awesome-macros/array/find-by';
 import _find from 'ember-awesome-macros/array/find';
 import _first from 'ember-awesome-macros/array/first';
+import _groupBy from 'ember-awesome-macros/array/group-by';
 import _includes from 'ember-awesome-macros/array/includes';
 import _indexOf from 'ember-awesome-macros/array/index-of';
 import _invoke from 'ember-awesome-macros/array/invoke';
@@ -75,6 +77,7 @@ test('all array global imports', function(assert) {
   assert.ok(array.findBy);
   assert.ok(array.find);
   assert.ok(array.first);
+  assert.ok(array.groupBy);
   assert.ok(array.includes);
   assert.ok(array.indexOf);
   assert.ok(array.invoke);
@@ -109,6 +112,7 @@ test('all array imports', function(assert) {
   assert.ok(findBy);
   assert.ok(find);
   assert.ok(first);
+  assert.ok(groupBy);
   assert.ok(includes);
   assert.ok(indexOf);
   assert.ok(invoke);
@@ -143,6 +147,7 @@ test('all array default imports', function(assert) {
   assert.ok(_findBy);
   assert.ok(_find);
   assert.ok(_first);
+  assert.ok(_groupBy);
   assert.ok(_includes);
   assert.ok(_indexOf);
   assert.ok(_invoke);

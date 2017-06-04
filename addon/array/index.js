@@ -7,6 +7,7 @@ export { default as filter } from './filter';
 export { default as findBy } from './find-by';
 export { default as find } from './find';
 export { default as first } from './first';
+export { default as groupBy } from './group-by';
 export { default as includes } from './includes';
 export { default as indexOf } from './index-of';
 export { default as invoke } from './invoke';
