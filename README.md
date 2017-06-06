@@ -281,7 +281,7 @@ array: Ember.A([
 key: 'date'
 
 // without comparator
-value1: array.includes('array', 'key'),
+value1: array.groupBy('array', 'key'),
 /*
   [
     {
@@ -303,7 +303,7 @@ value1: array.includes('array', 'key'),
 */
 
 // with comparator
-value2: array.includes('array', 'key', (groupValue, currentValue) => {
+value2: array.groupBy('array', 'key', (groupValue, currentValue) => {
   return groupValue.getTime() === currentValue.getTime();
 })
 /*
