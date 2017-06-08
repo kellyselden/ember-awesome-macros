@@ -10,7 +10,7 @@ let array;
 module('Integration | Macro | array | invoke', {
   beforeEach() {
     array = [{
-      foo(arg='bar') {
+      foo(arg = 'bar') {
         return arg + '-eval';
       }
     }];

@@ -66,9 +66,9 @@ test('it returns a sorted array with a direct array parameter', function(assert)
     assert,
     computed: sort('array', ['prop:desc']),
     properties: {
-      array: [{prop: 1}, {prop: 3}, {prop: 2}]
+      array: [{ prop: 1 }, { prop: 3 }, { prop: 2 }]
     },
-    deepEqual: [{prop: 3}, {prop: 2}, {prop: 1}]
+    deepEqual: [{ prop: 3 }, { prop: 2 }, { prop: 1 }]
   });
 });
 
@@ -173,16 +173,16 @@ test('it does not sort the source array for default sorts', function(assert) {
 });
 
 test('it does not sort the source array for property sorts', function(assert) {
-  let array = [{prop: 1}, {prop: 3}, {prop: 2}];
+  let array = [{ prop: 1 }, { prop: 3 }, { prop: 2 }];
   compute({
     assert,
     computed: sort('array', ['prop:desc']),
     properties: {
       array
     },
-    deepEqual: [{prop: 3}, {prop: 2}, {prop: 1}]
+    deepEqual: [{ prop: 3 }, { prop: 2 }, { prop: 1 }]
   });
-  assert.deepEqual(array, [{prop: 1}, {prop: 3}, {prop: 2}]);
+  assert.deepEqual(array, [{ prop: 1 }, { prop: 3 }, { prop: 2 }]);
 });
 
 test('it responds to array property value changes', function(assert) {
