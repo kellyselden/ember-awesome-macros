@@ -15,30 +15,34 @@ function getCurrentGroup(groups, value, comparator) {
 }
 
 export default createClassComputed(
-  [ false, true, false],
-  ( array, key, comparator) => {
-    return computed(normalizeArrayKey(array, [key]), comparator, (array, comparator) => {
-      if (!array || !key) {
-        return array;
-      }
-
-      let groups = emberA();
-      array.forEach(item => {
-        const value = get(item, key);
-        let currentGroup = getCurrentGroup(groups, value, comparator);
-
-        if (currentGroup) {
-          currentGroup.items.push(item);
-        } else {
-          groups.push({
-            key,
-            value: value,
-            items: [ item ]
-          });
+  [false, true, false],
+  (array, key, comparator) => {
+    return computed(
+      normalizeArrayKey(array, [key]),
+      comparator,
+      (array, comparator) => {
+        if (!array || !key) {
+          return array;
         }
-      });
 
-      return groups;
-    });
+        let groups = emberA();
+        array.forEach(item => {
+          const value = get(item, key);
+          let currentGroup = getCurrentGroup(groups, value, comparator);
+
+          if (currentGroup) {
+            currentGroup.items.push(item);
+          } else {
+            groups.push({
+              key,
+              value,
+              items: [item]
+            });
+          }
+        });
+
+        return groups;
+      }
+    );
   }
 );
