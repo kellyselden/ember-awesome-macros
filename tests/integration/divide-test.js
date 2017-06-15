@@ -1,5 +1,6 @@
 import { divide } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
+import { A as emberA } from 'ember-array/utils';
 import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | divide');
@@ -26,6 +27,22 @@ test('divides three numbers', function(assert) {
       source3: 2
     },
     strictEqual: 0.75
+  });
+});
+
+test('allows empty arrays', function(assert) {
+  compute({
+    assert,
+    computed: divide(emberA()),
+    strictEqual: 0
+  });
+});
+
+test('divides array members', function(assert) {
+  compute({
+    assert,
+    computed: divide(emberA([3, 2]), emberA([1])),
+    strictEqual: 1.5
   });
 });
 

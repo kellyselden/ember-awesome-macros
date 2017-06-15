@@ -1,5 +1,6 @@
 import { multiply } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
+import { A as emberA } from 'ember-array/utils';
 import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | multiply');
@@ -25,6 +26,22 @@ test('multiplies three numbers', function(assert) {
       source2: 2,
       source3: 3
     },
+    strictEqual: 6
+  });
+});
+
+test('allows empty arrays', function(assert) {
+  compute({
+    assert,
+    computed: multiply(emberA()),
+    strictEqual: 0
+  });
+});
+
+test('multiplies array members', function(assert) {
+  compute({
+    assert,
+    computed: multiply(emberA([1, 2]), emberA([3])),
     strictEqual: 6
   });
 });

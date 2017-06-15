@@ -1,5 +1,6 @@
 import { subtract } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
+import { A as emberA } from 'ember-array/utils';
 import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | subtract');
@@ -25,6 +26,22 @@ test('subtracts three numbers', function(assert) {
       source2: 2,
       source3: 1
     },
+    strictEqual: 0
+  });
+});
+
+test('allows empty arrays', function(assert) {
+  compute({
+    assert,
+    computed: subtract(emberA()),
+    strictEqual: 0
+  });
+});
+
+test('subtracts array members', function(assert) {
+  compute({
+    assert,
+    computed: subtract(emberA([3, 2]), emberA([1])),
     strictEqual: 0
   });
 });

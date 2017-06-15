@@ -3,7 +3,22 @@ import lazyCurriedComputed from 'ember-macro-helpers/lazy-curried-computed';
 
 export function reduceKeys(func) {
   return curriedComputed((...values) => {
-    return values.reduce(func);
+    if (values.length === 0) {
+      return 0;
+    }
+    return values.reduce((total, next, i) => {
+      if (Array.isArray(next)) {
+        if (next.length === 0) {
+          next = 0;
+        } else {
+          next = next.reduce(func);
+        }
+      }
+      if (i === 0) {
+        return next;
+      }
+      return func(total, next);
+    }, null);
   });
 }
 

@@ -1,5 +1,6 @@
 import { add } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
+import { A as emberA } from 'ember-array/utils';
 import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | add');
@@ -25,6 +26,22 @@ test('adds three numbers', function(assert) {
       source2: 2,
       source3: 3
     },
+    strictEqual: 6
+  });
+});
+
+test('allows empty arrays', function(assert) {
+  compute({
+    assert,
+    computed: add(emberA()),
+    strictEqual: 0
+  });
+});
+
+test('adds array members', function(assert) {
+  compute({
+    assert,
+    computed: add(emberA([1, 2]), emberA([3])),
     strictEqual: 6
   });
 });
