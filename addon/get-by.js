@@ -1,8 +1,11 @@
-import get from 'ember-metal/get';
-import curriedComputed from 'ember-macro-helpers/curried-computed';
+import createClassComputed from 'ember-macro-helpers/create-class-computed';
+import computed from 'ember-macro-helpers/computed';
 
-export default curriedComputed((obj, key) => {
-  if (obj && key) {
-    return get(obj, key);
+export default createClassComputed(
+  [false, true],
+  (obj, key) => {
+    return computed(`${obj}.${key}`, (value) => {
+      return value;
+    });
   }
-});
+);

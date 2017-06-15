@@ -1,5 +1,6 @@
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
+import EmberObject from 'ember-object';
 import { getBy, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
@@ -8,10 +9,10 @@ let model;
 
 module('Integration | Macro | get by', {
   beforeEach() {
-    model = {
+    model = EmberObject.create({
       testProp1: 'test val 1',
       testProp2: 'test val 2'
-    };
+    });
   }
 });
 
@@ -25,6 +26,20 @@ test('default', function(assert) {
     },
     strictEqual: 'test val 1'
   });
+});
+
+test('handles property value changes', function(assert) {
+  let { subject } = compute({
+    computed: getBy('model', 'source'),
+    properties: {
+      model,
+      source: 'testProp1'
+    }
+  });
+
+  set(subject, 'model.testProp1', 'test val 3');
+
+  assert.strictEqual(get(subject, 'computed'), 'test val 3');
 });
 
 test('handles property changes', function(assert) {
