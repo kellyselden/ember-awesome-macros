@@ -5,7 +5,7 @@ import RSVP from 'rsvp';
 import {
   object as promiseObject,
   resolve as promiseResolve
- } from 'ember-awesome-macros/promise';
+} from 'ember-awesome-macros/promise';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 
