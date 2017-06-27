@@ -24,30 +24,30 @@
   "dependencies": {
     "broccoli-file-creator": "^1.1.1",
     "broccoli-merge-trees": "^2.0.0",
-    "ember-cli-babel": "^6.0.0",
+    "ember-cli-babel": "^6.3.0",
     "ember-cli-string-utils": "^1.1.0",
     "ember-macro-helpers": "^0.15.0",
     "ember-string-ishtmlsafe-polyfill": "^1.1.0"
   },
   "devDependencies": {
-    "ember-cli": "2.13.2",
+    "ember-cli": "2.13.3",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.0.0",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-qunit": "^4.0.0",
     "ember-cli-shims": "^1.1.0",
-    "ember-disable-prototype-extensions": "^1.1.0",
+    "ember-disable-prototype-extensions": "^1.1.2",
     "ember-load-initializers": "^1.0.0",
     "ember-macro-test-helpers": "^3.0.0",
     "ember-resolver": "^4.0.0",
     "ember-sinon": "0.7.0",
-    "ember-source": "~2.13.0",
+    "ember-source": "~2.13.3",
     "eslint-config-sane": "^0.1.0",
     "loader.js": "^4.2.3"
   },
   "engines": {
-    "node": ">= 4"
+    "node": "^4.5 || 6.* || >= 7.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
