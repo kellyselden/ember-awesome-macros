@@ -430,6 +430,8 @@ key: 'test',
 value: array.mapBy('array', 'key') // [1, 2]
 ```
 
+Note: though mapping by a nested key, e. g. `mapBy("array", raw("foo.bar"))`, is a valid use case when your data is static, such usage will produce an invalid dependency key `"array.@each.foo.bar"`, resulting in a console warning. If you need to map static objects by a nested key and would like to avoid the warning, you should revert to a conventional computed property written by hand.
+
 ##### `array.map`
 wraps [`Ember.Array.map`](http://emberjs.com/api/classes/Ember.Array.html#method_map), allows composing
 
