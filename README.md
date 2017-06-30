@@ -464,7 +464,7 @@ value1: array.reduce(
     return obj;
   },
   // initial value is a factory function because we mutate the object
-  () => { return {}; }
+  () => ({})
 ), // { one: 0, two: 1 }
 
 string: 'one', 'two',
