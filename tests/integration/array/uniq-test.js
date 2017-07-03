@@ -1,6 +1,6 @@
 import { uniq } from 'ember-awesome-macros/array';
-import { A as emberA } from 'ember-array/utils';
-import computed from 'ember-computed';
+import { A as emberA } from '@ember/array';
+import { computed } from '@ember/object';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 import sinon from 'sinon';

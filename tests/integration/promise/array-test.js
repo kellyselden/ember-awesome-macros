@@ -1,6 +1,5 @@
-import { A as emberA } from 'ember-array/utils';
-import get from 'ember-metal/get';
-import set from 'ember-metal/set';
+import { A as emberA } from '@ember/array';
+import { get, set } from '@ember/object';
 import RSVP from 'rsvp';
 import {
   array as promiseArray,

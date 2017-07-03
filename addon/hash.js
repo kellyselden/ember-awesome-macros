@@ -1,4 +1,4 @@
-import EmberObject from 'ember-object';
+import EmberObject from '@ember/object';
 import curriedComputed from 'ember-macro-helpers/curried-computed';
 
 export function deconstructArgs(args) {

@@ -52,7 +52,7 @@ export function safelyCreateComputed(funcStr) {
   }));
 }
 
-import { deprecateFunc } from 'ember-deprecations';
+import { deprecateFunc } from '@ember/application/deprecations';
 
 const projectName = 'ember-awesome-macros';
 const until = 'sometime before 1.0';

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import get from 'ember-metal/get';
+import { get } from '@ember/object';
 import { normalizeArray } from './-utils';
 
 const { compare } = Ember;

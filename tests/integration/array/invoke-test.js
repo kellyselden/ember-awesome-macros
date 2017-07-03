@@ -1,7 +1,6 @@
 import { invoke } from 'ember-awesome-macros/array';
-import EmberObject from 'ember-object';
-import { A as emberA } from 'ember-array/utils';
-import get from 'ember-metal/get';
+import EmberObject, { get } from '@ember/object';
+import { A as emberA } from '@ember/array';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 

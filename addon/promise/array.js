@@ -1,4 +1,4 @@
-import ArrayProxy from 'ember-controller/proxy';
+import ArrayProxy from '@ember/array/proxy';
 import { wrapPromiseProxy } from './-utils';
 
 export default wrapPromiseProxy(ArrayProxy);

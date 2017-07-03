@@ -1,4 +1,4 @@
-import EmberObject from 'ember-object';
+import EmberObject from '@ember/object';
 import { hash, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';

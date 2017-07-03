@@ -1,9 +1,9 @@
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
 import computed from 'ember-macro-helpers/computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
-import { A as emberA } from 'ember-array/utils';
-import get from 'ember-metal/get';
-import { guidFor } from 'ember-metal/utils';
+import { A as emberA } from '@ember/array';
+import { get } from '@ember/object';
+import { guidFor } from '@ember/object/internals';
 
 export default createClassComputed(
   [false, true],

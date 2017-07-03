@@ -1,8 +1,7 @@
 import { includes } from 'ember-awesome-macros/array';
-import get from 'ember-metal/get';
-import { A as emberA } from 'ember-array/utils';
+import { get, computed } from '@ember/object';
+import { A as emberA } from '@ember/array';
 import { raw } from 'ember-awesome-macros';
-import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 import sinon from 'sinon';

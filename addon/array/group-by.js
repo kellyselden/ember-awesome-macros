@@ -1,5 +1,5 @@
-import get from 'ember-metal/get';
-import { A as emberA } from 'ember-array/utils';
+import { get } from '@ember/object';
+import { A as emberA } from '@ember/array';
 import computed from 'ember-macro-helpers/computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 import createClassComputed from 'ember-macro-helpers/create-class-computed';

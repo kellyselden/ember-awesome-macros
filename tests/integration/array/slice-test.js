@@ -1,6 +1,6 @@
 import { slice } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
-import computed from 'ember-computed';
+import { computed } from '@ember/object';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 import sinon from 'sinon';

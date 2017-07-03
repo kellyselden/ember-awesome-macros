@@ -1,4 +1,4 @@
-import get from 'ember-metal/get';
+import { get } from '@ember/object';
 import RSVP from 'rsvp';
 import lazyCurriedComputed from 'ember-macro-helpers/lazy-curried-computed';
 

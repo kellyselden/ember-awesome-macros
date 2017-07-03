@@ -1,4 +1,4 @@
-import { htmlSafe } from 'ember-string';
+import { htmlSafe } from '@ember/string';
 import { isHtmlSafe } from 'ember-awesome-macros/string';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';

@@ -1,8 +1,6 @@
-import get from 'ember-metal/get';
-import { setProperties } from 'ember-metal/set';
+import { get, setProperties, computed } from '@ember/object';
 import { split } from 'ember-awesome-macros/string';
 import { raw } from 'ember-awesome-macros';
-import computed from 'ember-computed';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 import sinon from 'sinon';

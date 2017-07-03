@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
-import EmberObject from 'ember-object';
+import EmberObject from '@ember/object';
 import { raw } from 'ember-awesome-macros';
-import { A as emberA } from 'ember-array/utils';
+import { A as emberA } from '@ember/array';
 import { groupBy } from 'ember-awesome-macros/array';
 import compute from 'ember-macro-test-helpers/compute';
 

@@ -1,6 +1,4 @@
-import EmberObject from 'ember-object';
-import get from 'ember-metal/get';
-import set from 'ember-metal/set';
+import EmberObject, { get, set } from '@ember/object';
 import RSVP from 'rsvp';
 import {
   object as promiseObject,
