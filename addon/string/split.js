@@ -1,3 +1,3 @@
 import { normalizeString2 } from './-utils';
 
-export default normalizeString2('split', []);
+export default normalizeString2('split', () => []);

@@ -11,11 +11,11 @@ export function normalizeString(func) {
   });
 }
 
-export function normalizeString2(func, defaultValue) {
+export function normalizeString2(func, defaultValue = () => {}) {
   return lazyCurriedComputed((get, stringKey, ...keys) => {
     let stringVal = get(stringKey);
     if (stringVal === undefined) {
-      return defaultValue;
+      return defaultValue();
     }
 
     return stringVal[func](...keys.map(get));

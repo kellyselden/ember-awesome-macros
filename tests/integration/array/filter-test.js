@@ -16,6 +16,18 @@ test('it returns empty array if array undefined', function(assert) {
   });
 });
 
+test('default value is a new copy every recalculation', function(assert) {
+  let { subject } = compute({
+    computed: filter('array')
+  });
+
+  let result = subject.get('computed');
+
+  subject.set('array', null);
+
+  assert.notEqual(subject.get('computed'), result);
+});
+
 test('it returns empty array if not found', function(assert) {
   compute({
     assert,

@@ -73,6 +73,22 @@ test('it handles undefined source', function(assert) {
   });
 });
 
+test('default value is a new copy every recalculation', function(assert) {
+  let { subject } = compute({
+    computed: split('source', 'key')
+  });
+
+  let result = subject.get('computed');
+
+  subject.set('source', '');
+
+  subject.get('computed');
+
+  subject.set('source', undefined);
+
+  assert.notEqual(subject.get('computed'), result);
+});
+
 test('doesn\'t calculate when unnecessary', function(assert) {
   let callback = sinon.spy();
 

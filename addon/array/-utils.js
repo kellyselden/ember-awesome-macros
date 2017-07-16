@@ -8,7 +8,7 @@ function normalizeArrayArgs(keys) {
 }
 
 export function normalizeArray({
-  defaultValue = sentinelValue
+  defaultValue = () => sentinelValue
 }, callback) {
   return (...keys) => {
     normalizeArrayArgs(keys);
@@ -16,7 +16,8 @@ export function normalizeArray({
     return lazyComputed(...keys, function(get, array, ...args) {
       let arrayValue = get(array);
       if (!arrayValue) {
-        return defaultValue === sentinelValue ? arrayValue : defaultValue;
+        let val = defaultValue();
+        return val === sentinelValue ? arrayValue : val;
       }
       let values = args.map(get);
       return callback.call(this, arrayValue, ...values);
