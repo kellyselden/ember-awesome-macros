@@ -28,6 +28,18 @@ test('it calls isEvery on array', function(assert) {
   });
 });
 
+test('it filters array by truthiness, if no third argument was given', function(assert) {
+  compute({
+    assert,
+    computed: isEvery('array', 'key'),
+    properties: {
+      array: emberA([{ test: 'val1' }, { test: 'val1' }]),
+      key: 'test'
+    },
+    strictEqual: true
+  });
+});
+
 test('it responds to array changes', function(assert) {
   let { subject } = compute({
     computed: isEvery('array', 'key', 'value'),

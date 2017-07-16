@@ -5,14 +5,18 @@ import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 export default createClassComputed(
   [false, true, false],
   (array, key, value) => {
-    return computed(normalizeArrayKey(array, [key]), value, (array, value) => {
+    let args = [normalizeArrayKey(array, [key])];
+    if (value) {
+      args.push(value);
+    }
+    return computed(...args, (array, ...args) => {
       if (!array) {
         return [];
       }
       if (!key) {
         return array;
       }
-      return array.rejectBy(key, value);
+      return array.rejectBy(key, ...args);
     });
   }
 );
