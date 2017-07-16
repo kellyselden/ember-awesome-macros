@@ -10,7 +10,7 @@ module('Integration | Macro | array | reject by');
 test('it returns empty array if array undefined', function(assert) {
   compute({
     assert,
-    computed: rejectBy('array', 'key', 'value'),
+    computed: rejectBy('array', 'key'),
     deepEqual: []
   });
 });
@@ -18,7 +18,7 @@ test('it returns empty array if array undefined', function(assert) {
 test('it returns the original array if key undefined', function(assert) {
   compute({
     assert,
-    computed: rejectBy('array', 'key', 'value'),
+    computed: rejectBy('array', 'key'),
     properties: {
       array: emberA([{ test: 'val1' }, { test: 'val2' }])
     },

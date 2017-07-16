@@ -10,7 +10,7 @@ module('Integration | Macro | array | filter by');
 test('it returns empty array if array undefined', function(assert) {
   compute({
     assert,
-    computed: filterBy('array', 'key', 'value'),
+    computed: filterBy('array', 'key'),
     deepEqual: []
   });
 });
@@ -18,7 +18,7 @@ test('it returns empty array if array undefined', function(assert) {
 test('it returns empty array if key undefined', function(assert) {
   compute({
     assert,
-    computed: filterBy('array', 'key', 'value'),
+    computed: filterBy('array', 'key'),
     properties: {
       array: emberA([{ test: 'val1' }, { test: 'val2' }])
     },
