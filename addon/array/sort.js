@@ -4,6 +4,12 @@ import { normalizeArray } from './-utils';
 
 const { compare } = Ember;
 
+function getComparable(a, prop) {
+  const val = get(a, prop);
+
+  return val && val._isAMomentObject ? val.unix() : val;
+}
+
 export default function(array, sortDefinition) {
   let computedCallback;
 
@@ -24,7 +30,7 @@ export default function(array, sortDefinition) {
           for (let i = 0; i < sortDefinition.length; i++) {
             let key = sortDefinition[i];
             let [prop, direction] = key.split(':');
-            result = compare(get(a, prop), get(b, prop));
+            result = compare(getComparable(a, prop), getComparable(b, prop));
             if (result !== 0) {
               if (direction === 'desc') {
                 result *= -1;
