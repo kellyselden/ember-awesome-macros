@@ -4,6 +4,8 @@ node_js:
   - "6"
 
 sudo: false
+addons:
+  firefox: latest
 
 cache:
   directories:
