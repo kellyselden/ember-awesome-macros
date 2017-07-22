@@ -38,6 +38,36 @@ test('it filters array by truthiness, if no third argument was given', function(
     },
     strictEqual: true
   });
+  compute({
+    assert,
+    computed: isAny('array', 'key'),
+    properties: {
+      array: emberA([{ test: false }, { test: false }]),
+      key: 'test'
+    },
+    strictEqual: false
+  });
+});
+
+test('respects a falsy optional arg', function(assert) {
+  compute({
+    assert,
+    computed: isAny('array', 'key', false),
+    properties: {
+      array: emberA([{ test: false }, { test: 'val2' }]),
+      key: 'test'
+    },
+    strictEqual: true
+  });
+  compute({
+    assert,
+    computed: isAny('array', 'key', false),
+    properties: {
+      array: emberA([{ test: 'val1' }, { test: 'val2' }]),
+      key: 'test'
+    },
+    strictEqual: false
+  });
 });
 
 test('it responds to array changes', function(assert) {
