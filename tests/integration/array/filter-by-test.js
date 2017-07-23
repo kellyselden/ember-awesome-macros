@@ -64,6 +64,18 @@ test('it filters array if found', function(assert) {
   });
 });
 
+test('it filters array by truthiness, if no third argument was given', function(assert) {
+  compute({
+    assert,
+    computed: filterBy('array', 'key'),
+    properties: {
+      array: emberA([{ test: false }, { test: 'val2' }]),
+      key: 'test'
+    },
+    deepEqual: [{ test: 'val2' }]
+  });
+});
+
 test('it responds to array property value changes', function(assert) {
   let array = emberA([
     EmberObject.create({ test1: 'val1', test2: 'val1' }),
