@@ -4,7 +4,7 @@ import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 const sentinelValue = {};
 
 function normalizeArrayArgs(keys) {
-  keys[0] = normalizeArrayKey(keys[0]);
+  keys[0] = normalizeArrayKey(...keys);
 }
 
 export function normalizeArray({
