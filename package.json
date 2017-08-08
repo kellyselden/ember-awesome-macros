@@ -27,7 +27,7 @@
     "ember-cli-babel": "^6.6.0",
     "ember-cli-string-utils": "^1.1.0",
     "ember-macro-helpers": "^0.16.0",
-    "ember-string-ishtmlsafe-polyfill": "^1.1.0"
+    "ember-string-ishtmlsafe-polyfill": "^2.0.0"
   },
   "devDependencies": {
     "ember-cli": "~2.14.1",
