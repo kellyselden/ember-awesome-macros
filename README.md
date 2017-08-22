@@ -146,6 +146,20 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`string.toUpper`](#stringtoupper)
 * [`string.underscore`](#stringunderscore)
 
+#### Custom macros
+The [`ember-macro-helpers`](https://github.com/kellyselden/ember-macro-helpers)
+addon provides a way of creating your own custom macros. The easiest way is to
+use the blueprint generator:
+
+````sh
+ember generate macro my-custom-macro
+````
+
+This will generate an example macro and its associated test. The comments in
+these files will get you started.
+
+More explanation is given in the [introduction video](https://youtu.be/kIDIa1NBZZI?t=18m40s).
+
 #### Details
 
 ##### `add`
