@@ -33,6 +33,22 @@ matrix:
   fast_finish: true
   allow_failures:
     - env: EMBER_TRY_SCENARIO=ember-canary
+  include:
+    - stage: Deploy
+      addons: ignore
+      cache: ignore
+      env: ignore
+      before_install: ignore
+      install: ignore
+      script: ignore
+      deploy:
+        provider: npm
+        email: kellyselden@gmail.com
+        api_key:
+          secure: O6sXg2YWumDQ6dusv5l1eMXOPfg3uSyNW0SD7uoRKdaD6xdrkg7taRTEWCxhJmBGLGAIfMlhhHNuV9l3c11TiDyqlPCYLNRVjeHu+nsSJlgWG7aGrc8QgsWYBfMBnz5K5Lg+Mot6hRXOBYVsb/Yth2uZ6XliYE/o2gOkA2Sz/vcL+jsIu1iKnra0LPU8PVnbyv/HV/lzPhY0Ti0RxjSg4NZ6tWmS1HmawwT5S4NA0Al87vV/5DVV29rH/wlVSYj1hZByUAd16p63s9UM2Y8FF2w26fv5+lCaZ82GAwSkxZMtFlWthdO/GTsOm0niFSGbAIe7wIPzLSBXX3Y1Bet7MH1awf8qn/4ejX1hiA2FRsaVybGLmAsYw8t+ELmFedxn9y+D9qFS5Ul0i6d0vJDvb2T4fpigZgXfc4VEOCGAY9Pbaeco+St0chNsTzzL/EYcaKtZL3CL8KfCi+UJ7jXn6KMLkrDe+cdIrEjco5fsppERCNfKyPSm0rcXTzIHdPo3b0SNdDOEX3pt0SwF8ASUhbpA7rt907d67JIeBNfQyDfoXFvSuQVjq3+yG53Xy8G2IJOqch2dTKAoozo3aOH2w+3AcJ8h7vQuQ5LZ0ycHs/ksA7ZAaRr0L4rZKGmbVpXxoaLJ5MTTUxqgYI63L3j0ovgNH10ictNgKbNAHLUx2Mg=
+        on:
+          tags: true
+          repo: kellyselden/ember-awesome-macros
 
 before_install:
   - export DISPLAY=:99
