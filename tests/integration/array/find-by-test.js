@@ -1,7 +1,6 @@
 import { findBy } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
 import EmberObject from '@ember/object';
-import { A as emberA } from '@ember/array';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 
@@ -20,7 +19,7 @@ test('it returns undefined if key undefined', function(assert) {
     assert,
     computed: findBy('array', 'key', 'value'),
     properties: {
-      array: emberA([{ test: 'val1' }, { test: 'val2' }])
+      array: [{ test: 'val1' }, { test: 'val2' }]
     },
     strictEqual: undefined
   });
@@ -31,7 +30,7 @@ test('it returns undefined if not found', function(assert) {
     assert,
     computed: findBy('array', 'key', 'value'),
     properties: {
-      array: emberA([{ test: 'val1' }, { test: 'val2' }]),
+      array: [{ test: 'val1' }, { test: 'val2' }],
       key: 'test',
       value: 'val3'
     },
@@ -45,7 +44,7 @@ test('it returns item if found', function(assert) {
     assert,
     computed: findBy('array', 'key', 'value'),
     properties: {
-      array: emberA([{ test: 'val1' }, expected]),
+      array: [{ test: 'val1' }, expected],
       key: 'test',
       value: 'val2'
     },
@@ -54,10 +53,10 @@ test('it returns item if found', function(assert) {
 });
 
 test('it responds to array property value changes', function(assert) {
-  let array = emberA([
+  let array = [
     EmberObject.create({ test1: 'val1', test2: 'val1' }),
     EmberObject.create({ test1: 'val2', test2: 'val2' })
-  ]);
+  ];
 
   let { subject } = compute({
     computed: findBy('array', 'key', 'value'),
@@ -96,7 +95,7 @@ test('it handles raw numbers', function(assert) {
     assert,
     computed: findBy('array', 'key', 3),
     properties: {
-      array: emberA([{ test: 2 }, expected]),
+      array: [{ test: 2 }, expected],
       key: 'test'
     },
     strictEqual: expected
@@ -108,7 +107,7 @@ test('composable: it returns item if found', function(assert) {
   compute({
     assert,
     computed: findBy(
-      raw(emberA([{ test: 'val1' }, expected])),
+      raw([{ test: 'val1' }, expected]),
       raw('test'),
       raw('val2')
     ),
