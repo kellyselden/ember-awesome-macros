@@ -77,3 +77,16 @@ test('composable: it calls concat on array', function(assert) {
     deepEqual: [0, value1, value2]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: concat('array', 'value1', 'value2'),
+    properties: {
+      array: [0],
+      value1,
+      value2
+    },
+    deepEqual: [0, value1, value2]
+  });
+});

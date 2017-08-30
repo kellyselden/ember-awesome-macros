@@ -181,3 +181,16 @@ test('composable: it calls isEvery on array', function(assert) {
     strictEqual: true
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: isEvery('array', 'key', 'value'),
+    properties: {
+      array: [{ test: 'val1' }, { test: 'val1' }],
+      key: 'test',
+      value: 'val1'
+    },
+    strictEqual: true
+  });
+});

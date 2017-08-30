@@ -89,3 +89,14 @@ test('composable: it returns item if found', function(assert) {
     strictEqual: 2
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: find('array', result => result === 2),
+    properties: {
+      array: [1, 2]
+    },
+    strictEqual: 2
+  });
+});

@@ -12,6 +12,7 @@ export default createClassComputed(
       if (array === undefined || key === undefined) {
         return array;
       }
+
       if (!array.uniqBy) {
         // TODO: polyfill this
         // from https://github.com/emberjs/ember.js/blob/v2.11.0/packages/ember-runtime/lib/mixins/enumerable.js#L1094-L1105
@@ -28,6 +29,7 @@ export default createClassComputed(
 
         return ret;
       }
+
       return array.uniqBy(key);
     });
   }

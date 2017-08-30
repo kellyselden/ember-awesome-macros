@@ -76,3 +76,14 @@ test('composable: it calls uniq on array', function(assert) {
     deepEqual: [1]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: uniq('array'),
+    properties: {
+      array: [1, 1]
+    },
+    deepEqual: [1]
+  });
+});

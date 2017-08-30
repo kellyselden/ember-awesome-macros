@@ -64,3 +64,16 @@ test('composable: it calls slice on array', function(assert) {
     deepEqual: [2, 1]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: slice('array', 'begin', 'end'),
+    properties: {
+      array: [1, 2, 1, 2],
+      begin: 1,
+      end: 3
+    },
+    deepEqual: [2, 1]
+  });
+});

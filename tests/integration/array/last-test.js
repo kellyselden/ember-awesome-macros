@@ -35,3 +35,14 @@ test('handles array changes', function(assert) {
 
   assert.strictEqual(get(subject, 'computed'), 'test1');
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: last('array'),
+    properties: {
+      array: ['test1', 'test2']
+    },
+    strictEqual: 'test2'
+  });
+});

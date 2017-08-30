@@ -87,3 +87,14 @@ test('composable: it returns true if any true', function(assert) {
     strictEqual: true
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: any('array', result => result === 3),
+    properties: {
+      array: [1, 2]
+    },
+    strictEqual: false
+  });
+});

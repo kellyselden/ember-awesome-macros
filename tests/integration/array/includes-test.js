@@ -80,3 +80,15 @@ test('it handles nesting', function(assert) {
     strictEqual: true
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: includes('array', 'source'),
+    properties: {
+      array: ['my value'],
+      source: 'my value'
+    },
+    strictEqual: true
+  });
+});

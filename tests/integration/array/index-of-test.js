@@ -64,3 +64,16 @@ test('composable: it calls indexOf on array', function(assert) {
     strictEqual: 2
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: indexOf('array', 'value', 'fromIndex'),
+    properties: {
+      array: [1, 2, 1],
+      value: 1,
+      fromIndex: 1
+    },
+    strictEqual: 2
+  });
+});

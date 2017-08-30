@@ -1,3 +1,4 @@
+import { A as emberA } from '@ember/array';
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
 import computed from 'ember-macro-helpers/computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
@@ -11,7 +12,7 @@ export default createClassComputed(
     }
     return computed(...args, (array, ...args) => {
       if (array) {
-        return array.isEvery(key, ...args);
+        return emberA(array).isEvery(key, ...args);
       }
     });
   }

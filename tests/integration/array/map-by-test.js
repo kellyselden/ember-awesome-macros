@@ -77,3 +77,15 @@ test('composable: it maps array by key', function(assert) {
     deepEqual: [1, 2]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: mapBy('array', 'key'),
+    properties: {
+      array: [{ test: 1 }, { test: 2 }],
+      key: 'test'
+    },
+    deepEqual: [1, 2]
+  });
+});

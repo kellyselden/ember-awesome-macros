@@ -241,3 +241,14 @@ test('composable: it returns a sorted array', function(assert) {
     deepEqual: [1, 2, 3]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: sort('array'),
+    properties: {
+      array: ['xyz', 'abc']
+    },
+    deepEqual: ['abc', 'xyz']
+  });
+});

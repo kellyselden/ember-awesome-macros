@@ -83,3 +83,15 @@ test('doesn\'t calculate when unnecessary', function(assert) {
 
   assert.notOk(callback.called);
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: objectAt('array', 'source'),
+    properties: {
+      array: ['my value'],
+      source: 0
+    },
+    strictEqual: 'my value'
+  });
+});

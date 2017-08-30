@@ -111,3 +111,15 @@ test('doesn\'t calculate when unnecessary', function(assert) {
 
   assert.notOk(callback.called);
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: join('array', 'separator'),
+    properties: {
+      array: ['test1', 'test2'],
+      separator
+    },
+    strictEqual: 'test1, test2'
+  });
+});

@@ -1,3 +1,4 @@
+import { A as emberA } from '@ember/array';
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
 import computed from 'ember-macro-helpers/computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
@@ -16,7 +17,7 @@ export default createClassComputed(
       if (!key) {
         return array;
       }
-      return array.rejectBy(key, ...args);
+      return emberA(array).rejectBy(key, ...args);
     });
   }
 );

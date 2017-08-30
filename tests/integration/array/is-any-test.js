@@ -177,3 +177,16 @@ test('composable: it calls isAny on array', function(assert) {
     strictEqual: true
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: isAny('array', 'key', 'value'),
+    properties: {
+      array: [{ test: 'val1' }, { test: 'val2' }],
+      key: 'test',
+      value: 'val2'
+    },
+    strictEqual: true
+  });
+});

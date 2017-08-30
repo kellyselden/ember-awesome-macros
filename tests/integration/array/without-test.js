@@ -62,3 +62,15 @@ test('composable: it calls without on array', function(assert) {
     deepEqual: [2, 2]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: without('array', 'item'),
+    properties: {
+      array: [1, 2, 1, 2],
+      item: 1
+    },
+    deepEqual: [2, 2]
+  });
+});

@@ -64,3 +64,14 @@ test('composable: it calls reverse on array', function(assert) {
     deepEqual: [2, 1]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: reverse('array'),
+    properties: {
+      array: [1, 2]
+    },
+    deepEqual: [2, 1]
+  });
+});

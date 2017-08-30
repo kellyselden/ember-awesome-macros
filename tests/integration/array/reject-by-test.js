@@ -145,3 +145,16 @@ test('composable: it filters array if found', function(assert) {
     deepEqual: [{ test: 'val1' }]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: rejectBy('array', 'key', 'value'),
+    properties: {
+      array: [{ test: 'val1' }, { test: 'val2' }],
+      key: 'test',
+      value: 'val2'
+    },
+    deepEqual: [{ test: 'val1' }]
+  });
+});

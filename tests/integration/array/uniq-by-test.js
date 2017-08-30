@@ -77,3 +77,15 @@ test('composable: it returns unique objects by key', function(assert) {
     deepEqual: [{ test: 1 }]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: uniqBy('array', 'key'),
+    properties: {
+      array: [{ test: 1 }, { test: 1 }],
+      key: 'test'
+    },
+    deepEqual: [{ test: 1 }]
+  });
+});

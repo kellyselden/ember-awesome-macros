@@ -193,3 +193,30 @@ test('it groups array by key and comparator', function(assert) {
 
   assert.deepEqual(subject.get('computed'), expected);
 });
+
+test('it handles native arrays', function(assert) {
+  let item1 = { test: 1, name: 'foo' };
+  let item2 = { test: 2, name: 'bar' };
+  let item3 = { test: 3, name: 'foo' };
+
+  compute({
+    assert,
+    computed: groupBy('array', 'key'),
+    properties: {
+      array: [item1, item2, item3],
+      key: 'name'
+    },
+    deepEqual: [
+      {
+        key: 'name',
+        value: 'foo',
+        items: [item1, item3]
+      },
+      {
+        key: 'name',
+        value: 'bar',
+        items: [item2]
+      }
+    ]
+  });
+});

@@ -1,3 +1,4 @@
+import { A as emberA } from '@ember/array';
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
 import computed from 'ember-macro-helpers/computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
@@ -13,7 +14,7 @@ export default createClassComputed(
       if (!array || !key) {
         return [];
       }
-      return array.filterBy(key, ...args);
+      return emberA(array).filterBy(key, ...args);
     });
   }
 );

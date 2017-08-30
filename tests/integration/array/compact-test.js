@@ -53,3 +53,14 @@ test('composable: it calls compact on array', function(assert) {
     deepEqual: [2]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: compact('array'),
+    properties: {
+      array: [undefined, 2]
+    },
+    deepEqual: [2]
+  });
+});

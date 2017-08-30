@@ -95,3 +95,21 @@ test('it responds to array property value changes', function(assert) {
     'foo1-baz-val2'
   ]);
 });
+
+test('it handles native arrays', function(assert) {
+  array = [{
+    foo(arg = 'bar') {
+      return arg + '-eval';
+    }
+  }];
+
+  compute({
+    assert,
+    computed: invoke('array', 'methodName'),
+    properties: {
+      array,
+      methodName: 'foo'
+    },
+    deepEqual: ['bar-eval']
+  });
+});

@@ -76,3 +76,14 @@ test('composable: it maps array', function(assert) {
     deepEqual: [1, 2]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: map('array', item => item.test),
+    properties: {
+      array: [{ test: 1 }, { test: 2 }]
+    },
+    deepEqual: [1, 2]
+  });
+});

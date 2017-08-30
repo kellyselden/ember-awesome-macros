@@ -99,3 +99,14 @@ test('composable: it filters array if found', function(assert) {
     deepEqual: [2]
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: filter('array', result => result === 2),
+    properties: {
+      array: [1, 2]
+    },
+    deepEqual: [2]
+  });
+});

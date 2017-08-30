@@ -51,3 +51,14 @@ test('composable: it gets length on array', function(assert) {
     strictEqual: 3
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: length('array'),
+    properties: {
+      array: [0, 0, 0]
+    },
+    strictEqual: 3
+  });
+});

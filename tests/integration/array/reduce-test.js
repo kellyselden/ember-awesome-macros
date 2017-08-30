@@ -176,3 +176,18 @@ test('composable: it calls reduce on array', function(assert) {
     strictEqual: 6
   });
 });
+
+test('it handles native arrays', function(assert) {
+  compute({
+    assert,
+    computed: reduce('array', 'callback', 'initialValue'),
+    properties: {
+      array: [1, 2],
+      callback(accumulator, currentValue) {
+        return accumulator + currentValue;
+      },
+      initialValue: 3
+    },
+    strictEqual: 6
+  });
+});
