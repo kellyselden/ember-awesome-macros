@@ -3,7 +3,7 @@ import computed from 'ember-macro-helpers/computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 
 export default createClassComputed(
-  [false, true, false],
+  [false, true],
   (array, key, value) => {
     let args = [normalizeArrayKey(array, [key])];
     if (value) {

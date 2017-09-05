@@ -15,7 +15,7 @@ function getCurrentGroup(groups, value, comparator) {
 }
 
 export default createClassComputed(
-  [false, true, false],
+  [false, true],
   (array, key, comparator) => {
     return computed(
       normalizeArrayKey(array, [key]),

@@ -4,7 +4,7 @@ import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 import { A as emberA } from '@ember/array';
 
 export default createClassComputed(
-  [false, true, false],
+  [false, true],
   (array, methodName, args) => {
     return computed(normalizeArrayKey(array, [methodName]), args, (array, args) => {
       if (array) {
