@@ -1,11 +1,7 @@
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
-import computed from 'ember-macro-helpers/computed';
+import { readOnly } from '@ember/object/computed';
 
 export default createClassComputed(
   [false, true],
-  (obj, key) => {
-    return computed(`${obj}.${key}`, (value) => {
-      return value;
-    });
-  }
+  (obj, key) => readOnly(`${obj}.${key}`)
 );
