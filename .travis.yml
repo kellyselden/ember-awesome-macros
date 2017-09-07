@@ -12,6 +12,8 @@ addons:
 branches:
   only:
     - master
+    # npm version tags
+    - /^v\d+\.\d+\.\d+$/
     - /^greenkeeper\/.*$/
 
 cache:
