@@ -1,4 +1,6 @@
 import EmberObject, { get, set } from '@ember/object';
+import { A as emberA } from '@ember/array';
+import { objectAt } from 'ember-awesome-macros/array';
 import { getBy, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
@@ -54,13 +56,30 @@ test('handles property changes', function(assert) {
   assert.strictEqual(get(subject, 'computed'), 'test val 2');
 });
 
-test('composable', function(assert) {
-  compute({
+test('double render failed test', function(assert) {
+  let { subject } = compute({
     assert,
     computed: getBy(
-      raw(model),
+      objectAt('model', 'index'),
       raw('testProp1')
     ),
+    properties: {
+      model: emberA([
+        EmberObject.create({
+          testProp1: 'test val 1',
+          testProp2: 'test val 2'
+        }),
+        EmberObject.create({
+          testProp1: 'test val 3',
+          testProp2: 'test val 4'
+        })
+      ]),
+      index: 0
+    },
     strictEqual: 'test val 1'
   });
+
+  set(subject, 'index', 1);
+
+  assert.strictEqual(get(subject, 'computed'), 'test val 3');
 });
