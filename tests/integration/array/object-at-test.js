@@ -13,6 +13,19 @@ module('Integration | Macro | array | object at', {
   }
 });
 
+test('it returns identity if not array type', function(assert) {
+  let array = {};
+
+  compute({
+    assert,
+    computed: objectAt('array'),
+    properties: {
+      array
+    },
+    strictEqual: array
+  });
+});
+
 test('it returns object if found', function(assert) {
   compute({
     assert,
@@ -49,14 +62,6 @@ test('it returns undefined if popped', function(assert) {
   array.popObject();
 
   assert.strictEqual(get(subject, 'computed'), undefined);
-});
-
-test('it returns undefined if not array', function(assert) {
-  compute({
-    assert,
-    computed: objectAt('array', 'source'),
-    strictEqual: undefined
-  });
 });
 
 test('it handles nesting', function(assert) {

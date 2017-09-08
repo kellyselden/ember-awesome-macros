@@ -8,11 +8,16 @@ import sinon from 'sinon';
 
 module('Integration | Macro | array | without');
 
-test('it returns undefined if array undefined', function(assert) {
+test('it returns identity if not array type', function(assert) {
+  let array = {};
+
   compute({
     assert,
-    computed: without('array', 'item'),
-    strictEqual: undefined
+    computed: without('array'),
+    properties: {
+      array
+    },
+    strictEqual: array
   });
 });
 

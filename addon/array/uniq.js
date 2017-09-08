@@ -1,6 +1,3 @@
-import { A as emberA } from '@ember/array';
-import { normalizeArray } from './-utils';
+import { normalizeArray2 } from './-utils';
 
-export default normalizeArray({}, array => {
-  return emberA(array).uniq();
-});
+export default normalizeArray2('uniq');

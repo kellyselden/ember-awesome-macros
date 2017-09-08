@@ -14,6 +14,17 @@ module('Integration | Macro | array | includes', {
   }
 });
 
+test('it returns false if not array type', function(assert) {
+  compute({
+    assert,
+    computed: includes('array'),
+    properties: {
+      array: {}
+    },
+    strictEqual: false
+  });
+});
+
 test('it returns true if found', function(assert) {
   compute({
     assert,
@@ -50,14 +61,6 @@ test('it returns false if popped', function(assert) {
   array.popObject();
 
   assert.strictEqual(get(subject, 'computed'), false);
-});
-
-test('it returns false if not array', function(assert) {
-  compute({
-    assert,
-    computed: includes('array', 'source'),
-    strictEqual: false
-  });
 });
 
 test('doesn\'t calculate when unnecessary', function(assert) {

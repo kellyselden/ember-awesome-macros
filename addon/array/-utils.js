@@ -1,3 +1,4 @@
+import { A as emberA } from '@ember/array';
 import lazyComputed from 'ember-macro-helpers/lazy-computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 
@@ -40,9 +41,11 @@ export function normalizeArray2(
         return val === sentinelValue ? arrayVal : val;
       }
 
-      let prop = arrayVal[funcStr];
+      let emberArrayVal = emberA(arrayVal);
+
+      let prop = emberArrayVal[funcStr];
       if (typeof prop === 'function') {
-        return prop.apply(arrayVal, args.map(get));
+        return prop.apply(emberArrayVal, args.map(get));
       }
 
       return prop;

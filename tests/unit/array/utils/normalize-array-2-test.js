@@ -61,6 +61,19 @@ test('it calls prop on array', function(assert) {
   });
 });
 
+test('it calls ember funcs on array', function(assert) {
+  let computed = normalizeArray2('compact');
+
+  compute({
+    assert,
+    computed: computed('array'),
+    properties: {
+      array: [1, null, undefined]
+    },
+    deepEqual: [1]
+  });
+});
+
 test('it allows default value override', function(assert) {
   let computed = normalizeArray2('pop', () => true);
 

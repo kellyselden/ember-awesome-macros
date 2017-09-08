@@ -12,11 +12,16 @@ module('Integration | Macro | array | compact', {
   }
 });
 
-test('it returns undefined if array undefined', function(assert) {
+test('it returns identity if not array type', function(assert) {
+  let array = {};
+
   compute({
     assert,
     computed: compact('array'),
-    strictEqual: undefined
+    properties: {
+      array
+    },
+    strictEqual: array
   });
 });
 
