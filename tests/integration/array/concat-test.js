@@ -17,10 +17,13 @@ module('Integration | Macro | array | concat', {
   }
 });
 
-test('it returns undefined if array undefined', function(assert) {
+test('it returns undefined if not array type', function(assert) {
   compute({
     assert,
     computed: concat('array'),
+    properties: {
+      array: {}
+    },
     strictEqual: undefined
   });
 });

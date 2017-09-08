@@ -8,10 +8,13 @@ import sinon from 'sinon';
 
 module('Integration | Macro | array | filter');
 
-test('it returns empty array if array undefined', function(assert) {
+test('it returns empty array if not array type', function(assert) {
   compute({
     assert,
     computed: filter('array'),
+    properties: {
+      array: {}
+    },
     deepEqual: []
   });
 });

@@ -1,5 +1,3 @@
-import { normalizeArray } from './-utils';
+import { normalizeArray2 } from './-utils';
 
-export default normalizeArray({}, (array, callback) => {
-  return array.map(callback);
-});
+export default normalizeArray2('map');

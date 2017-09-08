@@ -13,28 +13,39 @@ export function normalizeArray({
   return (...keys) => {
     normalizeArrayArgs(keys);
 
-    return lazyComputed(...keys, function(get, array, ...args) {
-      let arrayValue = get(array);
-      if (!arrayValue) {
+    return lazyComputed(...keys, function(get, arrayKey, ...args) {
+      let arrayVal = get(arrayKey);
+      if (!arrayVal) {
         let val = defaultValue();
-        return val === sentinelValue ? arrayValue : val;
+        return val === sentinelValue ? arrayVal : val;
       }
+
       let values = args.map(get);
-      return callback.call(this, arrayValue, ...values);
+      return callback.call(this, arrayVal, ...values);
     });
   };
 }
 
-export function normalizeArray2(funcStr) {
+export function normalizeArray2(
+  funcStr,
+  defaultValue = () => sentinelValue
+) {
   return (...keys) => {
     normalizeArrayArgs(keys);
-    return lazyComputed(...keys, (get, arrayKey, ...keys) => {
+
+    return lazyComputed(...keys, (get, arrayKey, ...args) => {
       let arrayVal = get(arrayKey);
-      if (arrayVal === undefined) {
-        return;
+      if (!Array.isArray(arrayVal)) {
+        let val = defaultValue();
+        return val === sentinelValue ? arrayVal : val;
       }
 
-      return arrayVal[funcStr](...keys.map(get));
+      let prop = arrayVal[funcStr];
+      if (typeof prop === 'function') {
+        return prop.apply(arrayVal, args.map(get));
+      }
+
+      return prop;
     });
   };
 }

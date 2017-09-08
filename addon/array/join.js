@@ -1,5 +1,3 @@
-import { normalizeArray } from './-utils';
+import { normalizeArray2 } from './-utils';
 
-export default normalizeArray({ defaultValue: () => '' }, (array, separator) => {
-  return array.join(separator);
-});
+export default normalizeArray2('join', () => '');

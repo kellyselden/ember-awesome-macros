@@ -1,5 +1,3 @@
-import { normalizeArray } from './-utils';
+import { normalizeArray2 } from './-utils';
 
-export default normalizeArray({ defaultValue: () => false }, (array, callback) => {
-  return array.every(callback);
-});
+export default normalizeArray2('every', () => false);

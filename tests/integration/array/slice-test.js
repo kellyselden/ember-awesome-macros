@@ -7,11 +7,16 @@ import sinon from 'sinon';
 
 module('Integration | Macro | array | slice');
 
-test('it returns undefined if array undefined', function(assert) {
+test('it returns identity if not array type', function(assert) {
+  let array = {};
+
   compute({
     assert,
-    computed: slice('array', 'begin', 'end'),
-    strictEqual: undefined
+    computed: slice('array'),
+    properties: {
+      array
+    },
+    strictEqual: array
   });
 });
 

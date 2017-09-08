@@ -7,10 +7,13 @@ import sinon from 'sinon';
 
 module('Integration | Macro | array | last index of');
 
-test('it returns -1 if array undefined', function(assert) {
+test('it returns -1 if not array type', function(assert) {
   compute({
     assert,
-    computed: lastIndexOf('array', 'value', 'fromIndex'),
+    computed: lastIndexOf('array'),
+    properties: {
+      array: {}
+    },
     strictEqual: -1
   });
 });

@@ -1,5 +1,3 @@
-import { normalizeArray } from './-utils';
+import { normalizeArray2 } from './-utils';
 
-export default normalizeArray({}, (array, begin, end) => {
-  return array.slice(begin, end);
-});
+export default normalizeArray2('slice');

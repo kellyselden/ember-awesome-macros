@@ -1,5 +1,3 @@
-import { normalizeArray } from './-utils';
+import { normalizeArray2 } from './-utils';
 
-export default normalizeArray({ defaultValue: () => -1 }, (array, value, fromIndex) => {
-  return array.indexOf(value, fromIndex);
-});
+export default normalizeArray2('indexOf', () => -1);

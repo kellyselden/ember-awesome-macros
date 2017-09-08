@@ -1,5 +1,3 @@
-import { normalizeArray } from './-utils';
+import { normalizeArray2 } from './-utils';
 
-export default normalizeArray({}, array => {
-  return array.length;
-});
+export default normalizeArray2('length');

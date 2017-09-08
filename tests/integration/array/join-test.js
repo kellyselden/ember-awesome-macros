@@ -16,6 +16,17 @@ module('Integration | Macro | array | join', {
   }
 });
 
+test('it returns "" if not array type', function(assert) {
+  compute({
+    assert,
+    computed: join('array'),
+    properties: {
+      array: {}
+    },
+    strictEqual: ''
+  });
+});
+
 test('default', function(assert) {
   compute({
     assert,
@@ -40,14 +51,6 @@ test('it handles property changes', function(assert) {
   array.pushObject('test3');
 
   assert.strictEqual(get(subject, 'computed'), 'test1, test2, test3');
-});
-
-test('it handles array undefined', function(assert) {
-  compute({
-    assert,
-    computed: join('array', 'separator'),
-    strictEqual: ''
-  });
 });
 
 test('it handles one element', function(assert) {

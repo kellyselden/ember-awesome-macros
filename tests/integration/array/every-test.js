@@ -8,10 +8,13 @@ import sinon from 'sinon';
 
 module('Integration | Macro | array | every');
 
-test('it returns false if array undefined', function(assert) {
+test('it returns false if not array type', function(assert) {
   compute({
     assert,
     computed: every('array'),
+    properties: {
+      array: {}
+    },
     strictEqual: false
   });
 });
