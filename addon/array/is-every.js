@@ -11,7 +11,7 @@ export default createClassComputed(
       args.push(value);
     }
     return computed(...args, (array, ...args) => {
-      if (array) {
+      if (Array.isArray(array) && typeof key === 'string') {
         return emberA(array).isEvery(key, ...args);
       }
     });

@@ -7,17 +7,20 @@ import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | array | filter by');
 
-test('it returns empty array if array undefined', function(assert) {
+test('it returns empty array if not array type', function(assert) {
   compute({
     assert,
-    computed: filterBy('array', 'key'),
+    computed: filterBy('array'),
+    properties: {
+      array: {}
+    },
     deepEqual: []
   });
 });
 
 test('default value is a new copy every recalculation', function(assert) {
   let { subject } = compute({
-    computed: filterBy('array', 'key')
+    computed: filterBy('array')
   });
 
   let result = subject.get('computed');
@@ -27,14 +30,17 @@ test('default value is a new copy every recalculation', function(assert) {
   assert.notEqual(subject.get('computed'), result);
 });
 
-test('it returns empty array if key undefined', function(assert) {
+test('it returns array identity if key not string', function(assert) {
+  let array = [];
+
   compute({
     assert,
     computed: filterBy('array', 'key'),
     properties: {
-      array: emberA([{ test: 'val1' }, { test: 'val2' }])
+      array,
+      key: true
     },
-    deepEqual: []
+    strictEqual: array
   });
 });
 

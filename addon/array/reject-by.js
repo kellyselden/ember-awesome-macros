@@ -11,10 +11,10 @@ export default createClassComputed(
       args.push(value);
     }
     return computed(...args, (array, ...args) => {
-      if (!array) {
+      if (!Array.isArray(array)) {
         return [];
       }
-      if (!key) {
+      if (typeof key !== 'string') {
         return array;
       }
       return emberA(array).rejectBy(key, ...args);

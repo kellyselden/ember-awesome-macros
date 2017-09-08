@@ -7,17 +7,20 @@ import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | array | reject by');
 
-test('it returns empty array if array undefined', function(assert) {
+test('it returns empty array if not array type', function(assert) {
   compute({
     assert,
-    computed: rejectBy('array', 'key'),
+    computed: rejectBy('array'),
+    properties: {
+      array: {}
+    },
     deepEqual: []
   });
 });
 
 test('default value is a new copy every recalculation', function(assert) {
   let { subject } = compute({
-    computed: rejectBy('array', 'key')
+    computed: rejectBy('array')
   });
 
   let result = subject.get('computed');
@@ -27,14 +30,17 @@ test('default value is a new copy every recalculation', function(assert) {
   assert.notEqual(subject.get('computed'), result);
 });
 
-test('it returns the original array if key undefined', function(assert) {
+test('it returns array identity if key not string', function(assert) {
+  let array = [];
+
   compute({
     assert,
     computed: rejectBy('array', 'key'),
     properties: {
-      array: emberA([{ test: 'val1' }, { test: 'val2' }])
+      array,
+      key: true
     },
-    deepEqual: [{ test: 'val1' }, { test: 'val2' }]
+    strictEqual: array
   });
 });
 

@@ -7,7 +7,7 @@ export default createClassComputed(
   [false, true],
   (array, methodName, args) => {
     return computed(normalizeArrayKey(array, [methodName]), args, (array, args) => {
-      if (array) {
+      if (Array.isArray(array) && typeof methodName === 'string') {
         return emberA(array).invoke(methodName, args);
       }
     });

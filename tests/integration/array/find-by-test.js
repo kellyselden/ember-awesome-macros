@@ -7,22 +7,28 @@ import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | array | find by');
 
-test('it returns undefined if array undefined', function(assert) {
+test('it returns undefined if not array type', function(assert) {
   compute({
     assert,
-    computed: findBy('array', 'key', 'value'),
+    computed: findBy('array'),
+    properties: {
+      array: {}
+    },
     strictEqual: undefined
   });
 });
 
-test('it returns undefined if key undefined', function(assert) {
+test('it returns array identity if key not string', function(assert) {
+  let array = [];
+
   compute({
     assert,
-    computed: findBy('array', 'key', 'value'),
+    computed: findBy('array', 'key'),
     properties: {
-      array: emberA([{ test: 'val1' }, { test: 'val2' }])
+      array,
+      key: true
     },
-    strictEqual: undefined
+    strictEqual: array
   });
 });
 

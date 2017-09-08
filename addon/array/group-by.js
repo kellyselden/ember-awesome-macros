@@ -21,7 +21,10 @@ export default createClassComputed(
       normalizeArrayKey(array, [key]),
       comparator,
       (array, comparator) => {
-        if (!array || !key) {
+        if (!Array.isArray(array)) {
+          return [];
+        }
+        if (typeof key !== 'string') {
           return array;
         }
 

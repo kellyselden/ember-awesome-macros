@@ -7,22 +7,40 @@ import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | array | map by');
 
-test('it returns undefined if array undefined', function(assert) {
+test('it returns empty array if not array type', function(assert) {
   compute({
     assert,
-    computed: mapBy('array', 'key'),
-    strictEqual: undefined
+    computed: mapBy('array'),
+    properties: {
+      array: {}
+    },
+    deepEqual: []
   });
 });
 
-test('it returns original array if key undefined', function(assert) {
+test('default value is a new copy every recalculation', function(assert) {
+  let { subject } = compute({
+    computed: mapBy('array')
+  });
+
+  let result = subject.get('computed');
+
+  subject.set('array', null);
+
+  assert.notEqual(subject.get('computed'), result);
+});
+
+test('it returns array identity if key not string', function(assert) {
+  let array = [];
+
   compute({
     assert,
     computed: mapBy('array', 'key'),
     properties: {
-      array: emberA([{ test: 1 }, { test: 2 }])
+      array,
+      key: true
     },
-    deepEqual: [{ test: 1 }, { test: 2 }]
+    strictEqual: array
   });
 });
 

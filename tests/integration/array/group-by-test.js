@@ -7,26 +7,40 @@ import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macros | group by');
 
-test('it returns undefined if array undefined', function(assert) {
+test('it returns empty array if not array type', function(assert) {
   compute({
     assert,
-    computed: groupBy('array', 'key'),
-    strictEqual: undefined
+    computed: groupBy('array'),
+    properties: {
+      array: {}
+    },
+    deepEqual: []
   });
 });
 
-test('it returns original array if key undefined', function(assert) {
-  let item1 = { test: 1, name: 'foo' };
-  let item2 = { test: 2, name: 'bar' };
-  let item3 = { test: 3, name: 'foo' };
+test('default value is a new copy every recalculation', function(assert) {
+  let { subject } = compute({
+    computed: groupBy('array')
+  });
+
+  let result = subject.get('computed');
+
+  subject.set('array', null);
+
+  assert.notEqual(subject.get('computed'), result);
+});
+
+test('it returns array identity if key not string', function(assert) {
+  let array = [];
 
   compute({
     assert,
     computed: groupBy('array', 'key'),
     properties: {
-      array: emberA([item1, item2, item3])
+      array,
+      key: true
     },
-    deepEqual: [item1, item2, item3]
+    strictEqual: array
   });
 });
 

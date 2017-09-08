@@ -16,6 +16,29 @@ module('Integration | Macro | array | invoke', {
   }
 });
 
+test('it returns undefined if not array type', function(assert) {
+  compute({
+    assert,
+    computed: invoke('array'),
+    properties: {
+      array: {}
+    },
+    strictEqual: undefined
+  });
+});
+
+test('it returns undefined if key not string', function(assert) {
+  compute({
+    assert,
+    computed: invoke('array', 'key'),
+    properties: {
+      array,
+      key: true
+    },
+    strictEqual: undefined
+  });
+});
+
 test('it invokes the given method name on each item in array without args', function(assert) {
   compute({
     assert,

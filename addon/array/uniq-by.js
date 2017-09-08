@@ -9,7 +9,10 @@ export default createClassComputed(
   [false, true],
   (array, key) => {
     return computed(normalizeArrayKey(array, [key]), array => {
-      if (array === undefined || key === undefined) {
+      if (!Array.isArray(array)) {
+        return [];
+      }
+      if (typeof key !== 'string') {
         return array;
       }
 

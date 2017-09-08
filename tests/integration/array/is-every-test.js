@@ -7,10 +7,25 @@ import compute from 'ember-macro-test-helpers/compute';
 
 module('Integration | Macro | array | is every');
 
-test('it returns undefined if array undefined', function(assert) {
+test('it returns undefined if not array type', function(assert) {
   compute({
     assert,
     computed: isEvery('array'),
+    properties: {
+      array: {}
+    },
+    strictEqual: undefined
+  });
+});
+
+test('it returns undefined if key not string', function(assert) {
+  compute({
+    assert,
+    computed: isEvery('array', 'key'),
+    properties: {
+      array: [],
+      key: true
+    },
     strictEqual: undefined
   });
 });

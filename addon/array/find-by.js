@@ -7,8 +7,11 @@ export default createClassComputed(
   [false, true],
   (array, key, value) => {
     return computed(normalizeArrayKey(array, [key]), value, (array, value) => {
-      if (!array || !key) {
-        return undefined;
+      if (!Array.isArray(array)) {
+        return;
+      }
+      if (typeof key !== 'string') {
+        return array;
       }
       return emberA(array).findBy(key, value);
     });

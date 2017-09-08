@@ -7,7 +7,10 @@ export default createClassComputed(
   [false, true],
   (array, key) => {
     return computed(normalizeArrayKey(array, [key]), array => {
-      if (!array || !key) {
+      if (!Array.isArray(array)) {
+        return [];
+      }
+      if (typeof key !== 'string') {
         return array;
       }
       return emberA(array).mapBy(key);
