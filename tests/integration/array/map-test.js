@@ -27,6 +27,19 @@ test('it maps array', function(assert) {
   });
 });
 
+test('context is correct', function(assert) {
+  let callback = sinon.spy();
+
+  let { subject } = compute({
+    computed: map('array', callback),
+    properties: {
+      array: [0]
+    }
+  });
+
+  assert.strictEqual(callback.thisValues[0], subject);
+});
+
 test('it responds to array property value changes', function(assert) {
   let array = emberA([
     EmberObject.create({ prop: false }),
