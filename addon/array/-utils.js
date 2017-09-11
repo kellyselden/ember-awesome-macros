@@ -8,6 +8,11 @@ function normalizeArrayArgs(keys) {
   keys[0] = normalizeArrayKey(keys[0]);
 }
 
+function getDefaultValue(func, identityVal) {
+  let val = func();
+  return val === sentinelValue ? identityVal : val;
+}
+
 export function normalizeArray({
   defaultValue = () => sentinelValue
 }, callback) {
@@ -17,8 +22,7 @@ export function normalizeArray({
     return lazyComputed(...keys, function(get, arrayKey, ...args) {
       let arrayVal = get(arrayKey);
       if (!arrayVal) {
-        let val = defaultValue();
-        return val === sentinelValue ? arrayVal : val;
+        return getDefaultValue(defaultValue, arrayVal);
       }
 
       let values = args.map(get);
@@ -37,8 +41,7 @@ export function normalizeArray2(
     return lazyComputed(...keys, (get, arrayKey, ...args) => {
       let arrayVal = get(arrayKey);
       if (!Array.isArray(arrayVal)) {
-        let val = defaultValue();
-        return val === sentinelValue ? arrayVal : val;
+        return getDefaultValue(defaultValue, arrayVal);
       }
 
       let emberArrayVal = emberA(arrayVal);
