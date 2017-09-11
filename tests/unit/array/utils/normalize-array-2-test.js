@@ -1,3 +1,4 @@
+import EmberObject, { computed } from '@ember/object';
 import { normalizeArray2 } from 'ember-awesome-macros/array/-utils';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
@@ -10,23 +11,23 @@ const returnValue = 'return value test';
 
 let funcStub;
 let array;
-let computed;
+let macro;
 
 module('Unit | Macro | array | utils | normalize array 2', {
   beforeEach() {
     array = [];
     funcStub = sinon.stub(array, 'pop').returns(returnValue);
 
-    computed = normalizeArray2('pop');
+    macro = normalizeArray2('pop');
   }
 });
 
 test('it returns identity if not array type and no default value', function(assert) {
-  let array = {};
+  array = {};
 
   compute({
     assert,
-    computed: computed('array'),
+    computed: macro('array'),
     properties: {
       array
     },
@@ -36,7 +37,7 @@ test('it returns identity if not array type and no default value', function(asse
 
 test('it calls func on array', function(assert) {
   let { result } = compute({
-    computed: computed('array', 'firstParam', 'secondParam'),
+    computed: macro('array', 'firstParam', 'secondParam'),
     properties: {
       array,
       firstParam,
@@ -50,11 +51,11 @@ test('it calls func on array', function(assert) {
 });
 
 test('it calls prop on array', function(assert) {
-  let computed = normalizeArray2('length');
+  macro = normalizeArray2('length');
 
   compute({
     assert,
-    computed: computed('array'),
+    computed: macro('array'),
     properties: {
       array: [1, 2, 3]
     },
@@ -63,11 +64,11 @@ test('it calls prop on array', function(assert) {
 });
 
 test('it calls ember funcs on array', function(assert) {
-  let computed = normalizeArray2('compact');
+  macro = normalizeArray2('compact');
 
   compute({
     assert,
-    computed: computed('array'),
+    computed: macro('array'),
     properties: {
       array: [1, null, undefined]
     },
@@ -76,20 +77,20 @@ test('it calls ember funcs on array', function(assert) {
 });
 
 test('it allows default value override', function(assert) {
-  let computed = normalizeArray2('pop', () => true);
+  macro = normalizeArray2('pop', () => true);
 
   compute({
     assert,
-    computed: computed('array'),
+    computed: macro('array'),
     strictEqual: true
   });
 });
 
 test('default value is a new copy every recalculation', function(assert) {
-  let computed = normalizeArray2('pop', () => []);
+  macro = normalizeArray2('pop', () => []);
 
   let { subject } = compute({
-    computed: computed('array')
+    computed: macro('array')
   });
 
   let result = subject.get('computed');
@@ -99,9 +100,22 @@ test('default value is a new copy every recalculation', function(assert) {
   assert.notEqual(subject.get('computed'), result);
 });
 
+test('it lazily calculates keys', function(assert) {
+  let spy = sinon.spy();
+
+  compute({
+    baseClass: EmberObject.extend({
+      secondParam: computed(spy)
+    }),
+    computed: macro('array', 'firstParam', 'secondParam')
+  });
+
+  assert.notOk(spy.called);
+});
+
 test('composable: it calls func on array', function(assert) {
   let { result } = compute({
-    computed: computed(
+    computed: macro(
       raw(array),
       raw(firstParam),
       raw(secondParam)
