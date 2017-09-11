@@ -59,9 +59,6 @@ before_install:
   - npm install -g npm@4
   - npm --version
 
-install:
-  - npm install
-
 script:
   # Usually, it's ok to finish the test scenario without reverting
   #  to the addon's original dependency state, skipping "cleanup".

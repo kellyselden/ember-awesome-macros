@@ -6,7 +6,6 @@ module.exports = {
     'Firefox'
   ],
   launch_in_dev: [
-    'PhantomJS',
     'Chrome'
   ]
 };

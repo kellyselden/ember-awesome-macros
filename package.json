@@ -30,7 +30,7 @@
     "ember-string-ishtmlsafe-polyfill": "^2.0.0"
   },
   "devDependencies": {
-    "ember-cli": "~2.14.1",
+    "ember-cli": "~2.15.1",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.0.0",
     "ember-cli-htmlbars": "^2.0.1",
