@@ -1,4 +1,5 @@
 import { A as emberA } from '@ember/array';
+import ArrayProxy from '@ember/array/proxy';
 import lazyComputed from 'ember-macro-helpers/lazy-computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 import createClassComputed from 'ember-macro-helpers/create-class-computed';
@@ -41,11 +42,17 @@ export function normalizeArray2(
 
     return lazyComputed(...keys, (get, arrayKey, ...args) => {
       let arrayVal = get(arrayKey);
-      if (!Array.isArray(arrayVal)) {
+      let isArrayProxy = arrayVal instanceof ArrayProxy;
+      if (!Array.isArray(arrayVal) && !isArrayProxy) {
         return getDefaultValue(defaultValue, arrayVal);
       }
 
-      let emberArrayVal = emberA(arrayVal);
+      let emberArrayVal;
+      if (isArrayProxy) {
+        emberArrayVal = arrayVal;
+      } else {
+        emberArrayVal = emberA(arrayVal);
+      }
 
       let prop = emberArrayVal[funcStr];
       if (typeof prop === 'function') {
@@ -67,14 +74,20 @@ export function normalizeArray3({
     (array, key, ...args) => {
       return lazyComputed(normalizeArrayKey(array, [key]), ...args, function(get, arrayKey, ...args) {
         let arrayVal = get(arrayKey);
-        if (!Array.isArray(arrayVal)) {
+        let isArrayProxy = arrayVal instanceof ArrayProxy;
+        if (!Array.isArray(arrayVal) && !isArrayProxy) {
           return getDefaultValue(firstDefault, arrayVal);
         }
         if (typeof key !== 'string') {
           return getDefaultValue(secondDefault, arrayVal);
         }
 
-        let emberArrayVal = emberA(arrayVal);
+        let emberArrayVal;
+        if (isArrayProxy) {
+          emberArrayVal = arrayVal;
+        } else {
+          emberArrayVal = emberA(arrayVal);
+        }
 
         let resolvedArgs = [key, ...args.map(get)];
         if (typeof func === 'function') {

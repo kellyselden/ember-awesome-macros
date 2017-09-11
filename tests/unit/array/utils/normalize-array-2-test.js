@@ -1,3 +1,6 @@
+import Ember from 'ember';
+import { resolve } from 'rsvp';
+import ArrayProxy from '@ember/array/proxy';
 import EmberObject, { computed } from '@ember/object';
 import { A as emberA } from '@ember/array';
 import { normalizeArray2 } from 'ember-awesome-macros/array/-utils';
@@ -5,6 +8,9 @@ import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
+
+const { PromiseProxyMixin } = Ember;
+const ArrayPromiseProxy = ArrayProxy.extend(PromiseProxyMixin);
 
 const firstParam = 'first param test';
 const secondParam = 'second param test';
@@ -75,6 +81,29 @@ test('it calls ember funcs on array', function(assert) {
     },
     deepEqual: [1]
   });
+});
+
+test('it calls func on ember data arrays', function(assert) {
+  let arrayPromise = ArrayPromiseProxy.create({
+    promise: resolve(array)
+  });
+
+  funcStub = sinon.stub(arrayPromise, 'isEvery').returns(returnValue);
+
+  macro = normalizeArray2('isEvery');
+
+  let { result } = compute({
+    computed: macro('array', 'firstParam', 'secondParam'),
+    properties: {
+      array: arrayPromise,
+      firstParam,
+      secondParam
+    }
+  });
+
+  assert.strictEqual(funcStub.thisValues[0], arrayPromise);
+  assert.deepEqual(funcStub.args, [[firstParam, secondParam]]);
+  assert.strictEqual(result, returnValue);
 });
 
 test('it allows default value override', function(assert) {
