@@ -1,19 +1,6 @@
-import { A as emberA } from '@ember/array';
-import createClassComputed from 'ember-macro-helpers/create-class-computed';
-import computed from 'ember-macro-helpers/computed';
-import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
+import { normalizeArray3 } from './-utils';
 
-export default createClassComputed(
-  [false, true],
-  (array, key) => {
-    return computed(normalizeArrayKey(array, [key]), array => {
-      if (!Array.isArray(array)) {
-        return [];
-      }
-      if (typeof key !== 'string') {
-        return array;
-      }
-      return emberA(array).mapBy(key);
-    });
-  }
-);
+export default normalizeArray3({
+  firstDefault: () => [],
+  func: 'mapBy'
+});

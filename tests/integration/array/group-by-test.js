@@ -1,5 +1,4 @@
 import { module, test } from 'qunit';
-import EmberObject from '@ember/object';
 import { raw } from 'ember-awesome-macros';
 import { A as emberA } from '@ember/array';
 import { groupBy } from 'ember-awesome-macros/array';
@@ -16,18 +15,6 @@ test('it returns empty array if not array type', function(assert) {
     },
     deepEqual: []
   });
-});
-
-test('default value is a new copy every recalculation', function(assert) {
-  let { subject } = compute({
-    computed: groupBy('array')
-  });
-
-  let result = subject.get('computed');
-
-  subject.set('array', null);
-
-  assert.notEqual(subject.get('computed'), result);
 });
 
 test('it returns array identity if key not string', function(assert) {
@@ -69,80 +56,6 @@ test('it groups array', function(assert) {
       }
     ]
   });
-});
-
-test('it responds to array property value changes', function(assert) {
-  let item1 = EmberObject.create({ id: 1, name: 'foo' });
-  let item2 = EmberObject.create({ id: 2, name: 'bar' });
-  let item3 = EmberObject.create({ id: 2, name: 'foo' });
-
-  let array = emberA([item1, item2]);
-
-  let { subject } = compute({
-    computed: groupBy('array', 'key'),
-    properties: {
-      array,
-      key: 'id'
-    }
-  });
-
-  assert.deepEqual(subject.get('computed'), [
-    {
-      key: 'id',
-      value: 1,
-      items: [item1]
-    },
-    {
-      key: 'id',
-      value: 2,
-      items: [item2]
-    }
-  ]);
-
-  array.set('1.test1', 'val2');
-
-  assert.deepEqual(subject.get('computed'), [
-    {
-      key: 'id',
-      value: 1,
-      items: [item1]
-    },
-    {
-      key: 'id',
-      value: 2,
-      items: [item2]
-    }
-  ]);
-
-  array.pushObject(item3);
-
-  assert.deepEqual(subject.get('computed'), [
-    {
-      key: 'id',
-      value: 1,
-      items: [item1]
-    },
-    {
-      key: 'id',
-      value: 2,
-      items: [item2, item3]
-    }
-  ]);
-
-  subject.set('key', 'name');
-
-  assert.deepEqual(subject.get('computed'), [
-    {
-      key: 'name',
-      value: 'foo',
-      items: [item1, item3]
-    },
-    {
-      key: 'name',
-      value: 'bar',
-      items: [item2]
-    }
-  ]);
 });
 
 test('composable: it groups array by key', function(assert) {

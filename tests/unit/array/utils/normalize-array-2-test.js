@@ -23,7 +23,7 @@ module('Unit | Macro | array | utils | normalize array 2', {
   }
 });
 
-test('it returns identity if not array type and no default value', function(assert) {
+test('it returns array identity if array not array type and no default value', function(assert) {
   array = {};
 
   compute({

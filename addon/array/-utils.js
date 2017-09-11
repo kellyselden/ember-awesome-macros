@@ -1,6 +1,7 @@
 import { A as emberA } from '@ember/array';
 import lazyComputed from 'ember-macro-helpers/lazy-computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
+import createClassComputed from 'ember-macro-helpers/create-class-computed';
 
 const sentinelValue = {};
 
@@ -54,4 +55,34 @@ export function normalizeArray2(
       return prop;
     });
   };
+}
+
+export function normalizeArray3({
+  firstDefault = () => sentinelValue,
+  secondDefault = () => sentinelValue,
+  func
+}) {
+  return createClassComputed(
+    [false, true],
+    (array, key, ...args) => {
+      return lazyComputed(normalizeArrayKey(array, [key]), ...args, function(get, arrayKey, ...args) {
+        let arrayVal = get(arrayKey);
+        if (!Array.isArray(arrayVal)) {
+          return getDefaultValue(firstDefault, arrayVal);
+        }
+        if (typeof key !== 'string') {
+          return getDefaultValue(secondDefault, arrayVal);
+        }
+
+        let emberArrayVal = emberA(arrayVal);
+
+        let resolvedArgs = [key, ...args.map(get)];
+        if (typeof func === 'function') {
+          return func(emberArrayVal, ...resolvedArgs);
+        }
+
+        return emberArrayVal[func](...resolvedArgs);
+      });
+    }
+  );
 }
