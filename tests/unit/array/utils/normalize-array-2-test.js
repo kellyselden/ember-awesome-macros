@@ -44,6 +44,7 @@ test('it calls func on array', function(assert) {
     }
   });
 
+  assert.strictEqual(funcStub.thisValues[0], array);
   assert.deepEqual(funcStub.args, [[firstParam, secondParam]]);
   assert.strictEqual(result, returnValue);
 });
@@ -107,6 +108,7 @@ test('composable: it calls func on array', function(assert) {
     )
   });
 
+  assert.strictEqual(funcStub.thisValues[0], array);
   assert.deepEqual(funcStub.args, [[firstParam, secondParam]]);
   assert.strictEqual(result, returnValue);
 });
