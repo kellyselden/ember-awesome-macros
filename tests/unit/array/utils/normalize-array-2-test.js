@@ -1,4 +1,5 @@
 import EmberObject, { computed } from '@ember/object';
+import { A as emberA } from '@ember/array';
 import { normalizeArray2 } from 'ember-awesome-macros/array/-utils';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
@@ -15,7 +16,7 @@ let macro;
 
 module('Unit | Macro | array | utils | normalize array 2', {
   beforeEach() {
-    array = [];
+    array = emberA([]);
     funcStub = sinon.stub(array, 'pop').returns(returnValue);
 
     macro = normalizeArray2('pop');
@@ -111,6 +112,24 @@ test('it lazily calculates keys', function(assert) {
   });
 
   assert.notOk(spy.called);
+});
+
+test('it handles native arrays', function(assert) {
+  array = [];
+  funcStub = sinon.stub(array, 'pop').returns(returnValue);
+
+  let { result } = compute({
+    computed: macro('array', 'firstParam', 'secondParam'),
+    properties: {
+      array,
+      firstParam,
+      secondParam
+    }
+  });
+
+  assert.strictEqual(funcStub.thisValues[0], array);
+  assert.deepEqual(funcStub.args, [[firstParam, secondParam]]);
+  assert.strictEqual(result, returnValue);
 });
 
 test('composable: it calls func on array', function(assert) {
