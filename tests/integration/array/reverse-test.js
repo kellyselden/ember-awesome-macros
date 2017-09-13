@@ -58,9 +58,7 @@ test('it responds to length changes', function(assert) {
 test('composable: it calls reverse on array', function(assert) {
   compute({
     assert,
-    computed: reverse(
-      raw(array)
-    ),
+    computed: reverse(raw(array)),
     deepEqual: [2, 1]
   });
 });
