@@ -75,7 +75,9 @@ test('doesn\'t calculate when unnecessary', function(assert) {
 test('composable: it calls uniq on array', function(assert) {
   compute({
     assert,
-    computed: uniq(emberA([1, 1])),
+    computed: uniq(
+      emberA([1, 1])
+    ),
     deepEqual: [1]
   });
 });

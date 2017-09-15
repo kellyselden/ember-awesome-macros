@@ -52,7 +52,9 @@ test('it responds to length changes', function(assert) {
 test('composable: it calls compact on array', function(assert) {
   compute({
     assert,
-    computed: compact(raw(array)),
+    computed: compact(
+      raw(array)
+    ),
     deepEqual: [2]
   });
 });

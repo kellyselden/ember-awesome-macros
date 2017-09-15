@@ -25,7 +25,9 @@ test('it calls parseFloat on string', function(assert) {
 
 test('composable: it calls parseFloat on string', function(assert) {
   let { result } = compute({
-    computed: parseFloat(raw('1.23'))
+    computed: parseFloat(
+      raw('1.23')
+    )
   });
 
   assert.strictEqual(result, 1.23);
