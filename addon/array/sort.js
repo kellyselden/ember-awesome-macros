@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import { compare } from '@ember/utils';
 import { get } from '@ember/object';
 import { normalizeArray } from './-utils';
-
-const { compare } = Ember;
 
 export default function(array, sortDefinition) {
   let computedCallback;

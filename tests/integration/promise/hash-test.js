@@ -1,9 +1,7 @@
-import RSVP from 'rsvp';
+import { resolve } from 'rsvp';
 import { hash } from 'ember-awesome-macros/promise';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
-
-const { resolve } = RSVP;
 
 module('Integration | Macro | promise | hash');
 

@@ -1,11 +1,9 @@
-import RSVP from 'rsvp';
+import { resolve } from 'rsvp';
 import { then } from 'ember-awesome-macros/promise';
 import { computed } from '@ember/object';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 import sinon from 'sinon';
-
-const { resolve } = RSVP;
 
 module('Integration | Macro | promise | then');
 

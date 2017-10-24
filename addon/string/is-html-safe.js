@@ -1,6 +1,4 @@
-import Ember from 'ember';
+import { isHTMLSafe } from '@ember/string';
 import { normalizeString } from './-utils';
-
-const { isHTMLSafe } = Ember.String;
 
 export default normalizeString(isHTMLSafe);

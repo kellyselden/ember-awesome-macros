@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import PromiseProxyMixin from '@ember/object/promise-proxy-mixin';
 import { resolve } from 'rsvp';
 import ArrayProxy from '@ember/array/proxy';
 import EmberObject, { computed } from '@ember/object';
@@ -9,7 +9,6 @@ import { module, test } from 'qunit';
 import sinon from 'sinon';
 import compute from 'ember-macro-test-helpers/compute';
 
-const { PromiseProxyMixin } = Ember;
 const ArrayPromiseProxy = ArrayProxy.extend(PromiseProxyMixin);
 
 const firstParam = 'first param test';

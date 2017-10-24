@@ -1,6 +1,4 @@
-import Ember from 'ember';
+import ObjectProxy from '@ember/object/proxy';
 import { wrapPromiseProxy } from './-utils';
-
-const { ObjectProxy } = Ember;
 
 export default wrapPromiseProxy(ObjectProxy);

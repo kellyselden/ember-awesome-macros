@@ -1,14 +1,12 @@
 import { A as emberA } from '@ember/array';
 import { get, set } from '@ember/object';
-import RSVP from 'rsvp';
+import { resolve } from 'rsvp';
 import {
   array as promiseArray,
   resolve as promiseResolve
 } from 'ember-awesome-macros/promise';
 import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
-
-const { resolve } = RSVP;
 
 let array;
 
