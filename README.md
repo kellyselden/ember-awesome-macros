@@ -470,7 +470,7 @@ value1: array.reduce(
   () => ({})
 ), // { one: 0, two: 1 }
 
-string: 'one', 'two',
+string: 'one, two',
 value2: array.reduce(
   split('string', raw(', ')),
   (arr, cur, i) => arr.concat(cur, i),
