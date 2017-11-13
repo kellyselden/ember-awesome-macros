@@ -43,7 +43,7 @@
     "ember-resolver": "^4.0.0",
     "ember-sinon": "^1.0.0",
     "ember-source": "~2.16.0",
-    "eslint-config-sane": "^0.2.1",
+    "eslint-config-sane": "^0.3.0",
     "loader.js": "^4.2.3"
   },
   "engines": {
