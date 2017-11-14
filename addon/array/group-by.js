@@ -17,7 +17,7 @@ export default normalizeArray3({
   func(array, key, comparator) {
     let groups = emberA();
     array.forEach(item => {
-      const value = get(item, key);
+      let value = get(item, key);
       let currentGroup = getCurrentGroup(groups, value, comparator);
 
       if (currentGroup) {
