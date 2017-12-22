@@ -1,4 +1,4 @@
-import { A as emberA } from '@ember/array';
+import { A as emberA, isArray as isEmberArray } from '@ember/array';
 import ArrayProxy from '@ember/array/proxy';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
 import {
@@ -10,6 +10,18 @@ const sentinelValue = {};
 
 function normalizeArrayArgs(keys) {
   keys[0] = normalizeArrayKey(keys[0]);
+}
+
+function normalizeFakeArray(maybeFakeArray) {
+  if (
+    isEmberArray(maybeFakeArray)
+    && !Array.isArray(maybeFakeArray)
+    && !(maybeFakeArray instanceof ArrayProxy)
+  ) {
+    return maybeFakeArray.toArray();
+  }
+
+  return maybeFakeArray;
 }
 
 function getDefaultValue(func, identityVal) {
@@ -25,6 +37,7 @@ export function normalizeArray({
 
     return lazyComputed(...keys, function(get, arrayKey, ...args) {
       let arrayVal = get(arrayKey);
+      arrayVal = normalizeFakeArray(arrayVal);
       if (!arrayVal) {
         return getDefaultValue(defaultValue, arrayVal);
       }
@@ -44,6 +57,7 @@ export function normalizeArray2(
 
     return lazyComputed(...keys, (get, arrayKey, ...args) => {
       let arrayVal = get(arrayKey);
+      arrayVal = normalizeFakeArray(arrayVal);
       let isArrayProxy = arrayVal instanceof ArrayProxy;
       if (!Array.isArray(arrayVal) && !isArrayProxy) {
         return getDefaultValue(defaultValue, arrayVal);
@@ -76,27 +90,28 @@ export function normalizeArray3({
     (array, key, ...args) => {
       return lazyComputed(normalizeArrayKey(array, [key]), ...args, function(get, arrayKey, ...args) {
         let arrayVal = get(arrayKey);
+        arrayVal = normalizeFakeArray(arrayVal);
         let isArrayProxy = arrayVal instanceof ArrayProxy;
+
         if (!Array.isArray(arrayVal) && !isArrayProxy) {
           return getDefaultValue(firstDefault, arrayVal);
         }
+
         if (typeof key !== 'string') {
           return getDefaultValue(secondDefault, arrayVal);
         }
 
-        let emberArrayVal;
-        if (isArrayProxy) {
-          emberArrayVal = arrayVal;
-        } else {
-          emberArrayVal = emberA(arrayVal);
+        if (!isArrayProxy) {
+          arrayVal = emberA(arrayVal);
         }
 
         let resolvedArgs = [key, ...args.map(get)];
+
         if (typeof func === 'function') {
-          return func(emberArrayVal, ...resolvedArgs);
+          return func(arrayVal, ...resolvedArgs);
         }
 
-        return emberArrayVal[func](...resolvedArgs);
+        return arrayVal[func](...resolvedArgs);
       });
     }
   );
