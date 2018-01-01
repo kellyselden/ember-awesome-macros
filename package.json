@@ -42,7 +42,7 @@
     "ember-macro-test-helpers": "^3.0.0",
     "ember-resolver": "^4.0.0",
     "ember-sinon": "^1.0.0",
-    "ember-source": "~2.17.0",
+    "ember-source": "~2.18.0",
     "eslint-config-sane": "^0.4.2",
     "eslint-plugin-prefer-let": "^1.0.0",
     "loader.js": "^4.2.3"
