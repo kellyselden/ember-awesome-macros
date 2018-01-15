@@ -16,4 +16,5 @@ export { default as substring } from './substring';
 export { default as titleize } from './titleize';
 export { default as toLower } from './to-lower';
 export { default as toUpper } from './to-upper';
+export { default as trim } from './trim';
 export { default as underscore } from './underscore';

@@ -87,6 +87,7 @@ const substr = deprecate(string.substr, 'substr', 'string.substr');
 const substring = deprecate(string.substring, 'substring', 'string.substring');
 const toLower = deprecate(string.toLower, 'toLower', 'string.toLower');
 const toUpper = deprecate(string.toUpper, 'toUpper', 'string.toUpper');
+const trim = deprecate(string.trim, 'trim', 'string.trim');
 const underscore = deprecate(string.underscore, 'underscore', 'string.underscore');
 
 export {
@@ -131,5 +132,6 @@ export {
   substring,
   toLower,
   toUpper,
+  trim,
   underscore
 };

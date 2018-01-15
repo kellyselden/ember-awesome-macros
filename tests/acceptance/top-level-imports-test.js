@@ -87,6 +87,7 @@ import macros, {
   substring,
   toLower,
   toUpper,
+  trim,
   underscore,
 } from 'ember-awesome-macros';
 import _add from 'ember-awesome-macros/add';
@@ -219,6 +220,7 @@ test('all top level global imports', function(assert) {
   assert.ok(macros.substring);
   assert.ok(macros.toLower);
   assert.ok(macros.toUpper);
+  assert.ok(macros.trim);
   assert.ok(macros.underscore);
 });
 
@@ -311,6 +313,7 @@ test('all top level imports', function(assert) {
   assert.ok(substring);
   assert.ok(toLower);
   assert.ok(toUpper);
+  assert.ok(trim);
   assert.ok(underscore);
 });
 

@@ -144,6 +144,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`string.titleize`](#stringtitleize)
 * [`string.toLower`](#stringtolower)
 * [`string.toUpper`](#stringtoupper)
+* [`string.trim`](#stringtrim)
 * [`string.underscore`](#stringunderscore)
 
 #### Custom macros
@@ -1051,6 +1052,14 @@ wraps [`String.prototype.toUpperCase()`](https://developer.mozilla.org/en-US/doc
 ```js
 originalValue: 'TestString',
 newValue: string.toUpper('originalValue') // 'TESTSTRING'
+```
+
+##### `string.trim`
+wraps [`String.prototype.trim()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim), allows composing
+
+```js
+originalValue: ' TestString ',
+newValue: string.trim('originalValue') // 'TestString'
 ```
 
 ##### `string.underscore`

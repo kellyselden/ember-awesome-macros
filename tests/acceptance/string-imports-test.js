@@ -19,6 +19,7 @@ import string, {
   titleize,
   toLower,
   toUpper,
+  trim,
   underscore,
 } from 'ember-awesome-macros/string';
 import _camelize from 'ember-awesome-macros/string/camelize';
@@ -39,6 +40,7 @@ import _substring from 'ember-awesome-macros/string/substring';
 import _titleize from 'ember-awesome-macros/string/titleize';
 import _toLower from 'ember-awesome-macros/string/to-lower';
 import _toUpper from 'ember-awesome-macros/string/to-upper';
+import _trim from 'ember-awesome-macros/string/trim';
 import _underscore from 'ember-awesome-macros/string/underscore';
 
 module('Acceptance | string imports');
@@ -64,6 +66,7 @@ test('all string global imports', function(assert) {
   assert.ok(string.titleize);
   assert.ok(string.toLower);
   assert.ok(string.toUpper);
+  assert.ok(string.trim);
   assert.ok(string.underscore);
 });
 
@@ -88,6 +91,7 @@ test('all string imports', function(assert) {
   assert.ok(titleize);
   assert.ok(toLower);
   assert.ok(toUpper);
+  assert.ok(trim);
   assert.ok(underscore);
 });
 
@@ -112,5 +116,6 @@ test('all string default imports', function(assert) {
   assert.ok(_titleize);
   assert.ok(_toLower);
   assert.ok(_toUpper);
+  assert.ok(_trim);
   assert.ok(_underscore);
 });
