@@ -21,7 +21,7 @@ function addMath(trees) {
     }
   });
 
-  trees.push(writeFile(`math/index.js`, index));
+  trees.push(writeFile('math/index.js', index));
 }
 
 module.exports = {
