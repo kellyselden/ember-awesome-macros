@@ -18,6 +18,11 @@ export function normalizeString2(func, defaultValue = () => {}) {
       return defaultValue();
     }
 
-    return stringVal[func](...keys.map(get));
+    let prop = stringVal[func];
+    if (typeof prop === 'function') {
+      return prop.apply(stringVal, keys.map(get));
+    }
+
+    return prop;
   });
 }

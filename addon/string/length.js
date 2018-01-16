@@ -1,3 +1,3 @@
-import { normalizeString } from './-utils';
+import { normalizeString2 } from './-utils';
 
-export default normalizeString(string => string.length);
+export default normalizeString2('length');
