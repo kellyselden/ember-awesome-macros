@@ -24,7 +24,7 @@ test('returns undefined when undefined', function(assert) {
   });
 });
 
-test('upper cases string', function(assert) {
+test('trims string', function(assert) {
   compute({
     assert,
     computed: trim('source'),
@@ -43,7 +43,7 @@ test('returns undefined when composed undefined', function(assert) {
   });
 });
 
-test('upper cases composed string', function(assert) {
+test('trims composed string', function(assert) {
   compute({
     assert,
     computed: trim(raw(' TestString ')),
