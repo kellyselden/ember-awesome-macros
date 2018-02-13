@@ -109,6 +109,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 
 ##### Boolean
 * [`and`](#and)
+* [`bool`](#bool)
 * [`conditional`](#conditional)
 * [`defaultTrue`](#defaulttrue)
 * [`not`](#not)
@@ -587,6 +588,18 @@ referenceValue: 3,
 value1: array.without('array', 'referenceValue'), // [1, 2]
 value2: array.without('array', 2), // [1, 3]
 value3: array.without('array', array.objectAt(1)) // [1, 3]
+```
+
+##### `bool`
+same as `Ember.computed.bool`, but allows composing
+
+```js
+source1: null,
+source2: 'my value 1',
+source3: { source: 'source3' },
+value1: bool('source1'), // false
+value2: bool('source2'), // true
+value3: bool('source3'), // true
 ```
 
 ##### `collect`

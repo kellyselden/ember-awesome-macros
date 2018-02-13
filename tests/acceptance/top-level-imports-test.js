@@ -4,6 +4,7 @@ import macros, {
   add,
   and,
   array,
+  bool,
   collect,
   computed,
   conditional,
@@ -93,6 +94,7 @@ import macros, {
 } from 'ember-awesome-macros';
 import _add from 'ember-awesome-macros/add';
 import _and from 'ember-awesome-macros/and';
+import _bool from 'ember-awesome-macros/and';
 import _collect from 'ember-awesome-macros/collect';
 import _computed from 'ember-awesome-macros/computed';
 import _conditional from 'ember-awesome-macros/conditional';
@@ -138,6 +140,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(macros.add);
     assert.ok(macros.and);
     assert.ok(macros.array);
+    assert.ok(macros.bool);
     assert.ok(macros.collect);
     assert.ok(macros.computed);
     assert.ok(macros.conditional);
@@ -232,6 +235,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(add);
     assert.ok(and);
     assert.ok(array);
+    assert.ok(bool);
     assert.ok(collect);
     assert.ok(computed);
     assert.ok(conditional);
@@ -325,6 +329,7 @@ module('Acceptance | top level imports', function() {
 
     assert.ok(_add);
     assert.ok(_and);
+    assert.ok(_bool);
     assert.ok(_collect);
     assert.ok(_computed);
     assert.ok(_conditional);
