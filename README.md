@@ -76,6 +76,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 
 ##### Boolean
 * [`and`](#and)
+* [`bool`](#bool)
 * [`conditional`](#conditional)
 * [`defaultTrue`](#defaulttrue)
 * [`not`](#not)
@@ -542,6 +543,18 @@ wraps [`Ember.Enumerable.without`](http://emberjs.com/api/classes/Ember.Enumerab
 array: Ember.A([1, 2, 3]),
 value1: array.without('array', 2), // [1, 3]
 value2: array.without('array', array.objectAt(1)) // [1, 3]
+```
+
+##### `bool`
+alias for [`and`](#and) but more explicit when using only one parameter
+
+```js
+source1: false,
+source2: true,
+source3: false,
+value1: bool('source1'), // false
+value2: bool('source2'), // true
+value3: bool('source3'), // false
 ```
 
 ##### `collect`
