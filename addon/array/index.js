@@ -12,6 +12,7 @@ export { default as includes } from './includes';
 export { default as indexOf } from './index-of';
 export { default as invoke } from './invoke';
 export { default as isAny } from './is-any';
+export { default as isEmpty } from './is-empty';
 export { default as isEvery } from './is-every';
 export { default as join } from './join';
 export { default as lastIndexOf } from './last-index-of';

@@ -15,6 +15,7 @@ import array, {
   indexOf,
   invoke,
   isAny,
+  isEmpty,
   isEvery,
   join,
   lastIndexOf,
@@ -46,6 +47,7 @@ import _includes from 'ember-awesome-macros/array/includes';
 import _indexOf from 'ember-awesome-macros/array/index-of';
 import _invoke from 'ember-awesome-macros/array/invoke';
 import _isAny from 'ember-awesome-macros/array/is-any';
+import _isEmpty from 'ember-awesome-macros/array/is-empty';
 import _isEvery from 'ember-awesome-macros/array/is-every';
 import _join from 'ember-awesome-macros/array/join';
 import _lastIndexOf from 'ember-awesome-macros/array/last-index-of';
@@ -82,6 +84,7 @@ test('all array global imports', function(assert) {
   assert.ok(array.indexOf);
   assert.ok(array.invoke);
   assert.ok(array.isAny);
+  assert.ok(array.isEmpty);
   assert.ok(array.isEvery);
   assert.ok(array.join);
   assert.ok(array.lastIndexOf);
@@ -117,6 +120,7 @@ test('all array imports', function(assert) {
   assert.ok(indexOf);
   assert.ok(invoke);
   assert.ok(isAny);
+  assert.ok(isEmpty);
   assert.ok(isEvery);
   assert.ok(join);
   assert.ok(lastIndexOf);
@@ -152,6 +156,7 @@ test('all array default imports', function(assert) {
   assert.ok(_indexOf);
   assert.ok(_invoke);
   assert.ok(_isAny);
+  assert.ok(_isEmpty);
   assert.ok(_isEvery);
   assert.ok(_join);
   assert.ok(_lastIndexOf);

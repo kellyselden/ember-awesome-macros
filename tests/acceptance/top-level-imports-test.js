@@ -58,6 +58,7 @@ import macros, {
   includes,
   indexOf,
   isAny,
+  isEmpty,
   isEvery,
   join,
   lastIndexOf,
@@ -191,6 +192,7 @@ test('all top level global imports', function(assert) {
   assert.ok(macros.includes);
   assert.ok(macros.indexOf);
   assert.ok(macros.isAny);
+  assert.ok(macros.isEmpty);
   assert.ok(macros.isEvery);
   assert.ok(macros.join);
   assert.ok(macros.lastIndexOf);
@@ -284,6 +286,7 @@ test('all top level imports', function(assert) {
   assert.ok(includes);
   assert.ok(indexOf);
   assert.ok(isAny);
+  assert.ok(isEmpty);
   assert.ok(isEvery);
   assert.ok(join);
   assert.ok(lastIndexOf);

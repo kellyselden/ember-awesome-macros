@@ -58,6 +58,7 @@ const first = deprecate(array.first, 'first', 'array.first');
 const includes = deprecate(array.includes, 'includes', 'array.includes');
 const indexOf = deprecate(array.indexOf, 'indexOf', 'array.indexOf');
 const isAny = deprecate(array.isAny, 'isAny', 'array.isAny');
+const isEmpty = deprecate(array.isEmpty, 'isEmpty', 'array.isEmpty');
 const isEvery = deprecate(array.isEvery, 'isEvery', 'array.isEvery');
 const join = deprecate(array.join, 'join', 'array.join');
 const lastIndexOf = deprecate(array.lastIndexOf, 'lastIndexOf', 'array.lastIndexOf');
@@ -103,6 +104,7 @@ export {
   includes,
   indexOf,
   isAny,
+  isEmpty,
   isEvery,
   join,
   lastIndexOf,
