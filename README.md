@@ -143,6 +143,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 ##### Object
 * [`getBy`](#getby)
 * [`hash`](#hash)
+* [`isEmpty`](#isempty)
 * [`toStr`](#tostr)
 * [`toString`](#tostring)
 * [`typeOf`](#typeof)
@@ -709,6 +710,33 @@ value2: hash('source1', 'source2'), // { source1: 'my value 1', source2: 'my val
 
 // or you can mix and match, the result will be merged
 value3: hash('source1', { prop2: 'source2' }) // { source1: 'my value 1', prop2: 'my value 2' }
+```
+
+##### `isEmpty`
+wraps [`Ember.isEmpty`](https://emberjs.com/api/ember/3.0/functions/@ember%2Futils/isEmpty)
+
+```js
+sourceString1: '',
+sourceString2: foobar,
+
+sourceArray1: [],
+sourceArray2: [1, 2, 3],
+
+sourceObject1: {},
+sourceObject2: { size: 0 },
+
+valueString1: isEmpty('sourceString1'), // true
+valueString2: isEmpty('sourceString2'), // false
+
+valueArray1: isEmpty('sourceArray1'), // true
+valueArray2: isEmpty('sourceArray2'), // false
+
+valueObject1: isEmpty('sourceObject1'), // false
+valueObject2: isEmpty('sourceObject2'), // true
+
+valueObject1: isEmpty(collect(1, 2)), // false
+
+valueObject1: isEmpty([]), // true
 ```
 
 ##### `instanceOf`
