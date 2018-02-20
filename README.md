@@ -136,6 +136,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`string.isHtmlSafe`](#stringishtmlsafe)
 * [`string.lastIndexOf`](#stringlastindexof)
 * [`string.length`](#stringlength)
+* [`string.match`](#stringmatch)
 * [`string.replace`](#stringreplace)
 * [`string.split`](#stringsplit)
 * [`string.substr`](#stringsubstr)
@@ -985,6 +986,19 @@ string1: 'abc',
 string2: 'xyz',
 example: string.length('string1'), // 3
 composingExample: string.length(tag`${'string1'}${'string2'}`) // 6
+```
+
+##### `string.match`
+wraps [`String.prototype.match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match), allows composing
+
+```js
+string1: 'abc',
+string2: 'xyz',
+regex1: /abc/,
+regex2: /xyz/,
+example: string.match('string1', 'regex1'), // ['abc']
+example: string.match('string1', 'regex2'), // null
+composingExample: string.match(tag`${'string1'}${'string2'}`, 'regex2') // ['xyz']
 ```
 
 ##### `string.replace`

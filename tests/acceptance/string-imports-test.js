@@ -12,6 +12,7 @@ import string, {
   isHtmlSafe,
   lastIndexOf,
   length,
+  match,
   replace,
   split,
   substr,
@@ -33,6 +34,7 @@ import _indexOf from 'ember-awesome-macros/string/index-of';
 import _isHtmlSafe from 'ember-awesome-macros/string/is-html-safe';
 import _lastIndexOf from 'ember-awesome-macros/string/last-index-of';
 import _length from 'ember-awesome-macros/string/length';
+import _match from 'ember-awesome-macros/string/match';
 import _replace from 'ember-awesome-macros/string/replace';
 import _split from 'ember-awesome-macros/string/split';
 import _substr from 'ember-awesome-macros/string/substr';
@@ -59,6 +61,7 @@ test('all string global imports', function(assert) {
   assert.ok(string.isHtmlSafe);
   assert.ok(string.lastIndexOf);
   assert.ok(string.length);
+  assert.ok(string.match);
   assert.ok(string.replace);
   assert.ok(string.split);
   assert.ok(string.substr);
@@ -84,6 +87,7 @@ test('all string imports', function(assert) {
   assert.ok(isHtmlSafe);
   assert.ok(lastIndexOf);
   assert.ok(length);
+  assert.ok(match);
   assert.ok(replace);
   assert.ok(split);
   assert.ok(substr);
@@ -109,6 +113,7 @@ test('all string default imports', function(assert) {
   assert.ok(_isHtmlSafe);
   assert.ok(_lastIndexOf);
   assert.ok(_length);
+  assert.ok(_match);
   assert.ok(_replace);
   assert.ok(_split);
   assert.ok(_substr);

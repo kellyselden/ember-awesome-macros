@@ -9,6 +9,7 @@ export { default as indexOf } from './index-of';
 export { default as isHtmlSafe } from './is-html-safe';
 export { default as lastIndexOf } from './last-index-of';
 export { default as length } from './length';
+export { default as match } from './match';
 export { default as replace } from './replace';
 export { default as split } from './split';
 export { default as substr } from './substr';
