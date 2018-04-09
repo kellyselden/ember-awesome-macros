@@ -1,8 +1,11 @@
-import { rejectBy } from 'ember-awesome-macros/array';
-import { raw } from 'ember-awesome-macros';
 import { A as emberA } from '@ember/array';
+import { filterBy, rejectBy } from 'ember-awesome-macros/array';
 import { module, test } from 'qunit';
+import { raw } from 'ember-awesome-macros';
+import { setupRenderingTest } from 'ember-qunit';
+import Component from '@ember/component';
 import compute from 'ember-macro-test-helpers/compute';
+import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Macro | array | reject by');
 
@@ -103,5 +106,32 @@ test('it handles native arrays', function(assert) {
       value: 'val2'
     },
     deepEqual: [{ test: 'val1' }]
+  });
+});
+
+module('Rendering Integration | Macro | array | reject by', function(hooks) {
+  setupRenderingTest(hooks);
+
+  test('it composes with filter-by', function(assert) {
+    this.owner.register('component:my-component', Component.extend({
+      key: 'test',
+      value: 'val2',
+      computed: rejectBy(filterBy('array', raw('isFun'), true), 'key', 'value')
+    }));
+
+    this.owner.register('template:components/my-component', hbs`
+      {{#each computed as |item|}}
+        {{item.test}}
+      {{/each}}
+    `);
+
+    this.array = [];
+
+    return this.render(hbs`{{my-component array=array}}`)
+      .then(() => {
+        this.set('array', [{ test: 'val1', isFun: true }, { test: 'val2', isFun: true }, { test: 'val3', isFun: false }]);
+
+        assert.equal(this.$().text().trim(), 'val1');
+      });
   });
 });
