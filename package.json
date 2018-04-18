@@ -22,7 +22,7 @@
     "test": "ember try:each"
   },
   "dependencies": {
-    "broccoli-file-creator": "^1.1.1",
+    "broccoli-file-creator": "^2.1.1",
     "broccoli-merge-trees": "^2.0.0",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-string-utils": "^1.1.0",
