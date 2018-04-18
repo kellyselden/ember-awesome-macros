@@ -123,6 +123,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`divide`](#divide)
 * [`mod`](#mod)
 * [`multiply`](#multiply)
+* [`number`](#number)
 * [`parseFloat`](#parsefloat)
 * [`parseInt`](#parseint)
 * [`product`](#product)
@@ -784,6 +785,15 @@ source3: 'my value',
 value1: notEqual('source1', 'source2'), // true
 value2: notEqual('source1', 'source3'), // false
 value3: notEqual('source1', 'source2', 'source3') // true
+```
+
+##### `number`
+wraps [`Number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), allows composing
+
+```js
+prop: true,
+example: number('prop'), // 1
+composingExample: sum(collect(8, number('prop'))) // 9
 ```
 
 ##### `or`

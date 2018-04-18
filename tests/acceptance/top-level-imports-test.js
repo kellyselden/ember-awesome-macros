@@ -27,6 +27,7 @@ import macros, {
   neq,
   not,
   notEqual,
+  number,
   or,
   parseFloat,
   parseInt,
@@ -114,6 +115,7 @@ import _multiply from 'ember-awesome-macros/multiply';
 import _neq from 'ember-awesome-macros/neq';
 import _not from 'ember-awesome-macros/not';
 import _notEqual from 'ember-awesome-macros/not-equal';
+import _number from 'ember-awesome-macros/number';
 import _or from 'ember-awesome-macros/or';
 import _parseFloat from 'ember-awesome-macros/parse-float';
 import _parseInt from 'ember-awesome-macros/parse-int';
@@ -159,6 +161,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(macros.neq);
     assert.ok(macros.not);
     assert.ok(macros.notEqual);
+    assert.ok(macros.number);
     assert.ok(macros.or);
     assert.ok(macros.parseFloat);
     assert.ok(macros.parseInt);
@@ -252,6 +255,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(neq);
     assert.ok(not);
     assert.ok(notEqual);
+    assert.ok(number);
     assert.ok(or);
     assert.ok(parseFloat);
     assert.ok(parseInt);
@@ -343,6 +347,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(_neq);
     assert.ok(_not);
     assert.ok(_notEqual);
+    assert.ok(_number);
     assert.ok(_or);
     assert.ok(_parseFloat);
     assert.ok(_parseInt);

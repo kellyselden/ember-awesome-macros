@@ -25,6 +25,7 @@ export { default as multiply } from './multiply';
 export { default as neq } from './neq';
 export { default as not } from './not';
 export { default as notEqual } from './not-equal';
+export { default as number } from './number';
 export { default as or } from './or';
 export { default as parseFloat } from './parse-float';
 export { default as parseInt } from './parse-int';
