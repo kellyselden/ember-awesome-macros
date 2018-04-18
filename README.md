@@ -33,10 +33,19 @@ value3: equal('source1', raw('my value')) // true
 value4: equal('source2', sum(1, 1)) // true
 ```
 
-Two essential primitive macros come from a different addon: [ember-macro-helpers](https://github.com/kellyselden/ember-macro-helpers)
+Three essential primitive macros are re-exported from a different addon: [ember-macro-helpers](https://github.com/kellyselden/ember-macro-helpers)
 
-* [raw](https://github.com/kellyselden/ember-macro-helpers#raw) makes composing macros easier
+* [computed](https://github.com/kellyselden/ember-macro-helpers#computed) makes composing macros easier
+* [raw](https://github.com/kellyselden/ember-macro-helpers#raw) allows you to escape string literals to be used in macros
 * [writable](https://github.com/kellyselden/ember-macro-helpers#writable) makes setting macros possible
+
+```js
+import computed from 'ember-awesome-macros/computed';
+import raw from 'ember-awesome-macros/raw';
+import writable from 'ember-awesome-macros/writable';
+// or
+import { computed, raw, writable } from 'ember-awesome-macros';
+```
 
 The API is not final until 1.0. I will be adding aliases as I think of better names for things, and possibly breaking or removing existing macros.
 
