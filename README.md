@@ -14,6 +14,24 @@ A collection of Ember computed macros. All the macros are composable, meaning yo
 result: conditional(and(not('value1'), 'value2'), sum('value3', 1), collect('value4', toUpper('value5'))) // lisp much?
 ```
 
+Arguments to macros can be:
+- A string, in which case it references the name of a property whose value is used for the calculation
+- A non-string value, in which case it is used as such
+- A [raw](https://github.com/kellyselden/ember-macro-helpers#raw) macro, which lets you use a string as the value without referencing a property
+- Another macro
+
+Examples of these different usages:
+
+```js
+source1: 'my value',
+source2: 2
+
+value1: equal('source1', 'source2'), // false
+value2: equal('source2', 2), // true
+value3: equal('source1', raw('my value')) // true
+value4: equal('source2', sum(1, 1)) // true
+```
+
 Two essential primitive macros come from a different addon: [ember-macro-helpers](https://github.com/kellyselden/ember-macro-helpers)
 
 * [raw](https://github.com/kellyselden/ember-macro-helpers#raw) makes composing macros easier
@@ -209,7 +227,9 @@ wraps [`Ember.Array.filterBy`](http://emberjs.com/api/classes/Ember.Array.html#m
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }]),
 key: 'test',
-value: array.filterBy('array', 'key', 2) // [{ test: 2 }]
+referenceValue: 1,
+value1: array.filterBy('array', 'key', 2), // [{ test: 2 }]
+value2: array.filterBy('array', raw('test'), 'referenceValue') // [{ test: 1 }]
 ```
 
 ##### `array.filter`
@@ -226,7 +246,9 @@ wraps [`Ember.Array.findBy`](http://emberjs.com/api/classes/Ember.Array.html#met
 ```js
 array: Ember.A([{ test: 1 }, { test: 2 }]),
 key: 'test',
-value: array.findBy('array', 'key', 2) // { test: 2 }
+referenceValue: 1,
+value1: array.findBy('array', 'key', 2), // { test: 2 }
+value2: array.findBy('array', raw('test'), 'referenceValue') // { test: 1 }
 ```
 
 ##### `array.find`
@@ -343,8 +365,10 @@ wraps [`Array.prototype.indexOf()`](https://developer.mozilla.org/en-US/docs/Web
 
 ```js
 array: [2, 5, 9, 2],
+referenceValue: 9,
 value1: array.indexOf('array', 2), // 0
-value2: array.indexOf('array', 2, 2) // 3
+value2: array.indexOf('array', 2, 2), // 3
+value3: array.indexOf('array', 'referenceValue') // 2
 ```
 
 ##### `array.invoke`
@@ -401,8 +425,10 @@ wraps [`Array.prototype.lastIndexOf()`](https://developer.mozilla.org/en-US/docs
 
 ```js
 array: [2, 5, 9, 2],
+referenceValue: 9,
 value1: array.lastIndexOf('array', 2), // 3
-value2: array.lastIndexOf('array', 2, 2) // 0
+value2: array.lastIndexOf('array', 2, 2), // 0
+value3: array.lastIndexOf('array', 'referenceValue') // 2
 ```
 
 ##### `array.last`
@@ -540,8 +566,10 @@ wraps [`Ember.Enumerable.without`](http://emberjs.com/api/classes/Ember.Enumerab
 
 ```js
 array: Ember.A([1, 2, 3]),
-value1: array.without('array', 2), // [1, 3]
-value2: array.without('array', array.objectAt(1)) // [1, 3]
+referenceValue: 3,
+value1: array.without('array', 'referenceValue'), // [1, 2]
+value2: array.without('array', 2), // [1, 3]
+value3: array.without('array', array.objectAt(1)) // [1, 3]
 ```
 
 ##### `collect`
