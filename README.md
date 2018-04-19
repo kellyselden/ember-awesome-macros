@@ -123,7 +123,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`divide`](#divide)
 * [`mod`](#mod)
 * [`multiply`](#multiply)
-* [`number`](#number)
+* [`number`](#number-1)
 * [`parseFloat`](#parsefloat)
 * [`parseInt`](#parseint)
 * [`product`](#product)
