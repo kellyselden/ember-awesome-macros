@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "ember build",
+    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
     "start": "ember serve",
     "test": "ember try:each"
   },
@@ -30,7 +31,7 @@
     "ember-string-ishtmlsafe-polyfill": "^2.0.0"
   },
   "devDependencies": {
-    "ember-cli": "~2.17.1",
+    "ember-cli": "~2.18.2",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-htmlbars": "^2.0.1",
@@ -44,6 +45,8 @@
     "ember-sinon": "^2.1.0",
     "ember-source": "~2.18.0",
     "eslint-config-sane": "^0.6.0",
+    "eslint-plugin-ember": "^5.0.0",
+    "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-prefer-let": "^1.0.0",
     "loader.js": "^4.2.3"
   },
