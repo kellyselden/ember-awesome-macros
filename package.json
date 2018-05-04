@@ -31,7 +31,7 @@
     "ember-string-ishtmlsafe-polyfill": "^2.0.0"
   },
   "devDependencies": {
-    "ember-cli": "~2.18.2",
+    "ember-cli": "~3.0.4",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-htmlbars": "^2.0.1",
@@ -43,10 +43,12 @@
     "ember-macro-test-helpers": "^3.0.0",
     "ember-resolver": "^4.0.0",
     "ember-sinon": "^2.1.0",
-    "ember-source": "~2.18.0",
+    "ember-source": "~3.0.0",
+    "ember-source-channel-url": "^1.0.1",
+    "ember-try": "^0.2.23",
     "eslint-config-sane": "^0.6.0",
     "eslint-plugin-ember": "^5.0.0",
-    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-prefer-let": "^1.0.0",
     "loader.js": "^4.2.3"
   },
