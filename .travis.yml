@@ -61,7 +61,7 @@ before_install:
   - export DISPLAY=:99
   - sh -e /etc/init.d/xvfb start
   - npm config set spin false
-  - npm install -g npm@4
+  - npm install -g npm@5
   - npm --version
 
 script:
