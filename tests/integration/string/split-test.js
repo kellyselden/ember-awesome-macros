@@ -8,107 +8,107 @@ import sinon from 'sinon';
 const source = 'val1,val2';
 const key = ',';
 
-module('Integration | Macro | string | split');
+module('Integration | Macro | string | split', function() {
+  test('it splits', function(assert) {
+    compute({
+      assert,
+      computed: split('source', 'key'),
+      properties: {
+        source,
+        key
+      },
+      deepEqual: [
+        'val1',
+        'val2'
+      ]
+    });
+  });
 
-test('it splits', function(assert) {
-  compute({
-    assert,
-    computed: split('source', 'key'),
-    properties: {
-      source,
-      key
-    },
-    deepEqual: [
+  test('it handles source modifying', function(assert) {
+    let { subject } = compute({
+      computed: split('source', 'key'),
+      properties: {
+        source,
+        key
+      }
+    });
+
+    setProperties(subject, {
+      source: 'val1,val2,val3'
+    });
+
+    assert.deepEqual(get(subject, 'computed'), [
       'val1',
-      'val2'
-    ]
-  });
-});
-
-test('it handles source modifying', function(assert) {
-  let { subject } = compute({
-    computed: split('source', 'key'),
-    properties: {
-      source,
-      key
-    }
+      'val2',
+      'val3'
+    ]);
   });
 
-  setProperties(subject, {
-    source: 'val1,val2,val3'
+  test('it handles key modifying', function(assert) {
+    let { subject } = compute({
+      computed: split('source', 'key'),
+      properties: {
+        source,
+        key
+      }
+    });
+
+    setProperties(subject, {
+      key: 'val'
+    });
+
+    assert.deepEqual(get(subject, 'computed'), [
+      '',
+      '1,',
+      '2'
+    ]);
   });
 
-  assert.deepEqual(get(subject, 'computed'), [
-    'val1',
-    'val2',
-    'val3'
-  ]);
-});
-
-test('it handles key modifying', function(assert) {
-  let { subject } = compute({
-    computed: split('source', 'key'),
-    properties: {
-      source,
-      key
-    }
+  test('it handles undefined source', function(assert) {
+    compute({
+      assert,
+      computed: split('source', 'key'),
+      deepEqual: []
+    });
   });
 
-  setProperties(subject, {
-    key: 'val'
+  test('default value is a new copy every recalculation', function(assert) {
+    let { subject } = compute({
+      computed: split('source', 'key')
+    });
+
+    let result = subject.get('computed');
+
+    subject.set('source', '');
+
+    subject.get('computed');
+
+    subject.set('source', undefined);
+
+    assert.notEqual(subject.get('computed'), result);
   });
 
-  assert.deepEqual(get(subject, 'computed'), [
-    '',
-    '1,',
-    '2'
-  ]);
-});
+  test('doesn\'t calculate when unnecessary', function(assert) {
+    let callback = sinon.spy();
 
-test('it handles undefined source', function(assert) {
-  compute({
-    assert,
-    computed: split('source', 'key'),
-    deepEqual: []
-  });
-});
+    compute({
+      computed: split(
+        undefined,
+        computed(callback)
+      )
+    });
 
-test('default value is a new copy every recalculation', function(assert) {
-  let { subject } = compute({
-    computed: split('source', 'key')
+    assert.notOk(callback.called);
   });
 
-  let result = subject.get('computed');
-
-  subject.set('source', '');
-
-  subject.get('computed');
-
-  subject.set('source', undefined);
-
-  assert.notEqual(subject.get('computed'), result);
-});
-
-test('doesn\'t calculate when unnecessary', function(assert) {
-  let callback = sinon.spy();
-
-  compute({
-    computed: split(
-      undefined,
-      computed(callback)
-    )
-  });
-
-  assert.notOk(callback.called);
-});
-
-test('it handles nesting', function(assert) {
-  compute({
-    assert,
-    computed: split(raw(source), raw(key)),
-    deepEqual: [
-      'val1',
-      'val2'
-    ]
+  test('it handles nesting', function(assert) {
+    compute({
+      assert,
+      computed: split(raw(source), raw(key)),
+      deepEqual: [
+        'val1',
+        'val2'
+      ]
+    });
   });
 });

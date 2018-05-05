@@ -5,42 +5,42 @@ import { module, test } from 'qunit';
 import compute from 'ember-macro-test-helpers/compute';
 import sinon from 'sinon';
 
-module('Integration | Macro | string | index of');
-
-test('it calls indexOf on string', function(assert) {
-  compute({
-    assert,
-    computed: indexOf('string', 'value', 'fromIndex'),
-    properties: {
-      string: '121',
-      value: '1',
-      fromIndex: 1
-    },
-    strictEqual: 2
-  });
-});
-
-test('doesn\'t calculate when unnecessary', function(assert) {
-  let callback = sinon.spy();
-
-  compute({
-    computed: indexOf(
-      undefined,
-      computed(callback)
-    )
+module('Integration | Macro | string | index of', function() {
+  test('it calls indexOf on string', function(assert) {
+    compute({
+      assert,
+      computed: indexOf('string', 'value', 'fromIndex'),
+      properties: {
+        string: '121',
+        value: '1',
+        fromIndex: 1
+      },
+      strictEqual: 2
+    });
   });
 
-  assert.notOk(callback.called);
-});
+  test('doesn\'t calculate when unnecessary', function(assert) {
+    let callback = sinon.spy();
 
-test('composable: it calls indexOf on string', function(assert) {
-  compute({
-    assert,
-    computed: indexOf(
-      raw('121'),
-      raw('1'),
-      1
-    ),
-    strictEqual: 2
+    compute({
+      computed: indexOf(
+        undefined,
+        computed(callback)
+      )
+    });
+
+    assert.notOk(callback.called);
+  });
+
+  test('composable: it calls indexOf on string', function(assert) {
+    compute({
+      assert,
+      computed: indexOf(
+        raw('121'),
+        raw('1'),
+        1
+      ),
+      strictEqual: 2
+    });
   });
 });

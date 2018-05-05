@@ -10,99 +10,99 @@ import compute from 'ember-macro-test-helpers/compute';
 
 let array;
 
-module('Integration | Macro | promise | array', {
-  beforeEach() {
+module('Integration | Macro | promise | array', function(hooks) {
+  hooks.beforeEach(function() {
     array = emberA([null]);
-  }
-});
-
-test('it returns an empty array', function(assert) {
-  let { result } = compute({
-    computed: promiseArray('promise'),
-    properties: {
-      promise: resolve(array)
-    }
   });
 
-  assert.strictEqual(get(result, 'length'), 0);
-});
+  test('it returns an empty array', function(assert) {
+    let { result } = compute({
+      computed: promiseArray('promise'),
+      properties: {
+        promise: resolve(array)
+      }
+    });
 
-test('it resolves to a full array', function(assert) {
-  let { result } = compute({
-    computed: promiseArray('promise'),
-    properties: {
-      promise: resolve(array)
-    }
+    assert.strictEqual(get(result, 'length'), 0);
   });
 
-  return result.then(() => {
-    assert.strictEqual(get(result, 'length'), 1);
-  });
-});
+  test('it resolves to a full array', function(assert) {
+    let { result } = compute({
+      computed: promiseArray('promise'),
+      properties: {
+        promise: resolve(array)
+      }
+    });
 
-test('resolved value is an array', function(assert) {
-  let { result } = compute({
-    computed: promiseArray('promise'),
-    properties: {
-      promise: resolve(array)
-    }
-  });
-
-  return result.then(result => {
-    assert.strictEqual(get(result, 'length'), 1);
-  });
-});
-
-test('it responds to reassigns', function(assert) {
-  let { subject } = compute({
-    computed: promiseArray('promise'),
-    properties: {
-      promise: resolve(array)
-    }
+    return result.then(() => {
+      assert.strictEqual(get(result, 'length'), 1);
+    });
   });
 
-  set(subject, 'promise', resolve(emberA([null, null])));
+  test('resolved value is an array', function(assert) {
+    let { result } = compute({
+      computed: promiseArray('promise'),
+      properties: {
+        promise: resolve(array)
+      }
+    });
 
-  let result = get(subject, 'computed');
-
-  return result.then(result => {
-    assert.strictEqual(get(result, 'length'), 2);
-  });
-});
-
-test('it responds to pushes', function(assert) {
-  let { subject } = compute({
-    computed: promiseArray('promise'),
-    properties: {
-      promise: resolve(array)
-    }
+    return result.then(result => {
+      assert.strictEqual(get(result, 'length'), 1);
+    });
   });
 
-  array.pushObject(null);
+  test('it responds to reassigns', function(assert) {
+    let { subject } = compute({
+      computed: promiseArray('promise'),
+      properties: {
+        promise: resolve(array)
+      }
+    });
 
-  let result = get(subject, 'computed');
+    set(subject, 'promise', resolve(emberA([null, null])));
 
-  return result.then(result => {
-    assert.strictEqual(get(result, 'length'), 2);
-  });
-});
+    let result = get(subject, 'computed');
 
-test('value: resolved value is an array', function(assert) {
-  let { result } = compute({
-    computed: promiseArray(resolve(array))
-  });
-
-  return result.then(result => {
-    assert.strictEqual(get(result, 'length'), 1);
-  });
-});
-
-test('composing: resolved value is an array', function(assert) {
-  let { result } = compute({
-    computed: promiseArray(promiseResolve(array))
+    return result.then(result => {
+      assert.strictEqual(get(result, 'length'), 2);
+    });
   });
 
-  return result.then(result => {
-    assert.strictEqual(get(result, 'length'), 1);
+  test('it responds to pushes', function(assert) {
+    let { subject } = compute({
+      computed: promiseArray('promise'),
+      properties: {
+        promise: resolve(array)
+      }
+    });
+
+    array.pushObject(null);
+
+    let result = get(subject, 'computed');
+
+    return result.then(result => {
+      assert.strictEqual(get(result, 'length'), 2);
+    });
+  });
+
+  test('value: resolved value is an array', function(assert) {
+    let { result } = compute({
+      computed: promiseArray(resolve(array))
+    });
+
+    return result.then(result => {
+      assert.strictEqual(get(result, 'length'), 1);
+    });
+  });
+
+  test('composing: resolved value is an array', function(assert) {
+    let { result } = compute({
+      computed: promiseArray(promiseResolve(array))
+    });
+
+    return result.then(result => {
+      assert.strictEqual(get(result, 'length'), 1);
+    });
   });
 });

@@ -4,16 +4,16 @@ import math, {
 } from 'ember-awesome-macros/math';
 import _abs from 'ember-awesome-macros/math/abs';
 
-module('Acceptance | math imports');
+module('Acceptance | math imports', function() {
+  test('math global imports', function(assert) {
+    assert.ok(math.abs);
+  });
 
-test('math global imports', function(assert) {
-  assert.ok(math.abs);
-});
+  test('math imports', function(assert) {
+    assert.ok(abs);
+  });
 
-test('math imports', function(assert) {
-  assert.ok(abs);
-});
-
-test('math default imports', function(assert) {
-  assert.ok(_abs);
+  test('math default imports', function(assert) {
+    assert.ok(_abs);
+  });
 });

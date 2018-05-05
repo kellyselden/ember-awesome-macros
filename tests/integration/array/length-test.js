@@ -6,64 +6,64 @@ import compute from 'ember-macro-test-helpers/compute';
 
 let array;
 
-module('Integration | Macro | array | length', {
-  beforeEach() {
+module('Integration | Macro | array | length', function(hooks) {
+  hooks.beforeEach(function() {
     array = emberA([0, 0, 0]);
-  }
-});
-
-test('it returns identity if not array type', function(assert) {
-  let array = {};
-
-  compute({
-    assert,
-    computed: length('array'),
-    properties: {
-      array
-    },
-    strictEqual: array
-  });
-});
-
-test('it gets length on array', function(assert) {
-  compute({
-    assert,
-    computed: length('array'),
-    properties: {
-      array
-    },
-    strictEqual: 3
-  });
-});
-
-test('it responds to length changes', function(assert) {
-  let { subject } = compute({
-    computed: length('array'),
-    properties: {
-      array
-    }
   });
 
-  array.pushObject(0);
+  test('it returns identity if not array type', function(assert) {
+    let array = {};
 
-  assert.strictEqual(subject.get('computed'), 4);
-});
-
-test('composable: it gets length on array', function(assert) {
-  compute({
-    assert,
-    computed: length(raw(array)),
-    strictEqual: 3
+    compute({
+      assert,
+      computed: length('array'),
+      properties: {
+        array
+      },
+      strictEqual: array
+    });
   });
-});
 
-test('it handles native arrays', function(assert) {
-  compute({
-    assert,
-    computed: length('array'),
-    properties: {
-      array: [0, 0, 0]
-    },
-    strictEqual: 3
+  test('it gets length on array', function(assert) {
+    compute({
+      assert,
+      computed: length('array'),
+      properties: {
+        array
+      },
+      strictEqual: 3
+    });
+  });
+
+  test('it responds to length changes', function(assert) {
+    let { subject } = compute({
+      computed: length('array'),
+      properties: {
+        array
+      }
+    });
+
+    array.pushObject(0);
+
+    assert.strictEqual(subject.get('computed'), 4);
+  });
+
+  test('composable: it gets length on array', function(assert) {
+    compute({
+      assert,
+      computed: length(raw(array)),
+      strictEqual: 3
+    });
+  });
+
+  test('it handles native arrays', function(assert) {
+    compute({
+      assert,
+      computed: length('array'),
+      properties: {
+        array: [0, 0, 0]
+      },
+      strictEqual: 3
+    });
   });
 });
