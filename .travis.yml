@@ -59,8 +59,6 @@ matrix:
           repo: kellyselden/ember-awesome-macros
 
 before_install:
-  - export DISPLAY=:99
-  - sh -e /etc/init.d/xvfb start
   - npm config set spin false
   - npm install -g npm@5
   - npm --version
