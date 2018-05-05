@@ -1,4 +1,5 @@
 import EmberObject from '@ember/object';
+import { getProperties } from '@ember/object';
 import { hash, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
@@ -6,21 +7,21 @@ import compute from 'ember-macro-test-helpers/compute';
 
 const value1 = 12;
 const value2 = 23;
-const returnValue = 'return value test';
 
 let sandbox;
-let createStub;
 let expected;
+let createSpy;
 
 module('Unit | Macro | hash', {
   beforeEach() {
     sandbox = sinon.sandbox.create();
-    createStub = sandbox.stub(EmberObject, 'create').returns(returnValue);
 
     expected = {
       prop1: value1,
       prop2: value2
     };
+
+    createSpy = sandbox.spy(EmberObject, 'create').withArgs(expected);
   },
   afterEach() {
     sandbox.restore();
@@ -28,9 +29,9 @@ module('Unit | Macro | hash', {
 });
 
 function doAssertions(assert, result, callNumber) {
-  assert.deepEqual(createStub.thisValues[callNumber], EmberObject);
-  assert.deepEqual(createStub.args[callNumber], [expected]);
-  assert.strictEqual(result, returnValue);
+  assert.deepEqual(createSpy.thisValues[callNumber], EmberObject);
+  assert.deepEqual(createSpy.args[callNumber], [expected]);
+  assert.deepEqual(getProperties(result, 'prop1', 'prop2'), expected);
 }
 
 test('it calls Ember.Object.create', function(assert) {
@@ -45,7 +46,7 @@ test('it calls Ember.Object.create', function(assert) {
     }
   });
 
-  doAssertions(assert, result, 1);
+  doAssertions(assert, result, 0);
 });
 
 test('it responds to key changes', function(assert) {
@@ -65,7 +66,7 @@ test('it responds to key changes', function(assert) {
 
   let result = subject.get('computed');
 
-  doAssertions(assert, result, 2);
+  doAssertions(assert, result, 1);
 });
 
 test('it wraps key values', function(assert) {
@@ -77,7 +78,7 @@ test('it wraps key values', function(assert) {
     }
   });
 
-  doAssertions(assert, result, 1);
+  doAssertions(assert, result, 0);
 });
 
 test('it merges keys and hashes', function(assert) {
@@ -89,7 +90,7 @@ test('it merges keys and hashes', function(assert) {
     }
   });
 
-  doAssertions(assert, result, 1);
+  doAssertions(assert, result, 0);
 });
 
 test('value: it calls Ember.Object.create', function(assert) {
