@@ -38,7 +38,6 @@
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-qunit": "^4.1.1",
-    "ember-cli-shims": "^1.2.0",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-load-initializers": "^1.0.0",
     "ember-macro-test-helpers": "^3.0.0",
