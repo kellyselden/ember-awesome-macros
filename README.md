@@ -81,6 +81,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`array.indexOf`](#arrayindexof)
 * [`array.invoke`](#arrayinvoke)
 * [`array.isAny`](#arrayisany)
+* [`array.isEmpty`](#arrayisempty)
 * [`array.isEvery`](#arrayisevery)
 * [`array.join`](#arrayjoin)
 * [`array.lastIndexOf`](#arraylastindexof)
@@ -403,6 +404,16 @@ value1: 2,
 value2: 3,
 result1: array.isAny('array', 'key', 'value1'), // true
 result2: array.isAny('array', 'key', 'value2') // false
+```
+
+##### `array.isEmpty`
+check if an array is empty
+
+```js
+array1: Ember.A([]),
+array2: Ember.A([{ test: 1 }, { test: 1 }]),
+result1: array.isEmpty('array1'), // true
+result2: array.isEmpty('array2') // false
 ```
 
 ##### `array.isEvery`
