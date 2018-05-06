@@ -1,3 +1,1 @@
-import computed from 'ember-macro-helpers/computed';
-
-export default computed;
+export { default } from 'ember-macro-helpers/computed';

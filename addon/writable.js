@@ -1,3 +1,1 @@
-import writable from 'ember-macro-helpers/writable';
-
-export default writable;
+export { default } from 'ember-macro-helpers/writable';
