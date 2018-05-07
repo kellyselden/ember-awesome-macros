@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import expect from '../helpers/expect-imports';
+import expect from 'ember-macro-test-helpers/expect-imports';
 import string, {
   camelize,
   capitalize,
