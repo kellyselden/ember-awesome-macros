@@ -1,7 +1,7 @@
 import { unless, raw } from 'ember-awesome-macros';
 import { computed } from '@ember/object';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Macro | unless', function() {

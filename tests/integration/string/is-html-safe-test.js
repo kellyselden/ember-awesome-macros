@@ -2,7 +2,7 @@ import { htmlSafe } from '@ember/string';
 import { isHtmlSafe } from 'ember-awesome-macros/string';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('Integration | Macro | string | is html safe', function() {
   test('returns undefined when doesn\'t exist', function(assert) {

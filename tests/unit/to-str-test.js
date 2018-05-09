@@ -2,7 +2,7 @@ import { raw } from 'ember-macro-helpers';
 import { toStr } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 const arg = 123;
 const returnValue = 'return value test';

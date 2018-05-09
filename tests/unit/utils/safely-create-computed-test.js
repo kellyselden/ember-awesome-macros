@@ -2,7 +2,7 @@ import { safelyCreateComputed } from 'ember-awesome-macros/-utils';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 const firstParam = 'first param test';
 const secondParam = 'second param test';

@@ -1,7 +1,7 @@
 import { dasherize } from 'ember-awesome-macros/string';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('Integration | Macro | string | dasherize', function() {
   test('returns undefined when doesn\'t exist', function(assert) {

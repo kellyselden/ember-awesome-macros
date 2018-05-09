@@ -2,7 +2,7 @@ import { reduce } from 'ember-awesome-macros/array';
 import EmberObject, { computed } from '@ember/object';
 import { A as emberA } from '@ember/array';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Macro | array | reduce', function() {

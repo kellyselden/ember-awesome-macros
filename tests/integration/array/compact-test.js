@@ -2,7 +2,7 @@ import { compact } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
 import { A as emberA } from '@ember/array';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 let array;
 

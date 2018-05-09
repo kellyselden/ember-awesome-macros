@@ -1,6 +1,6 @@
 import { instanceOf, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('Integration | Macro | instance of', function() {
   test('lookup: object is instance of Object', function(assert) {

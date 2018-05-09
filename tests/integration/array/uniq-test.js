@@ -2,7 +2,7 @@ import { uniq } from 'ember-awesome-macros/array';
 import { A as emberA } from '@ember/array';
 import { computed } from '@ember/object';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Macro | array | uniq', function() {

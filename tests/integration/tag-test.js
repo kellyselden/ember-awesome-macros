@@ -1,6 +1,6 @@
 import { tag, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('Integration | Macro | tag', function() {
   test('it handles undefined variables', function(assert) {

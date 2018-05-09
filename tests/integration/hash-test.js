@@ -1,7 +1,7 @@
 import EmberObject from '@ember/object';
 import { hash, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 const value1 = 12;
 const value2 = 23;

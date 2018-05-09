@@ -3,7 +3,7 @@ import { get, computed } from '@ember/object';
 import { A as emberA } from '@ember/array';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 import sinon from 'sinon';
 
 let array;

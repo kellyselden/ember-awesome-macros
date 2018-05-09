@@ -1,6 +1,6 @@
 import { lt, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('Integration | Macro | lt', function() {
   test('less than returns true', function(assert) {

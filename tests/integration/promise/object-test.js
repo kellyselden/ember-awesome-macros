@@ -5,7 +5,7 @@ import {
   resolve as promiseResolve
 } from 'ember-awesome-macros/promise';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 let object;
 

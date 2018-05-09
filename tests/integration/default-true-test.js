@@ -1,6 +1,6 @@
 import { defaultTrue } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('Integration | Macro | default true', function() {
   test('defaults true', function(assert) {

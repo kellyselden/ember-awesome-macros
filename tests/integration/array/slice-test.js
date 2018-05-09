@@ -2,7 +2,7 @@ import { slice } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
 import { computed } from '@ember/object';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Macro | array | slice', function() {

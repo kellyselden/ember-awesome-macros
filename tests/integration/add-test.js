@@ -1,7 +1,7 @@
 import { add } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import { A as emberA } from '@ember/array';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 module('Integration | Macro | add', function() {
   test('adds two numbers', function(assert) {

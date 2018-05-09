@@ -1,7 +1,7 @@
 import EmberObject, { get, set } from '@ember/object';
 import { getBy, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 
 let model;
 
