@@ -2,6 +2,7 @@ export { default as add } from './add';
 export { default as and } from './and';
 import array from './array';
 export { array };
+export { default as bool } from './bool';
 export { default as collect } from './collect';
 export { default as computed } from './computed';
 export { default as conditional } from './conditional';
