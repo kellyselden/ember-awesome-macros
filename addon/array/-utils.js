@@ -1,8 +1,10 @@
 import { A as emberA } from '@ember/array';
 import ArrayProxy from '@ember/array/proxy';
-import lazyComputed from 'ember-macro-helpers/lazy-computed';
 import normalizeArrayKey from 'ember-macro-helpers/normalize-array-key';
-import createClassComputed from 'ember-macro-helpers/create-class-computed';
+import {
+  lazyComputed,
+  createClassComputed
+} from 'ember-macro-helpers';
 
 const sentinelValue = {};
 

@@ -1,6 +1,6 @@
 import { get } from '@ember/object';
 import { resolve } from 'rsvp';
-import lazyCurriedComputed from 'ember-macro-helpers/lazy-curried-computed';
+import { lazyCurriedComputed } from 'ember-macro-helpers';
 
 export default lazyCurriedComputed((getValue, promise, property) => {
   promise = getValue(promise);

@@ -1,6 +1,6 @@
 import PromiseProxyMixin from '@ember/object/promise-proxy-mixin';
 import { resolve } from 'rsvp';
-import curriedComputed from 'ember-macro-helpers/curried-computed';
+import { curriedComputed } from 'ember-macro-helpers';
 
 export function wrapPromiseProxy(Proxy) {
   let PromiseProxy = Proxy.extend(PromiseProxyMixin);

@@ -1,4 +1,4 @@
-import curriedComputed from 'ember-macro-helpers/curried-computed';
+import { curriedComputed } from 'ember-macro-helpers';
 
 export default curriedComputed(object => {
   return typeof object;

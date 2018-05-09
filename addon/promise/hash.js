@@ -1,5 +1,5 @@
 import { hash } from 'rsvp';
-import curriedComputed from 'ember-macro-helpers/curried-computed';
+import { curriedComputed } from 'ember-macro-helpers';
 import { deconstructArgs, reduceValues } from '../hash';
 
 export default function(...args) {

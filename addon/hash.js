@@ -1,5 +1,5 @@
 import EmberObject from '@ember/object';
-import curriedComputed from 'ember-macro-helpers/curried-computed';
+import { curriedComputed } from 'ember-macro-helpers';
 
 export function deconstructArgs(args) {
   let hashKeys = [];

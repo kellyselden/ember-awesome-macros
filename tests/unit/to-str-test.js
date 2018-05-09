@@ -1,4 +1,4 @@
-import raw from 'ember-macro-helpers/raw';
+import { raw } from 'ember-macro-helpers';
 import { toStr } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';

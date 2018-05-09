@@ -1,4 +1,4 @@
-import lazyCurriedComputed from 'ember-macro-helpers/lazy-curried-computed';
+import { lazyCurriedComputed } from 'ember-macro-helpers';
 
 export default lazyCurriedComputed((get, firstKey, ...keys) => {
   let firstVal = get(firstKey);
