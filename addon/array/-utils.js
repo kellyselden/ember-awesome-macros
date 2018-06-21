@@ -22,6 +22,9 @@ function convertArray(array) {
   }
 
   if (isEmberArray(array)) {
+    // this is required by the current `concat()` implementation because
+    // Ember.Array itself does not define `concat()` so it only works
+    // for Ember.Array instances that are backed by a real array
     return emberA(array.toArray());
   }
 
