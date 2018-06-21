@@ -1,5 +1,5 @@
 import { normalizeArray } from './-utils';
 
 export default normalizeArray({}, array => {
-  return array[array.length - 1];
+  return array.objectAt(array.length - 1);
 });
