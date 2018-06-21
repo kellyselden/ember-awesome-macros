@@ -12,6 +12,22 @@ function normalizeArrayArgs(keys) {
   keys[0] = normalizeArrayKey(keys[0]);
 }
 
+function convertArray(array) {
+  if (array instanceof ArrayProxy) {
+    return array;
+  }
+
+  if (Array.isArray(array)) {
+    return emberA(array);
+  }
+
+  if (isEmberArray(array)) {
+    return emberA(array.toArray());
+  }
+
+  return null;
+}
+
 function getDefaultValue(func, identityVal) {
   let val = func();
   return val === sentinelValue ? identityVal : val;
@@ -25,22 +41,13 @@ export function normalizeArray({
 
     return lazyComputed(...keys, function(get, arrayKey, ...args) {
       let arrayVal = get(arrayKey);
-
-      if (arrayVal instanceof ArrayProxy) {
-        // do nothing
-
-      } else if (Array.isArray(arrayVal)) {
-        arrayVal = emberA(arrayVal);
-
-      } else if (isEmberArray(arrayVal)) {
-        arrayVal = emberA(arrayVal.toArray());
-
-      } else {
+      let emberArrayVal = convertArray(arrayVal);
+      if (emberArrayVal === null) {
         return getDefaultValue(defaultValue, arrayVal);
       }
 
       let values = args.map(get);
-      return callback.call(this, arrayVal, ...values);
+      return callback.call(this, emberArrayVal, ...values);
     });
   };
 }
@@ -55,22 +62,14 @@ export function normalizeArray2(
     return lazyComputed(...keys, (get, arrayKey, ...args) => {
       let arrayVal = get(arrayKey);
 
-      if (arrayVal instanceof ArrayProxy) {
-        // do nothing
-
-      } else if (Array.isArray(arrayVal)) {
-        arrayVal = emberA(arrayVal);
-
-      } else if (isEmberArray(arrayVal)) {
-        arrayVal = emberA(arrayVal.toArray());
-
-      } else {
+      let emberArrayVal = convertArray(arrayVal);
+      if (emberArrayVal === null) {
         return getDefaultValue(defaultValue, arrayVal);
       }
 
-      let prop = arrayVal[funcStr];
+      let prop = emberArrayVal[funcStr];
       if (typeof prop === 'function') {
-        return prop.apply(arrayVal, args.map(get));
+        return prop.apply(emberArrayVal, args.map(get));
       }
 
       return prop;
@@ -89,16 +88,8 @@ export function normalizeArray3({
       return lazyComputed(normalizeArrayKey(array, [key]), ...args, function(get, arrayKey, ...args) {
         let arrayVal = get(arrayKey);
 
-        if (arrayVal instanceof ArrayProxy) {
-          // do nothing
-
-        } else if (Array.isArray(arrayVal)) {
-          arrayVal = emberA(arrayVal);
-
-        } else if (isEmberArray(arrayVal)) {
-          arrayVal = emberA(arrayVal.toArray());
-
-        } else {
+        let emberArrayVal = convertArray(arrayVal);
+        if (emberArrayVal === null) {
           return getDefaultValue(firstDefault, arrayVal);
         }
 
@@ -109,10 +100,10 @@ export function normalizeArray3({
         let resolvedArgs = [key, ...args.map(get)];
 
         if (typeof func === 'function') {
-          return func(arrayVal, ...resolvedArgs);
+          return func(emberArrayVal, ...resolvedArgs);
         }
 
-        return arrayVal[func](...resolvedArgs);
+        return emberArrayVal[func](...resolvedArgs);
       });
     }
   );
