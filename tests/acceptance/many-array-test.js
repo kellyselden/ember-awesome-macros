@@ -7,7 +7,7 @@ import { run } from '@ember/runloop';
 
 let parent, child1, child2;
 
-moduleForModel('parent', 'Unit | ManyArray', {
+moduleForModel('parent', 'Acceptance | DS.ManyArray', {
   // Specify the other units that are required for this test.
   needs: ['model:child'],
 
