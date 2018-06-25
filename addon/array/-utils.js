@@ -18,7 +18,9 @@ function convertArray(array) {
   }
 
   if (Array.isArray(array)) {
-    return emberA(array);
+    // we use .slice() here so that plain arrays are
+    // not internally mutated to Ember arrays
+    return emberA(array.slice());
   }
 
   if (isEmberArray(array)) {
