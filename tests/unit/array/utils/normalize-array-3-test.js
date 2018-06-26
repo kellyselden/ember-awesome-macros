@@ -22,6 +22,8 @@ let macro;
 module('Unit | Macro | array | utils | normalize array 3', function(hooks) {
   hooks.beforeEach(function() {
     array = emberA([]);
+    sinon.stub(array, 'slice').returns(array);
+
     let obj = EmberObject.create({});
     obj[firstParam] = 1;
     array.push(obj);
@@ -247,6 +249,8 @@ module('Unit | Macro | array | utils | normalize array 3', function(hooks) {
     });
 
     array = [];
+    sinon.stub(array, 'slice').returns(array);
+
     funcStub = sinon.stub(array, 'pop').returns(returnValue);
 
     subject.set('array', array);
@@ -334,6 +338,8 @@ module('Unit | Macro | array | utils | normalize array 3', function(hooks) {
 
   test('it handles native arrays', function(assert) {
     array = [];
+    sinon.stub(array, 'slice').returns(array);
+
     funcStub = sinon.stub(array, 'pop').returns(returnValue);
 
     let { result } = compute({

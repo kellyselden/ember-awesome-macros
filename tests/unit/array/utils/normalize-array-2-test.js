@@ -22,6 +22,8 @@ let macro;
 module('Unit | Macro | array | utils | normalize array 2', function(hooks) {
   hooks.beforeEach(function() {
     array = emberA([]);
+    sinon.stub(array, 'slice').returns(array);
+
     funcStub = sinon.stub(array, 'pop').returns(returnValue);
 
     macro = normalizeArray2('pop');
@@ -143,6 +145,8 @@ module('Unit | Macro | array | utils | normalize array 2', function(hooks) {
 
   test('it handles native arrays', function(assert) {
     array = [];
+    sinon.stub(array, 'slice').returns(array);
+
     funcStub = sinon.stub(array, 'pop').returns(returnValue);
 
     let { result } = compute({
