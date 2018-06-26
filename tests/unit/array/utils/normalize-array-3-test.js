@@ -30,9 +30,6 @@ module('Unit | Macro | array | utils | normalize array 3', function(hooks) {
     slicedArray = emberA([]);
     initArray(emberA([]));
 
-    let obj = EmberObject.create({});
-    obj[firstParam] = 1;
-    originalArray.push(obj);
     funcStub = sinon.stub(slicedArray, 'pop').returns(returnValue);
 
     macro = normalizeArray3({
@@ -323,6 +320,10 @@ module('Unit | Macro | array | utils | normalize array 3', function(hooks) {
   });
 
   test('it responds to array property value changes', function(assert) {
+    let obj = EmberObject.create({});
+    obj[firstParam] = 1;
+    originalArray.push(obj);
+
     let { subject } = compute({
       computed: macro('array', 'firstParam', 'secondParam'),
       properties: {
