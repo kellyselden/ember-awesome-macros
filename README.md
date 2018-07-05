@@ -713,7 +713,7 @@ value3: hash('source1', { prop2: 'source2' }) // { source1: 'my value 1', prop2:
 ```
 
 ##### `isEmpty`
-wraps [`Ember.isEmpty`](https://emberjs.com/api/ember/3.0/functions/@ember%2Futils/isEmpty)
+wraps [`Ember.isEmpty`](https://emberjs.com/api/ember/release/functions/@ember%2Futils/isEmpty)
 
 ```js
 sourceString1: '',
