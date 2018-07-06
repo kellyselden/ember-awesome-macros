@@ -2,7 +2,7 @@
 
 const writeFile = require('broccoli-file-creator');
 const mergeTrees = require('broccoli-merge-trees');
-const dasherize = require('ember-cli-string-utils').dasherize;
+const { dasherize } = require('ember-cli-string-utils');
 
 function addMath(trees) {
   let index = '';
