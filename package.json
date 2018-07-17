@@ -48,7 +48,7 @@
     "ember-try": "^0.2.23",
     "eslint-config-sane": "^0.6.0",
     "eslint-plugin-ember": "^5.0.0",
-    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-node": "^7.0.0",
     "eslint-plugin-prefer-let": "^1.0.0",
     "loader.js": "^4.2.3",
     "qunit-dom": "^0.7.0",
