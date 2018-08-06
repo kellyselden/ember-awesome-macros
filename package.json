@@ -28,7 +28,7 @@
     "broccoli-merge-trees": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-string-utils": "^1.1.0",
-    "ember-macro-helpers": "^1.0.0"
+    "ember-macro-helpers": "^2.0.0"
   },
   "devDependencies": {
     "ember-cli": "~3.2.0",
