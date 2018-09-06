@@ -51,7 +51,7 @@
     "eslint-plugin-node": "^7.0.0",
     "eslint-plugin-prefer-let": "^1.0.0",
     "loader.js": "^4.2.3",
-    "qunit-dom": "^0.7.0",
+    "qunit-dom": "^0.8.0",
     "renovate-config-standard": "^1.0.0"
   },
   "engines": {
