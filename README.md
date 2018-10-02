@@ -1101,7 +1101,7 @@ string: 'abc',
 substr: 'bc',
 newSubstr: 'cb',
 value1: string.replace('string', 'substr', 'newSubstr'), // 'acb'
-value2: string.replace('source', 'substr', string.toUpper('newSubstr')) // 'aCB'
+value2: string.replace('string', 'substr', string.toUpper('newSubstr')) // 'aCB'
 ```
 
 ##### `string.split`
