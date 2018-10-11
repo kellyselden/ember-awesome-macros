@@ -861,10 +861,11 @@ adds zero-padding to a number and returns a string, allows composing
 
 ```js
 number1: 1,
-string1: '3',
-string2: '5',
-example: pad('number1','string1'), // 001
-example2: pad(raw(8),'string2') // 00001
+size1: 3,
+size2: '5',
+example1: pad('number1','size1'), // 001
+example2: pad('number1','size1'), // 001
+example3: pad(raw(8),'size2') // 00008
 ```
 
 ##### `parseFloat`
