@@ -21,6 +21,7 @@ export { default as isEmpty } from './is-empty';
 export { default as isHtmlSafe } from './is-html-safe';
 export { default as lt } from './lt';
 export { default as lte } from './lte';
+export { default as pad } from './pad';
 export { default as math } from './math';
 export { default as mod } from './mod';
 export { default as multiply } from './multiply';
