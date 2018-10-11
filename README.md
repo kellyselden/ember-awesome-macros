@@ -143,6 +143,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`getBy`](#getby)
 * [`hash`](#hash)
 * [`isEmpty`](#isempty)
+* [`notEmpty`](#notempty)
 * [`toStr`](#tostr)
 * [`toString`](#tostring)
 * [`typeOf`](#typeof)
@@ -734,7 +735,8 @@ sourceArray1: [],
 sourceArray2: [1, 2, 3],
 
 sourceObject1: {},
-sourceObject2: { size: 0 },
+sourceObject2: { key: "value" },
+sourceObject3: { key: "value", size: 0 },
 
 valueString1: isEmpty('sourceString1'), // true
 valueString2: isEmpty('sourceString2'), // false
@@ -742,12 +744,44 @@ valueString2: isEmpty('sourceString2'), // false
 valueArray1: isEmpty('sourceArray1'), // true
 valueArray2: isEmpty('sourceArray2'), // false
 
-valueObject1: isEmpty('sourceObject1'), // false
-valueObject2: isEmpty('sourceObject2'), // true
+// Note: behaviour for objects might be unexpected
+valueObject1: isEmpty('sourceObject1'), // false (!)
+valueObject2: isEmpty('sourceObject2'), // false
+valueObject3: isEmpty('sourceObject3'), // true (!) 'size' property causes it to behave as an array
 
-valueObject1: isEmpty(collect(1, 2)), // false
+valueArray3: isEmpty(collect(1, 2)), // false
 
-valueObject1: isEmpty([]), // true
+valueArray4: isEmpty([]), // true
+```
+
+##### `notEmpty`
+negation of [`isEmpty`](#isempty)
+
+```js
+sourceString1: '',
+sourceString2: foobar,
+
+sourceArray1: [],
+sourceArray2: [1, 2, 3],
+
+sourceObject1: {},
+sourceObject2: { key: "value" },
+sourceObject3: { key: "value", size: 0 },
+
+valueString1: notEmpty('sourceString1'), // false
+valueString2: notEmpty('sourceString2'), // true
+
+valueArray1: notEmpty('sourceArray1'), // false
+valueArray2: notEmpty('sourceArray2'), // true
+
+// Note: behaviour for objects might be unexpected
+valueObject1: notEmpty('sourceObject1'), // true (!)
+valueObject2: notEmpty('sourceObject2'), // true
+valueObject3: notEmpty('sourceObject3'), // false (!) 'size' property causes it to behave as an array
+
+valueArray3: notEmpty(collect(1, 2)), // true
+
+valueArray4: notEmpty([]) // false
 ```
 
 ##### `instanceOf`

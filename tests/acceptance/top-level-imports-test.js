@@ -21,6 +21,7 @@ import macros, {
   instanceOf,
   isHtmlSafe,
   isEmpty,
+  notEmpty,
   lt,
   lte,
   math,
@@ -112,6 +113,7 @@ import _htmlSafe from 'ember-awesome-macros/html-safe';
 import _instanceOf from 'ember-awesome-macros/instance-of';
 import _isHtmlSafe from 'ember-awesome-macros/is-html-safe';
 import _isEmpty from 'ember-awesome-macros/is-empty';
+import _notEmpty from 'ember-awesome-macros/not-empty';
 import _lt from 'ember-awesome-macros/lt';
 import _lte from 'ember-awesome-macros/lte';
 import _mod from 'ember-awesome-macros/mod';
@@ -159,6 +161,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(macros.instanceOf);
     assert.ok(macros.isHtmlSafe);
     assert.ok(macros.isEmpty);
+    assert.ok(macros.notEmpty);
     assert.ok(macros.lt);
     assert.ok(macros.lte);
     assert.ok(macros.math);
@@ -255,6 +258,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(instanceOf);
     assert.ok(isHtmlSafe);
     assert.ok(isEmpty);
+    assert.ok(notEmpty);
     assert.ok(lt);
     assert.ok(lte);
     assert.ok(math);
@@ -350,6 +354,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(_instanceOf);
     assert.ok(_isHtmlSafe);
     assert.ok(_isEmpty);
+    assert.ok(_notEmpty);
     assert.ok(_lt);
     assert.ok(_lte);
     assert.ok(_mod);
