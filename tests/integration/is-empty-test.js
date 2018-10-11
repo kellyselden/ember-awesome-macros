@@ -109,6 +109,34 @@ module('Integration | Macro | isEmpty', function() {
     });
   });
 
+
+  test('empty with object', function(assert) {
+    compute({
+      assert,
+      computed: isEmpty('source'),
+      properties: {
+        source: {
+          key: 'value'
+        }
+      },
+      strictEqual: false
+    });
+  });
+
+  test('empty with object with size key', function(assert) {
+    compute({
+      assert,
+      computed: isEmpty('source'),
+      properties: {
+        source: {
+          key: 'value',
+          size: 0
+        }
+      },
+      strictEqual: true
+    });
+  });
+
   test('not empty with string', function(assert) {
     compute({
       assert,

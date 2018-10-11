@@ -110,6 +110,33 @@ test('not empty with empty object', function(assert) {
   });
 });
 
+test('not empty with object', function(assert) {
+  compute({
+    assert,
+    computed: notEmpty('source'),
+    properties: {
+      source: {
+        key: 'value'
+      }
+    },
+    strictEqual: true
+  });
+});
+
+test('not empty with object with size key', function(assert) {
+  compute({
+    assert,
+    computed: notEmpty('source'),
+    properties: {
+      source: {
+        key: 'value',
+        size: 0
+      }
+    },
+    strictEqual: false
+  });
+});
+
 test('not empty with string', function(assert) {
   compute({
     assert,
