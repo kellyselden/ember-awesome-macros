@@ -138,7 +138,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`quotient`](#quotient)
 * [`subtract`](#subtract)
 * [`sum`](#sum)
-* [`pad`](#sum)
+* [`pad`](#pad)
 
 ##### Object
 * [`getBy`](#getby)
