@@ -24,6 +24,7 @@ export { default as lte } from './lte';
 export { default as math } from './math';
 export { default as mod } from './mod';
 export { default as multiply } from './multiply';
+export { default as nand } from './nand';
 export { default as neq } from './neq';
 export { default as not } from './not';
 export { default as notEqual } from './not-equal';

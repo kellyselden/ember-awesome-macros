@@ -110,6 +110,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`bool`](#bool)
 * [`conditional`](#conditional)
 * [`defaultTrue`](#defaulttrue)
+* [`nand`](#nand)
 * [`not`](#not)
 * [`or`](#or)
 * [`unless`](#unless)
@@ -809,6 +810,18 @@ composingExample: mod(sum('number1', 'number2'), 39) // 12
 
 ##### `multiply`
 alias for [`product`](#product)
+
+##### `nand`
+applies [`logical NAND`](https://en.wikipedia.org/wiki/logical_NAND) operation
+
+```js
+sourceTrue: true,
+sourceFalse: false,
+
+value1: nand('sourceFalse', 'sourceFalse', 'sourceFalse'), // true
+value2: nand('sourceFalse', 'sourceTrue', 'sourceFalse'), // true
+value3: nand('sourceTrue', 'sourceTrue', 'sourceTrue') // false
+```
 
 ##### `neq`
 alias for [`notEqual`](#notequal)
