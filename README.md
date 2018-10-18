@@ -111,6 +111,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`conditional`](#conditional)
 * [`defaultTrue`](#defaulttrue)
 * [`nand`](#nand)
+* [`nor`](#nor)
 * [`not`](#not)
 * [`or`](#or)
 * [`unless`](#unless)
@@ -825,6 +826,18 @@ value3: nand('sourceTrue', 'sourceTrue', 'sourceTrue') // false
 
 ##### `neq`
 alias for [`notEqual`](#notequal)
+
+##### `nor`
+applies [`logical NOR`](https://en.wikipedia.org/wiki/logical_NOR) operation
+
+```js
+sourceTrue: true,
+sourceFalse: false,
+
+value1: nor('sourceFalse', 'sourceFalse', 'sourceFalse'), // true
+value2: nor('sourceFalse', 'sourceTrue', 'sourceFalse'), // false
+value3: nor('sourceTrue', 'sourceTrue', 'sourceTrue') // false
+```
 
 ##### `not`
 same as `Ember.computed.not`, but allows composing

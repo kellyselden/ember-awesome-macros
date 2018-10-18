@@ -28,6 +28,7 @@ import macros, {
   multiply,
   nand,
   neq,
+  nor,
   not,
   notEqual,
   number,
@@ -119,6 +120,7 @@ import _mod from 'ember-awesome-macros/mod';
 import _multiply from 'ember-awesome-macros/multiply';
 import _nand from 'ember-awesome-macros/nand';
 import _neq from 'ember-awesome-macros/neq';
+import _nor from 'ember-awesome-macros/nor';
 import _not from 'ember-awesome-macros/not';
 import _notEqual from 'ember-awesome-macros/not-equal';
 import _number from 'ember-awesome-macros/number';
@@ -168,6 +170,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(macros.multiply);
     assert.ok(macros.nand);
     assert.ok(macros.neq);
+    assert.ok(macros.nor);
     assert.ok(macros.not);
     assert.ok(macros.notEqual);
     assert.ok(macros.number);
@@ -265,6 +268,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(multiply);
     assert.ok(nand);
     assert.ok(neq);
+    assert.ok(nor);
     assert.ok(not);
     assert.ok(notEqual);
     assert.ok(number);
@@ -360,6 +364,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(_multiply);
     assert.ok(_nand);
     assert.ok(_neq);
+    assert.ok(_nor);
     assert.ok(_not);
     assert.ok(_notEqual);
     assert.ok(_number);

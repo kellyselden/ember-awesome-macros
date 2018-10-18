@@ -26,6 +26,7 @@ export { default as mod } from './mod';
 export { default as multiply } from './multiply';
 export { default as nand } from './nand';
 export { default as neq } from './neq';
+export { default as nor } from './nor';
 export { default as not } from './not';
 export { default as notEqual } from './not-equal';
 export { default as number } from './number';
