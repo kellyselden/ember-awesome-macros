@@ -48,6 +48,7 @@ export { default as toString } from './to-string';
 export { default as typeOf } from './type-of';
 export { default as unless } from './unless';
 export { default as writable } from './writable';
+export { default as xnor } from './xnor';
 export { default as xor } from './xor';
 
 import { deprecate } from './-utils';
