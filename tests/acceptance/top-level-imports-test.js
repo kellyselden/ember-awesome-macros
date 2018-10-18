@@ -48,6 +48,7 @@ import macros, {
   typeOf,
   unless,
   writable,
+  xor,
 
   // deprecations
 
@@ -138,6 +139,7 @@ import _toString from 'ember-awesome-macros/to-string';
 import _typeOf from 'ember-awesome-macros/type-of';
 import _unless from 'ember-awesome-macros/unless';
 import _writable from 'ember-awesome-macros/writable';
+import _xor from 'ember-awesome-macros/xor';
 
 module('Acceptance | top level imports', function() {
   test('all top level global imports', function(assert) {
@@ -190,6 +192,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(macros.typeOf);
     assert.ok(macros.unless);
     assert.ok(macros.writable);
+    assert.ok(macros.xor);
 
     // deprecations
 
@@ -288,6 +291,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(typeOf);
     assert.ok(unless);
     assert.ok(writable);
+    assert.ok(xor);
 
     // deprecations
 
@@ -382,5 +386,6 @@ module('Acceptance | top level imports', function() {
     assert.ok(_typeOf);
     assert.ok(_unless);
     assert.ok(_writable);
+    assert.ok(_xor);
   });
 });

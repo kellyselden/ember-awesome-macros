@@ -115,6 +115,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`not`](#not)
 * [`or`](#or)
 * [`unless`](#unless)
+* [`xor`](#xor)
 
 ##### Comparison
 * [`eq`](#eq)
@@ -1271,6 +1272,17 @@ value2: unless('condition2', 'expr1', 'expr2'), // 'my value 2'
 value3: unless(and('condition1', 'condition2'), raw('my value 1'), raw('my value 2')) // 'my value 1'
 ```
 
+##### `xor`
+applies [`logical XOR`](https://en.wikipedia.org/wiki/logical_XOR) operation
+
+```js
+sourceTrue: true,
+sourceFalse: false,
+
+value1: xor('sourceFalse', 'sourceFalse', 'sourceFalse'), // false
+value2: xor('sourceFalse', 'sourceTrue', 'sourceFalse'), // true
+value3: xor('sourceTrue', 'sourceTrue', 'sourceTrue') // false
+```
 
 Contributing
 ------------------------------------------------------------------------------
