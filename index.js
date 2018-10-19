@@ -24,7 +24,7 @@ function addMath(trees) {
 }
 
 module.exports = {
-  name: 'ember-awesome-macros',
+  name: require('./package').name,
 
   treeForAddon(tree) {
     let trees = [tree];
