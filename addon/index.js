@@ -18,6 +18,7 @@ export { default as hash } from './hash';
 export { default as htmlSafe } from './html-safe';
 export { default as instanceOf } from './instance-of';
 export { default as isEmpty } from './is-empty';
+export { default as notEmpty } from './not-empty';
 export { default as isHtmlSafe } from './is-html-safe';
 export { default as lt } from './lt';
 export { default as lte } from './lte';
