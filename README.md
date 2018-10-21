@@ -110,9 +110,13 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`bool`](#bool)
 * [`conditional`](#conditional)
 * [`defaultTrue`](#defaulttrue)
+* [`nand`](#nand)
+* [`nor`](#nor)
 * [`not`](#not)
 * [`or`](#or)
 * [`unless`](#unless)
+* [`xnor`](#xnor)
+* [`xor`](#xor)
 
 ##### Comparison
 * [`eq`](#eq)
@@ -812,8 +816,32 @@ composingExample: mod(sum('number1', 'number2'), 39) // 12
 ##### `multiply`
 alias for [`product`](#product)
 
+##### `nand`
+applies [`logical NAND`](https://en.wikipedia.org/wiki/logical_NAND) operation
+
+```js
+sourceTrue: true,
+sourceFalse: false,
+
+value1: nand('sourceFalse', 'sourceFalse', 'sourceFalse'), // true
+value2: nand('sourceFalse', 'sourceTrue', 'sourceFalse'), // true
+value3: nand('sourceTrue', 'sourceTrue', 'sourceTrue') // false
+```
+
 ##### `neq`
 alias for [`notEqual`](#notequal)
+
+##### `nor`
+applies [`logical NOR`](https://en.wikipedia.org/wiki/logical_NOR) operation
+
+```js
+sourceTrue: true,
+sourceFalse: false,
+
+value1: nor('sourceFalse', 'sourceFalse', 'sourceFalse'), // true
+value2: nor('sourceFalse', 'sourceTrue', 'sourceFalse'), // false
+value3: nor('sourceTrue', 'sourceTrue', 'sourceTrue') // false
+```
 
 ##### `not`
 same as `Ember.computed.not`, but allows composing
@@ -1286,6 +1314,29 @@ value2: unless('condition2', 'expr1', 'expr2'), // 'my value 2'
 value3: unless(and('condition1', 'condition2'), raw('my value 1'), raw('my value 2')) // 'my value 1'
 ```
 
+##### `xnor`
+applies [`logical XNOR`](https://en.wikipedia.org/wiki/logical_XNOR) operation
+
+```js
+sourceTrue: true,
+sourceFalse: false,
+
+value1: xnor('sourceFalse', 'sourceFalse', 'sourceFalse'), // true
+value2: xnor('sourceFalse', 'sourceTrue', 'sourceFalse'), // false
+value3: xnor('sourceTrue', 'sourceTrue', 'sourceTrue') // true
+```
+
+##### `xor`
+applies [`logical XOR`](https://en.wikipedia.org/wiki/logical_XOR) operation
+
+```js
+sourceTrue: true,
+sourceFalse: false,
+
+value1: xor('sourceFalse', 'sourceFalse', 'sourceFalse'), // false
+value2: xor('sourceFalse', 'sourceTrue', 'sourceFalse'), // true
+value3: xor('sourceTrue', 'sourceTrue', 'sourceTrue') // false
+```
 
 Contributing
 ------------------------------------------------------------------------------

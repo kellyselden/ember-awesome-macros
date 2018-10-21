@@ -26,7 +26,9 @@ export { default as pad } from './pad';
 export { default as math } from './math';
 export { default as mod } from './mod';
 export { default as multiply } from './multiply';
+export { default as nand } from './nand';
 export { default as neq } from './neq';
+export { default as nor } from './nor';
 export { default as not } from './not';
 export { default as notEqual } from './not-equal';
 export { default as number } from './number';
@@ -48,6 +50,8 @@ export { default as toString } from './to-string';
 export { default as typeOf } from './type-of';
 export { default as unless } from './unless';
 export { default as writable } from './writable';
+export { default as xnor } from './xnor';
+export { default as xor } from './xor';
 
 import { deprecate } from './-utils';
 
