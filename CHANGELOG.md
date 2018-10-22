@@ -1,5 +1,35 @@
 # Change Log
 
+## [Unreleased](https://github.com/kellyselden/ember-awesome-macros/tree/HEAD)
+
+[Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v3.1.0...HEAD)
+
+**Implemented enhancements:**
+
+- add notEmpty macro [\#241](https://github.com/kellyselden/ember-awesome-macros/issues/241)
+
+## [v3.1.0](https://github.com/kellyselden/ember-awesome-macros/tree/v3.1.0) (2018-10-21)
+[Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v3.0.0...v3.1.0)
+
+**Closed issues:**
+
+- array.findBy returning an array? [\#520](https://github.com/kellyselden/ember-awesome-macros/issues/520)
+- add `nor` and other bool ops [\#446](https://github.com/kellyselden/ember-awesome-macros/issues/446)
+
+**Merged pull requests:**
+
+- use npm 6 [\#519](https://github.com/kellyselden/ember-awesome-macros/pull/519) ([kellyselden](https://github.com/kellyselden))
+- Update dependency @ember/optional-features to ^0.7.0 [\#518](https://github.com/kellyselden/ember-awesome-macros/pull/518) ([renovate[bot]](https://github.com/apps/renovate))
+- update ember-cli 3.4 [\#517](https://github.com/kellyselden/ember-awesome-macros/pull/517) ([kellyselden](https://github.com/kellyselden))
+- Add missing boolean operations [\#516](https://github.com/kellyselden/ember-awesome-macros/pull/516) ([dnahodil](https://github.com/dnahodil))
+- Update dependency ember-cli-inject-live-reload to v2 [\#515](https://github.com/kellyselden/ember-awesome-macros/pull/515) ([renovate[bot]](https://github.com/apps/renovate))
+- Add notEmpty macro [\#512](https://github.com/kellyselden/ember-awesome-macros/pull/512) ([dnahodil](https://github.com/dnahodil))
+- Update dependency ember-source to ~3.5.0 [\#511](https://github.com/kellyselden/ember-awesome-macros/pull/511) ([renovate[bot]](https://github.com/apps/renovate))
+- fix typo in readme [\#510](https://github.com/kellyselden/ember-awesome-macros/pull/510) ([guskou](https://github.com/guskou))
+- Update dependency ember-cli-babel to v7 [\#509](https://github.com/kellyselden/ember-awesome-macros/pull/509) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency qunit-dom to ^0.8.0 [\#507](https://github.com/kellyselden/ember-awesome-macros/pull/507) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-source to ~3.4.0 [\#502](https://github.com/kellyselden/ember-awesome-macros/pull/502) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v3.0.0](https://github.com/kellyselden/ember-awesome-macros/tree/v3.0.0) (2018-08-09)
 [Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v2.0.0...v3.0.0)
 
