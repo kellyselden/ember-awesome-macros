@@ -1,6 +1,6 @@
 import { nand } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 
 module('Integration | Macro | nand', function() {
   test('all false returns true', function(assert) {

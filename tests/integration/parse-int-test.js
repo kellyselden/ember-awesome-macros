@@ -1,6 +1,6 @@
 import { parseInt, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 
 module('Integration | Macro | parse int', function() {
   test('it returns undefined if string undefined', function(assert) {

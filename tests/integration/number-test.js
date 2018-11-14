@@ -1,6 +1,6 @@
 import { number } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 
 module('Integration | Macro | number', function() {
   test('it returns NaN if prop is undefined', function(assert) {

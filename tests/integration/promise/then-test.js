@@ -2,7 +2,7 @@ import { resolve } from 'rsvp';
 import { then } from 'ember-awesome-macros/promise';
 import { computed } from '@ember/object';
 import { module, test } from 'qunit';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 import sinon from 'sinon';
 
 module('Integration | Macro | promise | then', function() {

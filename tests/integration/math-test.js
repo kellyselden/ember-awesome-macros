@@ -5,7 +5,7 @@ import math, {
 } from 'ember-awesome-macros/math';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 
 module('Integration | Macro | math', function() {
   test('does not expose math properties', function(assert) {

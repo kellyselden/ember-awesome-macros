@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { raw } from 'ember-awesome-macros';
 import { A as emberA } from '@ember/array';
 import { groupBy } from 'ember-awesome-macros/array';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 
 module('Integration | Macros | group by', function() {
   test('it returns empty array if not array type', function(assert) {

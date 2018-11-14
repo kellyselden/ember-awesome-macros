@@ -2,7 +2,7 @@ import { mapBy } from 'ember-awesome-macros/array';
 import { raw } from 'ember-awesome-macros';
 import { A as emberA } from '@ember/array';
 import { module, test } from 'qunit';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 
 module('Integration | Macro | array | map by', function() {
   test('it returns empty array if not array type', function(assert) {
