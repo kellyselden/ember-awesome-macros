@@ -2,7 +2,7 @@ import { get, setProperties, computed } from '@ember/object';
 import { split } from 'ember-awesome-macros/string';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 import sinon from 'sinon';
 
 const source = 'val1,val2';

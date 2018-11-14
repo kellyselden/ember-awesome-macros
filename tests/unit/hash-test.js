@@ -3,7 +3,7 @@ import { getProperties } from '@ember/object';
 import { hash, raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 
 const value1 = 12;
 const value2 = 23;

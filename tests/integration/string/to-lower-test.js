@@ -1,7 +1,7 @@
 import { toLower } from 'ember-awesome-macros/string';
 import { raw } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 
 module('Integration | Macro | string | to lower', function() {
   test('returns undefined when doesn\'t exist', function(assert) {

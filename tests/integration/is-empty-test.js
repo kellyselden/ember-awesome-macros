@@ -2,7 +2,7 @@ import { collect, raw } from 'ember-awesome-macros';
 import { isEmpty } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
 import { A as emberA } from '@ember/array';
-import compute from 'ember-macro-test-helpers/compute';
+import compute from 'ember-macro-helpers/test-support/compute';
 
 module('Integration | Macro | isEmpty', function() {
   test('empty without params', function(assert) {

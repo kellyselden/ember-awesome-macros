@@ -1,7 +1,7 @@
 import { raw } from 'ember-macro-helpers';
 import { toStr } from 'ember-awesome-macros';
 import { module, test } from 'qunit';
-import { compute } from 'ember-macro-test-helpers';
+import { compute } from 'ember-macro-helpers/test-support';
 
 module('Integration | Macro | to str', function() {
   test('it returns undefined if obj undefined', function(assert) {

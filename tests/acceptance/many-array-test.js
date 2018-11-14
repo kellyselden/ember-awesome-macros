@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
-import compute from 'ember-macro-test-helpers/compute';
+import compute from 'ember-macro-helpers/test-support/compute';
 import { getBy } from 'ember-awesome-macros';
 import array from 'ember-awesome-macros/array';
 import raw from 'ember-macro-helpers/raw';
