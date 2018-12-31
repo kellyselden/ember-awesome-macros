@@ -8,13 +8,6 @@ node_js:
 addons:
   firefox: latest
 
-branches:
-  only:
-    - master
-    # npm version tags
-    - /^v\d+\.\d+\.\d+$/
-    - /^greenkeeper\/.*$/
-
 cache:
   directories:
     - $HOME/.npm
@@ -23,6 +16,12 @@ env:
   global:
     # See https://git.io/vdao3 for details.
     - JOBS=1
+
+branches:
+  only:
+    - master
+    # npm version tags
+    - /^v\d+\.\d+\.\d+/
 
 jobs:
   fail_fast: true
