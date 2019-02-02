@@ -53,6 +53,14 @@ If you have any opinions or want a new macro added, just ask! Or feel free to su
 
 [![Ember Awesome Macros](http://img.youtube.com/vi/kIDIa1NBZZI/maxresdefault.jpg)](https://www.youtube.com/watch?v=kIDIa1NBZZI)
 
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
+
 Installation
 ------------------------------------------------------------------------------
 
