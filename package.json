@@ -27,7 +27,7 @@
   "dependencies": {
     "broccoli-file-creator": "^2.1.1",
     "broccoli-merge-trees": "^3.0.0",
-    "ember-cli-babel": "^6.18.0",
+    "ember-cli-babel": "^7.1.2",
     "ember-cli-string-utils": "^1.1.0",
     "ember-macro-helpers": "^2.1.0"
   },
