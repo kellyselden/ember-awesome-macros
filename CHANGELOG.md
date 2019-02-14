@@ -2,11 +2,40 @@
 
 ## [Unreleased](https://github.com/kellyselden/ember-awesome-macros/tree/HEAD)
 
-[Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v3.1.0...HEAD)
+[Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v3.2.0...HEAD)
+
+**Merged pull requests:**
+
+- Revert "revert babel 7" [\#540](https://github.com/kellyselden/ember-awesome-macros/pull/540) ([kellyselden](https://github.com/kellyselden))
+
+## [v3.2.0](https://github.com/kellyselden/ember-awesome-macros/tree/v3.2.0) (2019-02-14)
+[Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v3.1.0...v3.2.0)
 
 **Implemented enhancements:**
 
 - add notEmpty macro [\#241](https://github.com/kellyselden/ember-awesome-macros/issues/241)
+
+**Closed issues:**
+
+- Add innerText macro [\#533](https://github.com/kellyselden/ember-awesome-macros/issues/533)
+
+**Merged pull requests:**
+
+- revert babel 7 [\#539](https://github.com/kellyselden/ember-awesome-macros/pull/539) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-macro-helpers to v3 [\#538](https://github.com/kellyselden/ember-awesome-macros/pull/538) ([renovate[bot]](https://github.com/apps/renovate))
+- ember-cli 3.7 [\#537](https://github.com/kellyselden/ember-awesome-macros/pull/537) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-source to ~3.7.0 [\#535](https://github.com/kellyselden/ember-awesome-macros/pull/535) ([renovate[bot]](https://github.com/apps/renovate))
+- update ember-cli 3.6 [\#534](https://github.com/kellyselden/ember-awesome-macros/pull/534) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-source to ~3.6.0 [\#531](https://github.com/kellyselden/ember-awesome-macros/pull/531) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-qunit to v4 [\#530](https://github.com/kellyselden/ember-awesome-macros/pull/530) ([renovate[bot]](https://github.com/apps/renovate))
+- update ember-cli 3.5 [\#529](https://github.com/kellyselden/ember-awesome-macros/pull/529) ([kellyselden](https://github.com/kellyselden))
+- update eslint-plugin-ember [\#528](https://github.com/kellyselden/ember-awesome-macros/pull/528) ([kellyselden](https://github.com/kellyselden))
+- TravisCI: Remove deprecated `sudo: false` option [\#527](https://github.com/kellyselden/ember-awesome-macros/pull/527) ([Turbo87](https://github.com/Turbo87))
+- remove ember-macro-test-helpers [\#525](https://github.com/kellyselden/ember-awesome-macros/pull/525) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-sinon to v3 [\#524](https://github.com/kellyselden/ember-awesome-macros/pull/524) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-cli-eslint to v5 [\#523](https://github.com/kellyselden/ember-awesome-macros/pull/523) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-load-initializers to v2 [\#522](https://github.com/kellyselden/ember-awesome-macros/pull/522) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency eslint-plugin-node to v8 [\#521](https://github.com/kellyselden/ember-awesome-macros/pull/521) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v3.1.0](https://github.com/kellyselden/ember-awesome-macros/tree/v3.1.0) (2018-10-21)
 [Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v3.0.0...v3.1.0)
