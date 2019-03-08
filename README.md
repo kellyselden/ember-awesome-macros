@@ -1333,6 +1333,12 @@ value2: xor('sourceFalse', 'sourceTrue', 'sourceFalse'), // true
 value3: xor('sourceTrue', 'sourceTrue', 'sourceTrue') // false
 ```
 
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+
 License
 ------------------------------------------------------------------------------
 
