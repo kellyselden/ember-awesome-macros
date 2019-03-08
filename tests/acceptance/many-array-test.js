@@ -7,7 +7,7 @@ import raw from 'ember-macro-helpers/raw';
 import { run } from '@ember/runloop';
 
 module('Acceptance | DS.ManyArray', function(hooks) {
-  let parent, child1, child2;
+  let parent; let child1; let child2;
 
   setupTest(hooks);
 
