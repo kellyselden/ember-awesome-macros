@@ -741,7 +741,7 @@ wraps [`Ember.isEmpty`](https://emberjs.com/api/ember/release/functions/@ember%2
 
 ```js
 sourceString1: '',
-sourceString2: foobar,
+sourceString2: 'foobar',
 
 sourceArray1: [],
 sourceArray2: [1, 2, 3],
