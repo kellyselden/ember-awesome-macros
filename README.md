@@ -1,13 +1,11 @@
 ember-awesome-macros
 ==============================================================================
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/kellyselden/ember-awesome-macros.svg)](https://greenkeeper.io/)
 [![npm version](https://badge.fury.io/js/ember-awesome-macros.svg)](https://badge.fury.io/js/ember-awesome-macros)
 [![Build Status](https://travis-ci.org/kellyselden/ember-awesome-macros.svg?branch=master)](https://travis-ci.org/kellyselden/ember-awesome-macros)
 [![dependencies Status](https://david-dm.org/kellyselden/ember-awesome-macros/status.svg)](https://david-dm.org/kellyselden/ember-awesome-macros)
 [![devDependencies Status](https://david-dm.org/kellyselden/ember-awesome-macros/dev-status.svg)](https://david-dm.org/kellyselden/ember-awesome-macros?type=dev)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-awesome-macros.svg)](https://emberobserver.com/addons/ember-awesome-macros)
-[![Ember Version](https://img.shields.io/badge/ember-2.16%2B-brightgreen.svg)](https://www.emberjs.com/)
 
 A collection of Ember computed macros. All the macros are composable, meaning you can nest them to your heart's content, like so:
 
@@ -57,8 +55,9 @@ If you have any opinions or want a new macro added, just ask! Or feel free to su
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v2.18 or above
+* Ember.js v3.4 or above
 * Ember CLI v2.13 or above
+* Node.js v8 or above
 
 
 Installation
