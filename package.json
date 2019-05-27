@@ -44,7 +44,7 @@
     "ember-load-initializers": "^2.0.0",
     "ember-qunit": "^4.4.1",
     "ember-resolver": "^5.0.1",
-    "ember-sinon": "^3.0.0",
+    "ember-sinon": "^4.0.0",
     "ember-source": "~3.10.0",
     "ember-source-channel-url": "^1.1.0",
     "ember-try": "^0.2.23",
