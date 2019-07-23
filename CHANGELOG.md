@@ -2,7 +2,41 @@
 
 ## [Unreleased](https://github.com/kellyselden/ember-awesome-macros/tree/HEAD)
 
-[Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v3.2.0...HEAD)
+[Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v5.0.0...HEAD)
+
+**Closed issues:**
+
+- raw\(\) is screwed up on ember-canary [\#546](https://github.com/kellyselden/ember-awesome-macros/issues/546)
+- upgrading to 0.41.0 results in TypeError: args.slice is not a function [\#448](https://github.com/kellyselden/ember-awesome-macros/issues/448)
+
+**Merged pull requests:**
+
+- update ember-cli [\#564](https://github.com/kellyselden/ember-awesome-macros/pull/564) ([kellyselden](https://github.com/kellyselden))
+- Update dependency eslint-config-sane to ^0.8.0 [\#562](https://github.com/kellyselden/ember-awesome-macros/pull/562) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-source to ~3.11.0 [\#560](https://github.com/kellyselden/ember-awesome-macros/pull/560) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency qunit-dom to ^0.9.0 [\#559](https://github.com/kellyselden/ember-awesome-macros/pull/559) ([renovate[bot]](https://github.com/apps/renovate))
+- Lock file maintenance [\#558](https://github.com/kellyselden/ember-awesome-macros/pull/558) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v5.0.0](https://github.com/kellyselden/ember-awesome-macros/tree/v5.0.0) (2019-05-27)
+[Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v4.0.0...v5.0.0)
+
+**Merged pull requests:**
+
+- ember-cli-update [\#557](https://github.com/kellyselden/ember-awesome-macros/pull/557) ([kellyselden](https://github.com/kellyselden))
+- Update dependency ember-sinon to v4 [\#555](https://github.com/kellyselden/ember-awesome-macros/pull/555) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-source-channel-url to v2 [\#554](https://github.com/kellyselden/ember-awesome-macros/pull/554) ([renovate[bot]](https://github.com/apps/renovate))
+- Lock file maintenance [\#551](https://github.com/kellyselden/ember-awesome-macros/pull/551) ([renovate[bot]](https://github.com/apps/renovate))
+- Fix isEmpty doc [\#550](https://github.com/kellyselden/ember-awesome-macros/pull/550) ([ctjhoa](https://github.com/ctjhoa))
+- Update dependency ember-source to ~3.9.0 [\#548](https://github.com/kellyselden/ember-awesome-macros/pull/548) ([renovate[bot]](https://github.com/apps/renovate))
+- Lock file maintenance [\#547](https://github.com/kellyselden/ember-awesome-macros/pull/547) ([renovate[bot]](https://github.com/apps/renovate))
+- ember-cli-update [\#545](https://github.com/kellyselden/ember-awesome-macros/pull/545) ([kellyselden](https://github.com/kellyselden))
+- Update dependency renovate-config-standard to v2 [\#544](https://github.com/kellyselden/ember-awesome-macros/pull/544) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-source to ~3.8.0 [\#542](https://github.com/kellyselden/ember-awesome-macros/pull/542) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency eslint-config-sane to ^0.7.0 [\#541](https://github.com/kellyselden/ember-awesome-macros/pull/541) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ember-try to v1 [\#504](https://github.com/kellyselden/ember-awesome-macros/pull/504) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v4.0.0](https://github.com/kellyselden/ember-awesome-macros/tree/v4.0.0) (2019-02-14)
+[Full Changelog](https://github.com/kellyselden/ember-awesome-macros/compare/v3.2.0...v4.0.0)
 
 **Merged pull requests:**
 
