@@ -29,7 +29,7 @@
     "broccoli-merge-trees": "^3.0.0",
     "ember-cli-babel": "^7.7.3",
     "ember-cli-string-utils": "^1.1.0",
-    "ember-macro-helpers": "^4.0.0"
+    "ember-macro-helpers": "^4.2.2"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",
