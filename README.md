@@ -149,6 +149,7 @@ import { nameOfMacro } from 'ember-awesome-macros';
 * [`quotient`](#quotient)
 * [`subtract`](#subtract)
 * [`sum`](#sum)
+* [`pad`](#pad)
 
 ##### Object
 * [`getBy`](#getby)
@@ -916,6 +917,18 @@ source2: false,
 source3: true,
 value1: or('source1', 'source2', 'source3'), // true
 value2: or(not('source1'), 'source2', not('source3')) // false
+```
+
+##### `pad`
+adds zero-padding to a number and returns a string, allows composing
+
+```js
+number1: 1,
+size1: 3,
+size2: '5',
+example1: pad('number1','size1'), // 001
+example2: pad('number1','size1'), // 001
+example3: pad(raw(8),'size2') // 00008
 ```
 
 ##### `parseFloat`

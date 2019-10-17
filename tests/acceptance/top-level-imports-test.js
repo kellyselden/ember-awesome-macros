@@ -24,6 +24,7 @@ import macros, {
   notEmpty,
   lt,
   lte,
+  pad,
   math,
   mod,
   multiply,
@@ -120,6 +121,7 @@ import _isEmpty from 'ember-awesome-macros/is-empty';
 import _notEmpty from 'ember-awesome-macros/not-empty';
 import _lt from 'ember-awesome-macros/lt';
 import _lte from 'ember-awesome-macros/lte';
+import _pad from 'ember-awesome-macros/pad';
 import _mod from 'ember-awesome-macros/mod';
 import _multiply from 'ember-awesome-macros/multiply';
 import _nand from 'ember-awesome-macros/nand';
@@ -172,6 +174,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(macros.notEmpty);
     assert.ok(macros.lt);
     assert.ok(macros.lte);
+    assert.ok(macros.pad);
     assert.ok(macros.math);
     assert.ok(macros.mod);
     assert.ok(macros.multiply);
@@ -273,6 +276,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(notEmpty);
     assert.ok(lt);
     assert.ok(lte);
+    assert.ok(pad);
     assert.ok(math);
     assert.ok(mod);
     assert.ok(multiply);
@@ -373,6 +377,7 @@ module('Acceptance | top level imports', function() {
     assert.ok(_notEmpty);
     assert.ok(_lt);
     assert.ok(_lte);
+    assert.ok(_pad);
     assert.ok(_mod);
     assert.ok(_multiply);
     assert.ok(_nand);
