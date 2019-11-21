@@ -16,6 +16,8 @@ module.exports = {
     browser: true
   },
   rules: {
+    // https://github.com/ember-cli/eslint-plugin-ember/issues/604
+    'ember/no-invalid-debug-function-arguments': 'off'
   },
   overrides: [
     // node files
