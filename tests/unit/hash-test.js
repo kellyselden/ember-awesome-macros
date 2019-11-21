@@ -8,24 +8,21 @@ import { compute } from 'ember-macro-helpers/test-support';
 const value1 = 12;
 const value2 = 23;
 
-let sandbox;
 let expected;
 let createSpy;
 
 module('Unit | Macro | hash', function(hooks) {
   hooks.beforeEach(function() {
-    sandbox = sinon.sandbox.create();
-
     expected = {
       prop1: value1,
       prop2: value2
     };
 
-    createSpy = sandbox.spy(EmberObject, 'create').withArgs(expected);
+    createSpy = sinon.spy(EmberObject, 'create').withArgs(expected);
   });
 
   hooks.afterEach(function() {
-    sandbox.restore();
+    sinon.restore();
   });
 
   function doAssertions(assert, result, callNumber) {
