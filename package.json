@@ -56,7 +56,7 @@
     "loader.js": "^4.7.0",
     "qunit-dom": "^0.9.0",
     "renovate-config-standard": "^2.0.0",
-    "sinon": "^7.5.0"
+    "sinon": "^8.0.0"
   },
   "engines": {
     "node": "8.* || >= 10.*"
