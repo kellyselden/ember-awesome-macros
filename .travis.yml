@@ -48,15 +48,24 @@ jobs:
     - env: EMBER_TRY_SCENARIO=ember-canary
     - env: EMBER_TRY_SCENARIO=ember-default-with-jquery
 
-    - stage: "Deploy"
+    - if: branch = master AND type = pull_request
+      name: ember-cli-update
+      script:
+        - git checkout $TRAVIS_PULL_REQUEST_SHA
+        - git checkout -B $TRAVIS_PULL_REQUEST_BRANCH
+        - git remote set-url origin https://$GITHUB_TOKEN@github.com/$TRAVIS_PULL_REQUEST_SLUG.git
+        - npx https://github.com/kellyselden/ember-cli-update-action.git#semver:^1.5.4 --pull-request-url https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST --autofix-command "npm run lint:js -- --fix"
+
+    - stage: Deploy
+      if: tag IS present
       name: "Deploy"
       install: ignore
       script: ignore
       deploy:
         provider: npm
         email: kellyselden@gmail.com
-        api_key:
-          secure: FPySvZZ71HG/MxKhHhIivazbygzvRWLTdtXeVfp07VxQekJ7rXVdG+yo83CHXHqleXXWHcbkOz5Vlqfu9c9M0AP7YozacafoJo9qIw/BAAtfkEmL3UfeGDQZfsFXRa+2e5cMxJraG0PDNpDewM4LAPeuWCYIfu3N+RYbbSRT4hP1nZp5nHXI/CA0uFCfVV+PEAIxbPhAtwUHooU+7ALSNvxk9yiEY2gKk+R02F0bkxtnKEpzrZhzvCeo8pIHHqfWSoj0LCegZ2ckG34RN0rykgIZIwkRv4D07Z9yUVEOvtznNdVzPP7YAOnFQIE/HF5f7UIlBOYYMiKiJeJ4O7E0Wu7bA1eR1DdJANiraXYDgLQ1vZSffBayKCqwDpjQBoZ4mBlMRidYU2GqV6DZdxjdd+Es7jyqt0aFrtKVcLuYsjIZj0eH2Kfsm/UhlPx12Stu9bvu6/tmPyhTIUDvISvdhOj5IAA+rDAhT3c2X3qGrz8m3sjfrbLhp8vSI2cO07CbU2qmuZy8+j1YBb8HUUaN5+O8rkc+hlAWw3bj59UH+wBtvJTNtLdcGrVice/Uv+CqgHO5K7qV2M7AAbujKLDBqpK0DDKtB519I3JRric8uQa58bLPJme6UsD6Q952LjQat23y3PZcgwY/jyhds6lmrmY0wId538UVUymFnTfmSCE=
+        api_key: $NPM_TOKEN
+        edge: true # opt in to dpl v2
         on:
           tags: true
           repo: kellyselden/ember-awesome-macros
