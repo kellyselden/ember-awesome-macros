@@ -50,9 +50,6 @@ jobs:
 
     - stage: "Deploy"
       name: "Deploy"
-      addons: ignore
-      cache: ignore
-      env: ignore
       install: ignore
       script: ignore
       deploy:
