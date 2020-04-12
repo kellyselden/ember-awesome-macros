@@ -56,8 +56,8 @@ jobs:
         - git remote set-url origin https://$GITHUB_TOKEN@github.com/$TRAVIS_PULL_REQUEST_SLUG.git
         - npx https://github.com/kellyselden/ember-cli-update-action.git#semver:^1.5.4 --pull-request-url https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST --autofix-command "npm run lint:js -- --fix"
 
-    - stage: Deploy
-      if: tag IS present
+    - if: tag IS present
+      stage: Deploy
       name: "Deploy"
       install: ignore
       script: ignore
