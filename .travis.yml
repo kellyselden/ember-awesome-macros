@@ -49,7 +49,8 @@ jobs:
     - env: EMBER_TRY_SCENARIO=ember-default-with-jquery
 
     - if: branch = master AND type = pull_request
-      name: ember-cli-update
+      stage: "ember-cli-update"
+      name: "ember-cli-update"
       script:
         - git checkout $TRAVIS_PULL_REQUEST_SHA
         - git checkout -B $TRAVIS_PULL_REQUEST_BRANCH
@@ -57,7 +58,7 @@ jobs:
         - npx https://github.com/kellyselden/ember-cli-update-action.git#semver:^1.5.4 --pull-request-url https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST --autofix-command "npm run lint:js -- --fix"
 
     - if: tag IS present
-      stage: Deploy
+      stage: "Deploy"
       name: "Deploy"
       install: ignore
       script: ignore
