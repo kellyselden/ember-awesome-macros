@@ -1,4 +1,4 @@
-import { isHTMLSafe } from '@ember/string';
+import { isHTMLSafe } from '@ember/template';
 import { normalizeString } from './-utils';
 
 export default normalizeString(isHTMLSafe);
